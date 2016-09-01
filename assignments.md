@@ -3,7 +3,7 @@ layout: page
 title: Assignments 
 permalink: /assignments/
 order: 3
-exclude_from_nav: true
+exclude_from_nav: false
 ---
 
-* [HW #1]({{ site.baseurl }}/data/hw/HW1.pdf) (Due: Monday, 7/11) 
+* [Lab #1]({{ site.baseurl }}/data/hw/Lab1.R) (Due: Friday, 9/9) 
