@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Class Datasets  
+title: Datasets  
 permalink: /datasets/
 order: 4
-exclude_from_nav: true 
+exclude_from_nav: false 
 ---
 
-* [Sample Survey Data]({{ site.baseurl }}/data/datasets/survey.txt) 
+* [Sample Survey Data](http://pastebin.com/raw/1csmBawE) 
