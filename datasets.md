@@ -11,3 +11,4 @@ exclude_from_nav: false
 * [Class Survey Data](http://pastebin.com/raw/QDSga7qF)
 * [Internet Data](http://pastebin.com/raw/enxWu6R6)
 * [Temperature Data](http://pastebin.com/raw/KZgkViBK)
+* [Cereal Data](http://pastebin.com/raw/0G6DrHyC)
