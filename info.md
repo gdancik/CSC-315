@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Course Information 
+title: Course Info 
 permalink: /info/
 order: 1
 ---
