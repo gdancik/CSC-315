@@ -10,4 +10,5 @@ exclude_from_nav: false
 * [Blackboard survey](https://ct-ecsu.blackboard.com/webapps/login/) (Due: Friday, 9/9)
 * [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Monday, 9/19) 
 [[Review]({{ site.baseurl }}/data/hw/Lab2-review.R)] 
-* <span style = "color: red">[Lab #3]({{ site.baseurl }}/data/hw/Lab3.pdf) (Due: Monday, 9/26)</span> 
+* [Lab #3]({{ site.baseurl }}/data/hw/Lab3.pdf) (Due: Monday, 9/26) 
+[[Review]({{ site.baseurl }}/data/hw/Lab3-review.R)] 
