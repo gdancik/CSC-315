@@ -7,5 +7,5 @@ exclude_from_nav: false
 order: 4
 ---
 * [Exam I Practice]({{ site.baseurl }}/data/exams/ExamIPractice.R)
-* [Exam I]({{ site.baseurl }}/data/exams/ExamI.R)
+* [Exam I]({{ site.baseurl }}/data/exams/ExamI.R) (not yet)
 
