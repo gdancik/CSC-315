@@ -8,5 +8,5 @@ order: 4
 ---
 * Exam I
 	* [Exam I Practice]({{ site.baseurl }}/data/exams/ExamIPractice.R)
-	* [Exam I]({{ site.baseurl }}/data/exams/ExamI.R) (not yet)
+	* [Exam I]({{ site.baseurl }}/data/exams/ExamI.R)
 
