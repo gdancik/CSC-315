@@ -16,3 +16,7 @@ exclude_from_nav: false
   [Normal R script]({{ site.baseurl }}/data/notes/normal.R) |
   [Birthday R script]({{ site.baseurl }}/data/notes/birthday.R) |
   [Sampling Distributions R script]({{ site.baseurl }}/data/notes/sampling_distributions.R)
+* [Module 5: Hypothesis Testing]({{ site.baseurl }}/data/notes/module5.pdf) |
+  [Hypothesis Testing R script]({{ site.baseurl }}/data/notes/hypotheses.R) 
+
+
