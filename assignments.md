@@ -14,4 +14,5 @@ exclude_from_nav: false
 [[Review]({{ site.baseurl }}/data/hw/Lab3-review.R)] 
 * [Lab #4]({{ site.baseurl }}/data/hw/Lab4.R) (Due: Monday, 10/10) 
 * [Lab #5]({{ site.baseurl }}/data/hw/swirl-normal.pdf) (not collected) 
-* [Lab #6]({{ site.baseurl }}/data/hw/Lab6.pdf) (Due: Wednesday, 10/19) 
+* [Lab #6]({{ site.baseurl }}/data/hw/Lab6.pdf) (Due: Wednesday, 10/19)
+	* We have covered all material except for Type I and II errors, and hypothesis tests comparing 2 proportions (the last problem). We will cover these on Monday.
