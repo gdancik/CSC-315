@@ -20,5 +20,7 @@ exclude_from_nav: false
   [Hypothesis Testing R script]({{ site.baseurl }}/data/notes/hypotheses.R) | 
   [Dogs R script]({{ site.baseurl }}/data/notes/dogs.R) |
   [Norm Difference R script]({{ site.baseurl }}/data/notes/norm_diff.R) 
+  [t distribution R script]({{ site.baseurl }}/data/notes/t.R) | 
+  [Formula Sheet]({{ site.baseurl }}/data/notes/FormulaSheet.pdf) 
 
 
