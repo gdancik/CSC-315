@@ -15,6 +15,7 @@ exclude_from_nav: false
 * [Lab #4]({{ site.baseurl }}/data/hw/Lab4.R) (Due: Monday, 10/10) 
 * [Lab #5]({{ site.baseurl }}/data/hw/swirl-normal.pdf) (not collected) 
 * [Lab #6]({{ site.baseurl }}/data/hw/Lab6.pdf) (Due: Friday, 10/21/16)
+[[Review]({{ site.baseurl }}/data/hw/Lab6-review.R)] 
 
 ***
 * [Lab #7]({{ site.baseurl }}/data/hw/Lab7.R) (Due: Friday, 10/26/16)
