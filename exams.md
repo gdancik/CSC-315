@@ -12,5 +12,5 @@ order: 4
 * Exam II
 	* [Exam II Outline]({{ site.baseurl }}/data/exams/ExamII_Outline.pdf)
 	* [Exam II Practice]({{ site.baseurl }}/data/exams/ExamIIPractice.R)
-	* [Exam II]({{ site.baseurl }}/data/exams/examII.R) [(txt)](http://pastebin.com/raw/zaMGsfyR)
+	* [Exam II]({{ site.baseurl }}/data/exams/examII.R) [(txt)](http://pastebin.com/raw/5i4N7Nj2)
 
