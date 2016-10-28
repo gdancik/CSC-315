@@ -5,7 +5,8 @@
 
 # When you are finished, use Knit to create an HTML file (don't forget to specify 
 # the library path using the .libPaths() function if necessary. Once you produce
-# the HTML file, it should be submitted through Blackboard using the link provided
+# the HTML file, it should be submitted through Blackboard at the provided link:
+# https://ct-ecsu.blackboard.com/webapps/login/
 
 
 # 1. (Basic probability) Suppose a basket contains 2 green balls, 1 red
