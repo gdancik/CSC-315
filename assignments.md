@@ -18,3 +18,7 @@ exclude_from_nav: false
 [[Review]({{ site.baseurl }}/data/hw/Lab6-review.R)] 
 * [Lab #7]({{ site.baseurl }}/data/hw/Lab7.R) (Due: Wednesday, 10/26/16) 
 [[Solutions]({{ site.baseurl }}/data/hw/Lab7-sol.html)] 
+
+***
+* [Lab #8]({{ site.baseurl }}/data/hw/Lab8.R) (Due: Friday, 11/11/16) 
+
