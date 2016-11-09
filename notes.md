@@ -24,3 +24,5 @@ exclude_from_nav: false
   [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
 * [Module 6: Gene Expression]({{ site.baseurl }}/data/notes/GeneExpression.pdf) |
   [Microarray R script]({{ site.baseurl }}/data/notes/microarray.R)
+* Module 7: Gene Expression Analysis (notes coming soon) |
+  [Contrasts R script]({{ site.baseurl }}/data/notes/contrasts.R)
