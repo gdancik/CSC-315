@@ -24,6 +24,6 @@ exclude_from_nav: false
   [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
 * [Module 6: Gene Expression]({{ site.baseurl }}/data/notes/GeneExpression.pdf) |
   [Microarray R script]({{ site.baseurl }}/data/notes/microarray.R)
-* [Module 7: Gene Expression Analysis] ({{ site.baseurl }}/data/notes/GeneExpressionAnalysis.pdf) |
+* [Module 7: Gene Expression Analysis]({{ site.baseurl }}/data/notes/GeneExpressionAnalysis.pdf) |
   [Contrasts R script]({{ site.baseurl }}/data/notes/contrasts.R) |
   [Limma R script]({{ site.baseurl }}/data/notes/limma.R)
