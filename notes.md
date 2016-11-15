@@ -26,5 +26,5 @@ exclude_from_nav: false
   [Microarray R script]({{ site.baseurl }}/data/notes/microarray.R)
 * [Module 7: Gene Expression Analysis]({{ site.baseurl }}/data/notes/GeneExpressionAnalysis.pdf) |
   [Contrasts R script]({{ site.baseurl }}/data/notes/contrasts.R) |
-  [Limma R script]({{ site.baseurl }}/data/notes/limma.R)
+  [Limma R script]({{ site.baseurl }}/data/notes/limma.R) |
   [KNN R script]({{ site.baseurl }}/data/notes/knn.R)
