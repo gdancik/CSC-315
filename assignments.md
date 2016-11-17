@@ -22,3 +22,5 @@ exclude_from_nav: false
 
 ***
 * [Lab #9]({{ site.baseurl }}/data/hw/Lab9.R) (Due: Friday, 11/18/16) 
+* [Lab #10]({{ site.baseurl }}/data/hw/Challenge.pdf) (Due: see handout) |
+  [Challenge R Script]({{ site.baseurl }}/data/hw/Challenge.R) 
