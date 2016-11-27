@@ -28,3 +28,5 @@ exclude_from_nav: false
   [Contrasts R script]({{ site.baseurl }}/data/notes/contrasts.R) |
   [Limma R script]({{ site.baseurl }}/data/notes/limma.R) |
   [KNN R script]({{ site.baseurl }}/data/notes/knn.R)
+* [Module 8: Functional Annotation]({{ site.baseurl }}/data/notes/FunctionalAnnotation.pdf) |
+  [GPL-and-DAVID R Script]({{ site.baseurl }}/data/notes/GPL-and-DAVID.R) 
