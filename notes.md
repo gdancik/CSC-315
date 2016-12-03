@@ -30,3 +30,5 @@ exclude_from_nav: false
   [KNN R script]({{ site.baseurl }}/data/notes/knn.R)
 * [Module 8: Functional Annotation]({{ site.baseurl }}/data/notes/FunctionalAnnotation.pdf) |
   [GPL-and-DAVID R Script]({{ site.baseurl }}/data/notes/GPL-and-DAVID.R) 
+*  [Bioinformatics Wrap-Up]({{ site.baseurl }}/data/notes/WrapUp.pdf) |
+   [Movies R script]({{{ site.baseurl }}/data/notes/movies.R) 
