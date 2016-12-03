@@ -20,9 +20,9 @@ exclude_from_nav: false
 [[Solutions]({{ site.baseurl }}/data/hw/Lab7-sol.html)] 
 * [Lab #8]({{ site.baseurl }}/data/hw/Lab8.R) (Due: Friday, 11/11/16) 
 * [Lab #9]({{ site.baseurl }}/data/hw/Lab9.R) (Due: Friday, 11/18/16) 
+* [Lab #10]({{ site.baseurl }}/data/hw/Challenge.pdf) (Due: see handout) |
 
 ***
-* [Lab #10]({{ site.baseurl }}/data/hw/Challenge.pdf) (Due: see handout) |
   [Challenge R Script]({{ site.baseurl }}/data/hw/Challenge.R)
 * [Final Project]({{ site.baseurl }}/data/hw/Project.pdf) (Due: Monday, 12/05/16) 
  
