@@ -16,4 +16,3 @@ order: 4
 * Exam III
 	* [Exam III Outline]({{ site.baseurl }}/data/exams/ExamIII_Outline.pdf)
 	* [Exam III Practice]({{ site.baseurl }}/data/exams/examIII-practice.R)
-	* [Exam III]({{ site.baseurl }}/data/exams/examIII.R) [(txt)](http://pastebin.com/raw/ngbPdXM0)
