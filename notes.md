@@ -7,6 +7,7 @@ exclude_from_nav: false
 ---
 
 * [Course Introduction]({{ site.baseurl }}/data/notes/Intro.pdf)
+{% comment %}
 * [Module 1: R-Intro script]({{ site.baseurl }}/data/notes/R-intro.R)
 * [Module 2: Graphical and Numerical Summaries]({{ site.baseurl }}/data/notes/Module2.zip) 
 * [Module 3: Association: Contingency, Correlation, and Regression]({{ site.baseurl }}/data/notes/Module3.zip)
@@ -32,3 +33,4 @@ exclude_from_nav: false
   [GPL-and-DAVID R Script]({{ site.baseurl }}/data/notes/GPL-and-DAVID.R) 
 *  [Bioinformatics Wrap-Up]({{ site.baseurl }}/data/notes/WrapUp.pdf) |
    [Movies R script]({{ site.baseurl }}/data/notes/movies.R) 
+{% endcomment %}
