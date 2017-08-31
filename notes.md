@@ -7,8 +7,8 @@ exclude_from_nav: false
 ---
 
 * [Course Introduction]({{ site.baseurl }}/data/notes/Intro.pdf)
-{% comment %}
 * [Module 1: R-Intro script]({{ site.baseurl }}/data/notes/R-intro.R)
+{% comment %}
 * [Module 2: Graphical and Numerical Summaries]({{ site.baseurl }}/data/notes/Module2.zip) 
 * [Module 3: Association: Contingency, Correlation, and Regression]({{ site.baseurl }}/data/notes/Module3.zip)
 * [Advanced R Script]({{ site.baseurl }}/data/notes/AdvancedR.R) 
