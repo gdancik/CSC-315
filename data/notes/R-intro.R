@@ -48,6 +48,16 @@ ages[-2]
 # What are the ages of everyone EXCEPT the 1st two individuals?
 ages[-(1:2)]   ## note that ages[-1:2] is not correct. Why??
 
+# a logical vector contains TRUE/FALSE values
+ages > 20
+
+# what are the ages greater than 20?
+index <- ages > 20
+ages[index]    # or alternatively, use ages[ages > 20]
+
+# how many ages are > 20? 
+sum(index) # counts the number of TRUE values (TRUE = 1, FALSE = 0)
+
 # another vector example
 names <- c("Bob", "Lynn")
 
@@ -253,10 +263,10 @@ max(survey$FB)   ## max hours / week spent on FB
 survey[survey$Gender == 'Male',]
 
 ###########################################################
-# The dplyr package is useful for working with data.frames
+# The dplyr package is useful for manipulating data.frames
 ###########################################################
 
-# follow instructions in class for downloading the package, then 
+# TO DO: follow instructions in class for installing the package, then 
 # load using the command below
 library(dplyr)
 
