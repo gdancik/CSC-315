@@ -8,8 +8,9 @@ exclude_from_nav: false
 
 * [Lab #1]({{ site.baseurl }}/data/hw/Lab1.R) (Due: Monday, 9/11) 
 * [Blackboard survey](https://ct-ecsu.blackboard.com/webapps/login/) (Due: Monday, 9/11)
+<hr>
+* [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Monday, 9/18) 
 {% comment %}
-* [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Monday, 9/19) 
 [[Review]({{ site.baseurl }}/data/hw/Lab2-review.R)] 
 * [Lab #3]({{ site.baseurl }}/data/hw/Lab3.pdf) (Due: Monday, 9/26) 
 [[Review]({{ site.baseurl }}/data/hw/Lab3-review.R)] 
