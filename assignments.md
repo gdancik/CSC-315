@@ -12,8 +12,8 @@ exclude_from_nav: false
 <hr>
 * [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Monday, 9/18) 
 * [Lab #3]({{ site.baseurl }}/data/hw/Lab3.pdf) (Due: Monday, 9/25) 
-[[Review]({{ site.baseurl }}/data/hw/Lab2-review.R)] 
 {% comment %}
+[[Review]({{ site.baseurl }}/data/hw/Lab2-review.R)] 
 [[Review]({{ site.baseurl }}/data/hw/Lab3-review.R)] 
 * [Lab #4]({{ site.baseurl }}/data/hw/Lab4.R) (Due: Monday, 10/10) 
 * [Lab #5]({{ site.baseurl }}/data/hw/swirl-normal.pdf) (not collected) 
