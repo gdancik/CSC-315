@@ -11,6 +11,7 @@ exclude_from_nav: false
 * [Blackboard survey](https://ct-ecsu.blackboard.com/webapps/login/) (Due: Monday, 9/11)
 <hr>
 * [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Monday, 9/18) 
+    * [Lab #2 Review]({{ site.baseurl }}/data/hw/Lab2-review.R) 
 * [Lab #3]({{ site.baseurl }}/data/hw/Lab3.pdf) (Due: Monday, 9/25) 
 {% comment %}
 [[Review]({{ site.baseurl }}/data/hw/Lab2-review.R)] 
