@@ -11,9 +11,9 @@ exclude_from_nav: false
 * [Blackboard survey](https://ct-ecsu.blackboard.com/webapps/login/) (Due: Monday, 9/11)
 * [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Monday, 9/18) 
     * [Lab #2 Review]({{ site.baseurl }}/data/hw/Lab2-review.R) 
-<hr>
 * [Lab #3]({{ site.baseurl }}/data/hw/Lab3.pdf) (Due: Monday, 9/25) 
     * [Lab #3 Review]({{ site.baseurl }}/data/hw/Lab3-review.R) 
+<hr>
 * [Lab #4]({{ site.baseurl }}/data/hw/Lab4.R) (Due: Friday, 10/06) 
 
 {% comment %}
