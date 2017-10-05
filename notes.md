@@ -18,11 +18,11 @@ exclude_from_nav: false
     * [R Script - Correlation and Regression]({{ site.baseurl }}/data/notes/correlation_and_regression.R)
 * [Advanced R Script]({{ site.baseurl }}/data/notes/AdvancedR.R) 
 * [Module 4: Probability]({{ site.baseurl }}/data/notes/module4.pdf)
-    * [Probability R script]({{ site.baseurl }}/data/notes/probability.R) |
+    * [R Script - Probability]({{ site.baseurl }}/data/notes/probability.R) 
+    * [R Script - Normal Distribution]({{ site.baseurl }}/data/notes/normal.R) 
+    * [R Script - Sampling Distributions]({{ site.baseurl }}/data/notes/sampling_distributions.R)
 {% comment %}
-  [Normal R script]({{ site.baseurl }}/data/notes/normal.R) |
   [Birthday R script]({{ site.baseurl }}/data/notes/birthday.R) |
-  [Sampling Distributions R script]({{ site.baseurl }}/data/notes/sampling_distributions.R)
 * [Module 5: Hypothesis Testing]({{ site.baseurl }}/data/notes/module5.pdf) |
   [Hypothesis Testing R script]({{ site.baseurl }}/data/notes/hypotheses.R) | 
   [Dogs R script]({{ site.baseurl }}/data/notes/dogs.R) |
