@@ -24,6 +24,7 @@ exclude_from_nav: false
 * [Module 5: Hypothesis Testing]({{ site.baseurl }}/data/notes/module5.pdf) 
     * [R Script - Hypothesis Testing]({{ site.baseurl }}/data/notes/hypotheses.R)  
     * [R Script - Dogs Example]({{ site.baseurl }}/data/notes/dogs.R) 
+    * [R Script - Norm Difference]({{ site.baseurl }}/data/notes/norm_diff.R) 
 {% comment %}
   [Birthday R script]({{ site.baseurl }}/data/notes/birthday.R) |
   [Norm Difference R script]({{ site.baseurl }}/data/notes/norm_diff.R) | 
