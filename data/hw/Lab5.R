@@ -17,7 +17,7 @@ install.packages("devtools")
 
 # install swirl 
 library(devtools)
-install_github("gdancik/swirl")
+install_github("gdancik/swirl-tbp")
 
 # install the course
 library(swirl)
