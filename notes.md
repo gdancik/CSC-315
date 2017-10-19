@@ -25,10 +25,10 @@ exclude_from_nav: false
     * [R Script - Hypothesis Testing]({{ site.baseurl }}/data/notes/hypotheses.R)  
     * [R Script - Dogs Example]({{ site.baseurl }}/data/notes/dogs.R) 
     * [R Script - Norm Difference]({{ site.baseurl }}/data/notes/norm_diff.R) 
+    * [R Script - T Distribution]({{ site.baseurl }}/data/notes/t.R) 
 {% comment %}
   [Birthday R script]({{ site.baseurl }}/data/notes/birthday.R) |
   [Norm Difference R script]({{ site.baseurl }}/data/notes/norm_diff.R) | 
-  [T Distribution R script]({{ site.baseurl }}/data/notes/t.R) | 
   [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
 * [Module 6: Gene Expression]({{ site.baseurl }}/data/notes/GeneExpression.pdf) |
   [Microarray R script]({{ site.baseurl }}/data/notes/microarray.R)
