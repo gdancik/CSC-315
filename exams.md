@@ -11,7 +11,7 @@ order: 4
 	* [Exam I]({{ site.baseurl }}/data/exams/ExamI.R)
 * Exam II
 	* [Exam II Outline]({{ site.baseurl }}/data/exams/ExamII_Outline.pdf)
-	* [Exam II Practice]({{ site.baseurl }}/data/exams/ExamIIPractice.R)
+	* [Exam II Practice]({{ site.baseurl }}/data/exams/examII-practice.R)
 {% comment %}
 	* [Exam II]({{ site.baseurl }}/data/exams/examII.R) [(txt)](http://pastebin.com/raw/5i4N7Nj2)
 * Exam III
