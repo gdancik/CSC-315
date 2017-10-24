@@ -19,13 +19,13 @@
 #    dealt a blackjack. Note: a full deck is given by the following
 #    code:
 
-deck = rep(1:13,4)
+deck <- rep(1:13,4)
 
 # (b). You will now use classical probability to answer this queestion. The code
 #     below generates the sample space for all 2-card hands
   
-    library(gtools)
-    hands = combinations(52, 2, deck, repeats.allowed = FALSE, set = FALSE)
+library(gtools)
+hands <- combinations(52, 2, deck, repeats.allowed = FALSE, set = FALSE)
 
 #   (i) How many possible 2-card hands are there?
 #   (ii) Find the probability that a player is dealt a blackjack
