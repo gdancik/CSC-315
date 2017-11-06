@@ -29,7 +29,8 @@ exclude_from_nav: false
     * [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
 * [Birthday R script]({{ site.baseurl }}/data/notes/birthday.R)
 * [Module 6: Gene Expression]({{ site.baseurl }}/data/notes/GeneExpression.pdf)
-    * [R Script - Microarrays]({{ site.baseurl }}/data/notes/microarray.R)
+    * [R Script - Microarrays]({{ site.baseurl }}/data/notes/microarray.R) | 
+([R Notebook]({{ site.baseurl }}/data/notes/microarray.html)) 
 {% comment %}
 * [Module 7: Gene Expression Analysis]({{ site.baseurl }}/data/notes/GeneExpressionAnalysis.pdf) |
   [Contrasts R script]({{ site.baseurl }}/data/notes/contrasts.R) |
