@@ -31,13 +31,10 @@ exclude_from_nav: false
 * [Module 6: Gene Expression]({{ site.baseurl }}/data/notes/GeneExpression.pdf)
     * [R Script - Microarrays]({{ site.baseurl }}/data/notes/microarray.R) | 
 ([R Notebook]({{ site.baseurl }}/data/notes/microarray.html)) 
-{% comment %}
-* [Module 7: Gene Expression Analysis]({{ site.baseurl }}/data/notes/GeneExpressionAnalysis.pdf) |
-{% endcomment %}
-* Module 7: Gene Expression Analysis (coming soon)
+* [Module 7: Gene Expression Analysis]({{ site.baseurl }}/data/notes/GeneExpressionAnalysis.pdf) 
     * [R Script - Contrasts]({{ site.baseurl }}/data/notes/contrasts.R)
+    * [R Script - GEO and limma]({{ site.baseurl }}/data/notes/GEO-and-limma.R)  
 {% comment %}
-  [Limma R script]({{ site.baseurl }}/data/notes/limma.R) |
   [KNN R script]({{ site.baseurl }}/data/notes/knn.R)
 * [Module 8: Functional Annotation]({{ site.baseurl }}/data/notes/FunctionalAnnotation.pdf) |
   [GPL-and-DAVID R Script]({{ site.baseurl }}/data/notes/GPL-and-DAVID.R) 
