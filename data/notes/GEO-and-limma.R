@@ -4,7 +4,9 @@
 # identify differentially expressed probes
 ################################################################
 
-library(GEOquery)
+library(dplyr)
+library(ggplot2)
+
 
 ###########################################################
 # Get the processed data for GSE1297. The object
@@ -12,7 +14,16 @@ library(GEOquery)
 # getGEO returns a list because each GEO Series
 # may contain multiple platforms
 ###########################################################
+
+
+library(GEOquery)
 GSE1297 <- getGEO("GSE1297")
+
+##############################################################################
+# the line below is an alternative for loading the 
+# GSE1297 object on school computers without GEOquery:
+# load(url("https://gdancik.github.io/CSC-315/data/notes/GSE1297.RData"))
+##############################################################################
 
 # GSE1297 is a list of length 1
 typeof(GSE1297)
@@ -45,6 +56,8 @@ boxplot(GSE1297.expr, main = "log2 processed data")
 # How many males and how many females are there?
 #################################################################
 gender <- as.character(GSE1297.p$characteristics_ch1.6)
+table(gender)
+
 
 ################################################################
 # Find differentially expressed (DE) probes between males
@@ -183,7 +196,21 @@ plot(h, label = label)
 ###############################################################
 platform <- annotation(GSE1297[[1]])   
 
+
+
+##############################################################################
+# the line below uses the getGEO function from GEOquery to 
+# download the platform data
+##############################################################################
+
 pl <- getGEO(platform)
+
+##############################################################################
+# the line below is an alternative for loading the 
+# pl object on school computers without GEOquery:
+# load(url("https://gdancik.github.io/CSC-315/data/notes/GPL96.RData"))
+##############################################################################
+
 pl <- Table(pl)
 
 
