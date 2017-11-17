@@ -21,11 +21,11 @@ exclude_from_nav: false
 * [Lab #8]({{ site.baseurl }}/data/hw/Lab8.R) (Due: Monday, 11/13/17) 
     * [Lab #8 results]({{ site.baseurl }}/data/hw/Lab8_results.pdf)  
 * [Lab #9]({{ site.baseurl }}/data/hw/Lab9.R) (Due: Friday, 11/17/17) 
+* [Classification Challenge]({{ site.baseurl }}/data/hw/Challenge.pdf) (Due: see handout) | 
+	[Challenge R Script]({{ site.baseurl }}/data/hw/Challenge.R)
 {% comment %}
 [[Review]({{ site.baseurl }}/data/hw/Lab6-review.R)] 
 [[Solutions]({{ site.baseurl }}/data/hw/Lab7-sol.html)] 
-* [Lab #10]({{ site.baseurl }}/data/hw/Challenge.pdf) (Due: see handout) | 
-	[Challenge R Script]({{ site.baseurl }}/data/hw/Challenge.R)
 
 ***
 * [Final Project]({{ site.baseurl }}/data/hw/Project.pdf) (Due: Monday, 12/05/16) 
