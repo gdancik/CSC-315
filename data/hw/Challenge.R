@@ -36,6 +36,7 @@ avg.sensitivity <-function(predicted, true) {
 load(url("https://gdancik.github.io/CSC-315/data/hw/Challenge.RData"))
 
 
-
+# Note: to get your predictions in text form, with one prediction per line, 
+# and with no other text, use the write.table function with row.names = FALSE
 
 
