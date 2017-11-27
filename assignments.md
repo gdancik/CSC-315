@@ -23,7 +23,7 @@ exclude_from_nav: false
 * [Lab #9]({{ site.baseurl }}/data/hw/Lab9.R) (Due: Friday, 11/17/17) 
 * [Classification Challenge]({{ site.baseurl }}/data/hw/Challenge.pdf) (Due: see handout) | 
 	[Challenge R Script]({{ site.baseurl }}/data/hw/Challenge.R)
-* [Final Project]({{ site.baseurl }}/data/hw/Project.pdf) (Due: Friday, 12/05/16) 
+* [Final Project]({{ site.baseurl }}/data/hw/Project.pdf) (Due: Friday, 12/08/17) 
 {% comment %}
 [[Review]({{ site.baseurl }}/data/hw/Lab6-review.R)] 
 [[Solutions]({{ site.baseurl }}/data/hw/Lab7-sol.html)] 
