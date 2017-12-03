@@ -37,9 +37,9 @@ exclude_from_nav: false
     * [R Script - knn]({{ site.baseurl }}/data/notes/knn.R)
 * [Module 8: Functional Annotation]({{ site.baseurl }}/data/notes/FunctionalAnnotation.pdf)
     * [R Script - DAVID]({{ site.baseurl }}/data/notes/DAVID.R) 
+*  [Bioinformatics Wrap-Up]({{ site.baseurl }}/data/notes/WrapUp.pdf) |
+   [Movies R script]({{ site.baseurl }}/data/notes/movies.R) 
   
 {% comment %}
   [KNN R script]({{ site.baseurl }}/data/notes/knn.R)
-*  [Bioinformatics Wrap-Up]({{ site.baseurl }}/data/notes/WrapUp.pdf) |
-   [Movies R script]({{ site.baseurl }}/data/notes/movies.R) 
 {% endcomment %}
