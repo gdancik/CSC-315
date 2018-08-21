@@ -7,7 +7,8 @@ exclude_from_nav: false
 ---
 
 * [Course Introduction]({{ site.baseurl }}/data/notes/Intro.pdf)
-* [Module 1: R-Intro script]({{ site.baseurl }}/data/notes/R-intro.R)
+{% comment %}
+
 * [Module 2: Graphical and Numerical Summaries]({{ site.baseurl }}/data/notes/module2.pdf)
     * [R Script - ggplot]({{ site.baseurl }}/data/notes/ggplot.R)
     * [R Script - Graphical Summaries]({{ site.baseurl }}/data/notes/graphical_summaries.R)
@@ -40,6 +41,5 @@ exclude_from_nav: false
 *  [Bioinformatics Wrap-Up]({{ site.baseurl }}/data/notes/WrapUp.pdf) |
    [Movies R script]({{ site.baseurl }}/data/notes/movies.R) 
   
-{% comment %}
   [KNN R script]({{ site.baseurl }}/data/notes/knn.R)
 {% endcomment %}
