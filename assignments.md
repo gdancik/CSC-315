@@ -3,9 +3,13 @@ layout: page
 title: Assignments 
 permalink: /assignments/
 order: 3
-exclude_from_nav: true
+exclude_from_nav: false
 ---
 
+* Install the R packages following commands in the first script (you do not have to worry about the Microarray packages right now). The second script is provided so you can test that the packages are correctly installed. 
+    * [packages.R]({{ site.baseurl }}/data/info/packages.R)
+    * [packages-test.R]({{ site.baseurl }}/data/hw/packages-test.R) 
+{% comment %}
 * [Lab #1]({{ site.baseurl }}/data/hw/Lab1.R) (Due: Monday, 9/11) 
     * [Lab #1 Review]({{ site.baseurl }}/data/hw/Lab1-review.R) 
 * [Blackboard survey](https://ct-ecsu.blackboard.com/webapps/login/) (Due: Monday, 9/11)
@@ -27,7 +31,6 @@ exclude_from_nav: true
     * [Real world example](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4612811/)
     * [Example of DE genese between males/females]({{ site.baseurl }}/data/hw/SexGenes.xlsx)
  
-{% comment %}
 [[Review]({{ site.baseurl }}/data/hw/Lab6-review.R)] 
 [[Solutions]({{ site.baseurl }}/data/hw/Lab7-sol.html)] 
 

@@ -1,22 +1,28 @@
-############################################################
-## CSC 315: Required packages 
-## Note: make sure that your .libPaths() is set correctly
-##    if working from a school computer
-############################################################
+#####################################################################################
+## CSC 315: Required packages
+## Note #1: make sure that your .libPaths() is set correctly
+##    if working from a school computer, e.g., using
+## .libPaths("/Users/dancikg/OneDrive - Eastern Connecticut State University/Rlib")
+## Note #2: it is recommended that these be installed from the R console
+##    rather than from RStudio
+#####################################################################################
 
-## for manipulating data frames ##
+## package for manipulating data frames ##
 install.packages("dplyr")
 
-## for knitting HTML documents ##
+## packages for knitting HTML documents ##
 install.packages("knitr")
 install.packages("yaml")
 install.packages("htmltools")
 install.packages("rmarkdown")
 
-## for permutation function ##
+## package for plotting
+install.packages("ggplot2")
+
+## package for permutation function ##
 install.packages("gtools")
 
-## for colorRampPalette function used to color heatmaps ##
+## package for colorRampPalette function used to color heatmaps ##
 install.packages("RColorBrewer")
 
 #################################################
