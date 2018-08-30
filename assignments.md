@@ -9,8 +9,8 @@ exclude_from_nav: false
 * Install the R packages following commands in the first script (you do not have to worry about the Microarray packages right now). The second script is provided so you can test that the packages are correctly installed. 
     * [packages.R]({{ site.baseurl }}/data/info/packages.R)
     * [packages-test.R]({{ site.baseurl }}/data/hw/packages-test.R) 
+* [Lab #1]({{ site.baseurl }}/data/hw/Lab1.R) (Due: Friday, 9/07/18) 
 {% comment %}
-* [Lab #1]({{ site.baseurl }}/data/hw/Lab1.R) (Due: Monday, 9/11) 
     * [Lab #1 Review]({{ site.baseurl }}/data/hw/Lab1-review.R) 
 * [Blackboard survey](https://ct-ecsu.blackboard.com/webapps/login/) (Due: Monday, 9/11)
 * [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Monday, 9/18) 
