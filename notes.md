@@ -7,7 +7,7 @@ exclude_from_nav: false
 ---
 
 * [Course Introduction]({{ site.baseurl }}/data/notes/Intro.pdf)
-* [R Script: R Basics]({{ site.baseurl }}/data/notes/R-Intro.R)
+* [R Script: R Basics]({{ site.baseurl }}/data/notes/R-intro.R)
 {% comment %}
 
 * [Module 2: Graphical and Numerical Summaries]({{ site.baseurl }}/data/notes/module2.pdf)
