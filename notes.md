@@ -6,15 +6,14 @@ order: 2
 exclude_from_nav: false
 ---
 
-* [Course Introduction]({{ site.baseurl }}/data/notes/Intro.pdf)
+* [Module 1: Course Introduction]({{ site.baseurl }}/data/notes/Intro.pdf)
 * [R Script: R Basics]({{ site.baseurl }}/data/notes/R-intro.R)
-{% comment %}
-
 * [Module 2: Graphical and Numerical Summaries]({{ site.baseurl }}/data/notes/module2.pdf)
     * [R Script: ggplot]({{ site.baseurl }}/data/notes/ggplot.R)
     * [R Script: Graphical Summaries]({{ site.baseurl }}/data/notes/graphical_summaries.R)
     * [R Script: Numerical Summaries]({{ site.baseurl }}/data/notes/numerical_summaries.R)
     * [R Script: Percentiles]({{ site.baseurl }}/data/notes/percentiles.R)
+{% comment %}
 * [Module 3: Association: Contingency, Correlation, and Regression]({{ site.baseurl }}/data/notes/module3.pdf)
     * [R Script: Associations]({{ site.baseurl }}/data/notes/associations.R)
     * [R Script: Correlation and Regression]({{ site.baseurl }}/data/notes/correlation_and_regression.R)
