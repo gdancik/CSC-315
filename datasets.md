@@ -3,7 +3,7 @@ layout: page
 title: Datasets  
 permalink: /datasets/
 order: 4
-exclude_from_nav: true 
+exclude_from_nav: false 
 ---
 
 * [Sample Survey Data](http://pastebin.com/raw/1csmBawE) 
