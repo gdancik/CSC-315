@@ -13,10 +13,10 @@ exclude_from_nav: false
     * [R Script: Graphical Summaries]({{ site.baseurl }}/data/notes/graphical_summaries.R)
     * [R Script: Numerical Summaries]({{ site.baseurl }}/data/notes/numerical_summaries.R)
     * [R Script: Percentiles]({{ site.baseurl }}/data/notes/percentiles.R)
-{% comment %}
 * [Module 3: Association: Contingency, Correlation, and Regression]({{ site.baseurl }}/data/notes/module3.pdf)
     * [R Script: Associations]({{ site.baseurl }}/data/notes/associations.R)
     * [R Script: Correlation and Regression]({{ site.baseurl }}/data/notes/correlation_and_regression.R)
+{% comment %}
 * [Advanced R Script]({{ site.baseurl }}/data/notes/AdvancedR.R) 
 * [Module 4: Probability]({{ site.baseurl }}/data/notes/module4.pdf)
     * [R Script: Probability]({{ site.baseurl }}/data/notes/probability.R) 
