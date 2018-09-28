@@ -6,10 +6,10 @@ permalink: /exams/
 exclude_from_nav: false
 order: 4
 ---
-* [Exam I Practice]({{ site.baseurl }}/data/exams/ExamIPractice.R)
-{% comment %}
 * Exam I
+    * [Exam I Practice]({{ site.baseurl }}/data/exams/ExamIPractice.R)
 	* [Exam I]({{ site.baseurl }}/data/exams/ExamI.R)
+{% comment %}
 * Exam II
 	* [Exam II Outline]({{ site.baseurl }}/data/exams/ExamII_Outline.pdf)
 	* [Exam II Practice]({{ site.baseurl }}/data/exams/examII-practice.R)
