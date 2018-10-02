@@ -19,6 +19,7 @@ exclude_from_nav: false
 * [Advanced R Script]({{ site.baseurl }}/data/notes/AdvancedR.R) 
 * [Module 4: Probability]({{ site.baseurl }}/data/notes/module4.pdf)
     * [R Script: Probability]({{ site.baseurl }}/data/notes/probability.R) 
+    * [Birthday R script]({{ site.baseurl }}/data/notes/birthday.R)
 {% comment %}
     * [R Script: Normal Distribution]({{ site.baseurl }}/data/notes/normal.R) 
     * [R Script: Sampling Distributions]({{ site.baseurl }}/data/notes/sampling_distributions.R)
@@ -28,7 +29,6 @@ exclude_from_nav: false
     * [R Script: Norm Difference]({{ site.baseurl }}/data/notes/norm_diff.R) 
     * [R Script: T Distribution]({{ site.baseurl }}/data/notes/t.R) 
     * [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
-* [Birthday R script]({{ site.baseurl }}/data/notes/birthday.R)
 * [Module 6: Gene Expression]({{ site.baseurl }}/data/notes/GeneExpression.pdf)
     * [R Script: Microarrays]({{ site.baseurl }}/data/notes/microarray.R) | 
 ([R Notebook]({{ site.baseurl }}/data/notes/microarray.html)) 
