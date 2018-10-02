@@ -13,13 +13,13 @@ exclude_from_nav: false
 * [Blackboard survey](https://easternct.blackboard.com/) (Due: Sunday, 9/9/18 by 5:00 PM)
 * [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Monday, 9/17) 
     * [Lab #2 Review]({{ site.baseurl }}/data/hw/Lab2-review.R) 
-<hr>
 * [Lab #3]({{ site.baseurl }}/data/hw/Lab3.pdf) (Due: Monday, 9/24) 
+<hr>
+* [Lab #4]({{ site.baseurl }}/data/hw/Lab4.R) (Due: Monday, 10/08) 
 {% comment %}
     * [Lab #1 Review]({{ site.baseurl }}/data/hw/Lab1-review.R) 
 * [Blackboard survey](https://ct-ecsu.blackboard.com/webapps/login/) (Due: Monday, 9/11)
     * [Lab #3 Review]({{ site.baseurl }}/data/hw/Lab3-review.R) 
-* [Lab #4]({{ site.baseurl }}/data/hw/Lab4.R) (Due: Friday, 10/06) 
 * [Lab #5]({{ site.baseurl }}/data/hw/Lab5.R) (not collected) 
 * [Lab #6]({{ site.baseurl }}/data/hw/Lab6.pdf) (Due: <strike>Wednesday, 10/18</strike> Friday, 10/20)
 * [Lab #7]({{ site.baseurl }}/data/hw/Lab7.R) (Due: Wednesday, 10/25/17) 
