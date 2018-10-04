@@ -47,7 +47,6 @@ six.plot + xlim(0,100)
 six.plot                
 
 
-
 ## simulate flipping a fair coin 1000 times
 coins <- sample(c("H", "T"), 1000, replace=TRUE)
 
@@ -69,7 +68,7 @@ df <- data.frame(p) # data.frame for plotting
 # used to suppress the legend for the 'fill' elements (the coins)
 ggplot(df) + geom_bar(aes(x = coins, y = Freq, fill = coins), stat = "identity") + 
   ggtitle("Outcome of flipping a fair coin 1000 times") +
-  labs(x = "outcome", y = "Frequency") +
+  labs(x = "outcome", y = "Relative Frequency") +
   geom_hline(aes(yintercept=1/2, linetype = "theoretical probability"),color = "black") +
   scale_linetype_manual(name = "", values = 2) +
   guides(fill = FALSE) + ylim(0,1)
@@ -84,8 +83,8 @@ p <- prop.table(t)
 df <- data.frame(p)
 
 ggplot(df) + geom_bar(aes(x = coins, y = Freq, fill = coins), stat = "identity") + 
-  ggtitle("Outcome of flipping a fair coin 1000 times") +
-  labs(x = "outcome", y = "Frequency") +
+  ggtitle("Outcome of flipping a biased coin 1000 times") +
+  labs(x = "outcome", y = "Relative Frequency") +
   geom_hline(aes(yintercept=9/10, linetype = "theoretical probability"),color = "black") +
   scale_linetype_manual(name = "", values = 2) +
   guides(fill = FALSE) + ylim(0,1)
@@ -124,7 +123,6 @@ prop.heads
 ## probability using the 'replicate' function
 #########################################################
 
-
 #########################################################
 ## classical probability - when all outcomes
 ## are equally likely, 
@@ -160,7 +158,6 @@ S[index,]
 #######################################################
 # Finding classical probabilities
 #######################################################
-
 
 ##########################################################
 ## aside: useful logical function: 
