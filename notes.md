@@ -22,10 +22,10 @@ exclude_from_nav: false
     * [Birthday R script]({{ site.baseurl }}/data/notes/birthday.R)
     * [R Script: Normal Distribution]({{ site.baseurl }}/data/notes/normal.R) 
     * [R Script: Sampling Distributions]({{ site.baseurl }}/data/notes/sampling_distributions.R)
-{% comment %}
 * [Module 5: Hypothesis Testing]({{ site.baseurl }}/data/notes/module5.pdf) 
     * [R Script: Hypothesis Testing]({{ site.baseurl }}/data/notes/hypotheses.R)  
     * [R Script: Dogs Example]({{ site.baseurl }}/data/notes/dogs.R) 
+{% comment %}
     * [R Script: Norm Difference]({{ site.baseurl }}/data/notes/norm_diff.R) 
     * [R Script: T Distribution]({{ site.baseurl }}/data/notes/t.R) 
     * [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
