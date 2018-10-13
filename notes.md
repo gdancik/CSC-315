@@ -25,8 +25,8 @@ exclude_from_nav: false
 * [Module 5: Hypothesis Testing]({{ site.baseurl }}/data/notes/module5.pdf) 
     * [R Script: Hypothesis Testing]({{ site.baseurl }}/data/notes/hypotheses.R)  
     * [R Script: Dogs Example]({{ site.baseurl }}/data/notes/dogs.R) 
+    * [R Script: Hypothesis Test for Two Sample Proportions]({{ site.baseurl }}/data/notes/two_sample_prop.R) 
 {% comment %}
-    * [R Script: Norm Difference]({{ site.baseurl }}/data/notes/norm_diff.R) 
     * [R Script: T Distribution]({{ site.baseurl }}/data/notes/t.R) 
     * [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
 * [Module 6: Gene Expression]({{ site.baseurl }}/data/notes/GeneExpression.pdf)
