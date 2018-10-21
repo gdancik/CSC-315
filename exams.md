@@ -9,10 +9,10 @@ order: 4
 * Exam I
     * [Exam I Practice]({{ site.baseurl }}/data/exams/ExamIPractice.R)
 	* [Exam I]({{ site.baseurl }}/data/exams/ExamI.R)
-{% comment %}
 * Exam II
 	* [Exam II Outline]({{ site.baseurl }}/data/exams/ExamII_Outline.pdf)
 	* [Exam II Practice]({{ site.baseurl }}/data/exams/examII-practice.R)
+{% comment %}
 	* [Exam II]({{ site.baseurl }}/data/exams/examII.R)
     * Exam II Extra Credit 
         * Complete a Lab 5 quiz, at 10:50 (before class) on Friday, 11/10/17.
