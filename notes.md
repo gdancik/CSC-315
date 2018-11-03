@@ -30,11 +30,10 @@ exclude_from_nav: false
     * [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
 * [Module 6: Gene Expression]({{ site.baseurl }}/data/notes/GeneExpression.pdf)
     * [R Script: Microarrays]({{ site.baseurl }}/data/notes/microarray.R) 
-* Module 7: Gene Expression Analysis
+* [Module 7: Gene Expression Analysis]({{ site.baseurl }}/data/notes/GeneExpressionAnalysis.pdf) 
     * [R Script: Contrasts]({{ site.baseurl }}/data/notes/contrasts.R)
 {% comment %}
 ([R Notebook]({{ site.baseurl }}/data/notes/microarray.html)) 
-* [Module 7: Gene Expression Analysis]({{ site.baseurl }}/data/notes/GeneExpressionAnalysis.pdf) 
     * [R Script: GEO and limma]({{ site.baseurl }}/data/notes/GEO-and-limma.R) 
     * [R Script: knn]({{ site.baseurl }}/data/notes/knn.R)
 * [Module 8: Functional Annotation]({{ site.baseurl }}/data/notes/FunctionalAnnotation.pdf)
