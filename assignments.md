@@ -18,11 +18,11 @@ exclude_from_nav: false
 * [Lab #5]({{ site.baseurl }}/data/hw/swirl-normal.pdf) (not collected) 
 * [Lab #6]({{ site.baseurl }}/data/hw/Lab6.pdf) (Due: Friday, 10/19/18)
 * [Lab #7]({{ site.baseurl }}/data/hw/Lab7.R) (Due: Tuesday, 10/23/18 by 5:00 PM by e-mail) 
-<hr>
 * [Lab #8]({{ site.baseurl }}/data/hw/Lab8.R) (Due: Wednesday, 11/7/18) 
+<hr>
+* [Lab #9]({{ site.baseurl }}/data/hw/Lab9.R) (Due: Wednesday, 11/16/18) 
 {% comment %}
     * [Lab #8 results]({{ site.baseurl }}/data/hw/Lab8_results.pdf)  
-* [Lab #9]({{ site.baseurl }}/data/hw/Lab9.R) (Due: Friday, 11/17/17) 
 * [Classification Challenge]({{ site.baseurl }}/data/hw/Challenge.pdf) (Due: see handout) | 
 	[Challenge R Script]({{ site.baseurl }}/data/hw/Challenge.R)
 * [Final Project]({{ site.baseurl }}/data/hw/Project.pdf) (Due: Friday, 12/08/17)
