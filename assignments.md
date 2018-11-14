@@ -20,11 +20,11 @@ exclude_from_nav: false
 * [Lab #7]({{ site.baseurl }}/data/hw/Lab7.R) (Due: Tuesday, 10/23/18 by 5:00 PM by e-mail) 
 * [Lab #8]({{ site.baseurl }}/data/hw/Lab8.R) (Due: Wednesday, 11/7/18) 
     * [Lab #8 results]({{ site.baseurl }}/data/hw/Lab8_results.pdf)  
+* [Lab #9]({{ site.baseurl }}/data/hw/Lab9.R) (Due: Wednesday, 11/14/18) 
 <hr>
-* [Lab #9]({{ site.baseurl }}/data/hw/Lab9.R) (Due: Wednesday, 11/16/18) 
+* [Classification Challenge]({{ site.baseurl }}/data/hw/Challenge.pdf) (Due: see handout)  
+    * [Challenge R Script]({{ site.baseurl }}/data/hw/Challenge.R)
 {% comment %}
-* [Classification Challenge]({{ site.baseurl }}/data/hw/Challenge.pdf) (Due: see handout) | 
-	[Challenge R Script]({{ site.baseurl }}/data/hw/Challenge.R)
 * [Final Project]({{ site.baseurl }}/data/hw/Project.pdf) (Due: Friday, 12/08/17)
     * [Real world example](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4612811/)
     * [Example of DE genes between males/females]({{ site.baseurl }}/data/hw/SexGenes.xlsx)
