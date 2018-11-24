@@ -34,10 +34,10 @@ exclude_from_nav: false
     * [R Script: Contrasts]({{ site.baseurl }}/data/notes/contrasts.R)
     * [R Script: GEO and limma]({{ site.baseurl }}/data/notes/GEO-and-limma.R) 
     * [R Script: knn]({{ site.baseurl }}/data/notes/knn.R)
-{% comment %}
-([R Notebook]({{ site.baseurl }}/data/notes/microarray.html)) 
 * [Module 8: Functional Annotation]({{ site.baseurl }}/data/notes/FunctionalAnnotation.pdf)
     * [R Script: DAVID]({{ site.baseurl }}/data/notes/DAVID.R) 
+{% comment %}
+([R Notebook]({{ site.baseurl }}/data/notes/microarray.html)) 
 *  [Bioinformatics Wrap-Up]({{ site.baseurl }}/data/notes/WrapUp.pdf) |
    [Movies R script]({{ site.baseurl }}/data/notes/movies.R) 
   
