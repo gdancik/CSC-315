@@ -1,41 +1,37 @@
 #####################################################################################
-## CSC 315: Required packages
-## Note #1: make sure that your .libPaths() is set correctly
-##    if working from a school computer, e.g., using
-## .libPaths("/Users/dancikg/OneDrive - Eastern Connecticut State University/Rlib")
-## Note #2: it is recommended that these be installed from the R console
-##    rather than from RStudio
+# CSC 315: Required packages
+# Run this script to install the packages we will be using this semester
+# These packages are already installed on our classroom computers
 #####################################################################################
 
-## package for manipulating data frames ##
-install.packages("dplyr")
+# package for data manipulation and visualization
+install.packages('tidyverse')
 
-## packages for knitting HTML documents ##
-install.packages("knitr")
-install.packages("yaml")
-install.packages("htmltools")
-install.packages("rmarkdown")
+# package to combine multiple ggplot2 plots into 1
+install.packages('cowplot')
 
-## package for plotting
-install.packages("ggplot2")
+# package for knitting HTML documents
+install.packages('rmarkdown')
 
-## package for permutation function ##
-install.packages("gtools")
+#package for permutations
+install.packages('gtools')
 
 ## package for colorRampPalette function used to color heatmaps ##
-install.packages("RColorBrewer")
+install.packages('RColorBrewer')
 
 #################################################
 # Bioconductor packages for Microarray Analysis
 #################################################
 
-## to install bioconductor packages, source the following once ##
-source("http://bioconductor.org/biocLite.R")
+# Bioconductor packages are now installed through BiocManager
+install.packages('BiocManager')
 
-biocLite("affy")
-biocLite("affydata")
-biocLite("leukemiasEset")
-biocLite("GEOquery")
-biocLite("limma")
-biocLite("hgu133a.db")
+# load BiocManager and install the packages
+library(BiocManager)
+BiocManager::install('affy')
+BiocManager::install('affydata')
+BiocManager::install('leukemiasEset')
+BiocManager::install('GEOquery')
+BiocManager::install('limma')
+BiocManager::install('hgu133a.db')
 
