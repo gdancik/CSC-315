@@ -20,8 +20,7 @@ x <- 14  # x = 14 will do the same thing
 y <- 21
 total <- x+y
 num <- x / y
-name <- 'Bob' # you can use single or double quotes, e.g., name = "Bob"
-
+name <- "Bob" # you can also use single quotes, but double quotes are preferred
 
 # A fundamental type of variable in R is a vector (like a 1D array)
 ages <- c(19,20,24, 22, 18)
@@ -56,25 +55,27 @@ index <- ages > 20
 ages[index]    # or alternatively, use ages[ages > 20]
 
 # how many ages are > 20? 
-sum(index) # counts the number of TRUE values (TRUE = 1, FALSE = 0)
+# the 'sum' function sums over all elements in a vector; for a boolean vector, 
+# TRUE = 1 and FALSE = 0, so 'sum' will count the number of TRUE values
+sum(index) 
 
 # another vector example
 names <- c("Bob", "Lynn")
 
 # Additional ways of creating vectors
-
 x1 <- 1:10  # integers 1 through 10
 x2 <- 20:10 # integers 20 through 10
-x3 <- seq(1,10,by=2) ## integers 1,3,5,7,9
-x4 <- rep(-7, 20) ## a vector containing 20 values of -7
+x3 <- seq(1,10,by=2) # integers 1,3,5,7,9
+x4 <- rep(-7, 20) # a vector containing 20 values of -7
 
 ###########################################################################
-## Question set A
-## 1. Create a vector of all integers 1 through 100
-## 2. Create a vector of all even integers between 50 and 100 (inclusive)
-##  2a. How many even integers are there between 50 and 100 (inclusive)?
-##  2b. What is the sum of the 3rd and 19th even integer 
-##      between 50 and 100?
+# Question set A
+# 1. Create a vector of all integers 1 through 100
+# 2. Find the sum of all integers 1 through 100
+# 2. Create a vector of all even integers between 50 and 100 (inclusive)
+#  2a. How many even integers are there between 50 and 100 (inclusive)?
+#  2b. What is the sum of the 3rd and 19th even integer 
+#      between 50 and 100?
 ###########################################################################
 
 # To get help on a command, use the question mark (?) or
@@ -88,82 +89,84 @@ rm(x)
 rm(list = ls())
 
 ##########################################
-## Calculations with vectors
+# Calculations with vectors
 ##########################################
 
 ###################################
-##  when one vector is of length 1
+#  when one vector is of length 1
 ###################################
 x <- 1:10
 y <- 4
 
 # Note: we can visualize the vector calculations by creating
-# a matrix combining both vectors; calculations occur across each row 
+# a matrix combining both vectors using cbind (for 'column bind'),
+# where calculations occur across each row
 cbind(x,y)
-
-ans.add <- x+y  # adds each element of x to y
-ans.multiply <- x*y  # multiplies each element of x by y
-ans.divide <- x / y
+x+y # adds each element of x to y
+x*y  # multiplies each element of x by y
+x / y
 
 ##########################################
-##  when both vectors are the same length
+# when both vectors are the same length
 #########################################
 x <- 1:10
 y <- seq(0,1,length.out = 10)
 cbind(x,y)
-ans.add <- x+y  # the ith element of x is added to the ith element of y
-ans.multiply <- x*y  # the ith element of x is multipled by the ith element of y
-ans.divide <- x/y  # the ith element of x is divided by the ith element of y
+x+y  # the ith element of x is added to the ith element of y
+x*y  # the ith element of x is multipled by the ith element of y
+x/y  # the ith element of x is divided by the ith element of y
 
 
 #########################################################
-## when vectors are of different lengths, 
-## elements in shorter vector are recycled as necessary
-## NOTE: You will not get an error if the vectors are of 
-## different lengths, but you will get a warning if the 
-## length of the larger vector is not a multiple of
-## the length of the shorter vector
+# When vectors are of different lengths, elements in
+# shorter vector are recycled as necessary.
+# NOTE: You will not get an error if the vectors are of 
+# different lengths, but you will get a warning if the 
+# length of the larger vector is not a multiple of
+# the length of the shorter vector
 #########################################################
+
+# when the length of one vector is a multiple of the length of the other
 x <- 1:10
 y <- seq(0,1,length.out = 5)
 cbind(x,y)
-ans.add <- x+y  
-ans.multiply <- x*y  
-ans.divide <- x/y  
+x+y  
+x*y  
+x/y  
 
-## you will get a warning (but NOT an error) if length(y) is not 
-## a multiple of length(x)
+# you will get a warning (but NOT an error) if length(y) is NOT 
+# a multiple of length(x)
 x <- 1:10
 y <- seq(0,1,length.out = 5)
-y <- y[-5]   ### the same as y = y[1:4]
+y <- y[-5]   # the same as y = y[1:4]
 cbind(x,y)
-ans.add <- x+y  
+x+y  
 
 
-### some additional calculations 
+# Additional calculations 
 x <- 1:10
 sum(x)
 min(x)
 max(x)
 
 ##########################################################
-## Question set B
-## 1. If you drive 60 miles per hour, how far would you travel
-##    in 3,4,5,6, and 10 hours?
+# Question set B
+# 1. If you drive 60 miles per hour, how far would you travel
+#    in 3,4,5,6, and 10 hours?
 ##########################################################
 
 ##############################################
-## matrices - all elements must be same type
+# matrices - all elements must be same type
 ##############################################
 m <- matrix(1:30,ncol=5,byrow = TRUE)
 colnames(m) <- paste("x",1:5, sep = "")
 rownames(m) <- paste("p", 1:6, sep = "")
 
-## what are the dimensions of the matrix?
-dim(m)   ## rows, columns
-nrow(m)  ## number of rows
-ncol(m)  ## number of columns
-length(m) ## number of observations
+# what are the dimensions of the matrix?
+dim(m)   # number of rows, number of columns
+nrow(m)  # number of rows
+ncol(m)  # number of columns
+length(m) # number of observations
 
 ## get the observation in the 1st row and 3rd column
 m[1,3]
@@ -182,48 +185,48 @@ lc = ncol(m)
 m[,-lc] ## you could also use m[,-ncol(m)]
 
 #############################################################################
-## Question set C
-## 1. Change the value of the observation in the 2nd row and 3rd 
-##    column to 5
-## 2. The vector below contains the odd numbers between 1-10 followed
-##    by the even numbers between 1 and 10. Create a matrix with 2
-##    columns, the first containing the odd numbers and the second
-##    containing the even numbers between 1-10. Hint: set byrow = FALSE 
-##    in the matrix function
+# Question set C
+# 1. Change the value of the observation in the 2nd row and 3rd 
+#    column to 5
+# 2. The vector below contains the odd numbers between 1-10 followed
+#    by the even numbers between 1 and 10. Create a matrix with 2
+#    columns, the first containing the odd numbers and the second
+#    containing the even numbers between 1-10. Hint: set byrow = FALSE 
+#    in the matrix function
 
 v <- c(seq(1,10,by=2), seq(2,10,by=2))
 
-##    2a. What is the sum of each of the first 2 rows?
-##    2b. What is the sum of each column
+#    2a. What is the sum of the 3rd row?
+#    2b. What is the sum of the 2nd column?
 #############################################################################
 
 
 ########################################################
-## lists - a collection of objects that can be accessed
-##    by index or by name
+# lists - a collection of objects that can be accessed
+#    by index or by name. 
 ########################################################
 
 person <- list(name = "Bob", age = 23, sex = "M")
 
-## how many objects are in person, and what are their names?
+# how many objects are in the list, and what are their names?
 length(person)
 names(person)
 
-## access the first object:
+# access the first object:
 person[[1]]
 
-##access the 2nd object:
+# access the 2nd object:
 person[[2]]
 
-# # access objects by name:
-person[['name']]
-person[['age']]
-
-## another way to access objects by name:
+# access objects by name:
 person$name
 person$age
 
-## add a new object
+# another way to access objects by name:
+person[['name']]
+person[['age']]
+
+# add a new object
 person$major <- "cs"
 
 ## delete age
@@ -238,110 +241,31 @@ names(person)[8] <- "height"
 ## note that each object need not be of length 1
 person$sibling.ages <- c(3,6)
 
-#################################################################
-## a data.frame is a table (like a matrix) but columns can be 
-## of different types. Elements, rows, and columns can be 
-## accessed using matrix notation, e.g., m[1,] or m[,3:4]. A 
-## data.frame is also a list, where l[[i]] is the ith column and 
-## columns can be accessed by name
-## We will read in data from the URL
-## https://gdancik.github.io/CSC-315/data/datasets/survey.txt
-## using Import Dataset in the environment tab. 
-## The table should be named 'survey'. After importing,
-## make sure to add the R code
-##############################################################
+##############################################################################
+# The working directory is the default directory where files will be saved
+# and read from, if no other directory is specified. You can see the current
+# working directory by using the 'getwd' function, as shown below; to set
+# your working directory, use the 'setwd' function or click on 
+# Session --> Set Working Directory. My recommendation is to always use 
+# the complete file path when saving and reading files.
+##############################################################################
 
-##############################################################
-# Add R code to import survey 
-##############################################################
-
-
-#####################################################
-## Question: How many rows (individuals) and 
-## columns(variables) are in this data?
-#####################################################
-
-colnames(survey) ## get names of columns
-summary(survey)  ## summary of each column (results depend on type)
-max(survey$FB)   ## max hours / week spent on FB
-
-
-
-###########################################################
-# The dplyr package is useful for manipulating data.frames
-###########################################################
-
-# Load the dplyr package (this package must be installed and
-# your .libPath() must be set, if applicable)
-library(dplyr)
-
-# get data for the males only, the traditional way
-males1 <- survey[survey$Gender == 'Male',]
-head(males1)
-
-# get data for the males only, using the dplyr 'filter' function
-males2 <- filter(survey, Gender == "Male")
-head(males2)
-
-## create a new data frame containing only the College and HS GPAs
-## using the dplyr 'select' function
-survey.GPA <- select(survey, College.GPA, HS.GPA)
-head(survey.GPA)
-
-## Use dplyr 'mutate' to create a new variable ##
-alcohol <- mutate(survey, AlcoholPerYear = Alcohol*52)
-head(alcohol)
-
-# create new table of females showing only GPAs -- approach 1
-survey.females <- filter(survey, Gender == "Female")
-females1 <- select(survey.females, HS.GPA, College.GPA)
-head(females1)
-
-# create new table of females showing only GPAs -- approach 2
-females2 <- select(   
-    filter (survey, Gender == "Female"),
-    HS.GPA, College.GPA
-  )
-head(females2)
-
-# create new table of females showing only GPAs -- approach 3
-
-# Aside: the pipe ('%>%') operator is used to pass an object to
-# the first parameter of a function, so that
-# x %>% f(y, ...) becomes f(x, y, ...)
-
-# same as filter(survey, Gender == "Female")
-females <- survey %>% filter(Gender == "Female")
-head(females)
-
-# alternative way to create table with females, showing only GPAs
-females3 <- survey %>% filter(Gender == "Female") %>%
-                      select(HS.GPA, College.GPA)
-head(females3)
-
-######################################################
-## Were college GPAs higher for males or females?
-######################################################
-s = split(survey$College.GPA, survey$Gender)
-
-boxplot(s, ylab = "College GPA", col = c("pink", "blue"), 
-        main = "College GPA by Gender")
-
-
-#######################################################################
-## Question: What is the highest college GPA for males? For females?
-#######################################################################
-
-# display your current working directory (the file path used by default)
+# display your current working directory 
 getwd()
 
 ##############################################################################
-## Exiting R:
-## save.image(file = "intro.RData")     ## saves all objects in workspace
-## save(survey, s, file = "intro.RData")  ## save selected objects
-## q()  ## you will be prompted to save image in default location
+# Exiting R:
+# save.image(file = "intro.RData")     # saves all objects in workspace
+# save(m, person, file = "intro.RData")  # saves selected objects
+# q()  ## you will be prompted to save image in default location
 ################################################################################
 
+###############################################################################
+# Select Tools --> Global Options... to set whether you want to
+# automatically save your workspace to .RData on exit, and to
+# automatically load the .RData workspace on startup
 ##############################################################################
-## Follow instructions to Create an HTML notebook 
+
+##############################################################################
+# Follow instructions to Create an HTML notebook 
 ################################################################################
