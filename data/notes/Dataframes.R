@@ -36,7 +36,7 @@ max(survey$FB)   # max hours / week spent on FB
 
 # get data for the males only, the traditional way
 males1 <- survey[survey$Gender == "Male",]
-head(males1)
+print(males1)
 
 ###########################################################
 # The dplyr package is useful for manipulating data frames
