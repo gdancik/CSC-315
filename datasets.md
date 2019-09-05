@@ -6,7 +6,7 @@ order: 4
 exclude_from_nav: false 
 ---
 
-* [Sample Survey Data](http://pastebin.com/raw/1csmBawE) 
+* [Sample Survey Data](https://gdancik.github.io/CSC-315/data/datasets/survey.txt)
 {% comment %}
 * Class Survey Data ([Original XLSX Version]({{ site.baseurl }}/data/datasets/csc-315_survey.xlsx)) |
 ([Cleaned CSV Version]({{ site.baseurl }}/data/datasets/csc-315_survey_cleaned.csv))

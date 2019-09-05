@@ -4,61 +4,51 @@ library(ggplot2)
 ####################################################################
 ## Graphical summaries of data
 ####################################################################
-
 status <- c("freshman", "freshman", "sophomore", "sophomore", "junior", "sophomore")
 
 #################################################
 # frequency table and relative frequency tables #
-# when there are NO missing values
 #################################################
-table(status) # frequency table
-table(status) / length(status) #relative frequency (proportions) 
-table(status) / sum(table(status)) # better since works with missing data
+t <- table(status) # frequency table
+t
 
-##################################################################
-# pie charts show a slice of pie proportional to each frequency
-##################################################################
-pie(table(status))
+# use prop.table to convert a frequency table to a relative frequency table
+prop.table(t)
 
 
 ##################################################################
 # Look at ggplot2.R before proceeding
 ##################################################################
 
-
 ##################################################################
 # bar graphs construct bars whose heights correspond to 
 # frequencies or relative frequencies
 ##################################################################
 
-# To generate a frequency bar graph from the raw data, use
+# To have 'ggplot' count the data for you, use
 # the 'geom_bar' layer. Note that the aesthetics must
 # be specified in the geom_bar layer (not in ggplot)
-
 d.status <- data.frame(status = status)
 ggplot(d.status, aes(x=status)) + geom_bar(aes(fill = status)) +
            ggtitle("Class status of students") +
-            labs(x = "Class status", y = "Frequency")
+            labs(x = "Class status", y = "Frequency") + theme_classic()
 
 
 # To generate a frequency bar graph from the counts, use
 # the 'geom_col' layer.
-
 t <- table(status)
 counts <- data.frame(t)
-
 ggplot(counts) + geom_col(aes(x=status, y=Freq, fill = status)) +
   ggtitle("Class status of students") +
-  labs(x = "Class status", y = "Frequency")
+  labs(x = "Class status", y = "Frequency") + theme_bw()
 
 
-## relative frequency bar graph using ggplot, based on counts
-counts <- mutate(counts, prop = Freq/sum(Freq))
-
-ggplot(counts, aes(x=status, y=prop)) + 
-  geom_col(aes(fill = status)) +
+# To generate a relative frequency bar graph from the raw data,
+# set y = ..count../sum(..count..)
+ggplot(d.status, aes(x=status, y=..count.. / sum(..count..))) + 
+  geom_bar(aes(fill = status)) +
   ggtitle("Class status of students") +
-  labs(x = "Class status", y = "Relative frequency")
+  labs(x = "Class status", y = "Relative frequency") + theme_classic()
 
 
 ##################################################################
@@ -74,7 +64,7 @@ counts$status <- reorder(counts$status, -counts$Freq)
 ggplot(counts,aes(x=status, y=Freq)) + 
   geom_col(aes(fill = status)) +
   ggtitle("Class status of students") +
-  labs(x = "Class status", y = "Frequency")
+  labs(x = "Class status", y = "Frequency") + theme_classic()
 
 ##################################################################
 # Let's look at the survey data (from a prior class)
@@ -82,24 +72,24 @@ ggplot(counts,aes(x=status, y=Freq)) +
 ##################################################################
 
 library(readr)
-survey <- read_delim("http://pastebin.com/raw/1csmBawE", "\t")
+survey <- read_delim("https://gdancik.github.io/CSC-315/data/datasets/survey.txt", "\t")
 
 ###################################################################         
 # 1. Construct a relative frequency table for the number of males
 #     and females
 # 2. Construct a bar graph for the proportion of individuals that 
 #    agree or disagree that same-sex marriage should be legal in
-#    all 50 states. The title of the chart should be "
-#     Same sex marriage should be legal in all 50 states"
+#    all 50 states. The title of the chart should be 
+#    "Same sex marriage should be legal in all 50 states"
 ###################################################################
 
 
+              
 
 ###################################################################
-# Histograms are like bar graphs for quantitative variables
-# The height of the bar corresponds to the number 
-# or proportion of observations that fall within
-# a range of values
+# Histograms are like bar graphs for quantitative variables, where
+# the height of the bar corresponds to the number or proportion 
+# of observations that fall within a range of values
 ###################################################################
 
 ## we will use the 'base' hist function, rather than the ggplot one
@@ -126,7 +116,7 @@ hist(x.left, main = "left-skewed")
 hist(x.norm, main = "symmetric")
 hist(x.right, main = "right-skewed")
 
-par(mfrow <- c(1,1))  # reset display for 1 image
+dev.off()  # reset display to default (single figure)
 bimodal <- c(rnorm(500, mean = 70), rnorm(500, mean = 65))
 hist(bimodal, main = "bimodal distribution")
 

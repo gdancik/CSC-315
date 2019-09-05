@@ -2,7 +2,7 @@
 # ggplot provides a powerful framework for generating
 # complex graphics, based on a philosophy/language of 
 # visualization that separates the data, the aesthetics,
-# and the plotting layer
+# and the plotting layer(s)
 ###########################################################
 
 # First, we will look at a simple scatterplot using the 
@@ -23,13 +23,14 @@ library(ggplot2)
 #             If specified in ggplot(), mapping applies to all layers
 #    layer - the type of plot, e.g., geom_point() for a scatterplot, 
 #             geom_bar() for a bar plot, etc
-#    labels - ggtitle(), xlabs(), ylabs() 
+#    labels - ggtitle(), xlabs(), ylabs(), and labs() 
 ####################################################################
 
 ggplot(iris, aes(x=Petal.Width, y = Petal.Length)) +
       geom_point() + 
       ggtitle("Petal Length vs. Petal Width from Iris dataset") +
-      labs(x = "Petal Width", y = "Petal Length")
+      labs(x = "Petal Width", y = "Petal Length") 
+      
 
 # we can color the points by specifying the color (or colour) aesthetic
 # we can also store the plot in an object and plot later using the
