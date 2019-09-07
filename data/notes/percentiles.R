@@ -35,8 +35,8 @@ color <- c(v.red, v.blue)
 # be specified directly for the aesthetics
 ggplot() + geom_point(aes(x,y), color = color) +
            theme_classic() +
-           geom_vline(xintercept = 6.5) +
-           ylim(0.6,1.4) +
+           geom_vline(xintercept = 6.5, color = 'darkgreen') +
+           ylim(0,1.6) +
            annotate("text", x = 3, y = 1.3, label = "60% of the data", color = "red") +
            annotate("text", x = 9, y = 1.3, label = "40% of the data", color = "blue") +
            ggtitle("Visualization of the 60th percentile")
@@ -71,31 +71,47 @@ summary(z)
 quantile(z)
 fivenum(z)
 
-#############################################
-# boxplot - draw box around Q1 and Q3
-# draw fence corresonding to Q1 - 1.5*IQR
-# and Q3 + 1.5*IQR
-#############################################
+##################################################
+# boxplot - 
+# 1) draw box around Q1 and Q3
+# 2) set IQR = Q3 - Q1, and define a 'fence' 
+#    that encloses points between Q1 - 1.5*IQR
+#    and Q3 + 1.5*IQR.
+# 3) draw 'whiskers' from the Q3 to the largest
+#    observation inside the fence, and from Q1 to
+#    the smallest observation inside the fence
+# 4) add points for any observations outside
+#    the fence (these are considered outliers)
+##################################################
 
-# create a new vector for the data
-numbers <- c(1:10, 20:21)
-
+# create a new data.frame containing some numbers
+numbers <- data.frame(values = c(1:10, 20:21))
 #################################################################
 # Generate boxplot using ggplot
-# Note: since we do not have a data.frame, we include the data 
-# directly in the aesthetic in the following format:
-#     "." - used to indicate that there are no 'x' values (groups) 
-#         to plot
-#     numbers  - the y-values to plot
+# In the aesthetic we include the following:
+#    x corresponds to the column containing the groups to plot, 
+#      where we use a dot (".") to indicate that there are no groups
+#    y corresponds to the column containing the numeric data
 # Also note the 'fill' argument is outside the aesthetic, so it 
 #     is applied to all groups
 ###################################################################
-ggplot() + geom_boxplot(aes(".", numbers), fill = "lightblue") + 
+g <- ggplot(numbers) + geom_boxplot(aes(".", values), fill = "lightblue") + 
            xlab("")  + ggtitle("Example boxplot") + theme_classic()
-  
+
+# Let's annotate the boxplot to understand the 'box'
+med <- median(numbers$values)
+q1 <- quantile(numbers$values, .25)
+q3 <- quantile(numbers$values, .75)
+upper.fence <- q3 + 1.5*(q3-q1)
+g + annotate('label', x=.5, y=med, label = 'median') +
+    annotate('label', x=.5, y=q1, label = 'Q1') +
+    annotate('label', x=.5, y=q3, label = 'Q3') +
+    annotate('label', x = 1, y = upper.fence, 
+             label = 'upper fence = Q3+1.5*IQR')
+
 
 #####################################################################
-# side-by-side boxplots can be used to compare quantitiave data 
+# Side-by-side boxplots can be used to compare quantitiave data 
 # across two groups 
 #####################################################################
 
@@ -110,7 +126,8 @@ levels(heights$GENDER) <- c("Male", "Female")
 
 # Here the 'fill' argument is part of the aesthetics, since it maps those
 # values to a color
-bplot <- ggplot(heights) + geom_boxplot(aes(GENDER, HEIGHT, fill = GENDER))
+bplot <- ggplot(heights) + 
+  geom_boxplot(aes(GENDER, HEIGHT, fill = GENDER))
 bplot
 
 # Change formatting (remove legend, change labels)

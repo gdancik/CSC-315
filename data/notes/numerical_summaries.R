@@ -8,7 +8,6 @@
 x <- c(5,10,11,1)
 mean(x)
 
-
 #####################################################
 ## calculate the mean when there are missing values
 ## Note that many functions have an na.rm argument
@@ -44,7 +43,9 @@ plot.hist(income, xlab = "income", main = "Histogram of incomes")
 ## Is the mean or median more resistant to this large observation?
 ####################################################################
 income.with.extreme.value <- c(income, 250000)
-plot.hist(income.with.extreme.value, xlab = "income", main = "Histogram of incomes with extreme value")
+plot.hist(income.with.extreme.value, 
+          breaks <- seq(0,260000,10000),
+          xlab = "income", main = "Histogram of incomes with extreme value")
 
 #########################################################
 # Demonstration of standard deviation

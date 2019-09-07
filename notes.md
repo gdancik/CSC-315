@@ -12,9 +12,9 @@ exclude_from_nav: false
 * [Module 2: Graphical and Numerical Summaries]({{ site.baseurl }}/data/notes/Module2-Summaries.pdf)
     * [R Script: ggplot]({{ site.baseurl }}/data/notes/ggplot.R)
     * [R Script: Graphical Summaries]({{ site.baseurl }}/data/notes/graphical_summaries.R)
-{% comment %}
     * [R Script: Numerical Summaries]({{ site.baseurl }}/data/notes/numerical_summaries.R)
     * [R Script: Percentiles]({{ site.baseurl }}/data/notes/percentiles.R)
+{% comment %}
 * [Module 3: Association: Contingency, Correlation, and Regression]({{ site.baseurl }}/data/notes/module3.pdf)
     * [R Script: Associations]({{ site.baseurl }}/data/notes/associations.R)
     * [R Script: Correlation and Regression]({{ site.baseurl }}/data/notes/correlation_and_regression.R)
