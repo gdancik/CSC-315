@@ -7,7 +7,7 @@ exclude_from_nav: false
 ---
 
 * [Sample Survey Data](https://gdancik.github.io/CSC-315/data/datasets/survey.txt)
-* Class Survey Data ([Original XLSX Version]({{ site.baseurl }}/data/datasets/CSC-315_survey.csv)) 
+* [Class Survey Data]({{ site.baseurl }}/data/datasets/CSC-315_survey.csv)
 {% comment %}
 ([Cleaned CSV Version]({{ site.baseurl }}/data/datasets/csc-315_survey_cleaned.csv))
 * [Height Data](http://pastebin.com/raw/g7UdTFKG)
