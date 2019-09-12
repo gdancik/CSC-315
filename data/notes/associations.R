@@ -2,7 +2,6 @@
 # associations.R: 
 ##############################################
 
-# NOTE: don't forget to set your library path!
 library(ggplot2)
 library(reshape2)
 
@@ -29,30 +28,42 @@ rowSums(pesticides)
 ## we use margin = 1 to condition on row (pesticide status -- organic vs. conventional)
 pesticides.conditional <- prop.table(pesticides, margin = 1)
 
-# to use ggplot, we need a data.frame with 1 column for the explanatory variable
-# (pesticide type), another column for the response variable (presence), and
-# another column for the conditional proportion (value) 
+# to use ggplot, we need a data.frame with 1 column for the 
+# explanatory variable (pesticide type), another column for 
+# the response variable (presence), and another column for 
+# the conditional proportion (value) 
 # this is accomplished in the two steps below
 
-#convert the table into a data.frame 
+#convert the table into a data.frame ...
 d <- data.frame(type = rownames(pesticides.conditional), pesticides.conditional)
 
-# 'melt' the table into one where the proportions are in a single column
-# To do this we first specify the explanatory variable, and then a name
-# for the response variable
+# ... but to use ggplot, we need each column of our data frame to represent a
+# variable, but this is not the case. 'Present' and 'Not.Present' are 
+# different values for the same variable ('presence'). We correct this by
+# using the 'melt' function (from reshape2) to combine (melt) the
+# values from the other columns into a single column (value) and to add
+# a column with the appropriate label ('presence') for each value
+
+# In 'melt', the second argument ("type") specifies the 'id' variables that are left
+# unchanged (these define a single observation or row).
+# All other columns are combined as follows:
+#     the column names become the values of a new 'presence' column 
+#         (determined by 'variable.name')
+#     the values are combined into a single column, which will be named 'value' by default
 m <- melt(d, "type", variable.name = "presence")
 
-## display a stacked bar chart, based on 'fill' argument
-ggplot(m) + geom_bar(aes(type, value, fill = presence), stat="identity") +
+
+# display a stacked bar chart, with x = the explanatory variable 
+# and 'fill' used to indicate the response variable; note that
+# we use 'geom_col' because our data contains the y-values 
+ggplot(m) + geom_col(aes(type, value, fill = presence)) +
             labs(y = "Proportion", fill = "Pesticide status", 
                  title = "Distribution of pesticide status by food type") +
             theme_classic()
 
-
-## display a side-by-side barcharts, by changing position argument 
+## display a side-by-side barchart, by changing the position argument 
 ## to 'dodge' in geom_bar
-ggplot(m) + geom_bar(aes(type, value, fill = presence), stat="identity", 
-                     position = "dodge") +
+ggplot(m) + geom_col(aes(type, value, fill = presence), position = "dodge") +
   labs(y = "Proportion", fill = "Pesticide status", 
        title = "Distribution of pesticide status by food type") +
   theme_classic()
@@ -74,7 +85,7 @@ d <- data.frame(type = rownames(p2), p2)
 m <- melt(d, "type", variable.name = "presence")
 
 ## display a stacked bar chart, based on 'fill' argument
-ggplot(m) + geom_bar(aes(type, value, fill = presence), stat="identity") +
+ggplot(m) + geom_col(aes(type, value, fill = presence)) +
   labs(y = "Proportion", fill = "Pesticide status", 
        title = "Distribution of pesticide status by food type\n(no association)") +
   theme_classic()
@@ -85,23 +96,22 @@ ggplot(m) + geom_bar(aes(type, value, fill = presence), stat="identity") +
 #########################################################################
 
 ## import sample survey data from previous class ##
-survey <- read.delim("http://pastebin.com/raw/QDSga7qF")
+library(readr)
+survey <- read_delim("http://pastebin.com/raw/QDSga7qF",
+"\t", escape_double = FALSE, trim_ws = TRUE)
 
-## is there a relationship between cat/dog person and gaming preference
-## create a contingency table, where first vector gives rows, 2nd gives columns
-t <- table(survey$CatOrDog, survey$Gaming)
+
+## Is there a relationship between cat/dog person and coffee preference?
+## create a contingency table, where first vector gives rows, second gives columns
+t <- table(survey$CatOrDog, survey$StarbucksOrDunkins)
 t.conditional <- prop.table(t, margin = 1)
 
-## in ggplot, pass aes(explanatory, fill = response) to the geom_bar layer to 
-## look at the explanatory variable (x) and corresponding values of the response variable
-## By default, this shows frequencies, which is not what we want (see next example)
-ggplot(survey) + geom_bar(aes(CatOrDog, fill=Gaming)) +
-                 labs(x = "", y = "Frequency", title = "Gaming preference by person")
-
-## we want conditional proportions, so set position to "fill" so that each bar 
-## is scaled to total 100% (i.e., the bars corresond to the conditional 
-## proportions for each explanatory variable)
-ggplot(survey) + geom_bar(aes(CatOrDog, fill=Gaming), position = "fill") +
-                labs(x = "", y = "Relative frequency", title = "Gaming preference by person")
-
-
+## In ggplot, pass aes(explanatory, fill = response) to the geom_bar layer to 
+## to create a stacked bar graph with bars corresponding to the explanatory
+## variable and stacking based on the response. 
+## Note that we now use 'geom_bar' so that 'ggplot' will tabulate the data for us.
+## We also need to set position to "fill" in order to plot conditional proportions
+## (rather than counts)
+ggplot(survey) + geom_bar(aes(CatOrDog, fill=StarbucksOrDunkins), position = "fill") +
+                labs(x = "", y = "Relative frequency", 
+                     title = "Coffee preference by person")
