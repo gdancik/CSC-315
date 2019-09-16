@@ -2,7 +2,6 @@
 # Correlation and regression
 #########################################
 
-# NOTE: don't forget to set your library path!
 library(ggplot2)
 
 #######################################
@@ -35,15 +34,23 @@ ggplot()  + geom_point(aes(internet.penetration, fb.penetration)) +
 
 
 ## where is the United States?
-state.colors <- rep("black", length(internet.penetration))
-state.colors[internet$Country == "USA"] = "red"
+colors <- rep("black", length(internet.penetration))
+colors[internet$Country == "USA"] = "red"
 
 ## replot with colors to highlight the United States
 ggplot() + 
-  geom_point(aes(internet.penetration, fb.penetration), color = state.colors) +
+  geom_point(aes(internet.penetration, fb.penetration), 
+             color = colors) +
   theme_classic() + 
   labs(x = "Internet Penetration (%)", y = "FB Penetration (%)",
        title = "Internet and FB penetration rates")
+
+ggplot() + 
+  geom_point(aes(internet.penetration, fb.penetration), 
+             color = colors) +
+  theme_classic() + 
+  labs(x = "Internet Penetration (%)", y = "FB Penetration (%)",
+       title = "Internet and FB penetration rates") 
 
 
 ########################################################################
@@ -52,7 +59,8 @@ ggplot() +
 ########################################################################
 
 ## Let's highlight the outlier
-## Note: for logical comparison, use single & or | (NOT && or ||)
+## Note: for element-by-element comparison across vectors, use 
+#  single & or | (and NOT && or ||)
 index = fb.penetration < 10 & internet.penetration>60
 internet$Country[index]
 
@@ -140,6 +148,12 @@ fit
 ## display summary of results (more information) ##
 summary(fit)
 
+# the y-intercept is: 3.09, which means when internet penetration is 0%,
+# the predicted FB penetration rate would be 3.09%
+
+# the slope is 0.4602, which means as internet penetration goes up by 1%,
+# fb penetration goes up by 0.4602%.
+
 ## add regression line to current plot ##
 ggplot(data = NULL, aes(internet.penetration, fb.penetration)) + 
   geom_point() +
@@ -147,6 +161,7 @@ ggplot(data = NULL, aes(internet.penetration, fb.penetration)) +
   labs(x = "Internet Penetration (%)", y = "FB Penetration (%)",
        title = "Internet and FB penetration rates") +
   geom_smooth(method = "lm", color = "darkred")
+  
 
 
 ########################################################################
@@ -175,7 +190,7 @@ predict(fit, data.frame(x=50))
 #################################################################
 # A linear model gives the equation of the line that minimizes
 # the sum of the squared residuals. The code below illustrates
-# what it is that is being minimized
+# this minimization
 #################################################################
 
 ## generate a scatterplot and visualize residuals for lm(y~x) ##
@@ -202,18 +217,32 @@ internet.table <- data.frame(internet = internet.penetration, fb = fb.penetratio
 fit <- lm(internet ~ fb, data = internet.table)  # data must be specified
 predict(fit, data.frame(fb = .5))
 
+
+############################################################################
 ## CAUTION: you will not be able to make predictions if you fit a model using, e.g.
 ##      fit <- lm(internet.table$internet ~ internet.table$fb) because the 
 ##         explanatory variable is then 'internet.table$fb' which cannot be 
 ##         specified in the predict function
-
+############################################################################
 
 ######################################################
 # Find the regression for the ANNUAL temp against YEAR 
-# 1. Find and interpret the slope
-# 2. Find and interpret the y-int
-# 3. Predict average temp in the year 1999
-# 4. Predict average temp in the year 3000
+# and complete the questions below
 ######################################################
-
 temps <- read.delim("http://pastebin.com/raw/KZgkViBK")
+tempPlot <- ggplot(temps, aes(YEAR, ANNUAL)) +
+            geom_point() + 
+            geom_smooth(method = "lm", color = "darkgreen", 
+                        fullrange = TRUE)
+
+tempPlot
+
+fit <- lm(ANNUAL ~ YEAR, data = temps)
+
+# 1. Find and interpret the slope
+
+# 2. Find and interpret the y-int
+
+# 3. Predict average temp in the year 1999
+
+# 4. Predict average temp in the year 3000
