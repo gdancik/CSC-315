@@ -21,7 +21,7 @@ divide(y = 2, 3)  # 3/2 = 1.5
 
 ###################################################
 # return is implicit if the function ends with
-# an expression (but NOT an assignment)
+# an expression (or an assignment)
 ##################################################
 
 # same divide function as above, with implicit return
@@ -29,29 +29,32 @@ divide <-function(x,y = 1) {
   x/y
 }
 
-divide(3,2) ## 3/2 = 1.5
+divide(3,2) # 3/2 = 1.5
 
 #################################################
-## for loops - loop for each element in a 
+## for loops - for each element in a 
 ##        vector or list
 #################################################
 
-# basic format: loop for each element in a vector (or list) 
+# basic format: iterate over each element in a vector (or list) 
 xvalues <- c(1,3,2,9)
-# 'traditional approach', loop over index
-for (i in 1:length(xvalues)) {
-    cat (xvalues[i], " ")
-}
 
 # loop over each value of x
 for (x in xvalues) {
     cat (x, " ")
 }
 
+# 'traditional approach' to loop over each index value
+for (i in 1:length(xvalues)) {
+  cat (xvalues[i], " ")
+}
+
+
 ######################################################################
 ## Note: In most cases, functional approaches (apply, lapply, sapply)
-##    are preferred over using 'for loops' in R since functional
-##    approaches are simpler and more readable (once understood).
+##    are preferred over 'for loops'. Functional approaches are
+##    simpler and more readable (once understood). 
+##
 ##    In R, a 'functional' is a function that takes another function
 ##    as an argument
 #####################################################################
@@ -65,6 +68,7 @@ for (x in xvalues) {
 # example: find max of each row of 'm'
 ###########################################
 m <- matrix(1:20, ncol=5, byrow=TRUE)
+m
 rowMaxes <- apply(m, 1, max)
 rowMaxes
 
@@ -82,16 +86,25 @@ ans.row
 ans.col <- apply(m, 2, add.smallest) ## for each col
 ans.col
 
+# additional arguments can be included after the function name
 ans.row.4 <- apply(m, 1, add.smallest, n = 4)
 ans.row.4
 
+# function to add the 2 smallest values of a vector
+add2Smallest <- function(x) {
+  sum(sort(x)[1:2])
+}
+
+# use apply with named function, applied to each row
+apply(m, 1, add2Smallest)
+
 ## alternative format using an inline (anonymous) function
-ans.row <- apply(m, 1, function(x) {
+apply(m, 1, function(x) {
     sum(sort(x)[1:2])
 })
 
 ## another alternative format using an inline (anonymous) function
-ans.row <- apply(m, 1, function(x) sum(sort(x)[1:2]))
+apply(m, 1, function(x) sum(sort(x)[1:2]))
 
 ## lapply applies a function to each object in a list, and returns a list
 person <- list(name = "Bob", sibling.ages = c(43,21), pet.ages = c(8,3))
@@ -122,29 +135,14 @@ compare(5, 3)
 grades <- matrix(c(71,86,82,93,87,92,85,85,98,99,100,92),ncol=3,byrow=T)
 rownames(grades) <- c("Steve", "Joe", "Jane", "Andrea")
 
-# 1. Using the apply function, find the mean grade for each student, and
-#    the mean grade for each assignment
+# 1. Using the apply function, find the following:
+
+# (a) mean grade for each student (rows)
+
+# (b) mean grade for each assignment (columns)
 
 
-# 2. The following function takes a vector of grades and returns the
-#    corresponding letter grade, based on the average (mean). Use 
-#    this function and apply to find the letter grade for each 
-#    student
-letterGrade  <- function(x) {
-  m <- mean(x, na.rm = TRUE)
-  if (m >=  90) {
-    return('A')
-  } else if (m >= 80) {
-    return('B')
-  } else if (m >= 70) {
-    return('C')
-  } else if (m >= 60) {
-    return('D')
-  }
-  return('F')
-}
-
-# 3. Write a function called 'is.A' that takes a vector, and returns TRUE 
+# 2. Write a function called 'is.A' that takes a vector, and returns TRUE 
 #    if the mean value of the vector is >= 90 (in the A range). Then use
 #    this function and 'apply' to identify the names of
 #    the students with an A average. Can you write code that outputs 
