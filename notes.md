@@ -18,9 +18,9 @@ exclude_from_nav: false
     * [R Script: Associations]({{ site.baseurl }}/data/notes/associations.R)
     * [R Script: Correlation and Regression]({{ site.baseurl }}/data/notes/correlation_and_regression.R)
 * [Advanced R Script]({{ site.baseurl }}/data/notes/AdvancedR.R) 
-{% comment %}
 * [Module 4: Probability]({{ site.baseurl }}/data/notes/module4.pdf)
     * [R Script: Probability]({{ site.baseurl }}/data/notes/probability.R) 
+{% comment %}
     * [Birthday R script]({{ site.baseurl }}/data/notes/birthday.R)
     * [R Script: Normal Distribution]({{ site.baseurl }}/data/notes/normal.R) 
     * [R Script: Sampling Distributions]({{ site.baseurl }}/data/notes/sampling_distributions.R)
