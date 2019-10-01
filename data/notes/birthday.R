@@ -42,8 +42,7 @@ birthdays <- function(n) {
 #######################################################
 duplicate.birthdays <- function(n) {
   b <- birthdays(n)
-  dups <- anyDuplicated(b)
-  return (  any(dups>0)  )
+  anyDuplicated(b) > 0
 }
 
 ##################################################################
@@ -52,8 +51,7 @@ duplicate.birthdays <- function(n) {
 ##################################################################
 prob.duplicate <-function(n) {
     r <- replicate(5000, duplicate.birthdays(n))
-    prob <- sum(r) / length(r)  
-    return(prob)
+    sum(r) / length(r)  
 }
   
 
@@ -66,7 +64,7 @@ probs <- sapply(n, prob.duplicate)
 ggplot() + geom_line(aes(n, probs)) +
           ggtitle("The Birthday Problem") + 
           labs(x = "# of people in room", 
-               y = "Probability at least 2 have the same birthday") +
+               y = "Probability at least 2 people have the same birthday") +
           theme_light() +
           geom_hline(aes(yintercept = 0.50), color = "red") +
           geom_vline(aes(xintercept = 23), color = "red")
