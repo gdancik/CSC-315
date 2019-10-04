@@ -235,3 +235,9 @@ shade.norm(-Inf, q, mean = 68, sd = 1.7,
 # that a randomly selected value from X is more than 2 standard
 # deviations above the mean.
 ########################################################################
+
+# P(Z > 2)
+1 - P(Z < 2)
+
+1 - pnorm(2, mean = 0, sd = 1)
+1 - pnorm(2)
