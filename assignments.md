@@ -15,8 +15,8 @@ exclude_from_nav: false
     * [Lab #3 Review]({{ site.baseurl }}/data/hw/Lab3-review.R) 
 <hr>
 * [Lab #4]({{ site.baseurl }}/data/hw/Lab4.R) (Due: Monday, 10/07) 
+* [Lab #5]({{ site.baseurl }}/data/hw/Lab5.R) (not collected) 
 {% comment %}
-* [Lab #5]({{ site.baseurl }}/data/hw/swirl-normal.pdf) (not collected) 
 * [Lab #6]({{ site.baseurl }}/data/hw/Lab6.pdf) (Due: Friday, 10/19/19)
 * [Lab #7]({{ site.baseurl }}/data/hw/Lab7.R) (Due: Tuesday, 10/23/19 by 5:00 PM by e-mail) 
 * [Lab #8]({{ site.baseurl }}/data/hw/Lab8.R) (Due: Wednesday, 11/7/19) 

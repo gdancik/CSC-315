@@ -31,12 +31,16 @@ abline(v = mean(x), col = "red", lwd = 3)
 ## average (expected value) for the sample mean
 ###################################################################
 
-## sample space for selecting n = 3 students, usees
-##    combinations -- order does not matter
-##    set = FALSE because x contains duplicate values
-##    repeats.allowed = FALSE because once one student
-##        is selected, we do not select them again
+## Find the sample space for selecting n = 3 students. 
+##    We use combinations, since order does not matter, and
+##      use the following arguments:
+##        - 'set' = FALSE because x contains duplicate values
+##            that we don't want removed
+##        - repeats.allowed = FALSE because once one student
+##            is selected, we do not select them again
+
 S <- combinations(length(x), 3, x, set = FALSE, repeats.allowed = FALSE)
+S
 
 ## get possible sample means and draw histogram
 sample.means <- rowMeans(S)
@@ -56,9 +60,26 @@ abline(v = expected.value, col = "red", lwd = 3)
 par(par.orig)
 
 
+####################################################################
+# Key observations/facts: 
+
+# Let X be a random variable with mean mu and standard deviation 
+# sigma. 
+
+# Let Xbar be the sample mean calculated from 'n' independent
+# samples of X. Then Xbar has mean mu/n and standard deviation
+# sigma / sqrt(n)
+
+####################################################################
+
+
 ###################################################################
-## constructs histogram and adds vertical red line for mean ##
+## Central Limit Theorem when X ~ normally distributed
 ###################################################################
+
+
+# helper function that constructs histogram and adds vertical 
+# red line for mean 
 plot.hist <-function(x, ...) {
   hist(x, ...)
   abline(v = mean(x), lwd = 3, col = "red")
@@ -66,14 +87,13 @@ plot.hist <-function(x, ...) {
 
 
 ###################################################################
-## Central Limit Theorem when X ~ normally distributed
-###################################################################
-
-###################################################################
 ## returns the sample mean from 'n' randomly generated observations 
 ## from the standard normal distribution
 ###################################################################
-get.sample.mean <- function(n) mean(rnorm(n))
+get.sample.mean <- function(n) {
+  r <- rnorm(n)
+  mean(r)
+}
 
 x.population <- rnorm(1000)
 x.10 <- replicate(5000, get.sample.mean(10))
@@ -94,11 +114,13 @@ plot.hist(x.100, main = "Distribution of sample mean (n = 100)")
 
 ###################################################################
 ## Central Limit Theorem when X ~ NOT normally distributed!
-## we will give X the exponential distribution, which is skewed
+## we will look at the exponential distribution, which is skewed
 ###################################################################
 
-## returns the sample mean from 'n' randomly generated observations from the
-## exponential distribution
+###################################################################
+## returns the sample mean from 'n' randomly generated observations 
+## from the exponential distribution
+###################################################################
 get.sample.mean <-function(n) {
   r <- rexp(n)
   mean(r)
@@ -129,7 +151,6 @@ plot.hist(x.100, main = "Distribution of sample mean (n = 100)")
 ## from a sample of 20 individuals
 ###################################################################
 
-
 ###################################################################
 ## Visualization
 ###################################################################
@@ -149,22 +170,25 @@ ggplot(df) + geom_line(aes(x,y1, color = "y1")) +
                           legend.box.background = element_rect(),
                           legend.title = element_blank())
 
+###############################################################
+# Questions:
+###############################################################
 
 # Find P(X < 69)
-pnorm(69, mean = 68, sd = 1.7)
+
 
 # Find P(X > 67)
-1 - pnorm(67, mean = 68, sd = 1.7)
+
 
 # In a random sample of 20 individuals, find the probability
 # that the sample mean is less than 69:
-pnorm(69, mean = 68, sd = 1.7 / sqrt(20))
+
+
 
 # In a random sample of 20 individuals, find the probability
 # that the sample mean is greater than 67
-1 - pnorm(67, mean = 68, sd = 1.7 / sqrt(20))
+
 
 # In a random sample of 20 individuals, find the probability
 # that the sample mean is between 67 and 67.5.
-pnorm(67.5, mean = 68, sd = 1.7 / sqrt(20)) - pnorm(67, mean = 68, sd = 1.7 / sqrt(20))
 
