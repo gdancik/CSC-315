@@ -13,8 +13,8 @@ exclude_from_nav: false
     * [Lab #2 Review]({{ site.baseurl }}/data/hw/Lab2-review.R) 
 * [Lab #3]({{ site.baseurl }}/data/hw/Lab3.pdf) (Due: Monday, 9/23) 
     * [Lab #3 Review]({{ site.baseurl }}/data/hw/Lab3-review.R) 
-<hr>
 * [Lab #4]({{ site.baseurl }}/data/hw/Lab4.R) (Due: Monday, 10/07) 
+<hr>
 * [Lab #5]({{ site.baseurl }}/data/hw/Lab5.R) (not collected) 
 {% comment %}
 * [Lab #6]({{ site.baseurl }}/data/hw/Lab6.pdf) (Due: Friday, 10/19/19)
