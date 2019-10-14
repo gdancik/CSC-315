@@ -77,3 +77,20 @@ p3$p.value
 
 # What is the conclusion regarding the null hypothesis, in the context
 # of this problem?
+
+# Because p-value < 0.05, reject H0 and accept HA
+# There is sufficient evidence that the dogs are
+# able to detect cancer samples
+
+
+# Coke vs. Pepsi example
+
+# (i) find the test statstic
+
+# (ii) find the p-value
+
+# (iii) state the conclusion
+
+# What would it mean if a Type I error occurs?
+ 
+# What would it mean if a Type II error occurs?
