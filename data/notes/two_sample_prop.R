@@ -4,7 +4,7 @@
 #   If X1 ~ N(mu1, sigma1) and X2 ~ N(mu2, sigma2), then
 #     X1+X2 ~ N(mu1+mu2,   sqrt(sigma1**2 + sigma2**2))
 # You do not need to worry about understanding the code,
-# but you do need to understand the thereom
+# but you should understand the thereom
 #############################################################
 
 ####################################################
@@ -85,11 +85,44 @@ close.screen(all=TRUE)
 ##################################################################
 
 #1. State the null and alternative hypotheses
+# H0: pm - pf = 0, pm is the true proportion of males who are
+#      red-green colorblind; pf is the true proportion of females
+# HA: pm - pf != 0
 
 #2. Find the test statistic
 
+x <- c(110, 10)
+n <- c(1120, 1480)
+
+res <- prop.test(x, n, correct = TRUE)
+
+z <- sqrt(res$statistic)
+
 #3. Find the p-value
+res$p.value
+
+# 2*pnorm(-abs(z)) # manual calculation confirms this
 
 #4. State the conclusion
+
+# Because the p-value of 1.01e-27 < 0.05, we conclude that males
+# are more likely to be red-green colorblind
+
+#5. What would it mean in the context of this problem if a Type I
+#   error occured? We conclude ____________________ but in reality
+#   _____________________.
+
+# 6. What would it mean in the context of this problem if a Type II
+#   error occured? We conclude ____________________ but in reality
+#  ________________________.
+#  
+
+
+
+
+
+
+
+
 
 
