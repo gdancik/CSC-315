@@ -16,8 +16,8 @@ exclude_from_nav: false
 * [Lab #4]({{ site.baseurl }}/data/hw/Lab4.R) (Due: Monday, 10/07) 
 <hr>
 * [Lab #5]({{ site.baseurl }}/data/hw/Lab5.R) (not collected) 
+* [Lab #6]({{ site.baseurl }}/data/hw/Lab6.pdf) (Due: Monday, 10/21/19)
 {% comment %}
-* [Lab #6]({{ site.baseurl }}/data/hw/Lab6.pdf) (Due: Friday, 10/19/19)
 * [Lab #7]({{ site.baseurl }}/data/hw/Lab7.R) (Due: Tuesday, 10/23/19 by 5:00 PM by e-mail) 
 * [Lab #8]({{ site.baseurl }}/data/hw/Lab8.R) (Due: Wednesday, 11/7/19) 
     * [Lab #8 results]({{ site.baseurl }}/data/hw/Lab8_results.pdf)  
