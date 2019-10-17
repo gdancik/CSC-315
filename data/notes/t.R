@@ -28,7 +28,6 @@ ggplot(df) + geom_line(aes(x, pz, color = "pz")) +
             theme(legend.background = element_rect(color = "black"))
             
             
-            
 ###################################################################
 # plots histogram and either the standard normal distribution 
 # when df is NULL or both the standard normal and  t distribution 
@@ -64,7 +63,7 @@ hist.norm <- function(X, df, ...) {
 }
 
 ####################################################
-## generates a t-distributed random variables where
+## generates t-distributed random variables where
 ## t = (mean(x) - mu)  / (sd(x) / sqrt(n))
 ## This t-statistic follows the t distribution
 ## with n-1 df
@@ -78,7 +77,7 @@ t.statistic <- function(n, mu = 0, sigma = 1) {
 
 ## look at the t distribution empirically 
 n <- 5
-t <- replicate(5000, t.statistic(n, 10, 4))
+t <- replicate(5000, t.statistic(n, 10, 5))
 
 # plot histogram with normal vs. t distribution  (df = n-1)#
 par.orig <- par(mfrow = c(2,1), mar = c(2,4,2,1))
@@ -87,8 +86,9 @@ hist.norm(t, df = n-1, breaks = 40, main = "Histogram of t distribution")
 par(par.orig)
 
 #######################################################################
-# t distribution functions in R (follow format of pnorm, dnorm, etc),
-#  but all require an argument for df = degrees of freedom
+# t distribution functions in R follow the format of 
+#    pnorm, dnorm, etc, but all require an argument 
+#    for df = degrees of freedom
 # pt - probability function (similar to pnorm)
 # dt - density function (similar to dnorm)
 # rt - random generation function (similar to rnorm)
@@ -98,7 +98,7 @@ par(par.orig)
 # Example (one sample t-test): We will first analyze whether CS majors 
 # have, on average, a GPA that differs from 3.3 (a B+). So that we can
 # generalize the results of our hypothesis test, we will assume that 
-# our class is representative of all CS majors at eastern
+# the class data is representative of all CS majors at eastern
 ##########################################################################
 
 survey <- read.delim("http://pastebin.com/raw/QDSga7qF")
@@ -145,13 +145,14 @@ ggplot(df) + geom_line(aes(x,y)) +
 result <- t.test(survey$College.GPA, mu = 3.3)
 result$statistic
 result$p.value
+result$parameter # degrees of freedom
 
 ##########################################################################
 # State your conclusion regarding the null hypothesis in the context of
 # this problem.
 ##########################################################################
 
-# Because p = 0.0362 is NOT less than 0.05, there is not sufficient 
+# Because p = 0.362 is NOT less than 0.05, there is not sufficient 
 # evidence to conclude that CS majors have a GPA that differs from
 # a 3.3 (B+ average)
 
