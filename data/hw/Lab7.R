@@ -1,10 +1,13 @@
 ####################################################################
 # Name:
 # Lab 7: Hypothesis testing for population means.
+
 # For these questions, we will assume that the Central 
 # Limit Theorem applies (i.e., that the populations are normally 
 # distributed or that 'n' is sufficiently large), and that the 
 # samples are representative of the population of interest. 
+
+# Turn in a Notebook that answers the questions below
 ####################################################################
 
 library(readr)
@@ -12,25 +15,25 @@ library(ggplot2)
 library(dplyr)
 
 # Read in our survey data
-survey <- read_csv("https://gdancik.github.io/CSC-315/data/datasets/csc-315_survey_cleaned.csv")
+survey <- read_csv("https://gdancik.github.io/CSC-315/data/datasets/CSC-315_survey.csv")
 
 ##########################################################################
-# 1. Is there evidence that a student's college GPA differs from his/her
-# high school GPA? We can test this by evaluating whether or
-# not the mean difference between GPAs differs from 0. 
-
-diff = survey$College.GPA-survey$HS.GPA
+# 1. Assume that the mean amount of sleep an adult gets is 7.8 hours 
+#    per night. Is there evidence that students in CSC 315 
+#    get a different amount of sleep? (Here we assume that our 
+#    survey results are representative of all CSC 315 students).
 
 # (a) State the null and alternative hypotheses (done for you):
 
-# H0: mu_diff = 0
-# HA: mu_diff != 0
+# H0: mu_sleep = 7.9
+# HA: mu_sleep != 7.9
 
-# where mu_diff is the mean difference between college and high school GPAs
+# where mu_sleep is the mean amount of sleep a CSC 315 student gets
+# per night.
 
 # (b) Calculate / find the test statistic (and specify the degrees of freedom)
 
-# (c) Find the p-value using t.test
+# (c) Find the p-value using the t.test function
 
 # (d) Find the p-value 'manually' based on the test statistic and
 #     appropriate degrees of freedom 
@@ -98,10 +101,12 @@ cereal <- read.delim("http://pastebin.com/raw/0G6DrHyC")
 #     the 'shelf' column contains the shelf in which the cereal is 
 #     shelved on, with 1 = lower shelf, 2 = middle shelf (which is at
 #     eye level for children), and 3 = top shelf. The code below constructs
-#     a boxplot comparing sugar content across the lower and middle shelves
+#     a boxplot comparing sugar content across only the lower and middle 
+#     shelves
+#################################################################################
 
 # remove data from the top shelf (Note: make sure dplyr is loaded
-# before running the next statement)
+#     before running the next statement)
 cereal <- filter(cereal, shelf != 3)
 
 # change shelf column to factor
@@ -117,7 +122,8 @@ ggplot(cereal) + geom_boxplot(aes(shelf, sugars, fill = shelf)) +
 # Now let's formally test whether mean sugar content differs
 # between the lower shelf and the middle shelf.
 
-# (a) State the null and alternative hypotheses
+# (a) State the null and alternative hypotheses, making sure
+#     to define the 'mu' parameters
 
 # (b) Use the t.test function to find the test statistic 
 #     and corresponding degrees of freedom

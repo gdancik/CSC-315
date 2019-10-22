@@ -28,8 +28,8 @@ exclude_from_nav: false
     * [R Script: Dogs Example]({{ site.baseurl }}/data/notes/dogs.R) 
     * [R Script: Hypothesis Test for Two Sample Proportions]({{ site.baseurl }}/data/notes/two_sample_prop.R) 
     * [R Script: T Distribution]({{ site.baseurl }}/data/notes/t.R) 
-{% comment %}
     * [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
+{% comment %}
 * [Module 6: Gene Expression]({{ site.baseurl }}/data/notes/GeneExpression.pdf)
     * [R Script: Microarrays]({{ site.baseurl }}/data/notes/microarray.R) 
 * [Module 7: Gene Expression Analysis]({{ site.baseurl }}/data/notes/GeneExpressionAnalysis.pdf) 
