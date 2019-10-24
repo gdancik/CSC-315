@@ -8,11 +8,11 @@ order: 4
 ---
 * Exam I
     * [Exam I Practice]({{ site.baseurl }}/data/exams/ExamIPractice.R)
-{% comment %}
-	* [Exam I]({{ site.baseurl }}/data/exams/ExamI.R)
 * Exam II
 	* [Exam II Outline]({{ site.baseurl }}/data/exams/ExamII_Outline.pdf)
 	* [Exam II Practice]({{ site.baseurl }}/data/exams/examII-practice.R)
+{% comment %}
+	* [Exam I]({{ site.baseurl }}/data/exams/ExamI.R)
 * Exam III
     * [Exam III Outline]({{ site.baseurl }}/data/exams/ExamIII_Outline.pdf)
 	* [Exam III Practice]({{ site.baseurl }}/data/exams/examIII-practice.R)
