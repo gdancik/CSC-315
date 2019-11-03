@@ -16,7 +16,7 @@ library(ggplot2)
 # celfile.path argument which must be set appropriately below
 ################################################################
 
-GSE1297 <- ReadAffy(celfile.path = "/Users/dancikg/Downloads/GSE1297_RAW/")
+GSE1297 <- ReadAffy(celfile.path = "/Users/dancikg/Downloads/")
 
 ################################################################
 # Process the gene expression data using the Robust Multi-Array 
@@ -25,7 +25,6 @@ GSE1297 <- ReadAffy(celfile.path = "/Users/dancikg/Downloads/GSE1297_RAW/")
 # Generate a boxplot of the expression values of each sample
 # to confirm that the data has been normalized
 ################################################################
-
 
 ###################################################################
 # We will see how to get the phenotype data from GEO in a later
@@ -36,7 +35,7 @@ GSE1297 <- ReadAffy(celfile.path = "/Users/dancikg/Downloads/GSE1297_RAW/")
 # NFT.Score = protein markers for AD
 ################################################################
 
-GSE1297.p <- read.delim("http://www1.easternct.edu/dancikg/files/2015/10/GSE1297.p.xlsx")
+GSE1297.p <- read.delim("http://bioinformatics.easternct.edu/BCBET2/GSE1297.p.xlsx")
 
 
 ##################################################################
@@ -102,7 +101,7 @@ ggplot(GSE1297.p, aes(MMSE.Score, NFT.Score)) +
 # on the y-axis, coloring the points by AD status as
 # was done for the above scatterplot. Give the graph 
 # an appropriate title, axis labels, and legend, 
-# and also add theregression line, as was done above. 
+# and also add the regression line, as was done above. 
 # What is the correlation between MMSE score and 
 # expression? 
 #####################################################

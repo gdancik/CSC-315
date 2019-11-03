@@ -17,10 +17,9 @@ exclude_from_nav: false
 * [Lab #5]({{ site.baseurl }}/data/hw/Lab5.R) (not collected) 
 * [Lab #6]({{ site.baseurl }}/data/hw/Lab6.pdf) (Due: Monday, 10/21/19)
     * [Lab #6 Review]({{ site.baseurl }}/data/hw/Lab6-review.R)
-<hr>
 * [Lab #7]({{ site.baseurl }}/data/hw/Lab7.R) (Due: Friday, 10/25/19) 
+* [Lab #8]({{ site.baseurl }}/data/hw/Lab8.R) (Due: Monday, 11/11/19) 
 {% comment %}
-* [Lab #8]({{ site.baseurl }}/data/hw/Lab8.R) (Due: Wednesday, 11/7/19) 
     * [Lab #8 results]({{ site.baseurl }}/data/hw/Lab8_results.pdf)  
 * [Lab #9]({{ site.baseurl }}/data/hw/Lab9.R) (Due: Wednesday, 11/14/19) 
 * [Classification Challenge]({{ site.baseurl }}/data/hw/Challenge.pdf) (Due: see handout)  
