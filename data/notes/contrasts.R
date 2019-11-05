@@ -13,10 +13,9 @@ s
 nondrinkers <- s$`FALSE` ## corresponds to survey$Alcohol > 0 being FALSE
 drinkers <- s$`TRUE` ## corresponds to survey$Alcohol > 0 being TRUE
 
-## test for difference in means, using two-sample t-test 
-## by default, performs the "Welch two-sample t-test", which 
-## calculates separate variances between groups (this test
-## does NOT assume equal variances)
+## Test for difference in means, using two-sample t-test. 
+## By default, this performs the "Welch two-sample t-test", 
+## which does NOT assume equal variances
 t.test(nondrinkers, drinkers) 
 
 ## we can assume equal variances by setting the var.equal argument to TRUE
@@ -69,12 +68,17 @@ summary(fit1)
 
 ## What is the interpretation of the slope of this 
 ## linear model?
+
+# the slope is the difference in mean GPAs between
+# nondrinkers and drinkers. On average, the GPA
+# of drinkers is 0.13 less than the GPA of 
+# non-drinkers
 ########################################################
 
 
 # compare difference in means
 diff(result$estimate)
-fit1$coefficients
+fit1$coefficients[2]
 
 ######################################################
 # In the above analysis, the slope of the linear 
@@ -104,14 +108,16 @@ groups <- levels(drinking.status)
 # reference (first) group and 1 for the second group 
 ##########################################################
 
-# This function shows how factors are converted to 
-# integers using the "contr.treatment" which contrasts
-# each level with a reference value. In this case, we have
-# "NonDrinker (reference) = 0, Drinker = 1
+# The 'contr.treatment' function shows how factors are converted to 
+# integers using the "treatment contrast":
+#   the first level of the factor is a reference value, and
+#   additional levels are contrasted with the reference
+#   In this case, we have "NonDrinker (reference) = 0, Drinker = 1
 contr.treatment(groups)
 
 # note that the explanatory variable (drinking.status) is a 
-# factor, and we specify how to define the contrasts
+# factor, and we specify how to define the contrasts by setting
+# the 'contrasts' argument to 'lm'
 fit.treatment <- lm(survey$College.GPA ~ drinking.status,
                     contrasts = list(drinking.status = "contr.treatment"))
 
@@ -137,12 +143,13 @@ fit.sum <- lm(survey$College.GPA ~ drinking.status,
 
 # What does the slope represent? And why? #
 coefficients(fit.sum)[2]
+# This is half the difference in College GPAs between groups
 
 # Note that the p-value for the slope is the same as before
 summary(fit.sum)
 
 ###################################################
-# Indicator variales: use an indicator for each
+# Indicator variables: use an indicator for each
 # group (0 = not in group, 1 = is in group)
 # Note that this model has 2 'slope' variables 
 # and no 'intercept', i.e., y = b1x1 + b2x2, 
@@ -169,7 +176,7 @@ summary(fit.indicator)
 
 #####################################################
 # This last coding of the explanatory variable in a 
-# linear model is what we will use identify 
+# linear model is what we will use to identify 
 # differentially expressed probes
 #####################################################
 
