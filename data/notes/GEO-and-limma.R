@@ -6,7 +6,7 @@
 
 library(dplyr)
 library(ggplot2)
-library(GEOquery) # needed to obtain data
+library(GEOquery) # needed to obtain data from GEO
 library(limma) # needed to find DE probes
 
 
@@ -17,7 +17,6 @@ library(limma) # needed to find DE probes
 # getGEO returns a list because each GEO Series
 # may contain multiple platforms
 ###########################################################
-
 
 
 GSE1297 <- getGEO("GSE1297")
@@ -38,8 +37,9 @@ GSE1297
 GSE1297.expr <- exprs(GSE1297[[1]])
 GSE1297.p <- pData(GSE1297[[1]])
 
-## is data on log2 scale (are boxes visisible, and 
-#  distributions similar across samples)? 
+#  Is data on log2 scale (are boxes visisible -- do  
+#  distributions look similar across samples). Typically, 
+#  boxes for log2 data will be between 5 and 10
 boxplot(GSE1297.expr, main = "processed data")
 
 # If not, then take log2 (very important -- if data is not logged,
@@ -57,9 +57,8 @@ table(gender)
 ################################################################
 # Find differentially expressed (DE) probes between males
 # and females. We will use limma, which requires us to design 
-# a model.matrix using indicator
-# variables and to specify the contrasts we are interested in
-# (e.g., Females - Males)
+# a model.matrix using indicator variables and to specify the 
+# contrasts we are interested in (e.g., Females - Males)
 ###############################################################
 
 # construct design matrix
@@ -69,7 +68,7 @@ head(design) # note that indicator variables are used
 # let's change the column names
 colnames(design) <- c("Female", "Male")
 
-## limma package fits a linear model to each row of the expression matrix ##
+## 'lmFit' fits a linear model to each row of the expression matrix ##
 fit <- lmFit(GSE1297.expr, design)
 
 ## for each probe, limma calculates the mean for each group 
@@ -80,19 +79,19 @@ head(fit$sigma)
 ## Specify the contrasts;  names must match column names of design matrix ##
 contrast.matrix <- makeContrasts(Male - Female,levels=design)
 
-# the null hypothesis is that the contrast is 0
+# the null hypothesis is that the contrast (Male - Female in this case) is 0
 contrast.matrix
 
-## fit model based on contrasts (e.g., Female - Male)
+## fit model based on contrasts (e.g., Male - Feale)
 fit2 <- contrasts.fit(fit, contrast.matrix)
 head(fit2$coefficients)
 head(fit2$sigma)
 
-# calculate moderate t-statistics by moderating standard errors
-# toward a common value, which makes answers more robust
+# calculate moderated t-statistics by moderating standard errors
+# toward a common value; this makes answers more robust
 fit2 <- eBayes(fit2)
 
-## get top probes, sorted by p-value (gives top 10 genes by default)
+# get top probes, sorted by p-value ('topTable' gives top 10 by default)
 tt <- topTable(fit2,sort.by = "p")
 tt
 
@@ -110,10 +109,10 @@ means <- df %>% group_by(gender) %>% summarize(mean = mean(expr))
 means
 
 diff(means$mean) # -4.675664
-tt[1,]$logFC
+tt$logFC[1]
 
-## convert to FC ##
-logFC <- tt[1,]$logFC
+# convert to FC #
+logFC <- tt$logFC[1]
 2**logFC
 
 ## visualize ##
@@ -129,7 +128,7 @@ ggplot(df, aes(x = gender, y = expr, fill = gender)) + geom_boxplot() +
 # How many genes have FDR < 5%?
 ###############################################################
 
-## we need to set the following arguments:
+## we need to set the following arguments to topTable:
 ## p.value - this is the adjusted p-value (FDR) cutoff 
 ##           (it is NOT the p-value)
 ## number - the maximum number of probes to return (should be
@@ -141,13 +140,19 @@ nrow(tt.05)
 
 #######################################################################
 # Aside: A closer look at the eBayes step above; eBayes 
-# (empirical Bayes) pulls the estimated variance towards a common value
-# (based on assumption that most genes are not differentially 
-# expressed). This is visualized below.
+# (empirical Bayes) pulls the estimated standard deviations towards a 
+# common value (based on the assumption that most genes are not 
+# differentially expressed). This leads to more robust results and
+# increased 'power' to detect differentially expressed genes
 #######################################################################
 
+# create data frame for normal and adjusted std devs
 df <- data.frame(sigma.original = fit2$sigma, sigma.adjusted = sqrt(fit2$s2.post))
+
+# sort the data frame by sigma.original
 df <- arrange(df, sigma.original)
+
+# add a column of x values from 1 - nrow(df)
 df <- mutate(df, x = 1:nrow(df))
 
 plot1 <- ggplot(df) + geom_line(aes(x, sigma.original, color = "original")) +
@@ -161,26 +166,35 @@ plot1 <- ggplot(df) + geom_line(aes(x, sigma.original, color = "original")) +
              annotate("text", x = 19000, y=.5, label = "common std dev")
 
 print(plot1)
-print(plot1 + xlim(0,5000) + ylim(0,0.5))
+print(plot1 + xlim(0,5000) + ylim(0,0.7))
 
 
 ###############################################################
 # Create a heatmap using the top probes (FDR < 0.05)
 ###############################################################
+
+# extract expression values for DE probes
 m <- match(rownames(tt.05), rownames(GSE1297.expr))
 X <- GSE1297.expr[m,]
+
+# create a color range consisting of 200 values between yellow and blue
 col.heat <- colorRampPalette(c("yellow", "blue"))(200)
 
 # set colors for gender #
 col.gender <- as.integer(as.factor(gender))
 col.gender <- c("pink", "blue")[col.gender]
 
-# clustering is done on original data, but rows are 
-# scaled (converted to z-scores) by default for visualization
+# Generate the heatmap; note that clustering is done on the original data, 
+# but the rows are scaled (converted to z-scores) by default for 
+# visualization
 heatmap(X, ColSideColors = col.gender, col = col.heat)
 
-
-# for clustering only, use 'dist' and 'hclust'
+########################################################################
+# Aside: we can also cluster samples manually, using
+#   dist: calculates pairwise distance between samples (default
+#       distance is euclidian distance)
+#   hclust: clusters samples based on a distance matrix
+########################################################################
 d <- dist(t(X)) # calculate distances between samples
 h <- hclust(d)  # cluster the samples
 
@@ -199,33 +213,36 @@ platform
 
 ##############################################################################
 # the line below uses the getGEO function from GEOquery to 
-# download the platform data
+# download and extract the platform data
 ##############################################################################
 
+# download platform data from GEO
 pl <- getGEO(platform)
+
+# platform object must be converted to a Table (note the capital 'T')
 pl <- Table(pl)
 
 
 ##########################################################
-# Next, find the gene for the desired probe 
+# Next, find the gene for the desired probe
 # The column names may vary by platform, but for GPL96,
 # the probes are in the ID column and the genes are in 
 # the "Gene Symbol" column
 ##########################################################
-probe <- rownames(tt.05)[1]
-m <- match(probe, pl$ID)
-pl$`Gene Symbol`[m]
+probe <- rownames(tt.05)[1] # get the probe of interest
+m <- match(probe, pl$ID) # find the row for this probe on the platform
+pl$`Gene Symbol`[m] # get the gene symbol(s) that correspond to this probe
 
 # get genes for top probes 
 m <- match(rownames(tt.05), pl$ID)
 pl$`Gene Symbol`[m]
 
-
 ###################################################################
 # Sometimes we are interested in a gene and need to identify 
 # corresponding probes. We will do this for RPS11. We use 
 # 'grep' instead of 'match' because 'match' only returns the index
-# of the first match; grep returns the indices of all matches, 
+# of the first match; grep returns the indices of all matches by 
+# default (or the matching string if value = TRUE),
 # and also allows the use of regular expressions. The exact 
 # nature of this search depends on the format of the Gene. 
 ###################################################################
@@ -238,19 +255,30 @@ pl$`Gene Symbol`[m]
 #             or end of a word boundary)
 
 x <- c("a", "a dog barked", "the cat meowed")
-grep("a", x) # matches any occurence of 'a'
-grep("^a$", x) # matches the single character 'a'
-grep("dog|cat", x) # matches either 'dog' or 'cat'
-grep("\\ba\\b", x) # matches the word 'a'
+
+# matches any string that contains an 'a'
+grep("a", x, value = TRUE) 
+
+# matches any string that contains an 'a'
+grep("^a$", x, value = TRUE) 
+
+# matches strings containing either 'dog' or 'cat'
+grep("dog|cat", x, value = TRUE) 
+
+# matches strings containing the word 'a'
+grep("\\ba\\b", x, value = TRUE)
 
 # To find probes for RPS11, the code below does not work because it will
-# also find any genes of the form *RPS11*, which includes, e.g.,
+# find any gene with 'RPS11', in its name, which includes, e.g.,
 # MRPS11 and RPS11P1
-g <- grep("RPS11", pl$`Gene Symbol`)
+
+# returns a vector of indices where the Gene Symbol contains 'RPS11'
+# (value = FALSE) by default
+g <- grep("RPS11", pl$`Gene Symbol`)  
 View(pl[g,])
 
-# In general, the following regular expression will work
-#  \\bgene\b - matches the "word" gene
+# In general, the following regular expression will work in order to 
+# match the the word gene \\bgene\\b
 
 # Note that a word match is necessary here beause the 
 # `Gene Symbol` column either contains a single

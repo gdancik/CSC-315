@@ -5,8 +5,8 @@
 #############################################################
 
 ##########################################################################
-# Add R code to the script below and create a Notebook which to complete
-# the steps and explicitly answer the following questions
+# Add R code to the script below and create a Notebook to complete
+# the steps below and to explicitly answer the following questions
 ##########################################################################
 
 library(limma)
@@ -22,10 +22,10 @@ library(dplyr)
 #   your conclusion regarding the null hypothesis of H0: mu_cat - mu_dog = 0;
 #   and (b) calculate the difference in mean Alcohol consumption between
 #   groups, using the formula: 
-#     mean consumption of dog people - mean consumption of cat people
+#     mean hours of sleep for dog people - mean hours of sleep for cat people
 ##################################################################################
-survey <- read.csv("https://gdancik.github.io/CSC-315/data/datasets/csc-315_survey_cleaned.csv")
-s <- split(survey$HoursOfSleep, survey$CatOrDogPerson)
+survey <- read.csv("https://gdancik.github.io/CSC-315/data/datasets/CSC-315_survey.csv")
+s <- split(survey$Sleep, survey$CatOrDogPerson)
 res <- t.test(s$Cat, s$Dog, var.equal = TRUE)
 
 
@@ -37,12 +37,15 @@ res <- t.test(s$Cat, s$Dog, var.equal = TRUE)
 #    
 # (a) Find and interpret the y-intercept of the regression line in the
 #      context of this problem.
-# (b) Find and interpret the slope in the context of this problem
+
+# (b) Find and interpret the slope of the regression line in the context of 
+#     this problem
+
 # (c) What is the p-value for the hypothesis test that there is a
 #     significant difference in Hours of Sleep between the two groups?
-#     (show this result in R, based on the linear model)
-# Note: the p-value from the linear model should match the p-value
-# from the two-sample t-test from problem 1(a) above.
+#     (show this result in R, based on the linear model) Note: the p-value 
+#     from the linear model should match the p-value from the two-sample 
+#     t-test from problem 1(a) above.
 ##################################################################################
 
 
@@ -104,10 +107,11 @@ res <- t.test(s$Cat, s$Dog, var.equal = TRUE)
 ########################################################################
 # Final Notes: the heatmap in question 6 provides a candidate list
 # of probes associated with prednisolone response in children with 
-# leukemia. Although much additional work and testing needs to be done, 
-# this kind of gene signature could ultimately be used to determine whether a 
-# child with leukemia would benefit from prednisolone treatment, or 
-# whether an alternative treatment might be more effective.
+# leukemia. Although much additional work and testing would need to be 
+# done, this kind of gene signature could ultimately be used to 
+# determine whether a child with leukemia would benefit from 
+# prednisolone treatment, or whether an alternative treatment might be 
+# more effective.
 
 # The IGHM finding is also interesting. IGHM is a gene that codes
 # for an antibody protein involved in the immune reponse; the 
