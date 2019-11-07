@@ -64,6 +64,11 @@ res <- t.test(s$Cat, s$Dog, var.equal = TRUE)
 
 # (b) How many probes are on the array?
 
+# (c) Take the log2 of the expression data, and generate a boxplot
+#     to show that the samples are properly processed and normalized.
+#     The analysis beginning with question 5 must use the log2 data; 
+#     otherwise the results will not be correct.
+
 
 #####################################################################
 # 4.How many individuals are resistant to prednisolone and
