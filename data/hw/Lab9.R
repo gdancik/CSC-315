@@ -20,7 +20,7 @@ library(dplyr)
 #   significant difference in Hours of Sleep between 'Cat' vs. 'Dog'
 #   people. Based on the code below, (a) find the p-value and state 
 #   your conclusion regarding the null hypothesis of H0: mu_cat - mu_dog = 0;
-#   and (b) calculate the difference in mean Alcohol consumption between
+#   and (b) calculate the difference in mean sleep between
 #   groups, using the formula: 
 #     mean hours of sleep for dog people - mean hours of sleep for cat people
 ##################################################################################
