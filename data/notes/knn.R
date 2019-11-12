@@ -50,16 +50,16 @@ fit2 = eBayes(fit2)
 ## get all probes with FDR < 0.05, sorted by p-value 
 tt.05 <- topTable(fit2,sort.by = "p", p.value = 0.05, number = nrow(GSE1297.expr))
 
-
 ##############################################################################
 # In classification problems, it is often desirable to scale each probe,
 # so that no single probe has a dominating effect. Below is an example of
 # why we do this
 ##############################################################################
 
-##########################################################
-# prints Euclidian distance matrix of x and plots cluster
-##########################################################
+##############################################################################
+# function to print the Euclidian distance matrix of x and to 
+# plot the cluster
+#############################################################################
 plot.clust <-function(x) {
   d <- dist(t(x))
   print(d)
@@ -73,7 +73,7 @@ M <- rbind(p1=r,p2=r,p3=r,p4=r) # 4 rows
 colnames(M) <- c("A","B","C")
 M
 
-# View cluster: in this case samples A and B are the closest
+# View clusters: in this case samples A and B are the closest
 # (expected based on M)
 plot.clust(M)
 
@@ -87,7 +87,7 @@ M
 plot.clust(M)
 
 # Solution is to scale each probe (each row) so that each probe 
-# has the same influence. We use the following functions:
+# has the same importance. We use the following functions:
 #   scale - scales each column to have mean 0 and sd of 1
 #   t - the transposte (switches rows and columns)
 row.scale <-function(x) {
@@ -151,12 +151,12 @@ library(class) # required for knn
 # for each sample, predict its class after removing it from the 
 # training set. 
 # Use knn.cv(data,classes, k), where 
-#   data - the data (probes in COLUMNS and samples in ROWS)
+#   data - the data (with probes in COLUMNS and samples in ROWS)
 #   classes - the known classes corresponding to the data
 #   k - value of k for the 'k' nearest neighbors
 ###################################################################
 preds = knn.cv(t(X.scale), gender, k = 3) 
-table(predicted = preds, true = gender)
+table(true = gender, predicted = preds)
 
 # overall accuracy (% correct) #
 sum(preds == gender) / length(gender)
@@ -164,25 +164,24 @@ sum(preds == gender) / length(gender)
 #######################################################################
 # The overall accuracy is not a good measure of performance because it
 # depends on how balanced the data is.
-# Sensitivity(A) is the probability of correctly classifying samples
-# from group A. This is also known as the recall of class A. 
-# We will use average sensitivity as a measure of accuracy. 
-# Note that this function assumes that there are two groups
+# The 'sensitivity' (or 'recall') of class 'A' is the probability of 
+# correctly classifying samples from group A. The 'balanced accuracy'
+# is calculated as the average sensitivity/recall over all classes.
 #######################################################################
 
-avg.sensitivity <-function(predicted, true) {
-   t <- table(predicted = predicted, true = true)
+balanced.accuracy <-function(predicted, true) {
+   t <- table(true = true, predicted = predicted)
    if (nrow(t) != 2) {
-     stop("only 1 row in accuracy table")
+     stop("invalid number of rows in accuracy table")
    }
-   acc <- diag(t) / colSums(t)
+   acc <- diag(t) / rowSums(t)
    sens1 <- acc[1]
    sens2 <- acc[2]
    list(table = t, sensitivity1 = sens1, sensitivity2 = sens2, avg.sensitivity = mean(acc))
 }
 
-avg.sens = avg.sensitivity(preds, gender)
-avg.sens
+acc = balanced.accuracy(preds, gender)
+acc
 
 
 #################################################
@@ -194,21 +193,30 @@ X.test <- matrix(c(-4, -1, 0, -1, 0, 0, -1, -1, -1, 5, 0, 1,
                  nrow = 12)
 
 # testing data should have same scaling as training data
-X.test <- row.scale(X.test)
+# the function below takes a previously scaled X matrix and
+# applies its scaling to rows of the matrix X
+scale.transform <- function(scaledX, X) {
+  X <- t(X)
+  center <- attr(scaledX, "scaled:center")
+  sds <- attr(scaledX, "scaled:scale")
+  t(scale(X, center, sds))
+}
+
+X.test.scale <- scale.transform(X.scale,X.test)
 
 # Use knn(train, test, classes, k), where 
 #   train - training data (probes in columns and samples in rows)
 #   test - testing data (probes in columns and samples in rows)
 #   classes - the known classes corresponding to the training data
 #   k - value of k for the 'k' nearest neighbors
-preds <- knn(t(X.scale), t(X.test), gender, k = 3)
+preds <- knn(t(X.scale), t(X.test.scale), gender, k = 3)
 preds
 
 
 ########################################################################
 # General classification procedure:
 #   Choose a classifier, and use leave-one-out cross-validation to 
-#   estimate the number of probes/genes to use (based on number, or FDR), 
-#   and classification parameters such as 'k' in knn. Then evaluate
-#   the classfier on an independent dataset
+#   estimate the number of probes/genes to use (based on number, or FDR
+#   cutoff), and classification parameters such as 'k' in knn. Then 
+#   evaluate the classfier on an independent dataset
 ########################################################################
