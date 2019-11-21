@@ -128,23 +128,26 @@ genes <- unique(genes)
 ## current working directory - see getwd() - by default
 write.table(genes, row.names = FALSE, quote = FALSE)
 
+########################################################
+# We will use DAVID (https://david.ncifcrf.gov/) for
+# functional analysis of gene lists.
 
-## go to DAVID (https://david.ncifcrf.gov/)
-## select Functional Annotation -> Upload gene list, 
-## set identifier to OFFICIAL_GENE_SYMBOL, select Gene List.
-## if necessary, set the List species and Background species 
-## appropiately (in this case to Homo sapiens)
+# Select Functional Annotation -> Upload gene list, 
+# set identifier to OFFICIAL_GENE_SYMBOL, and select Gene List.
+# If necessary, set the List species and Background species 
+# appropiately (in this case to Homo sapiens)
+
+# Select the following to view the biological processes
+#   and pathways
+
+# 1) Gene_Ontology --> GOTERM_BP_DIRECT (click on Chart)
+# 2) Pathways --> KEGG_PATHWAY (click on Chart)
 
 
 ###########################################################################
-## we will look at GOTERM_BP_DIRECT under Gene_Ontology and KEGG_PATHWAYS
-## under Pathways
-###########################################################################
-
-###########################################################################
-# The genes below are part of a Cell Cycle Progression (CCP) signature.
-# What Biological terms and pathways are associated with these genes,
-# based on DAVID?
+# Additional example: the genes below are part of a Cell Cycle 
+# Progression (CCP) signature. What Biological terms and pathways are 
+# associated with these genes, based on DAVID?
 ###########################################################################
 genes <- c("ASF1B", "ASPM", "AURKA", "BIRC5", "BUB1B", "C18orf24", 
            "CDC2", "CDC20", "CDCA3", "CDCA8", "CDKN3", "CENPF", "CENPM",
@@ -153,4 +156,4 @@ genes <- c("ASF1B", "ASPM", "AURKA", "BIRC5", "BUB1B", "C18orf24",
            "RAD54L", "RRM2", "TK1", "TOP2A")
 
 
-
+write.table(genes, row.names = FALSE, quote = FALSE)
