@@ -52,7 +52,7 @@ ggplot(iris, aes(Petal.Length, Petal.Width, color = Species)) +
 
 
 # 4.  Is the probe 202271_at differentially expressed between samples 
-#     that respond to therapy and samples that do not? 
+#     that responded to therapy and samples that did not? 
 #     Construct a boxplot (using ggplot) of the expression of this probe 
 #     across the two groups, and report the fold-change and p-value. 
 
@@ -70,13 +70,13 @@ ggplot(iris, aes(Petal.Length, Petal.Width, color = Species)) +
 
 # 7. Based on the probes below, generate a heatmap and color the columns with "darkgreen" for
 #    "treatment resonse in vivo: 1" and "darkred" for "treatment response in vivo: 0". In 
-#    other words, resistant individuals are darkred and sensitive individuals are darkgreen
+#    other words, resistant individuals are dark red and sensitive individuals are dark green
 
 probes = c("201690_s_at","212611_at","218721_s_at",
            "219463_at","205014_at","216092_s_at",
            "207375_s_at","202271_at","221551_x_at","219053_s_at")
 
 
-#8. Using k-nearest neighbor classification with k = 3, find the average sensitivity 
-#   from a leave-one-out cross-validation for response = 0 vs. response = 1, using the probes from
-#   problem (7).
+#8. Using k-nearest neighbor classification with k = 3, find the balanced accuracy 
+#   from a leave-one-out cross-validation for response = 0 vs. response = 1, using the 
+#   probes from problem (7).
