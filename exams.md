@@ -3,9 +3,10 @@ layout: page
 title: Exams 
 full_title: Exam Information
 permalink: /exams/
-exclude_from_nav: false
+exclude_from_nav: true
 order: 4
 ---
+{% comment %}
 * Exam I
     * [Exam I Practice]({{ site.baseurl }}/data/exams/ExamIPractice.R)
 * Exam II
@@ -14,7 +15,6 @@ order: 4
 * Exam III
     * [Exam III Outline]({{ site.baseurl }}/data/exams/ExamIII_Outline.pdf)
 	* [Exam III Practice]({{ site.baseurl }}/data/exams/examIII-practice.R)
-{% comment %}
 	* [Exam I]({{ site.baseurl }}/data/exams/ExamI.R)
 	* [Exam III]({{ site.baseurl }}/data/exams/examIII.R)
 	* [Exam II]({{ site.baseurl }}/data/exams/examII.R) [(txt)](http://pastebin.com/raw/5i4N7Nj2)

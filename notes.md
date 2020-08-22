@@ -7,6 +7,8 @@ exclude_from_nav: false
 ---
 
 * [Module 1: Course Introduction]({{ site.baseurl }}/data/notes/Intro.pdf)
+
+{% comment %}
 * [R Script: R Basics]({{ site.baseurl }}/data/notes/R-intro.R)
 * [R Script: Dataframes]({{ site.baseurl }}/data/notes/Dataframes.R)
 * [Module 2: Graphical and Numerical Summaries]({{ site.baseurl }}/data/notes/Module2-Summaries.pdf)
@@ -39,7 +41,6 @@ exclude_from_nav: false
     * [R Script: DAVID]({{ site.baseurl }}/data/notes/DAVID.R) 
 *  [Module 9: Bioinformatics Wrap-Up]({{ site.baseurl }}/data/notes/WrapUp.pdf)
     * [Movies R script]({{ site.baseurl }}/data/notes/movies.R) 
-{% comment %}
 ([R Notebook]({{ site.baseurl }}/data/notes/microarray.html)) 
   
 {% endcomment %}
