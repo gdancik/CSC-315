@@ -20,7 +20,7 @@ x <- 14  # x = 14 will do the same thing
 y <- 21
 total <- x+y
 num <- x / y
-name <- "Bob" # you can also use single quotes, but double quotes are preferred
+name <- "Bob" # you can also use single quotes, but the convention is to use double quotes
 
 # A fundamental type of variable in R is a vector (like a 1D array)
 ages <- c(19,20,24, 22, 18)
