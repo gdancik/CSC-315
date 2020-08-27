@@ -18,7 +18,7 @@ sqrt(64)
 # Use either '<-' or '=' for assignment
 x <- 14  # x = 14 will do the same thing
 y <- 21
-total <- x+y
+total <- x + y
 num <- x / y
 name <- "Bob" # you can also use single quotes, but the convention is to use double quotes
 
