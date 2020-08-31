@@ -7,7 +7,7 @@ exclude_from_nav: false
 ---
 
 
-<p style = 'color:red;font-size:104%'>Note: All assignments must be submitted <a href = "https://easternct.blackboard.com/">Blackboard</a> unless stated otherwise</p>
+<p style = 'color:red;font-size:104%'>Note: All assignments must be submitted through <a href = "https://easternct.blackboard.com/">Blackboard</a> unless stated otherwise</p>
 
 * Install <i>R/RStudio</i> and the required packages by following the instructions on the [Course Info]({{ site.baseurl }}/info/) page  
 * [Lab #1]({{ site.baseurl }}/data/hw/Lab1.R) (Due: Friday, 9/04/19) 
