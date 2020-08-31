@@ -3,7 +3,8 @@
 # different types. Elements, rows, and columns can be 
 # accessed using matrix notation, e.g., df[1,] or df[,3:4]. A 
 # data.frame is also a list, where df[[i]] is the ith column,
-# and columns can also be accessed by name, e.g., df$age
+# and columns can also be accessed by name, e.g., df$age or
+# df['age']
 #################################################################
 
 #################################################################
@@ -22,6 +23,8 @@
 ##############################################################
 # Add R code to import survey 
 ##############################################################
+
+
 
 
 #####################################################
@@ -73,7 +76,6 @@ females2 <- select(
 print(females2)
 
 
-
 ##################################################################
 # Let's look at a better approach using 'pipes' 
 # The pipe ('%>%') operator is used to pass an object to
@@ -92,9 +94,13 @@ females3 <- survey %>% filter(Gender == "Female") %>%
                       select(`HS GPA`, `College GPA`)
 print(females3)
 
-######################################################
+############################################################
 ## Were college GPAs higher for males or females?
-######################################################
+## split(x,y) returns a list of x values split by y values;
+## each element of the list are the x-values corresponding
+## to a particular y value
+############################################################
+
 s <- split(survey$`College GPA`, survey$Gender)
 
 mean(s$Female)
