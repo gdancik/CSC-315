@@ -9,10 +9,10 @@ exclude_from_nav: false
 * [Module 1: Course Introduction]({{ site.baseurl }}/data/notes/Intro.pdf)
 * [R Script: R Basics]({{ site.baseurl }}/data/notes/R-intro.R)
 * [R Script: Dataframes]({{ site.baseurl }}/data/notes/Dataframes.R)
-{% comment %}
 * [Module 2: Graphical and Numerical Summaries]({{ site.baseurl }}/data/notes/Module2-Summaries.pdf)
     * [R Script: ggplot]({{ site.baseurl }}/data/notes/ggplot.R)
     * [R Script: Graphical Summaries]({{ site.baseurl }}/data/notes/graphical_summaries.R)
+{% comment %}
     * [R Script: Numerical Summaries]({{ site.baseurl }}/data/notes/numerical_summaries.R)
     * [R Script: Percentiles]({{ site.baseurl }}/data/notes/percentiles.R)
 * [Module 3: Association: Contingency, Correlation, and Regression]({{ site.baseurl }}/data/notes/module3.pdf)
