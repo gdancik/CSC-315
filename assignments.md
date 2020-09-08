@@ -11,10 +11,11 @@ exclude_from_nav: false
  
 
 * Install <i>R/RStudio</i> and the required packages by following the instructions on the [Course Info]({{ site.baseurl }}/info/) page  
-* [Lab #1]({{ site.baseurl }}/data/hw/Lab1.R) (Due: Friday, 9/04/19) 
+* [Lab #1]({{ site.baseurl }}/data/hw/Lab1.R) (Due: Friday, 9/04/20) 
+* [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Wednesday, 9/15/20) 
+<hr>
 {% comment %} 
 * [Blackboard survey](https://easternct.blackboard.com/) (Due: Sunday, 9/8/19 by 5:00 PM)
-* [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Monday, 9/16) 
     * [Lab #2 Review]({{ site.baseurl }}/data/hw/Lab2-review.R) 
 * [Lab #3]({{ site.baseurl }}/data/hw/Lab3.pdf) (Due: Monday, 9/23) 
     * [Lab #3 Review]({{ site.baseurl }}/data/hw/Lab3-review.R) 
@@ -28,7 +29,6 @@ exclude_from_nav: false
 * [Lab #9]({{ site.baseurl }}/data/hw/Lab9.R) (Due: Monday, 11/18/19) 
 * [Classification Challenge]({{ site.baseurl }}/data/hw/Challenge.pdf) (Due: see handout)  
     * [Challenge R Script]({{ site.baseurl }}/data/hw/Challenge.R)
-<hr>
 * [Final Project]({{ site.baseurl }}/data/hw/Project.pdf) (Due: Friday, 12/06/19)
     * [Real world example](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4612811/)
     * [Example of DE genes between males/females]({{ site.baseurl }}/data/hw/SexGenes.xlsx)
