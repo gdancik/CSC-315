@@ -3,7 +3,6 @@ library(ggplot2)
 ####################################################################
 ## Percentiles and Boxplots
 ####################################################################
-
 percentile <- function(x, val) {
    x = x[!is.na(x)]  ## remove missing values
    ans = sum(x <= val) / length(x) * 100
@@ -91,6 +90,7 @@ numbers <- data.frame(values = c(1:10, 20:21))
 # In the aesthetic we include the following:
 #    x corresponds to the column containing the groups to plot, 
 #      where we use a dot (".") to indicate that there are no groups
+#      (there almost always will be groups, as in the next example)
 #    y corresponds to the column containing the numeric data
 # Also note the 'fill' argument is outside the aesthetic, so it 
 #     is applied to all groups

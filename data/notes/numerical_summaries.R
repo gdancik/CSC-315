@@ -14,7 +14,7 @@ mean(x)
 #####################################################
 x <- c(5,10,11,1, NA)
 mean(x)  ## this will return NA
-mean(x, na.rm=T)
+mean(x, na.rm=TRUE)
 
 # compare mean and median
 income <- c(29000, 35000, 35000, 40000, 33000)
@@ -54,7 +54,8 @@ plot.hist(income.with.extreme.value,
 # plot deviations to illustrate standard deviation (you do not
 # need to understand the underlying code for this function)
 plot.deviations <- function(x) {
-  plot(x, 1:length(x), xlab = "observed value", ylab = "index", pch = 19)
+  plot(x, 1:length(x), xlab = "observed value", ylab = "index", 
+       pch = 19, main = 'Deviation demonstration')
   m = mean(x)
   abline(v = m, col = "red", lwd = 2)
   for (i in 1:length(x)) {
