@@ -12,7 +12,7 @@ exclude_from_nav: false
 
 * Install <i>R/RStudio</i> and the required packages by following the instructions on the [Course Info]({{ site.baseurl }}/info/) page  
 * [Lab #1]({{ site.baseurl }}/data/hw/Lab1.R) (Due: Friday, 9/04/20) 
-* [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Wednesday, 9/15/20) 
+* [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Wednesday, 9/16/20) 
 <hr>
 {% comment %} 
 * [Blackboard survey](https://easternct.blackboard.com/) (Due: Sunday, 9/8/19 by 5:00 PM)
