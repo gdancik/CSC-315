@@ -10,25 +10,26 @@ library(reshape2)
 # table and not the underlying raw data
 #########################################################################
 
-## Manually construct contingency table from pg 7 of the notes, using
-## cbind (column bind)
+# Manually construct contingency table from pg 7 of the notes, using
+# cbind (column bind)
 pesticides <- cbind(Present = c(29,19485), "Not Present" = c(98, 7086))
 rownames(pesticides) <- c("Organic", "Conventional")
 pesticides
 
-## confirm row and column sums ##
+# confirm row and column sums ##
 colSums(pesticides)
 rowSums(pesticides)
 
-## to calculate conditional proportions, use prop.table with
-##      margin = 1 to condition on rows
-##      margin = 2 to condition on columns
-##      margin = NULL (default) to condition on total number of observations
+# To calculate conditional proportions, use prop.table with
+#      margin = 1 to condition on rows
+#      margin = 2 to condition on columns
+#      margin = NULL (default) to condition on total number of observations
 
-## we use margin = 1 to condition on row (pesticide status -- organic vs. conventional)
+# We use margin = 1 to condition on row (pesticide status -- organic vs. conventional)
 pesticides.conditional <- prop.table(pesticides, margin = 1)
+pesticides.conditional
 
-# to use ggplot, we need a data.frame with 1 column for the 
+# To use ggplot, we need a data.frame with 1 column for the 
 # explanatory variable (pesticide type), another column for 
 # the response variable (presence), and another column for 
 # the conditional proportion (value) 
@@ -63,16 +64,16 @@ ggplot(m) + geom_col(aes(type, value, fill = presence)) +
 
 ## display a side-by-side barchart, by changing the position argument 
 ## to 'dodge' in geom_bar
-ggplot(m) + geom_col(aes(type, value, fill = presence), position = "dodge") +
+ggplot(m,aes(type, value, fill = presence), position = "dodge") + geom_col() +
   labs(y = "Proportion", fill = "Pesticide status", 
        title = "Distribution of pesticide status by food type") +
   theme_classic()
 
 
 #################################################################
-### example of no relationship; remember we must compare 
-### conditional proportions between each EXPLANATORY variable and 
-### not each response variable
+# example of no relationship; remember we must compare 
+# conditional proportions between each EXPLANATORY variable and 
+# not each response variable
 #################################################################
 
 # p2 is contingency table with conditional proportions
@@ -91,6 +92,7 @@ ggplot(m) + geom_col(aes(type, value, fill = presence)) +
   theme_classic()
 
 
+
 #########################################################################
 # We next consider the situation where we are working with raw data
 #########################################################################
@@ -101,10 +103,12 @@ survey <- read_delim("http://pastebin.com/raw/QDSga7qF",
 "\t", escape_double = FALSE, trim_ws = TRUE)
 
 
-## Is there a relationship between cat/dog person and coffee preference?
-## create a contingency table, where first vector gives rows, second gives columns
+# Is there a relationship between cat/dog person and coffee preference?
+# create a contingency table, where first vector gives rows, second gives columns
 t <- table(survey$CatOrDog, survey$StarbucksOrDunkins)
+
 t.conditional <- prop.table(t, margin = 1)
+t.conditional
 
 ## In ggplot, pass aes(explanatory, fill = response) to the geom_bar layer to 
 ## to create a stacked bar graph with bars corresponding to the explanatory

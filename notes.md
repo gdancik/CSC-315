@@ -15,9 +15,9 @@ exclude_from_nav: false
     * [R Script: Numerical Summaries]({{ site.baseurl }}/data/notes/numerical_summaries.R)
     * [R Script: Percentiles]({{ site.baseurl }}/data/notes/percentiles.R)
     * [Alcohol Figure]({{ site.baseurl }}/data/notes/Alcohol.pdf)
-{% comment %}
 * [Module 3: Association: Contingency, Correlation, and Regression]({{ site.baseurl }}/data/notes/module3.pdf)
     * [R Script: Associations]({{ site.baseurl }}/data/notes/associations.R)
+{% comment %}
     * [R Script: Correlation and Regression]({{ site.baseurl }}/data/notes/correlation_and_regression.R)
 * [Advanced R Script]({{ site.baseurl }}/data/notes/AdvancedR.R) 
 * [Module 4: Probability]({{ site.baseurl }}/data/notes/module4.pdf)
