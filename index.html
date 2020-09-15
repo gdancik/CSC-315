@@ -4,22 +4,28 @@ title: Home
 exclude_from_nav: true
 ---
 
+{% capture notes %}
+<a href = "{{ site.baseurl }}/notes/">Notes</a> 
+{% endcapture %}
+
 {% comment %}
 <p><b>11/24/2019</b>: {% include hwRef.html hwLabel = "Final Project" %} posted (Due: Friday, 12/6/19)
-<p><b>11/18/2019</b>: {% include hwRef.html hwLabel = "Classification Challenge" %} posted
-<p><b>11/11/2019</b>: {% include hwRef.html hwLabel = "Lab 9" %} posted (Due Monday, 11/18/19)</p>
-<p><b>11/03/2019</b>: {% include hwRef.html hwLabel = "Lab 8" %} posted (Due Monday, 11/11/19)</p>
-<p><b>10/22/2019</b>: {% include hwRef.html hwLabel = "Lab 7" %} posted (Due Friday, 10/25/19)</p>
-<p><b>10/14/2019</b>: {% include hwRef.html hwLabel = "Lab 6" %} posted (Due Monday, 10/21/19)</p>
-<p><b>9/30/2019</b>: {% include hwRef.html hwLabel = "Lab 4" %} posted (Due Monday, 10/08/19<)/p>
 <p><b>9/24/2019</b>: {% include examRef.html examLabel = "Exam I" %} will be Friday, 9/27/19<)/p>
-<p><b>9/16/2019</b>: {% include hwRef.html hwLabel = "Lab 3" %} posted (Due Monday, 9/23/19)</p>
-<p><b>9/08/2019</b>: {% include hwRef.html hwLabel = "Lab 2" %} posted (Due Monday, 9/16/19)</p>
 <p><b>9/06/2019</b>: <a href = 'https://easternct.blackboard.com/'>Blackboard Survey</a> posted (Due Sunday, 9/8/19 by 5:00 PM)</p>
 {% endcomment %}
 
+<p class = 'today'><b>9/16/2020</b>: For today's class, download the Correlation and Regression R script from the {{ notes }} page. </p>
 <p><b>9/14/2020</b>: For today's class, download the Associations R script from the {% include notesRef.html notesLabel = "Notes" %} page. </p>
 <p><b>9/11/2020</b>: For today's class, we will finish going over the Percentiles R script from the {% include notesRef.html notesLabel = "Notes" %} page. </p>
 <p><b>9/09/2020</b>: For class today, download the Numerical Summaries and Percentiles R scripts from the {% include notesRef.html notesLabel = "Notes" %} page. Also, {% include hwRef.html hwLabel = "Lab 2" %} is posted (Due Wednesday, 9/16/20).</p>
 <p><b>8/31/2020</b>: {% include hwRef.html hwLabel = "Lab 1" %} posted (Due Friday, 9/4/20)</p>
 <p><b>8/22/2020</b>: Welcome to <b style = "color: red"> Genomic Data Analysis </b> for the Fall 2020 Semester! This page will be used to provide course material for CSC-315.  Please see the links above for more information. </p>
+
+    <script>
+    var dt = new Date()
+    var d = dt.getMonth() + 1 + '/' + dt.getDate() + '/' + dt.getFullYear()
+    var x = document.getElementsByClassName('today')[0]
+if (x.innerHTML.includes('<b>'+d+'</b>')) {
+        x.style.backgroundColor = 'yellow';
+    }
+    </script>
