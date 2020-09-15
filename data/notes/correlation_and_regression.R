@@ -45,14 +45,6 @@ ggplot() +
   labs(x = "Internet Penetration (%)", y = "FB Penetration (%)",
        title = "Internet and FB penetration rates")
 
-ggplot() + 
-  geom_point(aes(internet.penetration, fb.penetration), 
-             color = colors) +
-  theme_classic() + 
-  labs(x = "Internet Penetration (%)", y = "FB Penetration (%)",
-       title = "Internet and FB penetration rates") 
-
-
 ########################################################################
 ## Is there a trend in the data?
 ## what countries are potential outliers (from the trend in the data)
@@ -163,12 +155,11 @@ ggplot(data = NULL, aes(internet.penetration, fb.penetration)) +
   geom_smooth(method = "lm", color = "darkred")
   
 
-
 ########################################################################
 # Use predict(fit, df) to make predictions with the fitted model
 #      fit - a fitted linear model, obtained from 'lm'
-#      df - a data frame with column names the same as those used to
-#            fit the original model
+#      df - a data frame, but column names MUST be the same as those 
+#            used to fit the original model
 ########################################################################
 
 # if df is not specified, predictions are based on the original data
@@ -183,7 +174,8 @@ predict(fit, data.frame(internet.penetration=50))
 predict(fit, data.frame(internet.penetration=c(50,80)))
 
 # CAUTION: what if we mess up and don't use correct variable names?
-# (R gives you an incorrect answer -- you may get a warning but will not get an error!)
+# (R gives you an incorrect answer -- you may get a warning but 
+# will not get an error!)
 predict(fit, data.frame(x=50))
 
 
@@ -217,12 +209,11 @@ internet.table <- data.frame(internet = internet.penetration, fb = fb.penetratio
 fit <- lm(internet ~ fb, data = internet.table)  # data must be specified
 predict(fit, data.frame(fb = .5))
 
-
 ############################################################################
-## CAUTION: you will not be able to make predictions if you fit a model using, e.g.
-##      fit <- lm(internet.table$internet ~ internet.table$fb) because the 
-##         explanatory variable is then 'internet.table$fb' which cannot be 
-##         specified in the predict function
+## CAUTION: you will not be able to make predictions if you fit a model using, 
+##      e.g., fit <- lm(internet.table$internet ~ internet.table$fb) 
+#       because the explanatory variable is then 'internet.table$fb' 
+#       which cannot be specified in the predict function
 ############################################################################
 
 ######################################################

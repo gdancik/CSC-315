@@ -64,11 +64,10 @@ ggplot(m) + geom_col(aes(type, value, fill = presence)) +
 
 ## display a side-by-side barchart, by changing the position argument 
 ## to 'dodge' in geom_bar
-ggplot(m,aes(type, value, fill = presence), position = "dodge") + geom_col() +
+ggplot(m,aes(type, value, fill = presence)) + geom_col(position = "dodge") +
   labs(y = "Proportion", fill = "Pesticide status", 
        title = "Distribution of pesticide status by food type") +
   theme_classic()
-
 
 #################################################################
 # example of no relationship; remember we must compare 
