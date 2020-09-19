@@ -52,7 +52,7 @@ for (i in 1:length(xvalues)) {
 
 ######################################################################
 ## Note: In most cases, functional approaches (apply, lapply, sapply)
-##    are preferred over 'for loops'. Functional approaches are
+##    are preferred over loops. Functional approaches are
 ##    simpler and more readable (once understood). 
 ##
 ##    In R, a 'functional' is a function that takes another function
@@ -80,6 +80,7 @@ add.smallest <- function(x, n=2) {
   x.sorted <- sort(x)
   sum(x.sorted[1:n])
 }
+
 ans.row <- apply(m, 1, add.smallest) ## for each row
 ans.row
 
@@ -106,7 +107,8 @@ apply(m, 1, function(x) {
 ## another alternative format using an inline (anonymous) function
 apply(m, 1, function(x) sum(sort(x)[1:2]))
 
-## lapply applies a function to each object in a list, and returns a list
+## lapply applies a function to each object in a list or vector, 
+## and returns a list
 person <- list(name = "Bob", sibling.ages = c(43,21), pet.ages = c(8,3))
 lapply(person, length)
 
@@ -148,3 +150,27 @@ rownames(grades) <- c("Steve", "Joe", "Jane", "Andrea")
 #    the students with an A average. Can you write code that outputs 
 #    only the names of the students with As?
 
+
+
+################################################
+# Additional Practice Problems
+################################################
+
+# 1. Write a function called min.positive which takes a vector 'x' as an
+#    argument and returns the smallest positive number from the vector.
+#    For example, for v <- c(-3,10,2), min.positive(v) would return 2
+
+# 2. Write a function called min.max which takes a vector x as an argument 
+#    and returns a list containing two named elements, the minimum of x and the
+#    maximum of x. Use this function to find the minimum and maximum of the 
+#    vector below:
+
+v <- c(1:10, -13, 90, 2:20)
+
+# 3. Include the following code in your script to create a matrix containing 
+#    the numbers 1 - 30 across 50 columns
+
+m = matrix(1:30, ncol = 5, byrow = TRUE)
+
+#   (a) Use the 'apply' function to find the median of each row 
+#   (b) Use the 'apply' function to find the median of each column.
