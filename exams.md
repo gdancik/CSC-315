@@ -8,6 +8,7 @@ order: 4
 ---
 * Exam I
     * [Exam I Practice]({{ site.baseurl }}/data/exams/ExamI.R)
+    * Exam I is posted on [Blackboard](https://easternct.blackboard.com/)
 {% comment %}
 * Exam II
 	* [Exam II Outline]({{ site.baseurl }}/data/exams/ExamII_Outline.pdf)
