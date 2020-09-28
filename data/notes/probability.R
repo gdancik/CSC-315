@@ -10,8 +10,8 @@ library(ggplot2)
 library(dplyr)
 
 ######################################################
-# simulate rolling a die 10000 times, by sampling
-# from the values 1:6, 10000 times, with replacement
+# simulate rolling a die 10,000 times, by sampling
+# from the values 1:6, 10,000 times, with replacement
 ######################################################
 roll.num <- sample(1:6, 10000, replace = TRUE)
 
@@ -22,10 +22,11 @@ ggplot() + geom_bar(aes(roll, fill = roll)) +
   theme(legend.position = "none")
 
 
-# function to find the proportion of sixes occuring in first 
+# function to find the proportion of sixes occurring in first 
 # 'i' elements of 'x' 
 proportion.sixes <- function(i,x) {
-  count <- sum(x[1:i]==6)
+  x <- x[1:i] # limit to first 'i' elements
+  count <- sum(x==6)
   count/i
 }
 
@@ -49,26 +50,26 @@ six.plot + xlim(0,100)
 six.plot                
 
 
-## simulate flipping a fair coin 1000 times
-coins <- sample(c("H", "T"), 1000, replace=TRUE)
+## simulate flipping a fair coin 10,000 times
+coins <- sample(c("H", "T"), 10000, replace=TRUE)
 
 # generate bar graph of frequencies; the guides() function is
 # used to suppress the legend for the 'fill' elements (the coins)
 ggplot() + geom_bar(aes(coins, fill = coins)) + 
-  ggtitle("Outcome of flipping a fair coin 1000 times") +
+  ggtitle("Outcome of flipping a fair coin 10000 times") +
   labs(x = "outcome", y = "Frequency") +
   guides(fill = FALSE)
   
 
-# calculate relative frequency table, then 
-# generate bar graph of relative frequencies 
+# calculate a relative frequency table and generate a bar graph of 
+# relative frequencies 
 
 # create data.frame containing relative frequency table
 p <- table(coins) %>% prop.table() %>% data.frame()  
 
 # plot relative frequencies; the guides() function is
 # used to suppress the legend for the 'fill' elements (the coins)
-ggplot(df) + geom_bar(aes(x = coins, y = Freq, fill = coins), stat = "identity") + 
+ggplot(p) + geom_col(aes(x = coins, y = Freq, fill = coins)) + 
   ggtitle("Outcome of flipping a fair coin 1000 times") +
   labs(x = "outcome", y = "Relative Frequency") +
   geom_hline(aes(yintercept=1/2, linetype = 'theoretical probability'),
@@ -77,19 +78,19 @@ ggplot(df) + geom_bar(aes(x = coins, y = Freq, fill = coins), stat = "identity")
   guides(fill = FALSE) + ylim(0,1) + theme_classic()
 
 
-# Let's repeat this simulation using a biased coin, flipped 1000 times
+# Let's repeat this simulation using a biased coin, flipped 10,000 times
 # (the biased coin has a 90% probability of Heads, 10% probability of tails)
-coins <- sample(c("H", "T"), 1000, prob = c(.9,.1), replace=TRUE)
+coins <- sample(c("H", "T"), 10000, prob = c(.9,.1), replace=TRUE)
 
 # create data frame of relative frequency table
 p <- table(coins) %>% prop.table() %>% data.frame()
 
 
-
-ggplot(df) + geom_bar(aes(x = coins, y = Freq, fill = coins), stat = "identity") + 
+ggplot(p) + geom_col(aes(x = coins, y = Freq, fill = coins)) + 
   ggtitle("Outcome of flipping a biased coin 1000 times") +
   labs(x = "outcome", y = "Relative Frequency") +
-  geom_hline(aes(yintercept=9/10, linetype = "theoretical probability"),color = "black") +
+  geom_hline(aes(yintercept=9/10, linetype = "theoretical probability (H)"),
+             color = "black") +
   scale_linetype_manual(name = "", values = 2) +
   guides(fill = FALSE) + ylim(0,1)
 
@@ -104,8 +105,14 @@ ggplot(df) + geom_bar(aes(x = coins, y = Freq, fill = coins), stat = "identity")
 #     determine if we get 2 heads
 # returns TRUE if we get 2 heads, FALSE otherwise
 flip.two.heads <- function() {
+  
+  # flip the coin twice (same as flipping 2 coins)
   f <- sample(c("H", "T"), 2, replace = TRUE)
+  
+  # count the number of Heads
   count <- sum(f=="H")
+  
+  # return TRUE if we got 2 heads
   count == 2
 }
 
@@ -134,9 +141,9 @@ prop.heads
 
 ##########################################################
 # We can use the 'permutation' function from the gtools
-# library for classical probability calculations
-# the arguments for the permuation function include 
-# (1) number of outcomes per trial, 
+# library for classical probability calculations.
+# The arguments for the permutation function include 
+# (1) number of outcomes per trial of the experiment, 
 # (2) number of trials,
 # (3) sample space for each trial
 # (4) repeats = TRUE if outcomes can repeat across trials
@@ -167,13 +174,13 @@ S[index,]
 #   all(x) returns TRUE if all elements in x are TRUE
 ##########################################################
 
-x <- 1:3
-any(x == 4)
-any(x == 1)
-all(x == 1)
+numbers <- 1:3
+any(numbers == 4)
+any(numbers == 1)
+all(numbers == 1)
 
-x <- c(1,1,1)
-all(x == 1)
+numbers <- c(1,1,1)
+all(numbers == 1)
 
 # Find the probability of getting all heads, P(H = 3), when
 # flipping a fair coin 3 times
