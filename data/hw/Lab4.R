@@ -11,13 +11,13 @@ library(gtools)
 # the steps and explicitly answer the following questions
 ##########################################################################
 
-# Basic Probability Questions -- Use R as a calculator and specify the
+# Basic Probability Questions -- Use R as a calculator to display the
 # answers below
 
 # A standard deck of cards contains 52 cards, with 13 cards from each 
 #   suit (hearts, clubs, diamonds, and spades).
  
-#1. If one card is selected at random, what is the probability that 
+# 1) If one card is selected at random, what is the probability that 
 
 #  (a) the card is the ace of spades?
 
@@ -34,9 +34,9 @@ library(gtools)
 # an empirical probability.
 
 
-#2. This question looks at the probability of rolling two dice
-#   (each with values 1 - 6) and getting a sum of 7.
-#   You will answer this question in parts.
+# 2) This question looks at the probability of rolling two dice
+#    (each with values 1 - 6) and getting a sum of 7.
+#    You will answer this question in parts.
 
 #  (a) Use the 'permutations' function from 'gtools'
 #      to enumerate the sample space obtained by rolling two dice.
@@ -49,9 +49,8 @@ library(gtools)
 #      to find the probability that the sum is 7.
 
 
-
-#3. Calculate the same probability in (2) but by finding the empirical 
-#   probability by completing the steps below.
+# 3) Calculate the same probability in (2) but by finding the empirical 
+#    probability by completing the steps below.
 
 #   (a) Write a function that rolls two dice and returns the sum of the 
 #       die rolls (this is done for you)
@@ -85,9 +84,9 @@ pdist
 # probability distribution in the next problem.
 
 
-#4. We will look at flipping a coin 3 times and letting X = the
-#   number of heads. Find the probability distribution of X by
-#   completing the steps below:
+# 4) We will look at flipping a coin 3 times and letting X = the
+#    number of heads. Find the probability distribution of X by
+#    completing the steps below:
 
 #   (a) Use the 'permutations' function to enumerate the sample
 #       space obtained from flipping a coin 3 times.
@@ -103,8 +102,8 @@ pdist
 
 
 
-#5. Find the empirical distribution of X = the number of heads in 3
-#   coin tosses by completing the steps below. 
+# 5) Find the empirical distribution of X = the number of heads in 3
+#    coin tosses by completing the steps below. 
 
 #   (a) Write a function that flips a coin 3 times and returns the number
 #       of heads
@@ -119,13 +118,12 @@ pdist
 
 
 
-
 ######################################################################
 #   Poker Time! The commands below enumerate the sample space of
 #   all possible poker hands. Here we ignore the suit because is not 
 #   needed for the questions below.  We also use combinations 
 #   instead of permutations. Combinations should be used when the
-#   order does not matter (e.g., which is true for the order of cards
+#   order does not matter (which is true for the order of cards
 #   in a hand). The cards are sampled WITHOUT replacement 
 #   (repeats.allowed = FALSE) because we cannot include
 #   the same card twice in one hand. Finally, we specify 'set = FALSE' to 
@@ -136,10 +134,10 @@ pdist
 deck <- rep(1:13,4)
 hands <- combinations(52, 5, deck, repeats.allowed = FALSE, set = FALSE)
 
-#6. How many possible poker hands are there?
+# 6) How many possible poker hands are there?
 
 
-#7. The function below takes a vector (corresponding to a hand of cards)
+# 7) The function below takes a vector (corresponding to a hand of cards)
 #   and returns TRUE if the hand contains a four-of-a-kind
 #   Use 'apply' to apply this function to each hand, in order to show
 #   that the probability of being dealt a four-of-a-kind is
@@ -147,8 +145,8 @@ hands <- combinations(52, 5, deck, repeats.allowed = FALSE, set = FALSE)
 #   apply function and the four.of.a.kind function below to find this. 
 #   Because the hands matrix contains more than 2.5 million rows, 
 #   this calculation may take several minutes. You should therefore test 
-#   your code on a subset of the hands matrix first. There are two 4-of-a-kinds
-#   if you look at the first 20,000 rows.
+#   your code on a subset of the hands matrix first. 
+#   There are two 4-of-a-kinds if you look at the first 20,000 rows.
 
 ##############################################################
 # this function returns true if a hand contains a 4-of-a-kind
@@ -161,12 +159,12 @@ four.of.a.kind <- function(x) {
 }
 
 
-#8. Create a function that determines whether a vector 'x' contains 
+# 8) Create a function that determines whether a vector 'x' contains 
 #   a full house (i.e., 3 of a kind and 1 pair). You can assume
 #   that 'x' includes exactly 5 cards.
 
 
-#9. Show that the probability of being dealt a full house is 
+# 9) Show that the probability of being dealt a full house is 
 #    approximately 0.00144 (roughly 1/694). Note for testing purposes,
 #    that there are 18 full houses in the first 20,000 rows of the
 #    hands matrix

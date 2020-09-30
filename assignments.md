@@ -15,11 +15,11 @@ exclude_from_nav: false
 * [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Wednesday, 9/16/20) 
 * [Lab #3]({{ site.baseurl }}/data/hw/Lab3.R) (Due: Wednesday, 9/23/20) 
 <hr>
+* [Lab #4]({{ site.baseurl }}/data/hw/Lab4.R) (Due: Monday, 10/05/20) 
 {% comment %} 
 * [Blackboard survey](https://easternct.blackboard.com/) (Due: Sunday, 9/8/19 by 5:00 PM)
     * [Lab #2 Review]({{ site.baseurl }}/data/hw/Lab2-review.R) 
     * [Lab #3 Review]({{ site.baseurl }}/data/hw/Lab3-review.R) 
-* [Lab #4]({{ site.baseurl }}/data/hw/Lab4.R) (Due: Monday, 10/07) 
 * [Lab #5]({{ site.baseurl }}/data/hw/Lab5.R) (not collected) 
 * [Lab #6]({{ site.baseurl }}/data/hw/Lab6.pdf) (Due: Monday, 10/21/19)
     * [Lab #6 Review]({{ site.baseurl }}/data/hw/Lab6-review.R)
