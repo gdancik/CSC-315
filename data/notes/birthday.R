@@ -35,7 +35,6 @@ birthdays <- function(n) {
   return(s)
 }
 
-
 #######################################################
 ## randomly generates 'n' birthdays
 ## returns TRUE if any are the same; FALSE otherwise
