@@ -96,7 +96,6 @@ shaded.hist(heights, density = TRUE, obs = 70, main = "Histogram of Heights With
 # (or bell curve)
 ###################################################################
 
-
 # set up data frames with (x,y) values for various distributions
 # for given 'x' values, use 'mutate' to add the corresponding 'y' value (density)
 data.unif <- data.frame(x = seq(0,1,by=.1)) %>% mutate(y = dunif(x))
@@ -116,7 +115,6 @@ plot.norm <- ggplot(data.norm, aes(x, y)) + geom_line(color = "blue", lty = 2) +
 
 # display multiple plots on a grid (from cowplot)
 plot_grid(plot.unif, plot.exp, plot.chisq, plot.norm)
-
 
 
 ###################################################################
@@ -237,7 +235,7 @@ shade.norm(-Inf, q, mean = 68, sd = 1.7,
 ########################################################################
 
 # P(Z > 2)
-1 - P(Z < 2)
+# 1 - P(Z < 2)
 
 1 - pnorm(2, mean = 0, sd = 1)
 1 - pnorm(2)
