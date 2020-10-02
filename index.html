@@ -33,7 +33,12 @@ exclude_from_nav: true
 
     <script>
     var dt = new Date()
-    var d = dt.getMonth() + 1 + '/' + dt.getDate() + '/' + dt.getFullYear()
+
+    var dd = dt.getDate()
+    if (dd < 10) {
+        dd = '0'+dd
+    }
+    var d = dt.getMonth() + 1 + '/' + dd + '/' + dt.getFullYear()
     var x = document.getElementsByClassName('today')[0]
 if (x.innerHTML.includes('<b>'+d+'</b>')) {
         x.style.backgroundColor = 'yellow';
