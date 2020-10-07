@@ -11,10 +11,6 @@
 # Installation -- you only need to do this once
 #########################################################################
 
-# Note: You may install these packages on a school computer but will 
-# need to set your library path first (see me for details). These
-# should be installed for all users by the end of the week.
-
 # install the devtools library
 install.packages("devtools")
 
@@ -39,3 +35,5 @@ swirl()
 # randomly generated, so complete this assignment as many times as needed
 # until you are comfortable with calculating probabilities based on
 # the normal distribution. 
+
+# When you wish to be finished, type bye() to exit swirl.
