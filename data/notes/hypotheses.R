@@ -10,7 +10,8 @@
 ###################################################################
 
 # What proportion of heads do I expect to get by chance? 
-# We will simulate to get the distribution of this proportion
+# We will use simulations to get the empirical distribution 
+# of this proportion
 prop.heads <- function(n) {
   tosses <- sample(c("H", "T"), n, replace= TRUE)
   proportion <- sum(tosses == "H") / length(tosses)
@@ -169,9 +170,51 @@ p.value
 p1 <- prop.test(62, 100, correct = FALSE)
 p1$p.value
 
+sqrt(p1$statistic)
+
+# conclusion:
+#  Because p-value < 0.05, we reject H0 and accept H1
+#  We have sufficient evidence to conclude that the
+#  coin is biased
+
 ###################################################
-## more accurate to use 'continuity correction'
+# Need for continuity correction:
+# There is an issue with the normal approximation,
+# because we are using a continuous distribution
+# to approximate a discrete random variable
+
+# Consider the uniform probability distribution 
+# for selecting a number X between 1 and 4
+
+# What is P(X <= 2) 
+###################################################
+
+library(ggplot2)
+df <- data.frame(x = 1:4, y = 1/4)
+myplot <- ggplot(df, aes(x,y)) + 
+  geom_col(color = 'black', fill = 'lightblue', width = 1) + 
+  theme_classic() + ggtitle('X ~ discrete uniform [1,4]') 
+myplot
+
+# But looking at the area under the curve to the left of 
+# 2 will not give us the correct answer:
+myplot + geom_vline(xintercept = 2, color = 'red')
+
+# This is because the 'bar' at 2 actually spans from
+# 1.5 - 2.5. To find the area under the curve, we
+# make a 'correction' by adding/subtracting 0.5
+
+myplot + geom_vline(xintercept = 2.5, color = 'red')
+
+###################################################
+
+###################################################
+## It is more accurate to use the 
+## 'continuity correction' for hypothesis testing
+## for a proportion, which makes an adjustment
+## similar to the one described above
 ###################################################
 p2 <- prop.test(62, 100, correct = TRUE)
 p2$p.value
+
 
