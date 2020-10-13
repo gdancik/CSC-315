@@ -17,6 +17,7 @@ exclude_from_nav: false
 * [Lab #4]({{ site.baseurl }}/data/hw/Lab4.R) (Due: Monday, 10/05/20) 
 <hr>
 * [Lab #5]({{ site.baseurl }}/data/hw/Lab5.R) (not collected) 
+* [Lab #6]({{ site.baseurl }}/data/hw/Lab6.R) (Due: Wednesday, 10/21/20)
 {% comment %} 
 * [Lab #7]({{ site.baseurl }}/data/hw/Lab7.R) (Due: Friday, 10/25/19) 
 * [Lab #8]({{ site.baseurl }}/data/hw/Lab8.R) (Due: Monday, 11/11/19) 
@@ -27,7 +28,6 @@ exclude_from_nav: false
 * [Blackboard survey](https://easternct.blackboard.com/) (Due: Sunday, 9/8/19 by 5:00 PM)
     * [Lab #2 Review]({{ site.baseurl }}/data/hw/Lab2-review.R) 
     * [Lab #3 Review]({{ site.baseurl }}/data/hw/Lab3-review.R) 
-* [Lab #6]({{ site.baseurl }}/data/hw/Lab6.pdf) (Due: Monday, 10/21/19)
     * [Lab #6 Review]({{ site.baseurl }}/data/hw/Lab6-review.R)
 * [Final Project]({{ site.baseurl }}/data/hw/Project.pdf) (Due: Friday, 12/06/19)
     * [Real world example](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4612811/)

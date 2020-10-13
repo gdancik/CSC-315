@@ -1,5 +1,5 @@
 ####################################################
-# Intro to hypothesis testing:
+# Dogs Example
 ####################################################
 
 library(ggplot2)
@@ -61,6 +61,7 @@ plot_grid(plot.phat, plot.z, nrow = 2)
 # the p-value is the area in the tails
 ###########################################
 p.value = 2*pnorm(-abs(Z))
+p.value
 
 ###########################################
 # use prop.test
@@ -68,6 +69,7 @@ p.value = 2*pnorm(-abs(Z))
 p2 = prop.test(15,54, p = 1/7, correct = FALSE)
 p2$statistic # prop.test calculates X-squared statistic = Z^2
 sqrt(p2$statistic) # confirm that our statistics match
+p2$p.value  # confirm that our p=values match
 
 ###########################################
 # more accurate with continuity correction
