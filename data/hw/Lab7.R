@@ -15,18 +15,18 @@ library(ggplot2)
 library(dplyr)
 
 # Read in our survey data
-survey <- read_csv("https://gdancik.github.io/CSC-315/data/datasets/CSC-315_survey.csv")
+survey <- read_csv("https://gdancik.github.io/CSC-315/data/datasets/CSC315_survey_Fall_2020.csv")
 
 ##########################################################################
-# 1. Assume that the mean amount of sleep an adult gets is 7.8 hours 
+# 1) Assume that the mean amount of sleep an adult gets is 8 hours 
 #    per night. Is there evidence that students in CSC 315 
 #    get a different amount of sleep? (Here we assume that our 
 #    survey results are representative of all CSC 315 students).
 
 # (a) State the null and alternative hypotheses (done for you):
 
-# H0: mu_sleep = 7.9
-# HA: mu_sleep != 7.9
+# H0: mu_sleep = 8
+# HA: mu_sleep != 8
 
 # where mu_sleep is the mean amount of sleep a CSC 315 student gets
 # per night.
@@ -43,29 +43,29 @@ survey <- read_csv("https://gdancik.github.io/CSC-315/data/datasets/CSC-315_surv
 ##########################################################################
 
 ##########################################################################
-# 2. Is there evidence that the college GPA of a 'cat' person 
-# differs from that of a 'dog' person?
+# 2) Is there evidence that the amount of sleep that a 'cat' person gets
+#    differs from that of a 'dog' person in CSC 315?
 
 # (a) State the null and alternative hypotheses (done for you):
 
 #   H0: mu_cat - mu_dog = 0
 #   HA: mu_cat - mu_dog != 0,
 
-#   where mu_cat and mu_dog are the mean college GPAs for students preferring
+#   where mu_cat and mu_dog are the mean hours of sleep for students preferring
 #   cats and dogs, respectively
 
 # (b) Create side-by-side boxplots (using ggplot) showing College GPA for 'cat' and
 #     'dog' people. Make sure to label the y-axis and give the 
 #     chart a title.
 
-# (c) We will now formally test the hypotheses that mean college GPA
+# (c) We will now formally test the hypotheses that mean amount of sleep
 #     is different between 'cat' and 'dog' people. The command 
 #     t.test(x,y) will perform a two-sample t-test for the null 
 #     hypothesis that the 'x' and 'y' populations have the same mean.
 #     Use the t.test function to find the test statistic and the 
 #     corresponding degrees of freedom. Note that in your call to t.test,
-#     'x' is a vector of College GPAs for 'cat' people and 'y' is a 
-#     vector of College GPAs for 'dog' people
+#     'x' is a vector of hours of sleep for 'cat' people and 'y' is a 
+#     vector of hours of sleep for 'dog' people
 
 # (d) Find the p-value from the result of the t.test function
 
@@ -83,7 +83,7 @@ survey <- read_csv("https://gdancik.github.io/CSC-315/data/datasets/CSC-315_surv
 ##########################################################################
 # 3:  Find the p-values associated with the following t test 
 # statistics, for a one-sample t-test, and state whether you would reject 
-# or fail to reject the null hypothesis at α=0.05:
+# or fail to reject the null hypothesis at alpha = 0.05:
 
 # (a) t = 2.78, n = 45
 
@@ -97,7 +97,7 @@ cereal <- read.delim("http://pastebin.com/raw/0G6DrHyC")
 
 
 #################################################################################
-# 4:  The 'sugars' column contains the sugar content (in grams), while
+# 4)  The 'sugars' column contains the sugar content (in grams), while
 #     the 'shelf' column contains the shelf in which the cereal is 
 #     shelved on, with 1 = lower shelf, 2 = middle shelf (which is at
 #     eye level for children), and 3 = top shelf. The code below constructs
