@@ -54,9 +54,8 @@ survey <- read_csv("https://gdancik.github.io/CSC-315/data/datasets/CSC315_surve
 #   where mu_cat and mu_dog are the mean hours of sleep for students preferring
 #   cats and dogs, respectively
 
-# (b) Create side-by-side boxplots (using ggplot) showing College GPA for 'cat' and
-#     'dog' people. Make sure to label the y-axis and give the 
-#     chart a title.
+# (b) Create side-by-side boxplots (using ggplot) showing hours of sleep for 'cat' 
+#     and 'dog' people. Make sure to label the y-axis and give the chart a title.
 
 # (c) We will now formally test the hypotheses that mean amount of sleep
 #     is different between 'cat' and 'dog' people. The command 

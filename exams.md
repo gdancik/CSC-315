@@ -10,10 +10,10 @@ order: 4
     * [Exam I Practice]({{ site.baseurl }}/data/exams/ExamI.R)
     * Exam I is posted on [Blackboard](https://easternct.blackboard.com/)
     * [Exam I Review]({{ site.baseurl }}/data/exams/ExamI_2020_review.R)
-{% comment %}
 * Exam II
 	* [Exam II Outline]({{ site.baseurl }}/data/exams/ExamII_Outline.pdf)
 	* [Exam II Practice]({{ site.baseurl }}/data/exams/examII-practice.R)
+{% comment %}
 * Exam III
     * [Exam III Outline]({{ site.baseurl }}/data/exams/ExamIII_Outline.pdf)
 	* [Exam III Practice]({{ site.baseurl }}/data/exams/examIII-practice.R)

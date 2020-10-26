@@ -4,10 +4,6 @@
 # of concepts that may appear on Exam II. In addition to these exercises,
 # make sure you understand concepts covered in lecture and on the previous labs.
 
-# Directions: Modify this script to add R code in order to answer the questions 
-# and/or complete the steps below. 
-
-
 # 1. Blackjack time! A player has a blackjack if dealt two cards with a point
 #    value of 21. The cards contain an Ace (worth 11 points),
 #    and a 10 or a face card (J, Q, or K), worth 10 points. We will use
@@ -58,6 +54,7 @@ hands <- combinations(52, 2, deck, repeats.allowed = FALSE, set = FALSE)
 
 # (d) State the conclusion regarding the null and alternative hypotheses in 
 #     the context of this problem.
+
 
 #3. Consider a null hypothesis about a population proportion or comparing two 
 #   population proportions, and the following Z test statistics. Find the p-value, 
@@ -112,6 +109,7 @@ hands <- combinations(52, 2, deck, repeats.allowed = FALSE, set = FALSE)
 
 # iii) Find the p-value 
 
-# iv) State the conclusion. Is there evidence that one drug is more effective than the other?
+# iv) State the conclusion. Is there evidence that one drug is more effective than
+#     the other?
 
     
