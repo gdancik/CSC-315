@@ -8,9 +8,10 @@ library(ggplot2)
 library(dplyr)
 
 ###############################################################
-# Look at the Dilution dataset: this contains 4 liver
-# tissues hybridized in concentrations of 10 and 20 micrograms
-# to scanner 1(A) and scanner 2(B). Note that Dilution is an
+# Look at the Dilution dataset, which contains cRNA from
+# human liver tissue (labeled 'A') and from a central nervous
+# system cell line (labeled 'B'). The amount of of cRNA is
+# either 10 or 20 micrograms. Note that Dilution is an
 # AffyBatch object (which is an extension of an 
 # ExpressionSet (eSet) object)
 ###############################################################
@@ -35,7 +36,8 @@ varMetadata(Dilution) # description of phenotypic data
 # Let's look at each microarray
 ####################################################
 
-# will need to hit enter to generate each microarray, but this takes time
+# You can run the code below, but will need to hit enter to 
+# generate each microarray, which takes time
 #image(Dilution, col = topo.colors(500))
 # clear the current plot
 #dev.off()
@@ -105,7 +107,7 @@ leukemia.expr <- exprs(leukemiasEset)
 boxplot(leukemia.expr, main = "Leukemia samples", ylab = "log2 expression")
 
 ######################################################################
-# Let's compare expression between leukemia (ALL) and healthy 
+# Let's compare expression between leukemia (ALL) and healthy (noL)
 # bone marrow samples for the following probes (these are probe IDs):
 
 # ENSG00000171960 - corresponds to gene PPIH 
@@ -115,11 +117,12 @@ boxplot(leukemia.expr, main = "Leukemia samples", ylab = "log2 expression")
 
 # We want to calculuate the fold change (see below) and the p-value
 # evaluating whether or not any difference in expression between
-# leukemia (ALL) and healthy samples are statistically significant
+# leukemia (ALL) and healthy samples (noL) are statistically significant
 # (in other words, are the genes differentially expressed?)
 ######################################################################
 
-# find expression for desired probe
+# find expression for desired probe -- we need to determine which
+# row of the expression matrix contains the expression for this probe
 m <- match("ENSG00000171960", rownames(leukemia.expr))
 m
 
@@ -140,7 +143,7 @@ ggplot(df,aes(type, expr, fill = type)) + geom_boxplot() +
 
 
 ########################################################################
-# Calculate fold change (FC) which is average expression in the 
+# Calculate fold change (FC) which is the average expression in the 
 # first group divided by the average expression in the second group,
 # Since data is on the log2 scale, we must convert back to normal scale
 ########################################################################
@@ -169,10 +172,10 @@ ggplot(df,aes(type, expr, fill = type)) + geom_boxplot() +
 # probe of interest and mu_normal is the mean expression of
 # normal samples
 
+# Note: the null hypothesis is equivalent to H0: FC = 1
+
 # How do we carry out a hypothesis test comparing two population means?
 ########################################################################
-
-
 
 
 
@@ -210,3 +213,6 @@ res$p.value
 # and NoL (normal) samples. Specifically, MDM2 is up-regulated 
 # in ALL (leukemia) samples
 
+# Useful terminology:
+#     upregulated = higher expression in
+#     downregulated = lower expression in
