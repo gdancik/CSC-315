@@ -11,25 +11,34 @@ library(dplyr)
 library(ggplot2)
 
 #####################################################################
-# Download the raw data (GSE1297_RAW.tar file) and extract the files  
-# Read in the data using theReadAffy() function and the 
-# celfile.path argument which must be set appropriately below
+# 1) Download the raw data (GSE1297_RAW.tar file) and extract the 
+# files. Read in the data using the ReadAffy() function after 
+# setting the celfile.path argument appropriately below
 ################################################################
 
-GSE1297 <- ReadAffy(celfile.path = "/Users/dancikg/Downloads/")
+GSE1297 <- ReadAffy(celfile.path = "/Users/dancikg/Downloads/GSE1297_RAW")
 
-################################################################
-# Process the gene expression data using the Robust Multi-Array 
+###################################################################
+# 2) Process the gene expression data using the Robust Multi-Array 
 # Average (RMA) method and extract the expression data.
-# How many probes and samples does this dataset contain?
-# Generate a boxplot of the expression values of each sample
-# to confirm that the data has been normalized
-################################################################
+###################################################################
+
+# Use the appropriate R function on the expression matrix to 
+
+# a) find the number of probes 
+
+
+# b) find the number of samples
+
+# c) generate a boxplot of the expression values for each sample
+#    to confirm that the data has been normalized
+###################################################################
 
 ###################################################################
 # We will see how to get the phenotype data from GEO in a later
 # class; for this lab, the data has already been processed
 # and can be read in using the statement below. The data includes
+# the following information (though we will not use these):
 # MMSE.Score = mini–mental state examination score for 
 #   cognitive impairment (low scores indicate impairment)
 # NFT.Score = protein markers for AD
@@ -37,52 +46,50 @@ GSE1297 <- ReadAffy(celfile.path = "/Users/dancikg/Downloads/")
 
 GSE1297.p <- read.delim("http://bioinformatics.easternct.edu/BCBET2/GSE1297.p.xlsx")
 
+########################################################################
+# The code below adds a column to the data frame that includes the
+# Alzheimer's Disease status for each sample, which it gets by deleting
+# the sample number (e.g., "Control 1008" becomes "Control". This is 
+# done by using a regular expression, which removes everything in 
+# the string beginning with the space). Note that your pheno data
+# must be stored in GSE1297.p for the code to work.
+########################################################################
 
-##################################################################
-# The code below gets the group names from the sample names of the 
-# pheno table and constructs a scatterplot of MMSE and NFT
-# scores with points color-coded by AD severity.  
-# (note: code assumes that the pheno table is stored in GSE1297.p)
-###################################################################
+GSE1297.p <- GSE1297.p %>%  
+    mutate(AD.status = gsub(" .*", "", Sample)  )
 
-##################################################
-# get group names from sample names, which have
-# format "Group SampleNumber"
-##################################################
-sample.names <- as.character(GSE1297.p$Sample)
-groups <- gsub(" .*", "", sample.names)
+########################################################################
+# The code below generates a boxplot of MMSE scores across
+# the different levels of AD severity
+########################################################################
 
-# update the phenotype data with the group names
-GSE1297.p <- mutate(GSE1297.p, AD.status = groups)
-
-ggplot(GSE1297.p, aes(MMSE.Score, NFT.Score)) +
-  geom_point(aes(color = AD.status), size = 3) + 
-  geom_smooth(method = "lm", color = "black", se = FALSE) +
+ggplot(GSE1297.p, aes(AD.status, MMSE.Score, fill = AD.status)) +
+  geom_boxplot() +
   theme_classic() +
-  ggtitle("Relationship between MMSE score, NFT score, and AD severity") +
-  theme(legend.box.background = element_rect(color = "black")) +
-  scale_color_manual(values = c("darkblue", "orange", "purple", "red"))
-  
-
-########################################################
-# Describe the relationship between MMSE and NFT score.
-# Would you expect a person with a high MMSE score to
-# have Alzheimer's Disease?
-#####################################################
+  guides(fill = "none") +
+  ggtitle("Relationship between MMSE score and AD severity") 
 
 #####################################################
-# A gene called APOE is associated with late onset
-# Alzheimer's disease. One of the probes for 
-# APOE is 203381_s_at
+# 3) A gene called APOE is associated with late onset
+#    Alzheimer's disease. One of the probes for 
+#    APOE is 203381_s_at, and one of the probe set 
+#    sequences for this probe is
+#   'AGGCCAAGGTGGAGCAAGCGGTGGA'. For this question,
+#   we will focus on the first 5 nucleotides, 
+#   'AGGCC'. During the gene expression profiling
+#   process, if mRNA containing 'AGGCC' exists in
+#   the sample, it will be converted to cDNA, which will
+#   hybridize to the probe. What is the cDNA sequence
+#   that will hybridize (bind) to 'AGGCC'?
 #####################################################
 
 ############################################################
-# Construct side-by-side boxplots showing the expression
+# 4) Construct side-by-side boxplots showing the expression
 # of the probe 203381_s_at for CONTROL patients and 
 # patients with SEVERE AD. (The boxplot must be constructed
-# using ggplot -- see notes for an example)
+# using ggplot, and should only include Control and Severe
+# patients, since these are the groups we want to compare)
 ############################################################
-
 
 
 ###########################################################
@@ -93,40 +100,10 @@ ggplot(GSE1297.p, aes(MMSE.Score, NFT.Score)) +
 ###########################################################
 
 
-
-
 #####################################################
-# Construct a scatterplot of gene expression of
-# the probe 203381_s_at on the x-axis and MMSE score
-# on the y-axis, coloring the points by AD status as
-# was done for the above scatterplot. Give the graph 
-# an appropriate title, axis labels, and legend, 
-# and also add the regression line, as was done above. 
-# What is the correlation between MMSE score and 
-# expression? 
+## Repeat the boxplot and t.test for the gene PSEN1 
+##  using the probe 207782_s_at
 #####################################################
-
-
-##########################################################
-# The cor.test function can be used to evaluate the
-# following hypotheses:
-
-# H0: r = 0, where r is the correlation between x and y
-# HA: r != 0
-
-# The function is called using cor.test(x,y), where x 
-# and y are the vectors of observations. Find the p-value, 
-# report the correlation, and state whether or not the 
-# correlation between expression and MMSE score is 
-# statistically significant 
-##########################################################
-
-#####################################################
-## Repeat the boxplot, t.test, scatterplot, and 
-## cor.test for the gene PSEN1 using the probe 
-## 207782_s_at
-#####################################################
-
 
 ########################################################
 ## Based on the above analyses, what is your conclusion
