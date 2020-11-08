@@ -43,9 +43,9 @@ exclude_from_nav: false
     * [R Script: Two-sample t-test]({{ site.baseurl }}/data/notes/two-sample_t-test.R) 
 * [Module 6: Gene Expression]({{ site.baseurl }}/data/notes/GeneExpression.pdf)
     * [R Script: Microarrays]({{ site.baseurl }}/data/notes/microarray.R) 
-{% comment %}
 * [Module 7: Gene Expression Analysis]({{ site.baseurl }}/data/notes/GeneExpressionAnalysis.pdf) 
     * [R Script: Contrasts]({{ site.baseurl }}/data/notes/contrasts.R)
+{% comment %}
     * [R Script: GEO and limma]({{ site.baseurl }}/data/notes/GEO-and-limma.R) 
     * [R Script: knn]({{ site.baseurl }}/data/notes/knn.R)
 * [Module 8: Functional Annotation]({{ site.baseurl }}/data/notes/FunctionalAnnotation.pdf)
