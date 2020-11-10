@@ -9,15 +9,12 @@ library(ggplot2)
 library(GEOquery) # needed to obtain data from GEO
 library(limma) # needed to find DE probes
 
-
-
 ###########################################################
 # Get the processed data for GSE1297. The object
 # returned by getGEO is a LIST of AffyBatch objects
 # getGEO returns a list because each GEO Series
 # may contain multiple platforms
 ###########################################################
-
 
 GSE1297 <- getGEO("GSE1297")
 
@@ -31,20 +28,24 @@ GSE1297
 
 ###########################################################
 # Pull out gene expression data and pheno type data
-# (same functions as before, but GSE1297 is a list)
+# (same functions as before, but GSE1297 is a list,
+# and we want the first element)
 ###########################################################
 
 GSE1297.expr <- exprs(GSE1297[[1]])
 GSE1297.p <- pData(GSE1297[[1]])
 
-#  Is data on log2 scale (are boxes visisible -- do  
-#  distributions look similar across samples). Typically, 
-#  boxes for log2 data will be between 5 and 10
+#  We are looking at processed data, but it might not
+#  be on the log2 scale. We need to check that the boxes 
+#  are visible and that the distributions look similar across samples. 
+#  Typically, boxes for log2 data will be between 5 and 10
 boxplot(GSE1297.expr, main = "processed data")
 
-# If not, then take log2 (very important -- if data is not logged,
-# then downstream analysis will be WRONG. Processed data from GEO may
-# or may not be on the log scale, so make sure to check)
+# In this case, data is not on the log2 scale. Therefore
+# we need to take log2. This is very important -- if data 
+# is not on the log2 scale, then downstream analysis will 
+# be WRONG. Processed data from GEO may or may not be on 
+# the log scale, so make sure to check)
 GSE1297.expr <- log2(GSE1297.expr)
 boxplot(GSE1297.expr, main = "log2 processed data")
 
@@ -62,21 +63,22 @@ table(gender)
 ###############################################################
 
 # construct design matrix
-design <- model.matrix(~0+gender)
+design <- model.matrix(~-1+gender)
 head(design) # note that indicator variables are used
 
 # let's change the column names
 colnames(design) <- c("Female", "Male")
 
-## 'lmFit' fits a linear model to each row of the expression matrix ##
+# 'lmFit' fits a linear model to each row of the expression matrix ##
 fit <- lmFit(GSE1297.expr, design)
 
-## for each probe, limma calculates the mean for each group 
+# for each probe, limma calculates the mean for each group 
 #  as well as the standard deviation
 head(fit$coefficients)
 head(fit$sigma)
 
-## Specify the contrasts;  names must match column names of design matrix ##
+# Specify the contrasts -- the names here must match column names of 
+# design matrix 
 contrast.matrix <- makeContrasts(Male - Female,levels=design)
 
 # the null hypothesis is that the contrast (Male - Female in this case) is 0
@@ -128,20 +130,21 @@ ggplot(df, aes(x = gender, y = expr, fill = gender)) + geom_boxplot() +
 # How many genes have FDR < 5%?
 ###############################################################
 
-## we need to set the following arguments to topTable:
-## p.value - this is the adjusted p-value (FDR) cutoff 
-##           (it is NOT the p-value)
-## number - the maximum number of probes to return (should be
-##          total number of probes in the dataset). Note: 
-##          the default value is 10, so this must be set
-##          to get more than 10 probes
+# We need to set the following arguments to topTable:
+# p.value - this is the adjusted p-value (FDR) cutoff 
+#           (it is NOT the p-value)
+# number - the maximum number of probes to return. To
+#          find all DE probes, this should be the total
+#          number of probes in the dataset. Note that
+#          the default value is 10, so this must be set
+#          to get more than 10 probes
 tt.05 <- topTable(fit2,sort.by = "p", p.value = 0.05, number = nrow(GSE1297.expr))
 nrow(tt.05)
 
 #######################################################################
 # Aside: A closer look at the eBayes step above; eBayes 
-# (empirical Bayes) pulls the estimated standard deviations towards a 
-# common value (based on the assumption that most genes are not 
+# (empirical Bayes) "shrinks" the estimated standard deviations towards  
+# a common value (based on the assumption that most genes are not 
 # differentially expressed). This leads to more robust results and
 # increased 'power' to detect differentially expressed genes
 #######################################################################
@@ -191,11 +194,11 @@ heatmap(X, ColSideColors = col.gender, col = col.heat)
 
 ########################################################################
 # Aside: we can also cluster samples manually, using
-#   dist: calculates pairwise distance between samples (default
-#       distance is euclidian distance)
+#   dist: calculates pairwise distance between rows (default
+#       distance is Euclidian distance)
 #   hclust: clusters samples based on a distance matrix
 ########################################################################
-d <- dist(t(X)) # calculate distances between samples
+d <- dist(t(X)) # calculate distances between samples, using t(X)
 h <- hclust(d)  # cluster the samples
 
 #plot the clusters
@@ -259,7 +262,7 @@ x <- c("a", "a dog barked", "the cat meowed")
 # matches any string that contains an 'a'
 grep("a", x, value = TRUE) 
 
-# matches any string that contains an 'a'
+# matches any string that contains ONLY an 'a'
 grep("^a$", x, value = TRUE) 
 
 # matches strings containing either 'dog' or 'cat'
@@ -273,12 +276,12 @@ grep("\\ba\\b", x, value = TRUE)
 # MRPS11 and RPS11P1
 
 # returns a vector of indices where the Gene Symbol contains 'RPS11'
-# (value = FALSE) by default
+# (note that value = FALSE by default)
 g <- grep("RPS11", pl$`Gene Symbol`)  
 View(pl[g,])
 
 # In general, the following regular expression will work in order to 
-# match the the word gene \\bgene\\b
+# match the entries containing the gene (written as a 'word'): \\bgene\\b
 
 # Note that a word match is necessary here beause the 
 # `Gene Symbol` column either contains a single

@@ -45,8 +45,8 @@ exclude_from_nav: false
     * [R Script: Microarrays]({{ site.baseurl }}/data/notes/microarray.R) 
 * [Module 7: Gene Expression Analysis]({{ site.baseurl }}/data/notes/GeneExpressionAnalysis.pdf) 
     * [R Script: Contrasts]({{ site.baseurl }}/data/notes/contrasts.R)
-{% comment %}
     * [R Script: GEO and limma]({{ site.baseurl }}/data/notes/GEO-and-limma.R) 
+{% comment %}
     * [R Script: knn]({{ site.baseurl }}/data/notes/knn.R)
 * [Module 8: Functional Annotation]({{ site.baseurl }}/data/notes/FunctionalAnnotation.pdf)
     * [R Script: DAVID]({{ site.baseurl }}/data/notes/DAVID.R) 
