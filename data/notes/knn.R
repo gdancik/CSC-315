@@ -69,7 +69,7 @@ plot.clust <-function(x) {
 
 ## generate data
 r <- c(1.5, 2, 3) #each row
-M <- rbind(p1=r,p2=r,p3=r,p4=r) # 4 rows
+M <- rbind(p1=r,p2=r,p3=r,p4=r,p5=r,p6=r,p7=r) # 7 rows
 colnames(M) <- c("A","B","C")
 M
 
@@ -81,15 +81,17 @@ plot.clust(M)
 # Another example: in this case a probe with large expression
 # is added, and samples A and C are the 'closest'
 # this is not desired since 'closeness' is completely 
-# determined by probe p5 
-M <- rbind(M, p5=c(10,15,10))
+# determined by probe p8 
+M <- rbind(M, p8=c(10,15,10))
 M
 plot.clust(M)
 
-# Solution is to scale each probe (each row) so that each probe 
-# has the same importance. We use the following functions:
+# Solution is to scale each probe (each row) so that no single 
+# probe dominates in the distance calculation. 
+
+# We use the following functions:
 #   scale - scales each column to have mean 0 and sd of 1
-#   t - the transposte (switches rows and columns)
+#   t - the transpose (switches rows and columns)
 row.scale <-function(x) {
   x.scale <- t(scale(t(x)))
   return(x.scale)
@@ -134,7 +136,8 @@ labels <- list(xaxis = list(title = "probe 1", range = c(-2.2, 2.2)),
                yaxis = list(title = "probe 2", range = c(-2.2, 2.2)),
                zaxis = list(title = "probe 3",range = c(-2.2, 2.2)))
 plot_ly(x=X.scale[1,], y=X.scale[2,], z=X.scale[3,], 
-        type="scatter3d", mode="markers", color = gender, colors=c("pink", "blue")) %>%
+        type="scatter3d", mode="markers", color = gender, 
+        colors=c("pink", "blue")) %>%
         layout(scene = labels)
 
 
@@ -155,6 +158,7 @@ library(class) # required for knn
 #   classes - the known classes corresponding to the data
 #   k - value of k for the 'k' nearest neighbors
 ###################################################################
+
 preds = knn.cv(t(X.scale), gender, k = 3) 
 table(true = gender, predicted = preds)
 
@@ -162,8 +166,8 @@ table(true = gender, predicted = preds)
 sum(preds == gender) / length(gender)
 
 #######################################################################
-# The overall accuracy is not a good measure of performance because it
-# depends on how balanced the data is.
+# The overall accuracy is not a good measure of performance because 
+# it is misleading if the data is unbalanced
 # The 'sensitivity' (or 'recall') of class 'A' is the probability of 
 # correctly classifying samples from group A. The 'balanced accuracy'
 # is calculated as the average sensitivity/recall over all classes.
@@ -204,11 +208,19 @@ scale.transform <- function(scaledX, X) {
 
 X.test.scale <- scale.transform(X.scale,X.test)
 
+####################################################################
+# Making predictions in a test set:
+
 # Use knn(train, test, classes, k), where 
 #   train - training data (probes in columns and samples in rows)
 #   test - testing data (probes in columns and samples in rows)
 #   classes - the known classes corresponding to the training data
 #   k - value of k for the 'k' nearest neighbors
+
+# Note: the test data should be scaled the same as the training
+# data
+####################################################################
+
 preds <- knn(t(X.scale), t(X.test.scale), gender, k = 3)
 preds
 
