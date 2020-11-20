@@ -36,25 +36,8 @@ balanced.accuracy <-function(predicted, true) {
 
 load(url("https://gdancik.github.io/CSC-315/data/hw/Challenge.RData"))
 
-# 1) Find differentially expressed probes in your training dataset
+###################################################################
+# See PDF for instructions
+###################################################################
 
-# 2) Using the differentially expressed probes, evaluate a knn classifier 
-#    using leave-one-out cross-validation in the training data set. 
-#    Don't forget to scale your data (training and testing). 
-#    Find the balanced accuracy.
 
-# 3) Classify the test samples, and email your predictions to
-#    dancikg@easternct.edu with the subject: Bioinformatics Challenge. In the
-#    e-mail, include your team name (be creative!), and team member names,
-#    followed by the predictions, with 1 prediction per line. Note: to get your
-#    predictions in text format, with one prediction per line, and with no other
-#    text, use the write.table function with row.names = FALSE
-
-# 4) Optimize at least one of the parameters using a classification method of
-#    your choice, based on the balanced accuracy from leave-one-out cross-validation.
-#    You are encouraged to explore other classifiers in addition to kNN.
-
-# 5) Once you have optimized your classifier, classify the test samples and e-mail
-#    me your predictions following the directions in (3).
-
-# 6) Submit a Notebook following the instructions in the PDF.

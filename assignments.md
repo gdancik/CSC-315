@@ -20,11 +20,11 @@ exclude_from_nav: false
 * [Lab #7]({{ site.baseurl }}/data/hw/Lab7.R) (Due: Monday, 10/26/20) 
 * [Lab #8]({{ site.baseurl }}/data/hw/Lab8.R) (Due: Monday, 11/09/20) 
     * [Lab #8 results]({{ site.baseurl }}/data/hw/Lab8_results.pdf)  
-<hr>
 * [Lab #9]({{ site.baseurl }}/data/hw/Lab9.R) (Due: Friday, 11/20/20) 
-{% comment %} 
+<hr>
 * [Classification Challenge]({{ site.baseurl }}/data/hw/Challenge.pdf) (Due: see handout)  
     * [Challenge R Script]({{ site.baseurl }}/data/hw/Challenge.R)
+{% comment %} 
 * [Blackboard survey](https://easternct.blackboard.com/) (Due: Sunday, 9/8/19 by 5:00 PM)
     * [Lab #2 Review]({{ site.baseurl }}/data/hw/Lab2-review.R) 
     * [Lab #3 Review]({{ site.baseurl }}/data/hw/Lab3-review.R) 
