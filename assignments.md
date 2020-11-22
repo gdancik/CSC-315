@@ -24,14 +24,14 @@ exclude_from_nav: false
 <hr>
 * [Classification Challenge]({{ site.baseurl }}/data/hw/Challenge.pdf) (Due: see handout)  
     * [Challenge R Script]({{ site.baseurl }}/data/hw/Challenge.R)
+* [Final Project]({{ site.baseurl }}/data/hw/Project.pdf) (Due: Monday, 12/07/20 by midnight)
+    * [Real world example](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4612811/)
+    * [Example of DE genes between males/females]({{ site.baseurl }}/data/hw/SexGenes.xlsx)
 {% comment %} 
 * [Blackboard survey](https://easternct.blackboard.com/) (Due: Sunday, 9/8/19 by 5:00 PM)
     * [Lab #2 Review]({{ site.baseurl }}/data/hw/Lab2-review.R) 
     * [Lab #3 Review]({{ site.baseurl }}/data/hw/Lab3-review.R) 
     * [Lab #6 Review]({{ site.baseurl }}/data/hw/Lab6-review.R)
-* [Final Project]({{ site.baseurl }}/data/hw/Project.pdf) (Due: Friday, 12/06/19)
-    * [Real world example](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4612811/)
-    * [Example of DE genes between males/females]({{ site.baseurl }}/data/hw/SexGenes.xlsx)
 [[Review]({{ site.baseurl }}/data/hw/Lab6-review.R)] 
 [[Solutions]({{ site.baseurl }}/data/hw/Lab7-sol.html)] 
 
