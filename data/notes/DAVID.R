@@ -81,7 +81,6 @@ col.gender <- c("pink", "blue")[col.gender]
 heatmap(X, ColSideColors = col.gender, col = col.heat)
 
 
-
 ###############################################################
 # Let's find the genes associated with all probes
 # This requires using microarray annotations available from
@@ -104,11 +103,17 @@ probes <- rownames(tt)
 m <- match(probes, pl$ID)
 genes <- pl$`Gene Symbol`[m]
 genes
+##########################################################
 
-## only keep probes that correspond to genes ##
+##########################################################
+# Starting point for functional analysis -- we have a 
+# list of genes
+##########################################################
+
+# In general, we should remove gene values that are empty strings 
+# (these correspond to probes that do not map to genes)
 keep <- genes!=""
 genes <- genes[keep]
-
 
 # on this platform, probes corresponding to multiple gene names are separated
 # by " /// ". We can extract all genes using strsplit, which returns a 
@@ -121,7 +126,6 @@ genes <- unlist(genes)
 # get a unique set of genes 
 genes <- unique(genes) 
 
-
 ## view/save genes for input into DAVID (https://david.ncifcrf.gov/)
 ## you may save the genes to a file by setting the file argument,
 ## if a path is not specified, the file will be saved in your
@@ -132,12 +136,19 @@ write.table(genes, row.names = FALSE, quote = FALSE)
 # We will use DAVID (https://david.ncifcrf.gov/) for
 # functional analysis of gene lists.
 
-# Select Functional Annotation -> Upload gene list, 
-# set identifier to OFFICIAL_GENE_SYMBOL, and select Gene List.
+# Select Start Analysis, and from the Upload tab on the left,
+# upload or paste your gene list;
+
+# Set the identifier to OFFICIAL_GENE_SYMBOL, 
+# Enter your species, 
+# Under List Type, select Gene List.
+
 # If necessary, set the List species and Background species 
 # appropiately (in this case to Homo sapiens)
 
-# Select the following to view the biological processes
+# Select Functional Annotation Tool
+
+# Then select the following to view the biological processes
 #   and pathways
 
 # 1) Gene_Ontology --> GOTERM_BP_DIRECT (click on Chart)
@@ -154,6 +165,6 @@ genes <- c("ASF1B", "ASPM", "AURKA", "BIRC5", "BUB1B", "C18orf24",
            "CEP55", "DLGAP5", "DTL", "FOXM1", "KIAA0101", "KIF20A", 
            "MCM10", "NUSAP1", "ORC6L", "PBK", "PRC1", "PTTG1", "RAD51",
            "RAD54L", "RRM2", "TK1", "TOP2A")
-
+w
 
 write.table(genes, row.names = FALSE, quote = FALSE)
