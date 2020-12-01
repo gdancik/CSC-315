@@ -49,13 +49,12 @@ exclude_from_nav: false
     * [R Script: knn]({{ site.baseurl }}/data/notes/knn.R)
 * [Module 8: Functional Annotation]({{ site.baseurl }}/data/notes/FunctionalAnnotation.pdf)
     * [R Script: DAVID]({{ site.baseurl }}/data/notes/DAVID.R) 
-{% comment %}
 *  [Module 9: Bioinformatics Wrap-Up]({{ site.baseurl }}/data/notes/WrapUp.pdf)
     * [Movies R script]({{ site.baseurl }}/data/notes/movies.R) 
+{% comment %}
 ([R Notebook]({{ site.baseurl }}/data/notes/microarray.html)) 
   
 {% endcomment %}
-
 
 
 <br><br>

@@ -15,25 +15,24 @@ movies <- read.csv("movies_processed.txt")
 nrow(movies)
 
 # how many users are included?
-length(levels(movies$UserID))
+movies$UserID %>% factor() %>% levels() %>% length()
 
 # how many movies are included?
-length(levels(movies$productID))
+movies$productID %>% factor() %>% levels() %>% length()
 
 ###################################################################
 # Let's summarize the ratings #
 ###################################################################
 t <- table(movies$Rating)
 counts <- data.frame(t)
+
 ## relative frequency bar graph using ggplot, based on counts
 counts <- mutate(counts, prop = Freq/sum(Freq))
-
 ggplot(counts, aes(x=Var1, y=prop)) +
   geom_col(aes(fill = Var1)) +
   ggtitle("Distribution of movie Ratings") +
   labs(x = "Rating", y = "Relative frequency") +
   theme_classic() + theme(legend.position = "none")
-
 
 
 ############################################
@@ -52,10 +51,10 @@ hist(lengths, main = "# Ratings / Movie", ylab = "# ratings")
 which.max(lengths)
 max(lengths)
 
-#####################################
+#########################################
 # What are the top rated movies?
-# (require at least 200 ratings)
-#####################################
+# (we will require at least 200 ratings)
+#########################################
 avgs <- sapply(s, mean)
 avg = avgs[lengths >=200]
 sort(avgs, decreasing = TRUE)[1:10]
@@ -82,7 +81,7 @@ ss.movies <- filter(movies, UserID %in% users)
 # sort movie ratings by frequency per movie
 # (require at least 2 ratings / movie)
 ss.counts <- count(ss.movies, productID, sort = TRUE)
-ss.counts <- filter(ss.counts, n > 1)
+ss.counts <- filter(ss.counts, n >= 2)
 
 # look at first 5 movies (alphabetically by ID)
 first5 <- sort(ss.counts$productID)[1:5]
