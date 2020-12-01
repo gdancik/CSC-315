@@ -26,8 +26,6 @@ exclude_from_nav: false
     * [R Script: Associations]({{ site.baseurl }}/data/notes/associations.R)
     * [R Script: Correlation and Regression]({{ site.baseurl }}/data/notes/correlation_and_regression.R)
 * [Advanced R Script]({{ site.baseurl }}/data/notes/AdvancedR.R)
-</div>
-
 * [Module 4: Probability]({{ site.baseurl }}/data/notes/module4.pdf)
     * [R Script: Probability]({{ site.baseurl }}/data/notes/probability.R) 
     * [Birthday R script]({{ site.baseurl }}/data/notes/birthday.R)
@@ -41,6 +39,7 @@ exclude_from_nav: false
     * [R Script: T Distribution]({{ site.baseurl }}/data/notes/t.R) 
     * [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
     * [R Script: Two-sample t-test]({{ site.baseurl }}/data/notes/two-sample_t-test.R) 
+</div>
 * [Module 6: Gene Expression]({{ site.baseurl }}/data/notes/GeneExpression.pdf)
     * [R Script: Microarrays]({{ site.baseurl }}/data/notes/microarray.R) 
 * [Module 7: Gene Expression Analysis]({{ site.baseurl }}/data/notes/GeneExpressionAnalysis.pdf) 
