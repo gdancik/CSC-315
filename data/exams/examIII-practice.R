@@ -69,7 +69,7 @@ ggplot(iris, aes(Petal.Length, Petal.Width, color = Species)) +
 
 
 # 7. Based on the probes below, generate a heatmap and color the columns with "darkgreen" for
-#    "treatment resonse in vivo: 1" and "darkred" for "treatment response in vivo: 0". In 
+#    "treatment response in vivo: 1" and "darkred" for "treatment response in vivo: 0". In 
 #    other words, resistant individuals are dark red and sensitive individuals are dark green
 
 probes = c("201690_s_at","212611_at","218721_s_at",
