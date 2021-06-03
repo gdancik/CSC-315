@@ -8,7 +8,7 @@ exclude_from_nav: false
 
 <style>
 .hide {
-  display:none
+  display:block
 }
 </style>
 
@@ -25,6 +25,7 @@ exclude_from_nav: false
 * [Module 3: Association: Contingency, Correlation, and Regression]({{ site.baseurl }}/data/notes/module3.pdf)
     * [R Script: Associations]({{ site.baseurl }}/data/notes/associations.R)
     * [R Script: Correlation and Regression]({{ site.baseurl }}/data/notes/correlation_and_regression.R)
+{% comment %}
 * [Advanced R Script]({{ site.baseurl }}/data/notes/AdvancedR.R)
 * [Module 4: Probability]({{ site.baseurl }}/data/notes/module4.pdf)
     * [R Script: Probability]({{ site.baseurl }}/data/notes/probability.R) 
@@ -50,10 +51,8 @@ exclude_from_nav: false
     * [R Script: DAVID]({{ site.baseurl }}/data/notes/DAVID.R) 
 *  [Module 9: Bioinformatics Wrap-Up]({{ site.baseurl }}/data/notes/WrapUp.pdf)
     * [Movies R script]({{ site.baseurl }}/data/notes/movies.R) 
-{% comment %}
 ([R Notebook]({{ site.baseurl }}/data/notes/microarray.html)) 
   
-{% endcomment %}
 
 
 <br><br>
@@ -71,3 +70,4 @@ function viewAll() {
 
 </div>
 </center>
+{% endcomment %}

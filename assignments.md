@@ -14,6 +14,7 @@ exclude_from_nav: false
 * [Lab #1]({{ site.baseurl }}/data/hw/Lab1.R) (Due: Friday, 9/04/20) 
 * [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Wednesday, 9/16/20) 
 * [Lab #3]({{ site.baseurl }}/data/hw/Lab3.R) (Due: Wednesday, 9/23/20) 
+{% comment %} 
 * [Lab #4]({{ site.baseurl }}/data/hw/Lab4.R) (Due: Monday, 10/05/20) 
 * [Lab #5]({{ site.baseurl }}/data/hw/Lab5.R) (not collected) 
 * [Lab #6]({{ site.baseurl }}/data/hw/Lab6.R) (Due: Wednesday, 10/21/20)
@@ -28,7 +29,6 @@ exclude_from_nav: false
 * [Final Project]({{ site.baseurl }}/data/hw/Project.pdf) (Due: Monday, 12/07/20 by 11:59 PM)
     * [Real world example](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4612811/)
     * [Example of DE genes between males/females]({{ site.baseurl }}/data/hw/SexGenes.xlsx)
-{% comment %} 
 * [Blackboard survey](https://easternct.blackboard.com/) (Due: Sunday, 9/8/19 by 5:00 PM)
     * [Lab #2 Review]({{ site.baseurl }}/data/hw/Lab2-review.R) 
     * [Lab #3 Review]({{ site.baseurl }}/data/hw/Lab3-review.R) 
