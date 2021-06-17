@@ -3,7 +3,7 @@
 ###################################
 
 ## example with two arguments ##
-divide <-function(x,y) {
+divide <- function(x,y) {
     return(x/y)
 }
 divide(3,4)
@@ -115,9 +115,9 @@ lapply(person, length)
 ## sapply does the same but returns a vector
 sapply(person, length)
 
-########################################
+#############################################
 # if statements - follows C/C++/Java format
-########################################
+#############################################
 compare <-function(x, ref = 0) {
   if (x < ref) {
     cat("the number", x, "is less than", ref, "\n")
@@ -129,6 +129,29 @@ compare <-function(x, ref = 0) {
 }
 
 compare(5, 3)
+
+
+
+#############################################
+# Facet grid - with ggplot, facet_grid can
+# be used to generate separate plots based
+# on the value of one or more variables
+#############################################
+
+library(ggplot2)
+ggplot(iris, aes(x=Petal.Width, y=Petal.Length)) +
+  geom_point(aes(color = Species)) +
+  ggtitle("Petal Length vs. Petal Width from Iris dataset") +
+  labs(x = "Petal Width", y = "Petal Length") + theme_linedraw()
+
+# use facet_grid to generate separate plots based on Species
+
+ggplot(iris, aes(x=Petal.Width, y=Petal.Length, color = Species)) +
+  geom_point() +
+  ggtitle("Petal Length vs. Petal Width from Iris dataset") +
+  labs(x = "Petal Width", y = "Petal Length") + theme_linedraw() +
+  facet_grid(rows = vars(Species))
+
 
 #######################################################################
 # Question set (use the grades matrix below):
