@@ -26,6 +26,8 @@ install_course_github("gdancik", "swirl-tbp", "swirl-tbp_example")
 # Assignment - You can do this as many times as needed
 #########################################################################
 
+library(swirl)
+
 # Type the following to begin:
 swirl()
 
