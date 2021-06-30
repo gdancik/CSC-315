@@ -170,7 +170,7 @@ p.value
 p1 <- prop.test(62, 100, correct = FALSE)
 p1$p.value
 
-sqrt(p1$statistic)
+sqrt(p1$statistic) # the Z test statistic
 
 # conclusion:
 #  Because p-value < 0.05, we reject H0 and accept H1
@@ -196,7 +196,7 @@ myplot <- ggplot(df, aes(x,y)) +
   theme_classic() + ggtitle('X ~ discrete uniform [1,4]') 
 myplot
 
-# But looking at the area under the curve to the left of 
+# Note that looking at the area under the curve to the left of 
 # 2 will not give us the correct answer:
 myplot + geom_vline(xintercept = 2, color = 'red')
 
