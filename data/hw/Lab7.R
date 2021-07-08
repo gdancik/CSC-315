@@ -60,7 +60,9 @@ survey <- read_csv("https://gdancik.github.io/CSC-315/data/datasets/CSC315_surve
 # (c) We will now formally test the hypotheses that mean amount of sleep
 #     is different between 'cat' and 'dog' people. The command 
 #     t.test(x,y) will perform a two-sample t-test for the null 
-#     hypothesis that the 'x' and 'y' populations have the same mean.
+#     hypothesis that the 'x' and 'y' populations have the same mean, and 'x' is
+#     a vector of observations from the first population and 'y' is a vector of
+#     observations from the second population.
 #     Use the t.test function to find the test statistic and the 
 #     corresponding degrees of freedom. Note that in your call to t.test,
 #     'x' is a vector of hours of sleep for 'cat' people and 'y' is a 
