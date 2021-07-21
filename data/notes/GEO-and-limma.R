@@ -55,6 +55,39 @@ boxplot(GSE1297.expr, main = "log2 processed data")
 gender <- as.character(GSE1297.p$characteristics_ch1.6)
 table(gender)
 
+#################################################################
+# For summer:
+# Let's check if the probe 214218_s_at is differentially 
+# expressed between males and females.
+
+# H0: mu_m - mu_f = 0
+# H1: mu_m - mu_f != 0,
+
+# where mu_m is the mean expression in males and mu_f is 
+# the mean expression in females
+
+# Note: This probe is for gene XIST, which is found on the
+# X chromosome (females have 2 X chromosomes, males have 1)
+#################################################################
+
+m <- match('214218_s_at', rownames(GSE1297.expr))
+df <- data.frame(x= GSE1297.expr[m,], gender = gender)
+
+ggplot(df, aes(gender, x,fill = gender)) + 
+  geom_boxplot() + theme_classic() +
+  labs(y = 'log2 expression') + 
+  ggtitle('XIST (214218_s_at) expression for females and males')
+
+# carry out the t-test
+s <- split(df$x, df$gender)
+res <- t.test(s$`Sex: F`, s$`Sex: M`)
+res$p.value
+
+# Because p-value is < 0.05, we reject H0 and accept H1.
+# There is sufficient evidence that the probe is
+# differentially expressed. In this case, expression is 
+# upregulated (higher) in females
+
 ################################################################
 # Find differentially expressed (DE) probes between males
 # and females. We will use limma, which requires us to design 
