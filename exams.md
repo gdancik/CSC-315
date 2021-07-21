@@ -7,6 +7,7 @@ exclude_from_nav: false
 order: 4
 ---
 * [Exam I]({{ site.baseurl }}/data/exams/ExamI_Summer_2021.R)
+* [Exam II]({{ site.baseurl }}/data/exams/ExamII_Summer_2021.R)
 
 {% comment %}
 * Exam I
