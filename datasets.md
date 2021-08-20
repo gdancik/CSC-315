@@ -3,7 +3,7 @@ layout: page
 title: Datasets  
 permalink: /datasets/
 order: 4
-exclude_from_nav: false 
+exclude_from_nav: true 
 ---
 
 * [Sample Survey Data](https://gdancik.github.io/CSC-315/data/datasets/survey.txt)
