@@ -22,6 +22,7 @@ total <- x + y
 num <- x / y
 name <- "Bob" # you can also use single quotes, but the convention is to use double quotes
 
+
 # A fundamental type of variable in R is a vector (like a 1D array)
 ages <- c(19,20,24, 22, 18)
 
@@ -55,8 +56,9 @@ index <- ages > 20
 ages[index]    # or alternatively, use ages[ages > 20]
 
 # how many ages are > 20? 
-# the 'sum' function sums over all elements in a vector; for a boolean vector, 
-# TRUE = 1 and FALSE = 0, so 'sum' will count the number of TRUE values
+# the 'sum' function sums over all elements in a vector; 
+# for a logical vector, TRUE = 1 and FALSE = 0, so 
+# 'sum' will count the number of TRUE values
 sum(index) 
 
 # another vector example
@@ -100,10 +102,9 @@ y <- 4
 
 # Note: we can visualize the vector calculations by creating
 # a matrix combining both vectors using cbind (for 'column bind'),
-# where calculations occur across each row
 cbind(x,y)
-x+y # adds each element of x to y
-x*y  # multiplies each element of x by y
+x + y # adds each element of x to y
+x * y  # multiplies each element of x by y
 x / y
 
 ##########################################
@@ -112,9 +113,9 @@ x / y
 x <- 1:10
 y <- seq(0,1,length.out = 10)
 cbind(x,y)
-x+y  # the ith element of x is added to the ith element of y
-x*y  # the ith element of x is multipled by the ith element of y
-x/y  # the ith element of x is divided by the ith element of y
+x + y  # the ith element of x is added to the ith element of y
+x * y  # the ith element of x is multiplied by the ith element of y
+x / y  # the ith element of x is divided by the ith element of y
 
 
 #########################################################
@@ -130,9 +131,9 @@ x/y  # the ith element of x is divided by the ith element of y
 x <- 1:10
 y <- seq(0,1,length.out = 5)
 cbind(x,y)
-x+y  
-x*y  
-x/y  
+x + y  
+x * y  
+x / y  
 
 # you will get a warning (but NOT an error) if length(y) is NOT 
 # a multiple of length(x)
@@ -140,7 +141,7 @@ x <- 1:10
 y <- seq(0,1,length.out = 5)
 y <- y[-5]   # the same as y = y[1:4]
 cbind(x,y)
-x+y  
+x + y  
 
 
 # Additional calculations 
@@ -185,19 +186,11 @@ lc = ncol(m)
 m[,-lc] ## you could also use m[,-ncol(m)]
 
 #############################################################################
-# Question set C
+# Question set C (use matrix 'm')
 # 1. Change the value of the observation in the 2nd row and 3rd 
 #    column to 5
-# 2. The vector below contains the odd numbers between 1-10 followed
-#    by the even numbers between 1 and 10. Create a matrix with 2
-#    columns, the first containing the odd numbers and the second
-#    containing the even numbers between 1-10. Hint: set byrow = FALSE 
-#    in the matrix function
-
-v <- c(seq(1,10,by=2), seq(2,10,by=2))
-
-#    2a. What is the sum of the 3rd row?
-#    2b. What is the sum of the 2nd column?
+# 2. What is the sum of the 3rd row?
+# 3. What is the sum of the 2nd column?
 #############################################################################
 
 
