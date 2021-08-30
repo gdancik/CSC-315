@@ -26,7 +26,6 @@
 
 
 
-
 #####################################################
 # Question: How many rows (individuals) and 
 # columns(variables) are in this data?

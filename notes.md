@@ -17,8 +17,8 @@ exclude_from_nav: false
 
 * [Module 1: Course Introduction]({{ site.baseurl }}/data/notes/Intro.pdf)
 * [R Script: R Basics]({{ site.baseurl }}/data/notes/R-intro.R)
-{% comment %}
 * [R Script: Dataframes]({{ site.baseurl }}/data/notes/Dataframes.R)
+{% comment %}
 * [Module 2: Graphical and Numerical Summaries]({{ site.baseurl }}/data/notes/Module2-Summaries.pdf)
     * [R Script: ggplot]({{ site.baseurl }}/data/notes/ggplot.R)
     * [R Script: Graphical Summaries]({{ site.baseurl }}/data/notes/graphical_summaries.R)
