@@ -6,7 +6,6 @@ order: 3
 exclude_from_nav: false
 ---
 
-
 <p style = 'color:red;font-size:104%'>Note: All assignments must be submitted through <a href = "https://easternct.blackboard.com/">Blackboard</a> unless stated otherwise. Assignments must be submitted in the correct format, which will be explained at a later date. 
 </p>
 {% comment %}
@@ -14,6 +13,7 @@ exclude_from_nav: false
 
 * Install <i>R/RStudio</i> and the required packages by following the instructions on the [Course Info]({{ site.baseurl }}/info/) page 
 <hr>
+* [Class Survey](https://easternct.blackboard.com/) (Due: Tuesday, 9/07/21 by 5:00 PM)
 * [Lab #1]({{ site.baseurl }}/data/hw/Lab1.R) (Due: Wednesday, 9/08/21) 
 {% comment %} 
 * [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Wednesday, 9/16/20) 
