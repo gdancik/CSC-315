@@ -103,15 +103,18 @@ med <- median(numbers$values)
 q1 <- quantile(numbers$values, .25)
 q3 <- quantile(numbers$values, .75)
 upper.fence <- q3 + 1.5*(q3-q1)
+lower.fence <- q1 - 1.5*(q3-q1)
 g + annotate('label', x=.5, y=med, label = 'median') +
     annotate('label', x=.5, y=q1, label = 'Q1') +
     annotate('label', x=.5, y=q3, label = 'Q3') +
     annotate('label', x = 1, y = upper.fence, 
-             label = 'upper fence = Q3+1.5*IQR')
+             label = 'upper fence = Q3+1.5*IQR') +
+    annotate('label', x = 1, y = lower.fence, 
+           label = 'lower fence = Q1-1.5*IQR')
 
 
 #####################################################################
-# Side-by-side boxplots can be used to compare quantitiave data 
+# Side-by-side boxplots can be used to compare quantitative data 
 # across two groups 
 #####################################################################
 
@@ -126,13 +129,12 @@ levels(heights$GENDER) <- c("Male", "Female")
 
 # Here the 'fill' argument is part of the aesthetics, since it maps those
 # values to a color
-bplot <- ggplot(heights) + 
-  geom_boxplot(aes(GENDER, HEIGHT, fill = GENDER))
-bplot
+ggplot(heights) + geom_boxplot(aes(GENDER, HEIGHT, fill = GENDER))
 
 # Change formatting (remove legend, change labels)
 # Note: other options for the legend.position are "left", "right", "bottom", "top"
-bplot + theme_classic() + theme(legend.position = "none") +
+ggplot(heights) + geom_boxplot(aes(GENDER, HEIGHT, fill = GENDER), show.legend = FALSE) + 
         ggtitle("Comparison of heights between males and females") +
-        labs(x = "gender", y = "height (inches)")
+        labs(x = "gender", y = "height (inches)") +
+        theme_classic() 
 

@@ -2,6 +2,8 @@
 ## Numerical summaries of data
 ####################################################################
 
+library(ggplot2)
+
 ###########################
 ## calculate the mean in R
 ###########################
@@ -48,21 +50,25 @@ plot.hist(income.with.extreme.value,
           xlab = "income", main = "Histogram of incomes with extreme value")
 
 #########################################################
-# Demonstration of standard deviation
+# The standard deviation is a measure of variability, or
+# how spread out the data is relative to the mean. The
+# code below provides a grpahical emonstration of 
+# how the standard deviation is calculated
 #########################################################
 
 # plot deviations to illustrate standard deviation (you do not
 # need to understand the underlying code for this function)
 plot.deviations <- function(x) {
-  plot(x, 1:length(x), xlab = "observed value", ylab = "index", 
-       pch = 19, main = 'Deviation demonstration')
-  m = mean(x)
-  abline(v = m, col = "red", lwd = 2)
-  for (i in 1:length(x)) {
-    p1 = c(x[i],m)
-    p2 = c(i,i)
-    lines(p1,p2, col = "blue")
-  }
+
+  df <- data.frame(value = x, index = 1:length(x)) 
+  
+  ggplot(df) + geom_point(aes(x = value, y = index), size = 2.5) + 
+    geom_segment(aes(x = value, y = index, 
+                     xend = mean(x), yend = index), 
+                 col = 'blue') + 
+    geom_vline(xintercept = mean(x),col = 'red') +
+    theme_classic() + ggtitle('Deviation demonstration')
+  
 }
 
 ################################################
@@ -92,3 +98,4 @@ x.sd.manual <- sqrt(x.var.manual)
 ##################################################
 x.var <- var(x)
 x.sd <- sd(x)  
+

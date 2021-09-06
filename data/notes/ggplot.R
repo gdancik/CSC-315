@@ -1,8 +1,9 @@
 ###########################################################
 # ggplot provides a powerful framework for generating
 # complex graphics, based on a philosophy/language of 
-# visualization that separates the data, the aesthetics,
-# and the plotting layer(s)
+# visualization that separates the data, the aesthetics 
+# (mapping of variables to visual properties), and the 
+# plotting layer(s)
 ###########################################################
 
 # First, we will look at a simple scatterplot using the 
@@ -16,7 +17,7 @@ library(ggplot2)
 
 ####################################################################
 # ggplot examples -- we will generally use this format
-# ggplot(data, aes(x,y)) + layer(aes(...)) + labels + ...
+# ggplot(data, aes(x,y)) + layer + labels + ...
 #    data - the data.frame containing data to plot
 #    aes - an aesthetic mapping, specifying the x- and y-values
 #             to plot, and optionally the coloring to use. 

@@ -26,10 +26,9 @@ prop.table(t)
 ##################################################################
 
 # To have 'ggplot' count the data for you, use
-# the 'geom_bar' layer. Note that the aesthetics must
-# be specified in the geom_bar layer (not in ggplot)
+# the 'geom_bar' layer. 
 d.status <- data.frame(status = status)
-ggplot(d.status, aes(x=status)) + geom_bar(aes(fill = status)) +
+ggplot(d.status, aes(x=status, fill = status)) + geom_bar() +
            ggtitle("Class status of students") +
             labs(x = "Class status", y = "Frequency") + theme_classic()
 
@@ -38,15 +37,15 @@ ggplot(d.status, aes(x=status)) + geom_bar(aes(fill = status)) +
 # the 'geom_col' layer.
 t <- table(status)
 counts <- data.frame(t)
-ggplot(counts) + geom_col(aes(x=status, y=Freq, fill = status)) +
+ggplot(counts, aes(x=status, y=Freq, fill = status)) + geom_col() +
   ggtitle("Class status of students") +
   labs(x = "Class status", y = "Frequency") + theme_bw()
 
 
 # To generate a relative frequency bar graph from the raw data,
 # set y = ..count../sum(..count..)
-ggplot(d.status, aes(x=status, y=..count.. / sum(..count..))) + 
-  geom_bar(aes(fill = status)) +
+ggplot(d.status, aes(x=status, y=..count.. / sum(..count..), fill = status)) + 
+  geom_bar() +
   ggtitle("Class status of students") +
   labs(x = "Class status", y = "Relative frequency") + theme_classic()
 
@@ -61,8 +60,8 @@ levels(counts$status)
 # reorder based on counts (use negative value to order from high to low
 counts$status <- reorder(counts$status, -counts$Freq)
 
-ggplot(counts,aes(x=status, y=Freq)) + 
-  geom_col(aes(fill = status)) +
+ggplot(counts,aes(x=status, y=Freq, fill = status)) + 
+  geom_col() +
   ggtitle("Class status of students") +
   labs(x = "Class status", y = "Frequency") + theme_classic()
 
@@ -75,21 +74,25 @@ library(readr)
 survey <- read_delim("https://gdancik.github.io/CSC-315/data/datasets/survey.txt", "\t")
 
 ###################################################################         
-# 1. Construct a relative frequency table for the number of males
+# Question: Construct a relative frequency table for the number of males
 #     and females
-# 2. Construct a bar graph for the proportion of individuals that 
-#    agree or disagree that same-sex marriage should be legal in
-#    all 50 states. The title of the chart should be 
-#    "Same sex marriage should be legal in all 50 states"
 ###################################################################
 
 
+# Note, below is an alternative way of generating a frequency table
+# which summarizes the values in a column of a data frame
+
+survey %>% group_by(Gender) %>% summarize(Frequency = n())
               
+survey %>% group_by(Gender) %>% summarize(Frequency = n()) %>% 
+  mutate(Proportion = prop.table(Frequency))
+
+
 
 ###################################################################
-# Histograms are like bar graphs for quantitative variables, where
-# the height of the bar corresponds to the number or proportion 
-# of observations that fall within a range of values
+# Histograms are like bar graphs but for quantitative variables, 
+# where the height of the bar corresponds to the number or 
+# proportion of observations that fall within a range of values
 ###################################################################
 
 ## we will use the 'base' hist function, rather than the ggplot one
@@ -102,15 +105,18 @@ hist(survey$FB, main = "histogram of FB usage", xlab = "Hours/week on FB")
 # skewed left: tail is longer (or fatter) on the left
 # symmetric: tails are approximately the same length
 # skewed right: tail is longer (or fatter) on the right
-
-# Note regarding R code below: you do not need to 
-# understand the R code at this point, but you do need to
-# be able to distinguish between histogram shapes
 ###########################################################
 
-x.norm <- rnorm(500)
-x.right <- c(x.norm, runif(10,3,10))
-x.left <- c(x.norm, runif(10,-10,-3))
+###########################################################
+# The R code below is used to demonstrate various 
+# histogram shapes. You do not need to understand the R 
+# code at this point, but you do need to be able to 
+# distinguish between histogram shapes
+###########################################################
+
+x.norm <- rnorm(1000)
+x.right <- c(x.norm, runif(30,3,10))
+x.left <- c(x.norm, runif(30,-10,-3))
 par(mfrow = c(1,3))
 hist(x.left, main = "left-skewed")
 hist(x.norm, main = "symmetric")
