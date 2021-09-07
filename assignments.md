@@ -15,8 +15,8 @@ exclude_from_nav: false
 <hr>
 * [Class Survey](https://easternct.blackboard.com/) (Due: Tuesday, 9/07/21 by 5:00 PM)
 * [Lab #1]({{ site.baseurl }}/data/hw/Lab1.R) (Due: Wednesday, 9/08/21) 
+* [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Wednesday, 9/15/21) 
 {% comment %} 
-* [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Wednesday, 9/16/20) 
 * [Lab #3]({{ site.baseurl }}/data/hw/Lab3.R) (Due: Wednesday, 9/23/20) 
 * [Lab #4]({{ site.baseurl }}/data/hw/Lab4.R) (Due: Monday, 10/05/20) 
 * [Lab #5]({{ site.baseurl }}/data/hw/Lab5.R) (not collected) 

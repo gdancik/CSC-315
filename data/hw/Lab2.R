@@ -7,7 +7,7 @@
 ##########################################################################
 # Add R code to the script below and create a Notebook to complete
 # the steps and explicitly answer the following questions.
-# Your Notebook include output showing the requested tables and
+# Your Notebook must include output showing the requested tables and
 # graphs, and answers to questions should be provided in comments.
 # Also, all graphs must be given an appropriate title, x-axis label, and
 # y-axis label. The ggplot2 library must be used to generate all
@@ -18,73 +18,88 @@
 ##########################################################################
 
 # 1) Load our classes survey data (available at:
-#   https://gdancik.github.io/CSC-315/data/datasets/CSC315_survey_Fall_2020.csv)
-#   and add the code for this to the script. 
+#  https://gdancik.github.io/CSC-315/data/datasets/csc315_survey_fall_2021.csv)
+#   and add the code for this to the script. Note: I suggest to 
+# change the name of the survey data frame (such as to 'survey') so
+# that it is easier to type!
 
 
-# 2) How many students completed the survey?
+# 2) How many students completed the survey (i.e., how many rows are there)?
 
 # 3) How many questions were asked (i.e., how many columns are there)?
 
-# 4) Construct a frequency table for the response to whether someone is a
-#    'Cat' or 'Dog' person.
+# 4) Display the 'CatOrDogPerson' value for the 4th person (and only this person)
 
-# 5) Construct a frequency bar graph for the response to 
-#    "What is your preferred modality for this class?",
-#    where the bars are colored according to modality using the default 
-#    colors. Remove the legend by adding the following component to the end of your 
-#    ggplot() code: theme(legend.position = "none")
+# 5) (a) Construct a frequency table for a person's favorite meal.
 
+#    (b) Construct a relative frequency table for a person's favorite meal. 
 
-# 6) Construct a relative frequency table for preferred videoconferencing software. 
-#     What proportion of students said that they preferred Microsoft Teams?
+#    (c) Based on this data, what meal does this class like the most?
 
-
-# 7) Construct a Pareto Chart using the frequencies for preferred videoconferencing
-#    software (you may display either frequency or relative frequency). 
+# 6) Construct a frequency bar graph for the "Mobile" data, which contains the 
+#    response to the question "What type of mobile phone do you prefer?".
+#    The bars should be colored according to mobile phone preference, using the default 
+#    colors, and thegraph should not have a legend. What do you conclude
+#    about mobile phone preference in this class?
 
 
-# 8) Construct a relative frequency table for whether or not a student consumes alcohol
-#   (i.e., consumes alcohol > 0 days per week).
-#    Do this by first creating a logical vector where TRUE corresponds to consuming
-#    alcohol and FALSE corresponds to does not consume alcohol. Then create a relative
-#    frequency of these TRUE and FALSE values. Tables and relative frequency tables
-#    are stored as named vectors (e.g., x <- c(item1 = 1, item2 = 2)). Use the 'names' 
-#    function to change the names from FALSE and TRUE to "Consumes alcohol" and
-#    "Does not consume alcohol"
+# 7) Construct a Pareto Chart of a person's favorite season
+#    (you may display either the frequency or relative frequency). What
+#    do you conclude about the choice of favorite season in this class?
 
 
-# 9) Out of the "Cat" people in this class, generate a relative frequency
-#    table for their preferred videoconferencing platform. Answer this
+# The code below generates a relative frequency table for whether
+# a student consumes alcohol (i.e., alcohol > 0).
+
+# Note: this assumes the survey data frame is stored in 'survey';
+# you must edit the next line if this is not the case
+consumes_alcohol <- table(survey$Alcohol > 0)
+
+# Now FALSE means that Alcohol is not > 0; TRUE means Alcohol > 0
+names(consumes_alcohol)  
+
+# re-name values
+names(consumes_alcohol) <- c('No', 'Yes')  
+
+# convert to relative frequencies and a data frame
+consumes_alcohol <- prop.table(consumes_alcohol)
+df_alcohol <- data.frame(consumes_alcohol)
+df_alcohol
+
+# 8) Using the df_alcohol data frame, generate a relative frequency bar graph 
+#    describing alcohol consumption in this class. If a student is selected at random
+#    are you more or less likely to select a student who drinks?
+
+# 9) Do Android users prefer fruits or vegetables? Answer this
 #    question by using dplyr's 'filter' function to create a new data frame for
-#    "Cat" people, then generate a relative frequency table for the "VideoConferencing"
-#    column. Repeat the analysis to answer the same question for "Dog" people. 
-#    What do you conclude about a person's choice of video conferencing platform?
+#    "Android" people, then generate a relative frequency table for the 
+#    "FruitsOrVeggies" column.
 
 
-# 10) Construct a histogram for Alcohol consumption, by using the hist() function with 
-#     the argument breaks = 14 to set the number of groupings. Describe the shape of its 
-#     distribution. In particular, describe whether it is unimodal, bimodal, or flat, and 
+# 10) Construct a histogram for alcohol consumption using the 'hist' 
+#     function with default parameters. Note: you should be looking
+#     at the original Alcohol data, not the Yes/No values from 
+#     question (8). Describe the shape of its distribution. 
+#     In particular, describe whether it is unimodal, bimodal, or flat, and 
 #     whether it is skewed right, skewed left, or symmetric?
 
 
 # 11) Calculate the mean and median for Alcohol consumption. 
-#     Which is a better measure of averages (based on the shape of the distribution)? 
+#     Which is a better measure of averages (based on the shape of the 
+#     distribution)? 
 
-
-# 12) What is the 75th percentile for the average number of hours of sleep a student gets??
-
-# 13) Create side-by-side boxplots showing the average hours of sleep 
+# 12) Create side-by-side boxplots of College GPA
 #     based on whether a person is a "cat" or "dog" person, 
 #     and answer the questions below:
-#     (a) Does there appear to be a different in the amount of sleep
+#     (a) Does there appear to be a different in College GPA
 #         between "cat" and "dog" people in this class?
 #     (b) Are there any outliers? If so, how many, and for which group?
 
 
 
-# 14) For college GPA, what is the variance and standard deviation?
-
-
-# 15) Create a vector with 20 values that has a standard deviation of 0.
-
+# 13) (a) Find the variance and standard deviation for College GPA using
+#         the R functions 'var' and 'sd'. 
+#
+#     (b) Use the 'sqrt' function to confirm that the standard deviation
+#         is the square root of the variance, by writing a logical statement
+#         that evaluates to TRUE.
