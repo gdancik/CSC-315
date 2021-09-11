@@ -7,11 +7,13 @@ library(ggplot2)
 #######################################
 ## load internet data
 #######################################
+library(readr)
+internet <- read_delim("http://pastebin.com/raw/enxWu6R6", delim = '\t')
 
-internet <- read.delim("http://pastebin.com/raw/enxWu6R6")
-
-fb.penetration <- internet$Facebook.Penetration..Percent.
-internet.penetration <- internet$Internet.Penetration..Percent.
+# to make typing easier, let's rename some columns
+library(dplyr)
+internet <- internet %>% rename(internet_penetration = `Internet Penetration (Percent)`,
+                   fb_penetration = `Facebook Penetration (Percent)`)
 
 ##############################################
 # what is the mean value of internet and
@@ -27,21 +29,22 @@ internet.penetration <- internet$Internet.Penetration..Percent.
 # scatterplots: plots a point for each pair of 
 #   (x,y) values
 ##################################################
-ggplot()  + geom_point(aes(internet.penetration, fb.penetration)) +
-              theme_classic() + 
+ggplot(internet,aes(internet_penetration, fb_penetration))  + 
+         geom_point() + theme_classic() + 
               labs(x = "Internet Penetration (%)", y = "FB Penetration (%)",
                 title = "Internet and FB penetration rates")
 
 
 ## where is the United States?
-colors <- rep("black", length(internet.penetration))
+colors <- rep("black", length(internet$internet_penetration))
 colors[internet$Country == "USA"] = "red"
 
-## replot with colors to highlight the United States
-ggplot() + 
-  geom_point(aes(internet.penetration, fb.penetration), 
-             color = colors) +
-  theme_classic() + 
+## Replot with colors to highlight the United States
+## Note that in this case color is not an aesthetic, because
+## the aesthetic would map each observation to a category that
+## then gets color-coded. Instead, we are specifying the colors directly
+ggplot(internet, aes(internet_penetration, fb_penetration)) + 
+  geom_point(color = colors) + theme_classic() + 
   labs(x = "Internet Penetration (%)", y = "FB Penetration (%)",
        title = "Internet and FB penetration rates")
 
@@ -52,8 +55,13 @@ ggplot() +
 
 ## Let's highlight the outlier
 ## Note: for element-by-element comparison across vectors, use 
-#  single & or | (and NOT && or ||)
-index = fb.penetration < 10 & internet.penetration>60
+#  single & for AND) and single | for OR 
+#
+# In R, && and || will return a single logical value
+# a && b returns TRUE if all element-by-element comparisons of 'a' and'b'
+# are TRUE
+
+index = internet$fb_penetration < 10 & internet$internet_penetration>60
 internet$Country[index]
 
 #######################################################################
@@ -100,22 +108,20 @@ plot.cor(x,y5)
 plot.cor(x, x**2)
 
 
-### reset to 1 panel for plotting (not necessary on console)
+### reset to 1 panel for plotting 
 par(mfrow = c(1,1))
 
 #############################################
 # find correlation betweeen internet and FB
 # penetration
 #############################################
-ggplot() + 
-  geom_point(aes(internet.penetration, fb.penetration)) +
-  theme_classic() + 
+ggplot(internet, aes(internet_penetration, fb_penetration)) + 
+  geom_point(color = colors) + theme_classic() + 
   labs(x = "Internet Penetration (%)", y = "FB Penetration (%)",
        title = "Internet and FB penetration rates")
 
-
 ## to get correlation ##
-cor(internet.penetration, fb.penetration)
+cor(internet$internet_penetration, internet$fb_penetration)
 
 #############################################
 # linear regression
@@ -127,18 +133,22 @@ cor(internet.penetration, fb.penetration)
 ## the response variable (y)
 ###################################################################
 
-###############################################################################
-## Questions: Find and interpret the y-intercept of the linear regression line
-##            Find and interpret the slope
-################################################################################# get predicted values for each observation ##
+# Fit the linear model using lm(y~x, data = df), 
+# where the linear model corresponds to y = f(x), and
+# 'x' and 'y' are columns from the data frame 'df'
 
-fit = lm(fb.penetration ~ internet.penetration)
+fit = lm(fb_penetration ~ internet_penetration, data = internet)
 
 ## display results ##
 fit
 
 ## display summary of results (more information) ##
 summary(fit)
+
+###################################################################################
+## Questions: (1) Find and interpret the y-intercept of the linear regression line
+##            (2) Find and interpret the slope
+################################################################################### 
 
 # the y-intercept is: 3.09, which means when internet penetration is 0%,
 # the predicted FB penetration rate would be 3.09%
@@ -147,14 +157,12 @@ summary(fit)
 # fb penetration goes up by 0.4602%.
 
 ## add regression line to current plot ##
-ggplot(data = NULL, aes(internet.penetration, fb.penetration)) + 
-  geom_point() +
-  theme_classic() + 
+ggplot(internet, aes(internet_penetration, fb_penetration)) + 
+  geom_point() + theme_classic() + 
   labs(x = "Internet Penetration (%)", y = "FB Penetration (%)",
        title = "Internet and FB penetration rates") +
   geom_smooth(method = "lm", color = "darkred")
   
-
 ########################################################################
 # Use predict(fit, df) to make predictions with the fitted model
 #      fit - a fitted linear model, obtained from 'lm'
@@ -167,16 +175,11 @@ predict(fit)
 
 ## what is the predicted FB penetration rate for a country that
 ## has 50% internet penetration
-predict(fit, data.frame(internet.penetration=50))
+predict(fit, data.frame(internet_penetration=50))
 
 ## what is the predicted FB penetration rate for countries that
 ## have 50% and 80% internet penetrations
-predict(fit, data.frame(internet.penetration=c(50,80)))
-
-# CAUTION: what if we mess up and don't use correct variable names?
-# (R gives you an incorrect answer -- you may get a warning but 
-# will not get an error!)
-predict(fit, data.frame(x=50))
+predict(fit, data.frame(internet_penetration=c(50,80)))
 
 
 #################################################################
@@ -197,24 +200,7 @@ plot.resids <- function(x,y, ...) {
 }
 
 
-plot.resids(internet.penetration, fb.penetration)
-
-
-############################################################################
-## Usually we fit a linear model using data from a data frame, using
-## the format below
-############################################################################
-
-internet.table <- data.frame(internet = internet.penetration, fb = fb.penetration)
-fit <- lm(internet ~ fb, data = internet.table)  # data must be specified
-predict(fit, data.frame(fb = .5))
-
-############################################################################
-## CAUTION: you will not be able to make predictions if you fit a model using, 
-##      e.g., fit <- lm(internet.table$internet ~ internet.table$fb) 
-#       because the explanatory variable is then 'internet.table$fb' 
-#       which cannot be specified in the predict function
-############################################################################
+plot.resids(internet$internet_penetration, internet$fb_penetration)
 
 ######################################################
 # Find the regression for the ANNUAL temp against YEAR 

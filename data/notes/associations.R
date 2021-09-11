@@ -46,18 +46,17 @@ d <- data.frame(type = rownames(pesticides.conditional), pesticides.conditional)
 # a column with the appropriate label ('presence') for each value
 
 # In 'melt', the second argument ("type") specifies the 'id' variables that are left
-# unchanged (these define a single observation or row).
-# All other columns are combined as follows:
+# unchanged. All other columns are combined as follows:
 #     the column names become the values of a new 'presence' column 
 #         (determined by 'variable.name')
 #     the values are combined into a single column, which will be named 'value' by default
-m <- melt(d, "type", variable.name = "presence")
+m <- melt(d, id = "type", variable.name = "presence")
 
 
 # display a stacked bar chart, with x = the explanatory variable 
 # and 'fill' used to indicate the response variable; note that
 # we use 'geom_col' because our data contains the y-values 
-ggplot(m) + geom_col(aes(type, value, fill = presence)) +
+ggplot(m, aes(type, value, fill = presence)) + geom_col() +
             labs(y = "Proportion", fill = "Pesticide status", 
                  title = "Distribution of pesticide status by food type") +
             theme_classic()
@@ -85,7 +84,7 @@ d <- data.frame(type = rownames(p2), p2)
 m <- melt(d, "type", variable.name = "presence")
 
 ## display a stacked bar chart, based on 'fill' argument
-ggplot(m) + geom_col(aes(type, value, fill = presence)) +
+ggplot(m,aes(type, value, fill = presence)) + geom_col() +
   labs(y = "Proportion", fill = "Pesticide status", 
        title = "Distribution of pesticide status by food type\n(no association)") +
   theme_classic()
@@ -105,16 +104,13 @@ survey <- read_delim("http://pastebin.com/raw/QDSga7qF",
 # Is there a relationship between cat/dog person and coffee preference?
 # create a contingency table, where first vector gives rows, second gives columns
 t <- table(survey$CatOrDog, survey$StarbucksOrDunkins)
-
 t.conditional <- prop.table(t, margin = 1)
 t.conditional
 
-## In ggplot, pass aes(explanatory, fill = response) to the geom_bar layer to 
-## to create a stacked bar graph with bars corresponding to the explanatory
-## variable and stacking based on the response. 
-## Note that we now use 'geom_bar' so that 'ggplot' will tabulate the data for us.
-## We also need to set position to "fill" in order to plot conditional proportions
+## To create a stacked bar graph from raw data, use "geom_bar" with the following
+## aesthetics: aes(explanatory, fill = response) 
+## We also need to set position to "fill" in geom_bar in order to plot conditional proportions
 ## (rather than counts)
-ggplot(survey) + geom_bar(aes(CatOrDog, fill=StarbucksOrDunkins), position = "fill") +
+ggplot(survey,aes(CatOrDog, fill=StarbucksOrDunkins)) + geom_bar(position = "fill") +
                 labs(x = "", y = "Relative frequency", 
                      title = "Coffee preference by person")
