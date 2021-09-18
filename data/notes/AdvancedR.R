@@ -32,8 +32,8 @@ divide <-function(x,y = 1) {
 divide(3,2) # 3/2 = 1.5
 
 #################################################
-## for loops - for each element in a 
-##        vector or list
+## for loops exist in R, but there is almost
+## never a good reason to use them
 #################################################
 
 # basic format: iterate over each element in a vector (or list) 
@@ -49,15 +49,41 @@ for (i in 1:length(xvalues)) {
   cat (xvalues[i], " ")
 }
 
+# Suppose I want to increase each element of 'x' by 1
+
+# Using a for loop is not necessary and would be considered
+# bad programming practice
+xvalues <- 1:10
+for (i in 1:length(xvalues)) {
+  xvalues[i] <- xvalues[i] + 1
+}
+xvalues
+
+# But R lets you do this:
+xvalues <- 1:10
+xvalues <- xvalues + 1
 
 ######################################################################
-## Note: In most cases, functional approaches (apply, lapply, sapply)
-##    are preferred over loops. Functional approaches are
-##    simpler and more readable (once understood). 
-##
-##    In R, a 'functional' is a function that takes another function
-##    as an argument
+# Note: For more complex cases, functional approaches 
+#    (apply, lapply, sapply) are generally preferred over loops.
+# Functional approaches are simpler and more readable 
+#     (once understood). 
+#
+# In R, a 'functional' is a function that takes another function
+# as an argument
 #####################################################################
+
+calc_statistics <- function(x, f1, f2) {
+  c(f1(x), f2(x))
+}
+
+mydata <- c(1:10,13)
+
+# calculate mean and median
+calc_statistics(mydata, mean, median)
+
+# calculate mean and standard deviation
+calc_statistics(mydata, mean, sd)
 
 ######################################################################
 ## apply - applies a function to a row (MARGIN = 1) 
@@ -159,6 +185,7 @@ ggplot(iris, aes(x=Petal.Width, y=Petal.Length, color = Species)) +
 
 grades <- matrix(c(71,86,82,93,87,92,85,85,98,99,100,92),ncol=3,byrow=T)
 rownames(grades) <- c("Steve", "Joe", "Jane", "Andrea")
+grades
 
 # 1. Using the apply function, find the following:
 
@@ -166,13 +193,7 @@ rownames(grades) <- c("Steve", "Joe", "Jane", "Andrea")
 
 # (b) mean grade for each assignment (columns)
 
-
-# 2. Write a function called 'is.A' that takes a vector, and returns TRUE 
-#    if the mean value of the vector is >= 90 (in the A range). Then use
-#    this function and 'apply' to identify the names of
-#    the students with an A average. Can you write code that outputs 
-#    only the names of the students with As?
-
+# (c) median grade for each assignment
 
 
 ################################################
@@ -191,9 +212,7 @@ rownames(grades) <- c("Steve", "Joe", "Jane", "Andrea")
 v <- c(1:10, -13, 90, 2:20)
 
 # 3. Include the following code in your script to create a matrix containing 
-#    the numbers 1 - 30 across 50 columns
+#    the numbers 1 - 30 across 50 columns. Use the 'apply' function
+#    to find the standard deviation of each row
 
 m = matrix(1:30, ncol = 5, byrow = TRUE)
-
-#   (a) Use the 'apply' function to find the median of each row 
-#   (b) Use the 'apply' function to find the median of each column.
