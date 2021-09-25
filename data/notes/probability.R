@@ -203,3 +203,4 @@ p.any.heads
 no.heads <- apply(S == "T", 1, all)
 p.no.heads <- sum(no.heads) / length(no.heads)
 p.no.heads
+
