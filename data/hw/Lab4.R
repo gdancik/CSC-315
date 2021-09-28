@@ -30,8 +30,8 @@ library(gtools)
 
 # Use R to answer the remaining questions. You MUST use R to 
 # enumerate and analyze the sample space or to carry out 
-# probability experiments (simulations) in order to calculate
-# an empirical probability.
+# probability experiments (simulations) so that you can 
+# calculate an empirical probability.
 
 
 # 2) This question looks at the probability of rolling two dice
@@ -96,7 +96,8 @@ pdist
 #       distribution of X = the number of heads in 3 coin tosses.
 
 #   (d) Create a bar graph of the relative frequencies, using ggplot and
-#       labeling the x-axis, y-axis, and title. 
+#       labeling the x-axis, y-axis, and title. The y-axis in this case
+#       corresponds to the 'probability'.
 
 
 
@@ -113,6 +114,57 @@ pdist
 #   (c) Create a relative frequency table for the number of heads. This is
 #       the empirical probability distribution of X = the number of heads
 #       in 3 coin tosses.
+
+######################################################################
+#   Poker Time! The commands below enumerate the sample space of
+#   all possible poker hands. Here we ignore the suit because it is  
+#   not needed for the questions below.  We also use combinations 
+#   instead of permutations. Combinations should be used when the
+#   order does not matter (which is true for the order of cards
+#   in a hand). The cards are sampled WITHOUT replacement 
+#   (repeats.allowed = FALSE) because we cannot include
+#   the same card twice in one hand. Finally, we specify 'set = FALSE' to 
+#   allow for duplicate values in the deck vector. Each combination 
+#   (hand) is equally likely, so classical probability can be used.
+######################################################################
+
+deck <- rep(1:13,4)
+hands <- combinations(52, 5, deck, repeats.allowed = FALSE, set = FALSE)
+
+# 6) How many possible poker hands are there?
+
+
+# 7) The function below takes a vector (corresponding to a hand of cards)
+#   and returns TRUE if the hand contains a four-of-a-kind
+#   Use 'apply' to apply this function to each hand, in order to show
+#   that the probability of being dealt a four-of-a-kind is
+#   approximately 0.00024 (or 1/4165). Note: You MUST use the
+#   apply function and the four.of.a.kind function below to find this. 
+#   Because the hands matrix contains more than 2.5 million rows, 
+#   this calculation may take several minutes. You should therefore test 
+#   your code on a subset of the hands matrix first. 
+#   There are two 4-of-a-kinds if you look at the first 20,000 rows.
+
+##############################################################
+# this function returns true if a hand contains a 4-of-a-kind
+##############################################################
+four.of.a.kind <- function(x) {
+  t <- table(x)  # frequency table for cards in the hand
+  m <- max(t)    # how frequent is the most common card?
+  if (m == 4) return (TRUE)
+  return (FALSE)
+}
+
+
+# 8) Create a function that determines whether a vector 'x' contains 
+#   a full house (i.e., 3 of a kind and 1 pair). You can assume
+#   that 'x' includes exactly 5 cards.
+
+
+# 9) Show that the probability of being dealt a full house is 
+#    approximately 0.00144 (roughly 1/694). Note for testing purposes,
+#    that there are 18 full houses in the first 20,000 rows of the
+#    hands matrix
 
 
 
