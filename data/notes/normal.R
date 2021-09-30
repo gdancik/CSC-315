@@ -52,12 +52,15 @@ shaded.hist <- function(X, hist = TRUE, density = FALSE, obs = NULL, ...) {
 
 #################################################
 ## If an individual is randomly selected, what 
-## is the probability their height is less than
-## or equal to 67 inches?
+## is the probability that their height is less 
+## than or equal to 67 inches?
 #################################################
 
 hist(heights, prob = TRUE, main = "Histogram of Heights", xlab = "height")
+
 p <- sum(heights <= 67) / length(heights)
+p
+
 
 #####################################################
 ## We can visualize this on a histogram. Let
@@ -69,12 +72,10 @@ p <- sum(heights <= 67) / length(heights)
 #####################################################
 shaded.hist(heights, obs = 67, main = "Histogram of Heights", xlab = "height")
 
-
 #####################################################
 ## What is the probability P (67 < X < 70)?
 ## We can take:  P(X <=70) - P(X <= 67)
 #####################################################
-
 par.orig <- par(mfrow = c(2,1), mar = c(3,4,2,0))
 shaded.hist(heights, obs=70, main = "Histogram of Heights", xlab = "height")
 shaded.hist(heights, obs=67, main = "Histogram of Heights", xlab = "height")
@@ -125,13 +126,14 @@ plot_grid(plot.unif, plot.exp, plot.chisq, plot.norm)
 # normal distribution with mean = 60 and sd = 72
 d1 <- data.frame(x = seq(60,72,by=.1)) %>% mutate(y=dnorm(x, mean = 66, sd = 2))
 p1 <- ggplot(data = d1, aes(x, y)) + geom_line() +
-  ggtitle("Normal Distribution\n(mu = 66, sigma = 2)")  + ylab("density")
+  ggtitle("Normal Distribution\n(mu = 66, sigma = 2)")  + ylab("density") +
+  theme_classic()
 
 # normal distribution with mean = 0 and sd = 1 (i.e., standard normal distribution)
 d2 <- data.frame(x = seq(-3,3,by=.1)) %>% mutate(y=dnorm(x, mean = 0, sd = 1))
 p2 <- ggplot(data = d2, aes(x, y)) + geom_line() +
   ggtitle("Standard Normal Distribution\n(mu = 0, sigma = 1)")  + 
-  ylab("density") + xlab("z")
+  ylab("density") + xlab("z") + theme_classic()
 
 # plot both distributions
 plot_grid(p1, p2, nrow = 2)
@@ -141,7 +143,8 @@ plot_grid(p1, p2, nrow = 2)
 # sd = 1.7 inches. Find the probability that a randomly selected 
 # person is less than (or equal to) 70 inches tall 
 #
-# pnorm(a, mean = mu, sd = sd) returns P(X <= a) when X ~ N(mu, sd)
+# If X ~ N(mu, sd), then 
+#     pnorm(a, mean = mu, sd = sd) returns P(X <= a) 
 #
 ########################################################################
 
@@ -153,6 +156,11 @@ pnorm(70, mean = 68, sd = 1.7)
 # This area corresponds to P (a <= x <= b) when X ~ N (mean, sd)
 # For P (x <= b) set a = -Inf
 # For P (x >= a) set b = Inf
+
+# Note: On assignments, this function is provided for educational
+# purposes. You should NOT use this function to answer 
+# probability questions on assignments/exams. Instead, you should
+# just use 'pnorm'.
 ########################################################################
 shade.norm <- function(a,b, mean = 0, sd = 1,  ...) {
   m1 <- mean-4*sd
@@ -229,13 +237,19 @@ shade.norm(-Inf, q, mean = 68, sd = 1.7,
 
 
 ########################################################################
-# Suppose that X is normally distributed. Find the probabilty
+# Suppose that X is normally distributed. Find the probability
 # that a randomly selected value from X is more than 2 standard
 # deviations above the mean.
 ########################################################################
 
-# P(Z > 2)
-# 1 - P(Z < 2)
+# Because Z = (X- mu) / sigma  is the number of standard 
+# deviations from the mean, we can calculate this probability
+# using Z ~ N(0,1). Importantly, we do not need to know 'mu'
+# or 'sigma' for this calculation!
+
+# Mathematically, X > 2 standard deviations above the mean is 
+# equivalent to P(Z > 2) which can be calculated as:
+#   1 - P(Z < 2)
 
 1 - pnorm(2, mean = 0, sd = 1)
 1 - pnorm(2)
