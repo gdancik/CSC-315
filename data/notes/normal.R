@@ -157,10 +157,10 @@ pnorm(70, mean = 68, sd = 1.7)
 # For P (x <= b) set a = -Inf
 # For P (x >= a) set b = Inf
 
-# Note: On assignments, this function is provided for educational
-# purposes. You should NOT use this function to answer 
-# probability questions on assignments/exams. Instead, you should
-# just use 'pnorm'.
+# Note: This function is provided for demonstration purposes only.
+# You should NOT use this function to answer probability
+# questions on assignments/exams. Instead, you should just use 
+# 'pnorm'.
 ########################################################################
 shade.norm <- function(a,b, mean = 0, sd = 1,  ...) {
   m1 <- mean-4*sd
