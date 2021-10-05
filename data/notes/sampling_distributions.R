@@ -34,7 +34,7 @@ abline(v = mean(x), col = "red", lwd = 3)
 ## Find the sample space for selecting n = 3 students. 
 ##    We use combinations, since order does not matter, and
 ##      use the following arguments:
-##        - 'set' = FALSE because x contains duplicate values
+##        - set = FALSE because x contains duplicate values
 ##            that we don't want removed
 ##        - repeats.allowed = FALSE because once one student
 ##            is selected, we do not select them again
@@ -147,7 +147,7 @@ plot.hist(x.100, main = "Distribution of sample mean (n = 100)")
 ###################################################################
 ## Central Limit Theorem in practice:
 ## Suppose that heights have the distribution X ~ N(68, 1.7).
-## We will calculuate probabilities involving the sample mean 
+## We will calculate probabilities involving the sample mean 
 ## from a sample of 20 individuals
 ###################################################################
 
