@@ -170,7 +170,9 @@ p.value
 p1 <- prop.test(62, 100, correct = FALSE)
 p1$p.value
 
-sqrt(p1$statistic) # the Z test statistic
+# Note: we use double brackets to select the first
+# element and drop the name, which is no longer relevant
+sqrt(p1$statistic[[1]]) # the Z test statistic
 
 # conclusion:
 #  Because p-value < 0.05, we reject H0 and accept H1
@@ -179,7 +181,7 @@ sqrt(p1$statistic) # the Z test statistic
 
 ###################################################
 # Need for continuity correction:
-# There is an issue with the normal approximation,
+# There is a limitation with the normal approximation,
 # because we are using a continuous distribution
 # to approximate a discrete random variable
 
