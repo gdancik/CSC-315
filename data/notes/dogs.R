@@ -68,7 +68,7 @@ p.value
 ###########################################
 p2 = prop.test(15,54, p = 1/7, correct = FALSE)
 p2$statistic # prop.test calculates X-squared statistic = Z^2
-sqrt(p2$statistic) # confirm that our statistics match
+sqrt(p2$statistic[[1]]) # confirm that our statistics match
 p2$p.value  # confirm that our p=values match
 
 ###########################################
@@ -93,6 +93,10 @@ p3$p.value
 
 # (iii) state the conclusion
 
-# What would it mean if a Type I error occurs?
+# Additional questions: 
+
+# What would it mean in the context of this hypothesis test if a Type I error 
+# occurred?
  
-# What would it mean if a Type II error occurs?
+# What would it mean in the context of this hypothesis test if a Type II error 
+# occurred?

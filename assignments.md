@@ -16,11 +16,11 @@ exclude_from_nav: false
 * [Lab #1]({{ site.baseurl }}/data/hw/Lab1.R) (Due: Wednesday, 9/08/21) 
 * [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Wednesday, 9/15/21) 
 * [Lab #3]({{ site.baseurl }}/data/hw/Lab3.R) (Due: Monday, 9/20/21) 
-<hr>
 * [Lab #4]({{ site.baseurl }}/data/hw/Lab4.R) (Due: Wednesday, 10/06/21) 
+<hr>
 * [Lab #5]({{ site.baseurl }}/data/hw/Lab5.R) (not collected) 
+* [Lab #6]({{ site.baseurl }}/data/hw/Lab6.R) (Due: Monday, 10/18/21)
 {% comment %} 
-* [Lab #6]({{ site.baseurl }}/data/hw/Lab6.R) (Due: Wednesday, 10/21/20)
 * [Lab #7]({{ site.baseurl }}/data/hw/Lab7.R) (Due: Monday, 10/26/20) 
 * [Final Project]({{ site.baseurl }}/data/hw/Project.pdf) (Due: Monday, 12/07/20 by 11:59 PM)
     * [Real world example](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4612811/)
