@@ -38,8 +38,8 @@ exclude_from_nav: false
     * [R Script: Hypothesis Testing]({{ site.baseurl }}/data/notes/hypotheses.R)  
     * [Hypothesis Testing Explanation]({{ site.baseurl }}/data/notes/HypothesisTestingExplanation.pdf)  
     * [R Script: Dogs Example]({{ site.baseurl }}/data/notes/dogs.R) 
-{% comment %}
     * [R Script: Hypothesis Test for Two Sample Proportions]({{ site.baseurl }}/data/notes/two_sample_prop.R)
+{% comment %}
     * [Hypothesis Overview]({{ site.baseurl }}/data/notes/HypothesisOverview.docx) 
     * [R Script: T Distribution]({{ site.baseurl }}/data/notes/t.R) 
     * [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 

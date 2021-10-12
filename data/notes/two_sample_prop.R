@@ -4,7 +4,7 @@
 #   If X1 ~ N(mu1, sigma1) and X2 ~ N(mu2, sigma2), then
 #     X1+X2 ~ N(mu1+mu2,   sqrt(sigma1**2 + sigma2**2))
 # You do not need to worry about understanding the code,
-# but you should understand the thereom
+# but you should understand the theorem
 #############################################################
 
 ####################################################
@@ -32,7 +32,9 @@ norm.density <- function(mu, sigma, r=4, main = NULL, ylab = "density", ...) {
   x <- seq(mu-r*sigma, mu+r*sigma, length.out = 100)
   if (is.null(main)) main <- paste("N(", mu, ",", sigma, ")", sep = "")
   plot(x, dnorm(x, mean = mu, sd = sigma), type = "l",
-       ylab = ylab, main = main, ...)  
+       ylab = ylab, main = main, ...)
+
+  
 }
 
   
@@ -79,13 +81,13 @@ close.screen(all=TRUE)
 ##################################################################
 # Example: In a survey of 2600 individuals, 110 out of 1120 males 
 # were red-green color-blind and 10 out of 1480 females were
-# red-green colorblind. Is there a signifcant relationship 
+# red-green colorblind. Is there a significant relationship 
 # (at p < 0.05) between sex and red-green color-blindness?
 # Answer this question by carrying out the steps below.
 ##################################################################
 
-#1. State the null and alternative hypotheses
-# H0: pm - pf = 0, pm is the true proportion of males who are
+#1. State the null and alternative hypotheses (done for you)
+# H0: pm - pf = 0, where pm is the true proportion of males who are
 #      red-green colorblind; pf is the true proportion of females
 # HA: pm - pf != 0
 
@@ -93,7 +95,6 @@ close.screen(all=TRUE)
 
 #3. Find the p-value
 
-# 2*pnorm(-abs(z)) # manual calculation confirms this
 
 #4. State the conclusion
 
