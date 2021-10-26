@@ -43,8 +43,8 @@ exclude_from_nav: false
     * [Hypothesis Overview]({{ site.baseurl }}/data/notes/HypothesisOverview.pdf) 
     * [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
     * [R Script: Two-sample t-test]({{ site.baseurl }}/data/notes/two-sample_t-test.R) 
-{% comment %}
 * [Module 6: Gene Expression]({{ site.baseurl }}/data/notes/GeneExpression.pdf)
+{% comment %}
     * [R Script: Microarrays]({{ site.baseurl }}/data/notes/microarray.R) 
 * [Module 7: Gene Expression Analysis]({{ site.baseurl }}/data/notes/GeneExpressionAnalysis.pdf) 
     * [R Script: Contrasts]({{ site.baseurl }}/data/notes/contrasts.R)
