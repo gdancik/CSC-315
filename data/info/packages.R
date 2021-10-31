@@ -35,4 +35,5 @@ install.packages('BiocManager')
 # load BiocManager and install the packages
 library(BiocManager)
 BiocManager::install('limma')
+BiocManager::install('edgeR')
 

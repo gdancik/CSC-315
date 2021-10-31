@@ -44,6 +44,8 @@ exclude_from_nav: false
     * [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
     * [R Script: Two-sample t-test]({{ site.baseurl }}/data/notes/two-sample_t-test.R) 
 * [Module 6: Gene Expression]({{ site.baseurl }}/data/notes/GeneExpression.pdf)
+* Module 7: RNA-seq
+    * [R Script: Normalization (old school)]({{ site.baseurl }}/data/notes/Normalization_old_school.R)
 {% comment %}
     * [R Script: Microarrays]({{ site.baseurl }}/data/notes/microarray.R) 
 * [Module 7: Gene Expression Analysis]({{ site.baseurl }}/data/notes/GeneExpressionAnalysis.pdf) 
