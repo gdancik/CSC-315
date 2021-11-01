@@ -126,11 +126,11 @@ RPKM <- sweep(RPM, 1, L, '/')
 
 #   The TPM (transcripts per million) measure is an attempt to deal with
 #   this. The TPM for a gene is its RPKM (or FPKM) value divided by the sum of all 
-#   RPKM (or FPKM) values in the sample. 
+#   RPKM (or FPKM) values in the sample, times 1 million. 
 ################################################################################
 
 N <- colSums(RPKM)
-TPM <- sweep(RPKM, 2, N, '/')
+TPM <- sweep(RPKM, 2, N, '/') * 1e**6
 
 # Now the columns are normalized (they sum to the same value), but 
 # we still are not able to compare across samples. Remember that only
