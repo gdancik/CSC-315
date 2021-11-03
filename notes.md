@@ -48,6 +48,7 @@ exclude_from_nav: false
     * [RPKM,FPKM, and TPM](https://www.rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/)
         - [Formulas](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7373998/)
     * [R Script: Normalization (old school)]({{ site.baseurl }}/data/notes/Normalization_old_school.R)
+    * [R Script: Xena]({{ site.baseurl }}/data/notes/xena.R)
     * [A comprehensive evaluation of normalization methods...](https://academic.oup.com/bib/article/14/6/671/189645)
 
 {% comment %}
