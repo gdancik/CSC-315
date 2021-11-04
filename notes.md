@@ -28,12 +28,12 @@ exclude_from_nav: false
     * [R Script: Correlation and Regression]({{ site.baseurl }}/data/notes/correlation_and_regression.R)
     * [Extrapolation Examples]({{ site.baseurl }}/data/notes/F9.pdf)
 * [Advanced R Script]({{ site.baseurl }}/data/notes/AdvancedR.R)
-</div>
 * [Module 4: Probability]({{ site.baseurl }}/data/notes/module4.pdf)
     * [R Script: Probability]({{ site.baseurl }}/data/notes/probability.R) 
     * [Birthday R script]({{ site.baseurl }}/data/notes/birthday.R)
     * [R Script: Normal Distribution]({{ site.baseurl }}/data/notes/normal.R) 
     * [R Script: Sampling Distributions]({{ site.baseurl }}/data/notes/sampling_distributions.R)
+</div>
 * [Module 5: Hypothesis Testing]({{ site.baseurl }}/data/notes/module5.pdf) 
     * [R Script: Hypothesis Testing]({{ site.baseurl }}/data/notes/hypotheses.R)  
     * [Hypothesis Testing Explanation]({{ site.baseurl }}/data/notes/HypothesisTestingExplanation.pdf)  

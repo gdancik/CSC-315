@@ -1,119 +1,120 @@
-################################################################
-# Lab 8: GEO Lab - Raw Data
-# In this lab you will analyze two probes from a gene expression
-# study of Alzheimer's Disease (AD). The dataset is
-# available from: 
-# http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE1297
-################################################################
+####################################################################
+# Name:
+# Lab 8: Intro to RNA-Seq and Xena
+# Turn in a Notebook that answers the questions below
+####################################################################
 
-library(affy)
+library(edgeR)
+library(UCSCXenaTools)
 library(dplyr)
 library(ggplot2)
 
-#####################################################################
-# 1) Download the raw data (GSE1297_RAW.tar file) and extract the 
-# files. Read in the data using the ReadAffy() function after 
-# setting the celfile.path argument appropriately below
-################################################################
 
-GSE1297 <- ReadAffy(celfile.path = "/Users/dancikg/Downloads/GSE1297_RAW")
+##########################################################################
+# 1) Consider a reference genome with genes as follows:
+#    AGAGAGAG|AACAACAACAAC|GGGAAAGGGAAA
+#     gene 1 |   gene 2   | gene 3
 
-###################################################################
-# 2) Process the gene expression data using the Robust Multi-Array 
-# Average (RMA) method and extract the expression data.
-###################################################################
+# Suppose that mRNA is extracted from a sample, and during sequencing is
+# broken into the following fragments:   GGG, AAC, ACA, GAA, and GAG
+# 
+# What are the read counts for each of the 3 genes?
+# Gene 1: 
+# Gene 2: 
+# Gene 3:
 
-# Use the appropriate R function on the expression matrix to 
-
-# a) find the number of probes 
-
-
-# b) find the number of samples
-
-# c) generate a boxplot of the expression values for each sample
-#    to confirm that the data has been normalized
-###################################################################
-
-###################################################################
-# We will see how to get the phenotype data from GEO in a later
-# class; for this lab, the data has already been processed
-# and can be read in using the statement below. The data includes
-# the following information (though we will not use these):
-# MMSE.Score = mini–mental state examination score for 
-#   cognitive impairment (low scores indicate impairment)
-# NFT.Score = protein markers for AD
-################################################################
-
-GSE1297.p <- read.delim("http://bioinformatics.easternct.edu/BCBET2/GSE1297.p.xlsx")
-
-########################################################################
-# The code below adds a column to the data frame that includes the
-# Alzheimer's Disease status for each sample, which it gets by deleting
-# the sample number (e.g., "Control 1008" becomes "Control". This is 
-# done by using a regular expression, which removes everything in 
-# the string beginning with the space). Note that your pheno data
-# must be stored in GSE1297.p for the code to work.
-########################################################################
-
-GSE1297.p <- GSE1297.p %>%  
-    mutate(AD.status = gsub(" .*", "", Sample)  )
-
-########################################################################
-# The code below generates a boxplot of MMSE scores across
-# the different levels of AD severity
-########################################################################
-
-ggplot(GSE1297.p, aes(AD.status, MMSE.Score, fill = AD.status)) +
-  geom_boxplot() +
-  theme_classic() +
-  guides(fill = "none") +
-  ggtitle("Relationship between MMSE score and AD severity") 
-
-#####################################################
-# 3) A gene called APOE is associated with late onset
-#    Alzheimer's disease. One of the probes for 
-#    APOE is 203381_s_at, and one of the probe set 
-#    sequences for this probe is
-#   'AGGCCAAGGTGGAGCAAGCGGTGGA'. For this question,
-#   we will focus on the first 5 nucleotides, 
-#   'AGGCC'. During the gene expression profiling
-#   process, if mRNA containing 'AGGCC' exists in
-#   the sample, it will be converted to cDNA, which will
-#   hybridize to the probe. What is the cDNA sequence
-#   that will hybridize (bind) to 'AGGCC'?
-#####################################################
-
-############################################################
-# 4) Construct side-by-side boxplots showing the expression
-# of the probe 203381_s_at for CONTROL patients and 
-# patients with SEVERE AD. (The boxplot must be constructed
-# using ggplot, and should only include Control and Severe
-# patients, since these are the groups we want to compare)
-############################################################
+# Include your answers in the comment above. Note that you should NOT use
+# R to answer this question.
 
 
-###########################################################
-# Perform a two sample t-test to evaluate whether or not
-# expression is significantly different between CONTROL
-# patients and patients with SEVERE AD. Report the 
-# fold change and the p-value and state your conclusion.
-###########################################################
+##########################################################################
+# 2) Consider the matrix 'm' below, and complete the following steps so 
+#    that each column has mean 0.
 
+m <- matrix(c(1:10, c(1:3, 10, 4), rep(17,5)), ncol=4)
 
-#####################################################
-## Repeat the boxplot and t.test for the gene PSEN1 
-##  using the probe 207782_s_at
-#####################################################
+# (a) Use the 'colMeans' function to create a vector containing the mean of
+#     each column
 
-########################################################
-## Based on the above analyses, what is your conclusion
-## about the association between the genes APOE and
-## PSEN1 and Alzheimer's Disease / cognitive 
-## impairment?
-###############################################s######
+# (b) Use the 'sweep' function to subtract the mean of each column, and
+#     store the result.
 
-###########################################################
-## If you are interested, more information about
-## Alzheimer's Disease and these genes can be found
-## at: http://ghr.nlm.nih.gov/condition/alzheimer-disease
-##########################################################
+# (c) Use the 'colMeans' function to verify that the mean of each column is 0
+
+##########################################################################
+# 3)  Consider the matrix of read counts below, where the relative 
+#     expression between samples 1 and 2 are the same (but the total read 
+#     counts are twice as high for sample 2), and gene 3 has higher 
+#     expression in sample 3 than in sample 1.
+
+read_counts <- data.frame(s1 = c(10, 20, 15)) %>% 
+               mutate(s2 = 2*s1, s3 = s1)
+rownames(read_counts) <- paste0("gene",  1:3)
+read_counts$s3[3] <- read_counts$s3[3] * 2
+read_counts$s3[1:2]  <- read_counts$s3[1:2] - 15/2
+
+# (a) Calculate the vector containing total reads per sample, per million mapped reads.  
+#     Note: this is 'N' from the class example.
+
+# (b) The length of the three genes are 100, 200, and 100 bases. Create a vector containing
+#     the gene lengths in kilobases. Note: this is 'L' from the class example.
+
+# (c) Use the 'sweep' function multiple times to calculate the RPKM values, which gives
+#     the Reads Per Kilobase of transcript, per Million mapped reads.
+
+# (d) Use the 'rpkm' function from the edgeR package to calculate the RPKM values (these
+#     results should be the same as your calculation in (c))
+
+# 4) Consider the rpkm values in the matrix below
+
+    rpkm_values <- data.frame(s1 = c(5,10,5), s2 = c(5,10,30))
+    rownames(rpkm_values) <- paste0('gene', 1:3)
+
+# (a) Calculate the TPM values from the rpkm values matrix
+    
+# (b)  The rpkm value of gene1 is 5 in both samples. Does this mean that the
+#      expression of gene1 is the same across samples? Why or why not? Recall 
+#      the following interpretations 
+#         - an rpkm value 'r': for every 1 million mapped reads, we expect to find 'r' 
+#           reads for every kilobase of the transcript
+#         - a tpm value of 't': for the given gene, we expect to observe 't' reads for
+#           every 1 million full length transcripts that are sequenced.
+
+# 5) Show that the number of cohorts available with read count data from the 'gdcHub' 
+#    is 41. Note that the column 'XenaHostNames' contains the hub information while the
+#    read count data is labeled as 'HTSeq - Counts' in the 'Label' column.
+    
+    data(XenaData) # load the XenaData data frame
+    
+    
+# The code below loads the phenotype (clinical) data from the GDC / Bladder Cancer
+# patient cohort, which is stored in 'blca_pheno'
+    
+    blca <- XenaData %>% filter(XenaCohorts == 'GDC TCGA Bladder Cancer (BLCA)')
+    cli_query = blca %>%
+      filter(Label == "Phenotype") %>%  # select clinical dataset
+      XenaGenerate() %>%  # generate a XenaHub object
+      XenaQuery() %>%     # generate the query
+      XenaDownload()      # download the data
+    
+    # This prepares (loads) the dataset into R
+    blca_pheno <- XenaPrepare(cli_query)
+    
+# 6) Find the mean and median age of a patient from this cohort. The age information
+#   can be found in the 'age_at_index.demographic' column.
+    
+# 7) Construct a frequency bar graph showing the race of each patient.
+#   Race information is contained in the 'race.demographic' column.
+    
+    
+# 8) (a) Load the phenotype data for the cohort: 'GDC TCGA Thyroid Cancer (THCA)'
+
+#   (b) How many patients (rows) are in this cohort?
+    
+#   (c) Construct a relative frequency table showing for the anatomical
+#       site of the thyroid tumor. Note: this information is in the 
+#       column: 'primary_thyroid_gland_neoplasm_location_anatomic_site'
+#       Note: the thyroid gland is responsible for producing hormones that
+#             regulate body temperature and heart rate, among others. 
+#             An diagram of the thyroid gland can be seen here:
+#             https://generalsurgery.ucsf.edu/conditions--procedures/thyroid-cancer.aspx
