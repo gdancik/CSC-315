@@ -49,7 +49,6 @@ exclude_from_nav: false
         - [Formulas](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7373998/)
     * [R Script: Normalization (old school)]({{ site.baseurl }}/data/notes/Normalization_old_school.R)
     * [R Script: Xena]({{ site.baseurl }}/data/notes/xena.R)
-    * [A comprehensive evaluation of normalization methods...](https://academic.oup.com/bib/article/14/6/671/189645)
 * [Module 7: TMM and Limma]({{ site.baseurl }}/data/notes/TMM_and_Limma_Intro.pdf) 
     * [R Script: Contrasts]({{ site.baseurl }}/data/notes/contrasts.R)
 {% comment %}
