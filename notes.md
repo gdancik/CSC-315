@@ -50,17 +50,17 @@ exclude_from_nav: false
     * [R Script: Normalization (old school)]({{ site.baseurl }}/data/notes/Normalization_old_school.R)
     * [R Script: Xena]({{ site.baseurl }}/data/notes/xena.R)
     * [A comprehensive evaluation of normalization methods...](https://academic.oup.com/bib/article/14/6/671/189645)
-
-{% comment %}
-    * [R Script: Microarrays]({{ site.baseurl }}/data/notes/microarray.R) 
-* [Module 7: Gene Expression Analysis]({{ site.baseurl }}/data/notes/GeneExpressionAnalysis.pdf) 
+* [Module 7: TMM and Limma]({{ site.baseurl }}/data/notes/TMM_and_Limma_Intro.pdf) 
     * [R Script: Contrasts]({{ site.baseurl }}/data/notes/contrasts.R)
+{% comment %}
     * [R Script: GEO and limma]({{ site.baseurl }}/data/notes/GEO-and-limma.R) 
     * [R Script: knn]({{ site.baseurl }}/data/notes/knn.R)
 * [Module 8: Functional Annotation]({{ site.baseurl }}/data/notes/FunctionalAnnotation.pdf)
     * [R Script: DAVID]({{ site.baseurl }}/data/notes/DAVID.R) 
 *  [Module 9: Bioinformatics Wrap-Up]({{ site.baseurl }}/data/notes/WrapUp.pdf)
     * [Movies R script]({{ site.baseurl }}/data/notes/movies.R) 
+
+* [R Script: Microarrays]({{ site.baseurl }}/data/notes/microarray.R) 
 
 {% endcomment %}
 

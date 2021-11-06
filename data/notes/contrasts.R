@@ -91,7 +91,7 @@ fit1$coefficients[2]
 ## variable for this problem (where drinkers are assigned 
 ## one numeric value and non-drinker are assigned another). 
 ## In the above code, we used 0 for non-drinkers and 1 
-## for drinkers. The 'contrast' determins the values
+## for drinkers. The 'contrast' type determines the values
 ## that are used for each group
 ###########################################################
 
@@ -103,6 +103,7 @@ drinking.status  # levels are FALSE/TRUE
 # TRUE = drinker)
 levels(drinking.status) <- c("NonDrinker", "Drinker")
 groups <- levels(drinking.status)
+groups
 
 ##########################################################
 # Treatment contrasts: explanatory variable is 0 for the
@@ -111,8 +112,8 @@ groups <- levels(drinking.status)
 
 # The 'contr.treatment' function shows how factors are converted to 
 # integers using the "treatment contrast":
-#   the first level of the factor is a reference value, and
-#   additional levels are contrasted with the reference
+#   In this case, the first level of the factor is a reference value, 
+#   and additional levels are contrasted with the reference
 #   In this case, we have "NonDrinker (reference) = 0, Drinker = 1
 contr.treatment(groups)
 
@@ -140,6 +141,7 @@ coefficients(fit.treatment)[2]
 
 # NonDrinker (1st level) = 1, Drinker (2nd level) = -1
 contr.sum(groups)
+
 fit.sum <- lm(survey$College.GPA ~ drinking.status,
                    contrasts = list(drinking.status = "contr.sum"))
 
@@ -179,6 +181,6 @@ summary(fit.indicator)
 #####################################################
 # This last coding of the explanatory variable in a 
 # linear model is what we will use to identify 
-# differentially expressed probes
+# differentially expressed genes
 #####################################################
 
