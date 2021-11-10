@@ -121,6 +121,14 @@ dim(X)
 # Process the expression data
 #######################################################
 
+###################################################
+# Data is log2(counts + 1), so we need to get
+# back to the scale of counts
+# Note: This was left off of the original script
+#   and added after class on 11/10
+####################################################
+X <- round(2**X - 1)
+
 # first create a Digital Gene Expression (DGE) list object,
 # which contains counts and library size information
 dge <- DGEList(counts=X)
@@ -148,12 +156,21 @@ head(dge$samples)   #   but now we have the normalization factors
 # 3 counts are added to each observation to prevent log 0 values
 logCPM <- cpm(dge, log = TRUE, prior.count = 3)
 
+
 # This approach, which uses limma trend (below), works well if the
 # ratio of the largest library size to the smallest is not more than 
 # about 3-fold. If this is not the case for your analysis, let me know
 # and an alternative approach can be used. Here we verify that the 
 # library sizes (normalization factors) are similar
 max(dge$samples$norm.factors) / min(dge$samples$norm.factors)
+
+# Added after class on 11/10: In general, using an 
+# alternative method called limma voom may be a little 
+# better for differences above 3-fold; but the results in this 
+# case for the top probes are very similar. For simplicity, 
+# we will use limma trend in this class; limma trend and 
+# limma voom are described in: 
+#   https://genomebiology.biomedcentral.com/articles/10.1186/gb-2014-15-2-r29
 
 ################################################################
 # To find differentially expressed (DE) probes between males
@@ -266,7 +283,7 @@ genes <- paste0(probeMap$gene[m], ' (', probeMap$chrom[m], ')')
 rownames(expr) <- genes
 
 # create a color range consisting of 200 values between yellow and blue
-col.heat <- colorRampPalette(c("yellow", "darkblue"))(200)
+col.heat <- colorRampPalette(c("yellow", "blue"))(200)
 
 # set colors for gender #
 col.gender <- as.integer(as.factor(gender))
@@ -330,3 +347,4 @@ ggplot(df, aes(x = gender, y = x, fill = gender)) + geom_boxplot() +
 # For more about genetic (and other) determinants of sex, see
 # https://blog.23andme.com/23andme-research/how-was-your-sex-determined-it-might-be-a-lot-more-complicated-than-you-think/
 ###############################################################
+
