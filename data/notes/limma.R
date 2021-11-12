@@ -326,10 +326,15 @@ tt_all <- topTable(fit.de, number = Inf)
 m <- match(probes$id, rownames(tt_all))
 tt_all[m,]
 
-# The FC is 0.34 and the p-value is 7.5 x 10^-97 (we would say P < 0.01)
+# The FC is 2^-7.912 = 0.004 and the p-value is 1.009 x 10^-157 (we would say P < 0.01)
+# This is the FC for males / females; equivalently, the FC
+# is 2^+7.912 = 241 for females / males. There are two ways
+# of describing this relationship (either is correct)
+# This gene is up-regulated in females
+# This gene is down-regulated in males
 
 # generate a graph
-FC <- paste0("FC = ", round(2**tt$logFC[m], 2))
+FC <- paste0("FC = ", round(2**tt$logFC[m], 5))
 main <- paste0("Expression of XIST, ", FC)
 ggplot(df, aes(x = gender, y = x, fill = gender)) + geom_boxplot() +
   ylab("log2 expression") + ggtitle(main) +
