@@ -22,6 +22,7 @@ exclude_from_nav: false
 * [Lab #7]({{ site.baseurl }}/data/hw/Lab7.R) (Due: Monday, 10/25/21) 
 <hr>
 * [Lab #8]({{ site.baseurl }}/data/hw/Lab8.R) (Due: Monday, 11/15/21) 
+* [Lab #9]({{ site.baseurl }}/data/hw/Lab9.R) (Due: Wednesday, 12/01/21) 
 {% comment %} 
 * [Final Project]({{ site.baseurl }}/data/hw/Project.pdf) (Due: Monday, 12/07/20 by 11:59 PM)
     * [Real world example](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4612811/)

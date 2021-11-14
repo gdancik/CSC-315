@@ -1,151 +1,196 @@
-##############################################################
+####################################################################
 # Name:
-# CSC-315
-# Lab #9: Limma, heatmaps, and analyzing processed GEO data
-#############################################################
+# Lab 9: Identification of differentially expressed genes
 
-##########################################################################
-# Add R code to the script below and create a Notebook to complete
-# the steps below and to explicitly answer the following questions
-##########################################################################
+# Turn in a Notebook that answers the questions below
+####################################################################
 
-library(limma)
-library(GEOquery)
-library(ggplot2)
 library(dplyr)
+library(ggplot2)
+library(UCSCXenaTools) # needed to retreive data
+library(edgeR) # needed for processing, such as TMM
+library(limma) # needed to find DE probes
 
-# 1) The code below reads in our class survey data and performs a 
-#   2-sample t-test to evaluate whether there is a statistically
-#   significant difference in the hours of sleep between 
-#   'Cat' and 'Dog' people. Based on the code below, 
+########################################################
+# We start by retreiving and processing the data
+# This code generates the following objects:
+#  logCPM - the TMM normalized expression data on the 
+#              log CPM scale
+#  Y - the clinical information
+#  probeMap - the probeMap data
 
-survey <- read.csv("https://gdancik.github.io/CSC-315/data/datasets/CSC315_survey_Fall_2020.csv")
-s <- split(survey$Sleep, survey$CatOrDogPerson)
-res <- t.test(s$Cat, s$Dog, var.equal = TRUE)
-
-#   (a) find the p-value and state your conclusion regarding the null 
-#       hypothesis of H0: mu_cat - mu_dog = 0
-
-
-#   (b) calculate the difference in mean hours of sleep between
-#   groups, using the formula: 
-#     mean hours of sleep for dog people - mean hours of sleep for cat people
-
-
-# 2) Fit a linear model that predicts Hours of Sleep based on 
-#   whether an individual is a cat or a dog person. You should use
-#   the treatment contrast where 'cat person' is the reference (x = 0) and 
-#   'dog person' is the treatment (x = +1)
-
-  
-# (a) Find and interpret the y-intercept of the regression line in the
-#      context of this problem.
+# logCPM and Y are aligned so that column 'i' of logCPM 
+# contains the expression data for the individual with
+# clinical data in row 'i' of Y
+########################################################
 
 
-# (b) Find and interpret the slope of the regression line in the context of 
-#     this problem
+##########################################
+# Setup step 1: Retrieve the data
+##########################################
+
+data(XenaData)
+
+# limit to desired cohort
+blca <- XenaData %>% filter(XenaCohorts == 'GDC TCGA Bladder Cancer (BLCA)')
+
+# Get the phenotype / clinical data
+cli_query = blca %>%
+  filter(Label == "Phenotype") %>%  # select clinical dataset
+  XenaGenerate() %>%  # generate a XenaHub object
+  XenaQuery() %>%     # generate the query
+  XenaDownload()      # download the data
+
+# prepare (load) the data into R
+blca_pheno <- XenaPrepare(cli_query)
+
+# Get the RNA-seq data, including the "probe map"
+cli_query <- blca %>% filter(Label == 'HTSeq - Counts') %>%
+  XenaGenerate() %>%  # generate a XenaHub object
+  XenaQuery() %>%
+  XenaDownload(download_probeMap = TRUE)
+
+# prepare (load) the data into R
+blca_counts <- XenaPrepare(cli_query)
 
 
-# (c) What is the p-value for the hypothesis test that there is a
-#     significant difference in Hours of Sleep between the two groups?
-#     (show this result in R, based on the linear model). Note: the 
-#     p-value from the linear model should match the p-value from the
-#     two-sample t-test from problem 1(a) above.
 
-# 3) We can also fit a linear model using the 'sum' contrasts, which 
-#    is done below. This model has the form:
-#
-#    y = a + bx, where x = 1 for a Cat person and -1 for a Dog person
+##########################################
+# Setup step 2: Data pre-processing
+##########################################
 
-fit <- lm(Sleep ~ CatOrDogPerson, data = survey, 
-          contrasts = list(CatOrDogPerson = 'contr.sum'))
+X <- data.frame(blca_counts$TCGA.BLCA.htseq_counts.tsv.gz)
+rownames(X) <- X$Ensembl_ID
+X <- X[,-1]  # remove the probe name column
 
-#  a) Show that the y-intercept is the average (mean) of the 
-#     the group means, i.e.,the y-intercept is equal to 
-#     [mean(sleep_cat_person) + mean(sleep_dog_person)] / 2
-#     by calculating and displaying this value, and also 
-#     displaying the y-intercept.
+# probeMap = probe names
+probeMap <- blca_counts$gencode.v22.annotation.gene.probeMap
 
-#  b) Find and interpret the slope of the regression line in the 
-#     context of this problem
+# Y = pheno data
+Y <- blca_pheno
 
 
-# 4) Get the processed data for GSE19143 and extract the 
-#    expression data and phenotype data. Note that this
-#    dataset contains gene expression samples from children
-#    with Acute Lymphoblastic Leukemia (ALL), a cancer of
-#    the bone marrow. Tumor samples were treated with
-#    the anti-inflammatory drug prednisolone, and were
-#    determined to be either sensitive (responsive) or 
-#    resistant (non-responsive) to this drug. 
+# 'change '.' to '-' so sample ID format is consistent
+colnames(X) <- gsub('\\.', '-', colnames(X))
 
-# (a) Use the expression matrix to find the number of samples that 
-#     had their gene expression values profiled.
+# Keep only the '01A' tumor samples
+g <- grep('01A$', colnames(X))
+X <- X[,g]
 
 
-# (b) Use the expression matrix to find the number of probes on the array.
+# match expression data to clinical data
+common_samples <- intersect(colnames(X), Y$submitter_id.samples)
+mx <- match(common_samples, colnames(X))
+my <- match(common_samples, Y$submitter_id.samples)
+
+X <- X[,mx]
+Y <- Y[my,]
+
+# Make sure that the samples match -- if they don't, this will produce an error
+stopifnot(all(colnames(X) == Y$submitter_id.samples))
 
 
-# (c) Take the log2 of the expression data, and generate a boxplot
-#     to show that the samples are properly processed and normalized.
-#     The analysis beginning with question 6 must use the log2 data; 
-#     otherwise the results will not be correct.
+#############################################
+# Setup step 3: Process the expression data
+#############################################
 
+# convert from log2(count + 1) to count data
+X <- round(2**X - 1)
 
-# 5) How many individuals are resistant to prednisolone and
-# how many are sensitive? (Hint: you will need to determine
-# which column contains this information; it is one of the last
-# columns)
+# remove genes with low counts
+dge <- DGEList(counts=X)
+keep <- filterByExpr(dge,min.prop = .10 )
+dge <- dge[keep,,keep.lib.sizes=FALSE]
 
+# apply TMM normalization, which computes the normalization 
+# factors. The actual normalization is done in a later step
+dge <- calcNormFactors(dge, method = "TMM")
 
-# 6) Find the most differentially expressed probes, using an FDR of 
-# 10%, for probes that are differentially expressed between 
-# individuals who are resistant and individuals who are sensitive 
-# to prednisolone. Note: there should be 16 probes total. 
-
-# (a) How many of these probes are up-regulated (i.e., have higher
-#     expression) in resistant individuals 
-
-# (b) How many are down-regulated (i.e., have lower expression) 
-#     in resistant individuals. 
-
-# (c) How many of these probes do you expect to be false positives?
-
-
-# 7) Construct a heatmap of these 16 probes, with individuals 
-# color-coded by response to prednisolone (with green=sensitive and 
-# red = resistant). For visualizing gene expression values, it is 
-# common to use blue for high expression and yellow for low expression,
-# but you may use any color combination that you wish. Note: if you 
-# are unable to complete question 5), you may do this with the first 
-# 16 probes in the expression matrix.
-
-# 8) If you answered question 6 correctly, the SECOND hit 
-# should be for the probe 209374_s_at. Show that this probe
-# corresponds to the gene IGHM, by first downloading the 
-# correct platform data from GEO, and then finding the gene
-# associated with this probe. 
-
-
-# 9) How many probes are there for the gene IGHM on the platform
-# in this study? Note: you must search for this gene using the
-# regular expressions covered in the GEO-and-limma.R script. Your 
-# code must also output the number of probes. 
-
+# Calculate the log CPM values, using the normalization factors;
+# 3 counts are added to each observation to prevent log 0 values
+logCPM <- cpm(dge, log = TRUE, prior.count = 3)
 
 
 ########################################################################
-# Final Notes: the heatmap in question 6 provides a candidate list
-# of probes associated with prednisolone response in children with 
-# leukemia. Although much additional work and testing would need to be 
-# done to validate these findings, this kind of gene signature could 
-# ultimately be used to determine whether a child with leukemia would 
-# benefit from prednisolone treatment, or whether an alternative 
-# treatment might be more effective.
-
-# The IGHM finding is also interesting. IGHM is a gene that codes
-# for an antibody protein that is involved in the immune reponse; the 
-# fact that this gene is differentially expressed between responders 
-# and non-responders suggests that a patient's immune response may 
-# play a role in how well they respond to prednisolone.
+# Questions: Use the logCPM, probeMap, and Y objects to answer the
+# questions
 ########################################################################
+
+# 1) Find the mean expression of the probe "ENSG00000215704.8"
+
+# 2) Use ggplot to construct side-by-side boxplots for the expression
+#    of "ENSG00000215704.8" between males and females (do not worry about
+#    the FC and p-value for this comparison). The title of the graph should
+#    be the probe name and the y-axis should be labeled "log CPM". Based 
+#    on the graph, does it appear that this probe is differentially
+#    expressed?
+
+
+##########################################################################
+# Beginning with question 3, we will identify probes that are 
+# differentially expressed between "High Grade" and "Low Grade" tumors. 
+# This data has some missing values, which we replace with "unknown" 
+# because  missing values are not allowed in the design matrix. 
+# High grade tumors grow more quickly than low grade tumors, and are 
+# associated with poorer outcomes
+##########################################################################
+
+grade <- Y$neoplasm_histologic_grade
+grade[is.na(grade)] <- "unknown"
+
+
+# 3) Use limma to find the top 10 differentially expressed probes between
+# low and high grade tumors, and confirm that the top probe is 
+# "ENSG00000198670.10"
+
+# (a) construct design matrix
+
+# (b) fit the linear model to each row of the expression matrix
+
+# (c) specify and fit the contrasts
+
+# (d) apply the 'eBayes' step to calculate moderated t statistics
+
+# (e) find the top 10 differentially expressed probes
+
+# (f) confirm that top probe is "ENSG00000198670.10"
+
+
+# 4) Construct side-by-side boxplots (using ggplot) comparing the 
+#    expression of the top probe across high grade and low grade samples.
+#    Filter out the "unknown" samples so they do not appear in the
+#    boxplot. Your graph should include the probe name and the FC
+#    You may specifically look at the probe "ENSG00000198670.10"
+#    if your previous answer is not correct.
+
+
+# 5) Using the probes below (which are the top 10 probes), 
+#    generate a heatmap that color codes the columns as follows:
+#    low grade = "lightgreen"; high grade = "magenta";
+#    unknown = "black". It is typical to use yellow/blue for the
+#    expression data, but you may change these colors if you prefer
+#    Note that factor levels are in alphabetical order. Your heatmap
+#    should also display the gene names instead of the probe names.
+
+probes <-
+  c("ENSG00000198670.10", "ENSG00000065911.10", "ENSG00000261713.5", 
+    "ENSG00000136052.8", "ENSG00000108960.6", "ENSG00000269986.1", 
+    "ENSG00000276972.1", "ENSG00000169504.13", "ENSG00000086300.14", 
+    "ENSG00000271579.1")
+
+
+# 6) Use the top table function and find the number of probes that
+#    are differentially expressed with an FDR of < 5%. 
+
+# 7) Find the FC and p-value of the probe "ENSG00000163564.13".
+#    Hint: you will need to re-run the topTable function to get
+#    results for all probes
+
+# 8) The gene TREX1 (three prime repair exonuclease 1) plays a role
+#    in DNA repair. What probe or probes correspond to TREX1?
+
+
+# Note: Your results from question (6) provide a candidate set of genes
+# that could be used to better predict risk for patients with bladder
+# cancer, and can also provide therapeutic targets (genes that could be
+# targeted for better bladder cancer treatment)
