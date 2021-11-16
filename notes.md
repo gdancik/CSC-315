@@ -33,7 +33,6 @@ exclude_from_nav: false
     * [Birthday R script]({{ site.baseurl }}/data/notes/birthday.R)
     * [R Script: Normal Distribution]({{ site.baseurl }}/data/notes/normal.R) 
     * [R Script: Sampling Distributions]({{ site.baseurl }}/data/notes/sampling_distributions.R)
-</div>
 * [Module 5: Hypothesis Testing]({{ site.baseurl }}/data/notes/module5.pdf) 
     * [R Script: Hypothesis Testing]({{ site.baseurl }}/data/notes/hypotheses.R)  
     * [Hypothesis Testing Explanation]({{ site.baseurl }}/data/notes/HypothesisTestingExplanation.pdf)  
@@ -43,6 +42,7 @@ exclude_from_nav: false
     * [Hypothesis Overview]({{ site.baseurl }}/data/notes/HypothesisOverview.pdf) 
     * [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
     * [R Script: Two-sample t-test]({{ site.baseurl }}/data/notes/two-sample_t-test.R) 
+</div>
 * [Module 6: Gene Expression]({{ site.baseurl }}/data/notes/GeneExpression.pdf)
 * Module 7: RNA-seq
     * [RPKM,FPKM, and TPM](https://www.rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/)
@@ -52,8 +52,9 @@ exclude_from_nav: false
 * [Module 7: TMM and Limma]({{ site.baseurl }}/data/notes/TMM_and_Limma_Intro.pdf) 
     * [R Script: Contrasts]({{ site.baseurl }}/data/notes/contrasts.R)
     * [R Script: Limma]({{ site.baseurl }}/data/notes/limma.R) (updated 3:30PM, 11/10/21) 
-{% comment %}
+* [Module 8: Classification]({{ site.baseurl }}/data/notes/Classification.pdf) 
     * [R Script: knn]({{ site.baseurl }}/data/notes/knn.R)
+{% comment %}
 * [Module 8: Functional Annotation]({{ site.baseurl }}/data/notes/FunctionalAnnotation.pdf)
     * [R Script: DAVID]({{ site.baseurl }}/data/notes/DAVID.R) 
 *  [Module 9: Bioinformatics Wrap-Up]({{ site.baseurl }}/data/notes/WrapUp.pdf)

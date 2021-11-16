@@ -2,53 +2,136 @@
 # k-nearest neighbor (KNN) example
 ###############################################################
 
-library(GEOquery)
-library(limma)
+library(dplyr)
 library(ggplot2)
+library(UCSCXenaTools) # needed to retreive data
+library(edgeR) # needed for processing, such as TMM
+library(limma) # needed to find DE probes
 
-###############################################################
-# Let's load in the GSE1297 data again.
-###############################################################
-
-GSE1297 <- getGEO("GSE1297")
-
-###########################################################
-# Pull out gene expression data and pheno type data. Note
-# that for this dataset, expression data must be logged -- 
-# see GEO-and-limma.R
-###########################################################
-
-GSE1297.expr <- exprs(GSE1297[[1]])
-GSE1297.expr <- log2(GSE1297.expr)
-GSE1297.p <- pData(GSE1297[[1]])
 
 ################################################################
-# Find the differentially expressed genes between males and
-# females
+# We first find the top 10 probes differentially expressed
+# between males and females (see limma.R for details)
 ################################################################
 
-# change levels to F vs M to simplify output later on
-levels(GSE1297.p$characteristics_ch1.6) <- c("F", "M")
+###################
+# Get the data
+###################
 
-gender <- as.character(GSE1297.p$characteristics_ch1.6)
-design <- model.matrix(~0+gender)
+data(XenaData)
+
+# limit to desired cohort
+blca <- XenaData %>% filter(XenaCohorts == 'GDC TCGA Bladder Cancer (BLCA)')
+
+# Get the phenotype / clinical data
+cli_query = blca %>%
+  filter(Label == "Phenotype") %>%  # select clinical dataset
+  XenaGenerate() %>%  # generate a XenaHub object
+  XenaQuery() %>%     # generate the query
+  XenaDownload()      # download the data
+
+# prepare (load) the data into R
+blca_pheno <- XenaPrepare(cli_query)
+
+# Get the RNA-seq data, including the "probe map"
+cli_query <- blca %>% filter(Label == 'HTSeq - Counts') %>%
+  XenaGenerate() %>%  # generate a XenaHub object
+  XenaQuery() %>%
+  XenaDownload(download_probeMap = TRUE)
+
+# prepare (load) the data into R
+blca_counts <- XenaPrepare(cli_query)
+
+########################################################
+# Pre-process the data to get X (expression matrix),
+# Y (clinical info), and probeMap
+########################################################
+
+# for X, we need to set the rownames and remove the probe column
+# from the data matrix
+X <- data.frame(blca_counts$TCGA.BLCA.htseq_counts.tsv.gz)
+rownames(X) <- X$Ensembl_ID
+X <- X[,-1]  # remove the probe name column
+
+# probeMap = probe names
+probeMap <- blca_counts$gencode.v22.annotation.gene.probeMap
+
+# Y = pheno data
+Y <- blca_pheno
+
+# 'change '.' to '-' so sample ID format is consistent
+colnames(X) <- gsub('\\.', '-', colnames(X))
+
+
+# keep tumor samples ending in 01A
+g <- grep('01A$', colnames(X))
+X <- X[,g]
+
+
+# match expression to clinical data
+common_samples <- intersect(colnames(X), Y$submitter_id.samples)
+mx <- match(common_samples, colnames(X))
+my <- match(common_samples, Y$submitter_id.samples)
+
+X <- X[,mx]
+Y <- Y[my,]
+
+# Make sure that the samples match -- if they don't, this will produce an error
+stopifnot(all(colnames(X) == Y$submitter_id.samples))
+
+
+#################################
+# Process the expression data
+#################################
+
+# convert data from log2 (counts + 1) to counts
+X <- round(2**X - 1)
+
+# first create a Digital Gene Expression (DGE) list object,
+# which contains counts and library size information
+dge <- DGEList(counts=X)
+
+# remove genes with low counts
+keep <- filterByExpr(dge,min.prop = .10 )
+dge <- dge[keep,,keep.lib.sizes=FALSE]
+
+
+# apply TMM normalization, and calculate log CPM
+dge <- calcNormFactors(dge, method = "TMM")
+logCPM <- cpm(dge, log = TRUE, prior.count = 3)
+
+
+################################################################
+# Find differentially expressed (DE) probes between males
+# and females
+###############################################################
+
+# construct design matrix
+gender <- Y$gender.demographic
+design <- model.matrix(~-1+gender)
+
+# let's change the column names -- we need to reference them below
 colnames(design) <- c("Female", "Male")
 
-## fit linear model to each row (probe) of expression matrix
-fit <- lmFit(GSE1297.expr, design)
+# 'lmFit' fits a linear model to each row of the expression matrix ##
+fit <- lmFit(logCPM, design)
 
-## specify the contrasts
-contrast.matrix <- makeContrasts(Female - Male,levels=design)
+# Specify the contrasts -- the names here must match column names of 
+# design matrix 
+contrast.matrix <- makeContrasts(Male - Female,levels=design)
 
-## fit model based on contrasts (e.g., Female - Male)
-fit2 <- contrasts.fit(fit, contrast.matrix)
+## fit model based on contrasts (e.g., Male - Female)
+fit <- contrasts.fit(fit, contrast.matrix)
 
 # calculate moderated t-statistics by moderating standard errors
-# toward a common value, which makes answers more robust
-fit2 = eBayes(fit2)
+# toward the expected value, using limma trend.
+fit.de <- eBayes(fit, trend = TRUE)
 
-## get all probes with FDR < 0.05, sorted by p-value 
-tt.05 <- topTable(fit2,sort.by = "p", p.value = 0.05, number = nrow(GSE1297.expr))
+# get the top differentially expressed probes, 
+# sorted by p-value ('topTable' gives top 10 by default)
+tt <- topTable(fit.de,sort.by = "p")
+tt
+
 
 ##############################################################################
 # In classification problems, it is often desirable to scale each probe,
@@ -79,15 +162,16 @@ plot.clust(M)
 
 
 # Another example: in this case a probe with large expression
-# is added, and samples A and C are the 'closest'
-# this is not desired since 'closeness' is completely 
+# is added, and samples A and C are the 'closest'.
+# But this is not desirable since 'closeness' is now completely 
 # determined by probe p8 
 M <- rbind(M, p8=c(10,15,10))
 M
 plot.clust(M)
 
-# Solution is to scale each probe (each row) so that no single 
-# probe dominates in the distance calculation. 
+# Solution is to scale each probe (each row). If each probe is
+# on the same scale, each probe is given the same weight in 
+# the classification (no single probe dominates)
 
 # We use the following functions:
 #   scale - scales each column to have mean 0 and sd of 1
@@ -98,24 +182,24 @@ row.scale <-function(x) {
 }
 
 # With row scaling, A and B are the most similar
-# With gene expression data, it is usually desirable to scale 
-# each probe. Otherwise, probes with relatively high 
-# or low expression will drive the classification
 M.scale <- row.scale(M) # scale each row
 plot.clust(M.scale)
 
+###############################################################
+## Back to RNA-seq data
+###############################################################
 
-###############################################################
-## back to microarray data 
-###############################################################
+# With gene expression data, it is usually desirable to scale 
+# each probe. Otherwise, probes with relatively high 
+# or low expression will drive the classification
 
 ## get probes that are differentially expressed
-m <- match(rownames(tt.05), rownames(GSE1297.expr))
-X <- GSE1297.expr[m,]
+m <- match(rownames(tt), rownames(logCPM))
+X <- logCPM[m,]
 
-# visualization of probes - with knn, an unknown observation (?)
+# Probe visualization: with knn, an unknown observation (?)
 # is classified based on it's k-nearest neighbors. Note: only
-# 2 dimensions are shown, though 12 probes (dimensions) are 
+# 2 dimensions are shown, though 10 probes (dimensions) are 
 # used for classification
 col.gender <- as.integer(as.factor(gender))
 col.gender <- c("pink", "blue")[col.gender]
@@ -127,7 +211,7 @@ df <- data.frame(probe1 = X.scale[1,], probe2 = X.scale[2,], gender = gender)
 ggplot(df, aes(probe1,probe2,color=gender)) + geom_point() +
   theme_classic() + ggtitle("Scaled expression of top 2 probes") +
   scale_color_manual(values = c("hotpink", "blue")) +
-  annotate("text", x = -.3, y = -.5, label = "? (M or F)") 
+  annotate("text", x = 0, y = -1.0, label = "? (M or F)") 
 
 # we will use the plotly package for a 3D plot 
 # (this package will need to be installed)
@@ -142,8 +226,8 @@ plot_ly(x=X.scale[1,], y=X.scale[2,], z=X.scale[3,],
 
 
 ###################################################################
-# Let's predict the gender of each individual, using the 12 probes
-# with FDR < 5%. Note that knn requires samples in rows and 
+# Let's predict the gender of each individual, using the top 10
+# probes. Note that knn requires samples in rows and 
 # features (probes) in columns
 ###################################################################
 
@@ -169,34 +253,21 @@ sum(preds == gender) / length(gender)
 # The overall accuracy is not a good measure of performance because 
 # it is misleading if the data is unbalanced
 # The 'sensitivity' (or 'recall') of class 'A' is the probability of 
-# correctly classifying samples from group A. The 'balanced accuracy'
-# is calculated as the average sensitivity/recall over all classes.
+# correctly classifying samples from group A. We will calculate the
+# recall for each group.
 #######################################################################
-
-balanced.accuracy <-function(predicted, true) {
-   t <- table(true = true, predicted = predicted)
-   if (nrow(t) != 2) {
-     stop("invalid number of rows in accuracy table")
-   }
-   acc <- diag(t) / rowSums(t)
-   sens1 <- acc[1]
-   sens2 <- acc[2]
-   list(table = t, sensitivity1 = sens1, sensitivity2 = sens2, avg.sensitivity = mean(acc))
-}
-
-acc = balanced.accuracy(preds, gender)
-acc
 
 
 #################################################
 # Let's now make a prediction for 3 new samples
 #################################################
-X.test <- matrix(c(-4, -1, 0, -1, 0, 0, -1, -1, -1, 5, 0, 1, 
-                   3, -3, 0, 0, 0, -2, 2, 1, -2, -2, -2, 1,
-                   6,  7, 11, 10,  9,  8,  8,  8,  8,  9,  6,  6), 
-                 nrow = 12)
-
-# testing data should have same scaling as training data
+X.test <- cbind(s1 = c(-4.61, -4.61, 7.47, -4.2, -4.61, -4.61, -4.61, -4.61, -4.61, -4.61),
+                s2 = c(7.58, 5.48, -4.61, 5.71, 3.65, 3.63, 5.06, 4.31, 5.71, 5.29),
+                s3 = c(-4.61, -4.61, 4.67, -4.61, -4.61, -4.61, -4.61, -4.61, -4.61, -4.61)
+          )
+  
+  
+# Testing data should have same scaling as training data
 # the function below takes a previously scaled X matrix and
 # applies its scaling to rows of the matrix X
 scale.transform <- function(scaledX, X) {
