@@ -216,13 +216,13 @@ ggplot(df, aes(probe1,probe2,color=gender)) + geom_point() +
 # we will use the plotly package for a 3D plot 
 # (this package will need to be installed)
 library(plotly)
-labels <- list(xaxis = list(title = "probe 1", range = c(-2.2, 2.2)),
-               yaxis = list(title = "probe 2", range = c(-2.2, 2.2)),
-               zaxis = list(title = "probe 3",range = c(-2.2, 2.2)))
+labels <- list(xaxis = list(title = "probe 1", range = c(-2, 2)),
+               yaxis = list(title = "probe 2", range = c(-2, 2)),
+               zaxis = list(title = "probe 3",range = c(-2, 2)))
 plot_ly(x=X.scale[1,], y=X.scale[2,], z=X.scale[3,], 
         type="scatter3d", mode="markers", color = gender, 
         colors=c("pink", "blue")) %>%
-        layout(scene = labels)
+        layout(title = '\nTop 3 probes', scene = labels)
 
 
 ###################################################################
@@ -257,6 +257,11 @@ sum(preds == gender) / length(gender)
 # recall for each group.
 #######################################################################
 
+t <- table(true = gender, predicted = preds)
+t
+prop.table(t, margin = 1)  # relative frequency by row
+
+# Recall for females is 99%; recall for males is 100%
 
 #################################################
 # Let's now make a prediction for 3 new samples
