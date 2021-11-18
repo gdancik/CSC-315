@@ -54,6 +54,7 @@ exclude_from_nav: false
     * [R Script: Limma]({{ site.baseurl }}/data/notes/limma.R) (updated 3:30PM, 11/10/21) 
 * [Module 8: Classification]({{ site.baseurl }}/data/notes/Classification.pdf) 
     * [R Script: knn]({{ site.baseurl }}/data/notes/knn.R)
+* [Module 9: Why TMM and Limma]({{ site.baseurl }}/data/notes/Why.pdf) 
 {% comment %}
 * [Module 8: Functional Annotation]({{ site.baseurl }}/data/notes/FunctionalAnnotation.pdf)
     * [R Script: DAVID]({{ site.baseurl }}/data/notes/DAVID.R) 
