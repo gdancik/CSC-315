@@ -15,10 +15,10 @@ movies <- read.csv("movies_processed.txt")
 nrow(movies)
 
 # how many users are included?
-movies$UserID %>% factor() %>% levels() %>% length()
+movies$UserID %>% unique() %>% length()
 
 # how many movies are included?
-movies$productID %>% factor() %>% levels() %>% length()
+movies$productID %>% unique() %>% length()
 
 ###################################################################
 # Let's summarize the ratings #
