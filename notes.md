@@ -55,9 +55,9 @@ exclude_from_nav: false
 * [Module 8: Classification]({{ site.baseurl }}/data/notes/Classification.pdf) 
     * [R Script: knn]({{ site.baseurl }}/data/notes/knn.R)
 * [Module 9: Why TMM and Limma]({{ site.baseurl }}/data/notes/Why.pdf) 
-* [Module 8: Functional Annotation]({{ site.baseurl }}/data/notes/FunctionalAnnotation.pdf)
+* [Module 10: Functional Annotation]({{ site.baseurl }}/data/notes/FunctionalAnnotation.pdf)
     * [R Script: DAVID]({{ site.baseurl }}/data/notes/DAVID.R) 
-*  [Module 9: Bioinformatics Wrap-Up]({{ site.baseurl }}/data/notes/WrapUp.pdf)
+*  [Module 11: Bioinformatics Wrap-Up]({{ site.baseurl }}/data/notes/WrapUp.pdf)
     * [Movies R script]({{ site.baseurl }}/data/notes/movies.R) 
 {% comment %}
 
