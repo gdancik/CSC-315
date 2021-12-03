@@ -75,7 +75,7 @@ probes <- c("ENSG00000171189", "ENSG00000171502", "ENSG00000154080", "ENSG000002
 
 
 # 6) Using k-nearest neighbor classification with k = 3, calculate the recall for each group, using
-#    the probes from the previous question.
+#    the probes from the previous question. Don't forget to scale each probe!
 
 # 7) Show that the probes above correspond to the following genes:
 
