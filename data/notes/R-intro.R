@@ -18,6 +18,7 @@ sqrt(64)
 # Use either '<-' or '=' for assignment
 x <- 14  # x = 14 will do the same thing
 y <- 21
+
 total <- x + y
 num <- x / y
 name <- "Bob" # you can also use single quotes, but the convention is to use double quotes
@@ -29,7 +30,8 @@ ages <- c(19,20,24, 22, 18)
 # how many ages do we have?
 length(ages)
 
-# what is the age of the 2nd individual? Note that unlike C++/Java, indexing begins at 1
+# what is the age of the 2nd individual? Note that unlike Java/Python, 
+# indexing begins at 1
 ages[2]
 
 # What are the ages of individuals 2-4?
@@ -68,7 +70,7 @@ names <- c("Bob", "Lynn")
 x1 <- 1:10  # integers 1 through 10
 x2 <- 20:10 # integers 20 through 10
 x3 <- seq(1,10,by=2) # integers 1,3,5,7,9
-x4 <- rep(-7, 20) # a vector containing 20 values of -7
+x4 <- rep(-7, 20) # a vector containing 20 values all equal to -7
 
 ###########################################################################
 # Question set A
@@ -119,7 +121,7 @@ x / y  # the ith element of x is divided by the ith element of y
 
 
 #########################################################
-# When vectors are of different lengths, elements in
+# When vectors are of different lengths, elements in the
 # shorter vector are recycled as necessary.
 # NOTE: You will not get an error if the vectors are of 
 # different lengths, but you will get a warning if the 
@@ -199,7 +201,8 @@ m[,-lc] ## you could also use m[,-ncol(m)]
 #    by index or by name. 
 ########################################################
 
-person <- list(name = "Bob", age = 23, sex = "M")
+person <- list(name = "Bob", age = 23, gender = "M")
+person
 
 # how many objects are in the list, and what are their names?
 length(person)
