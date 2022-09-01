@@ -1,5 +1,5 @@
 ##########################################################################
-# CSC-315, Fall 2020
+# CSC-315, Fall 2022
 # Lab 1: R programming
 # Name: 
 ##########################################################################
@@ -12,40 +12,47 @@
 # Note: DO NOT delete / modify any of the questions / comments below!
 ##########################################################################
 
-# 1) What is 34+29*12
+# 1) What is 100 * 3 + 12
 
 # 2) What is the sum of all integers between (and including) -100 and +100.
 
-# 3)	Create a vector that contains the numbers 1-10.
+# 3)	Create a vector that contains the numbers 1-5.
 
 # 4) Change the 3rd value of the above vector to 99
 
-# 5)	Create a vector that contains the numbers 1-10, 17, and 25.
+# 5)	Create a vector that contains the numbers 1-20, 37, and 0.
 
 # 6)	Create a vector that contains two elements, your first name and last name
 
-# 7) Create a matrix that contains the numbers 87, 89, and 91 in the 1st row and
-#   76, 88, and 83 in the second row. Set or change the column names to 
-#   "ExamI", "ExamII", and "ExamIII", and set or change the row names to 
-#   "Joseph Smith" and "Amy Davis"
+# 7) The code below creates a matrix that contains the grades for 2 students
+#    for 3 exams. Set or change the column names to "ExamI", "ExamII", 
+#    and "ExamIII", and set or change the row names to "Holly Parker" and 
+#    "William Jones"
 
-# 8) Calculate the average grade for Amy Davis, using the 'mean' function.
+    grades <- matrix(c(91, 89, 85, 74, 89, 82),byrow = TRUE, nrow = 2)
 
-# 9) "Joseph" prefers to be called "Joe". Change the name of the 1st row of the matrix 
-#   to "Joe Smith". You should do this in a statement that only changes the name of 
-#   the first row. Note that R allows you to directly assign a value to any element 
+# 8) Calculate the average grade for William Jones, using the 'mean' function.
+#    In other words, find the average of the values in the second row. Note
+#    that your code should work on any matrix named 'grades' that has at
+#    least 2 rows.
+
+# 9) "William" prefers to be called "Bill". Change the name of the 2nd row of the matrix 
+#   to "Bill Jones". You should do this in a statement that only operates on 
+#   the first row. Note that for a matrix 'm', R allows you to directly assign a value to any element 
 #   (or elements) of rownames(m).
 
 # 10)	Create a list that includes the following objects: 
 #       (1) a vector that contains two elements, your first name and last name; 
 #       (2) your major
 
-# 11)  Read in the survey.txt file as was done in class (and put the code for this in your script!)
-
+# 11) Read in the survey.txt file as was done in class (and put the code for this in your script!)
+# The survey results are available from https://gdancik.github.io/CSC-315/data/datasets/survey.txt
+    
+    
 # 12)	How many individuals surveyed did not use FB (i.e., spent 0 hours / week on FB)
 
 # 13) What are the GPAs of the three students with the lowest College GPAs (you 
-#    should only display these GPAs)? Hint: use the 'sort' function. 
+#    should display only these GPAs)? Hint: use the 'sort' function. 
 
 # 14) What are the GPAs of the three students with the highest college GPAs? 
 #    Hint: use the sort function with decreasing = TRUE
@@ -56,4 +63,11 @@
 # 16) Display the 'Gender' column from surveyA and comment on the number of 
 #    individuals who are male, and the number who are female.
 
-# 17) Create an HTML noteobok 
+# 17) Create a list that contains the following named elements, based on
+#     the survey data:
+#     min_cgpa - the lowest college gpa
+#     max_cgpa - the highest college gpa
+#     mean_cpga - the mean college gpa
+#
+    
+# 18) Create an HTML noteobok 

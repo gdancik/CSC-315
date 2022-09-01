@@ -4,7 +4,7 @@ library(ggplot2)
 ####################################################################
 ## Graphical summaries of data
 ####################################################################
-status <- c("freshman", "freshman", "sophomore", "sophomore", "junior", "sophomore")
+status <- c("first-year", "first-year", "sophomore", "sophomore", "junior", "sophomore")
 
 #################################################
 # frequency table and relative frequency tables #
@@ -41,7 +41,6 @@ ggplot(counts, aes(x=status, y=Freq, fill = status)) + geom_col() +
   ggtitle("Class status of students") +
   labs(x = "Class status", y = "Frequency") + theme_bw()
 
-
 # To generate a relative frequency bar graph from the raw data,
 # set y = ..count../sum(..count..)
 ggplot(d.status, aes(x=status, y=..count.. / sum(..count..), fill = status)) + 
@@ -57,8 +56,9 @@ ggplot(d.status, aes(x=status, y=..count.. / sum(..count..), fill = status)) +
 # bars are ordered in alphabetical (factor-level) order by default
 levels(counts$status)
 
-# reorder based on counts (use negative value to order from high to low
-counts$status <- reorder(counts$status, -counts$Freq)
+# reorder based on counts (the default is to re-order in increasing order,
+# so we need to set decreasing to TRUE)
+counts$status <- reorder(counts$status, counts$Freq, decreasing = TRUE)
 
 ggplot(counts,aes(x=status, y=Freq, fill = status)) + 
   geom_col() +
@@ -79,14 +79,17 @@ survey <- read_delim("https://gdancik.github.io/CSC-315/data/datasets/survey.txt
 ###################################################################
 
 
-# Note, below is an alternative way of generating a frequency table
-# which summarizes the values in a column of a data frame
 
+
+# Note, below is an alternative way of generating a frequency and
+# relative frequency table using 'dplyr'
+
+# frequency table
 survey %>% group_by(Gender) %>% summarize(Frequency = n())
               
+# add relative frequencies
 survey %>% group_by(Gender) %>% summarize(Frequency = n()) %>% 
   mutate(Proportion = prop.table(Frequency))
-
 
 
 ###################################################################

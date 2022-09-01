@@ -41,7 +41,7 @@ plot.hist(income, xlab = "income", main = "Histogram of incomes")
 
 ####################################################################
 ## What happens to the mean and median when income contains a very 
-## large (or small) observation, such as 250000?
+## large (or small) observation, such as 250,000?
 ## Is the mean or median more resistant to this large observation?
 ####################################################################
 income.with.extreme.value <- c(income, 250000)
@@ -52,7 +52,7 @@ plot.hist(income.with.extreme.value,
 #########################################################
 # The standard deviation is a measure of variability, or
 # how spread out the data is relative to the mean. The
-# code below provides a grpahical emonstration of 
+# code below provides a graphical demonstration of 
 # how the standard deviation is calculated
 #########################################################
 
@@ -98,4 +98,3 @@ x.sd.manual <- sqrt(x.var.manual)
 ##################################################
 x.var <- var(x)
 x.sd <- sd(x)  
-
