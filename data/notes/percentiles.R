@@ -3,22 +3,11 @@ library(ggplot2)
 ####################################################################
 ## Percentiles and Boxplots
 ####################################################################
-percentile <- function(x, val) {
-   x = x[!is.na(x)]  ## remove missing values
-   ans = sum(x <= val) / length(x) * 100
-   return(ans)
-}
 
-x <- 1:10
-
-############################################
-# What is the percentile of the value 6.5?
-############################################
-percentile(x,6.5)
-
-############################################
-# Visualization of the 60th percentile
-############################################
+##################################################
+# Visualization of the 6.5 as the 60th percentile
+# in a dataset consisting of the mumbers 1 - 10
+##################################################
 
 # we will plot x-values (the data) vs. y = 1 for visualization
 x <- 1:10
@@ -40,6 +29,9 @@ ggplot() + geom_point(aes(x,y), color = color) +
            annotate("text", x = 9, y = 1.3, label = "40% of the data", color = "blue") +
            ggtitle("Visualization of the 60th percentile")
            
+
+# manually calculate this percentile
+sum(x < 6.5) / length(x)
 
 #############################################
 # find the 20th and 30th percentiles
@@ -85,17 +77,19 @@ fivenum(z)
 
 # create a new data.frame containing some numbers
 numbers <- data.frame(values = c(1:10, 20:21))
+
 #################################################################
 # Generate boxplot using ggplot
 # In the aesthetic we include the following:
 #    x corresponds to the column containing the groups to plot, 
 #      where we use a dot (".") to indicate that there are no groups
-#      (there almost always will be groups, as in the next example)
+#      (there are no groups in this example, in general there will be
+#      groups for us, as shown in the next example)
 #    y corresponds to the column containing the numeric data
 # Also note the 'fill' argument is outside the aesthetic, so it 
 #     is applied to all groups
 ###################################################################
-g <- ggplot(numbers) + geom_boxplot(aes(".", values), fill = "lightblue") + 
+g <- ggplot(numbers, aes(".", values)) + geom_boxplot(fill = "lightblue") + 
            xlab("")  + ggtitle("Example boxplot") + theme_classic()
 
 # Let's annotate the boxplot to understand the 'box'
@@ -115,7 +109,7 @@ g + annotate('label', x=.5, y=med, label = 'median') +
 
 #####################################################################
 # Side-by-side boxplots can be used to compare quantitative data 
-# across two groups 
+# across two (or more) groups 
 #####################################################################
 
 # Let's compare the heights of males and females using side-by-side boxplots #
@@ -124,17 +118,48 @@ heights <- read.csv("http://pastebin.com/raw/g7UdTFKG")
 
 # since gender is categorical, let's change it to a factor 
 # (otherwise, ggplot will treat gender as numeric)
-heights$GENDER <- factor(heights$GENDER)
-levels(heights$GENDER) <- c("Male", "Female")
+# we also set the levels (otherwise the levels are 0 and 1)
+heights$GENDER <- factor(heights$GENDER, labels = c("Male", "Female"))
 
 # Here the 'fill' argument is part of the aesthetics, since it maps those
 # values to a color
-ggplot(heights) + geom_boxplot(aes(GENDER, HEIGHT, fill = GENDER))
+ggplot(heights, aes(GENDER, HEIGHT, fill = GENDER)) + 
+  geom_boxplot()
 
 # Change formatting (remove legend, change labels)
 # Note: other options for the legend.position are "left", "right", "bottom", "top"
-ggplot(heights) + geom_boxplot(aes(GENDER, HEIGHT, fill = GENDER), show.legend = FALSE) + 
+ggplot(heights, aes(GENDER, HEIGHT, fill = GENDER)) + 
+        geom_boxplot(show.legend = FALSE) + 
         ggtitle("Comparison of heights between males and females") +
         labs(x = "gender", y = "height (inches)") +
         theme_classic() 
 
+
+#############################################################
+# Note about ggplot
+#############################################################
+
+# if the aesthetics are specified in the ggplot function, they apply
+# to all layers. In this case, the x-, y-, and fill values apply
+# to all layers, including a geom_jitter layer, which plots points
+# but with random noise (to limit overlap between points)
+
+# the 'color' aesthetic applies to the outline of the boxplot
+# and the color of the points
+
+ggplot(heights, aes(GENDER, HEIGHT, color = GENDER)) + 
+  geom_boxplot(show.legend = FALSE) + 
+  geom_jitter(width = .2, show.legend = FALSE, size = 1) + 
+  ggtitle("Comparison of heights between males and females") +
+  labs(x = "gender", y = "height (inches)") +
+  theme_classic() 
+
+# if you wanted different colors for the boxplot and jitter layers, 
+# you can change the aesthetic for the desired layer only
+ggplot(heights, aes(GENDER, HEIGHT)) + 
+  geom_boxplot(show.legend = FALSE) + 
+  geom_jitter(aes(color = GENDER), width = .2, 
+              show.legend = FALSE, size = 1) + 
+  ggtitle("Comparison of heights between males and females") +
+  labs(x = "gender", y = "height (inches)") +
+  theme_classic() 

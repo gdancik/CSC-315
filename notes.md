@@ -23,8 +23,8 @@ exclude_from_nav: false
     * [R Script: ggplot]({{ site.baseurl }}/data/notes/ggplot.R)
     * [R Script: Graphical Summaries]({{ site.baseurl }}/data/notes/graphical_summaries.R)
     * [R Script: Numerical Summaries]({{ site.baseurl }}/data/notes/numerical_summaries.R)
-{% comment %}
     * [R Script: Percentiles]({{ site.baseurl }}/data/notes/percentiles.R)
+{% comment %}
     * [Alcohol Figure]({{ site.baseurl }}/data/notes/Alcohol.pdf)
 * [Module 3: Association: Contingency, Correlation, and Regression]({{ site.baseurl }}/data/notes/module3.pdf)
     * [R Script: Associations]({{ site.baseurl }}/data/notes/associations.R)
