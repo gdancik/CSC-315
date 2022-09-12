@@ -18,7 +18,7 @@
 ##########################################################################
 
 # 1) Load our classes survey data (available at:
-#  https://gdancik.github.io/CSC-315/data/datasets/survey_csc315_fall_2022.csv)
+#  https://gdancik.github.io/CSC-315/data/datasets/csc315_survey_fall2022.csv)
 #   and add the code for this to the script. Note: I suggest to 
 # change the name of the survey data frame (such as to 'survey') so
 # that it is easier to type!
