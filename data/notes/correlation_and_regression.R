@@ -39,7 +39,7 @@ ggplot(internet,aes(internet_penetration, fb_penetration))  +
 colors <- rep("black", length(internet$internet_penetration))
 colors[internet$Country == "USA"] = "red"
 
-## Replot with colors to highlight the United States
+## Re-plot with colors to highlight the United States
 ## Note that in this case color is not an aesthetic, because
 ## the aesthetic would map each observation to a category that
 ## then gets color-coded. Instead, we are specifying the colors directly
@@ -55,7 +55,7 @@ ggplot(internet, aes(internet_penetration, fb_penetration)) +
 
 ## Let's highlight the outlier
 ## Note: for element-by-element comparison across vectors, use 
-#  single & for AND) and single | for OR 
+#  single & for AND and single | for OR 
 #
 # In R, && and || will return a single logical value
 # a && b returns TRUE if all element-by-element comparisons of 'a' and'b'
@@ -112,7 +112,7 @@ plot.cor(x, x**2)
 par(mfrow = c(1,1))
 
 #############################################
-# find correlation betweeen internet and FB
+# find correlation between internet and FB
 # penetration
 #############################################
 ggplot(internet, aes(internet_penetration, fb_penetration)) + 
@@ -137,7 +137,7 @@ cor(internet$internet_penetration, internet$fb_penetration)
 # where the linear model corresponds to y = f(x), and
 # 'x' and 'y' are columns from the data frame 'df'
 
-fit = lm(fb_penetration ~ internet_penetration, data = internet)
+fit <- lm(fb_penetration ~ internet_penetration, data = internet)
 
 ## display results ##
 fit
@@ -185,7 +185,8 @@ predict(fit, data.frame(internet_penetration=c(50,80)))
 #################################################################
 # A linear model gives the equation of the line that minimizes
 # the sum of the squared residuals. The code below illustrates
-# this minimization
+# this minimization (the regression line minimizes the lengths
+# of the blue lines)
 #################################################################
 
 ## generate a scatterplot and visualize residuals for lm(y~x) ##
@@ -210,7 +211,8 @@ temps <- read.delim("http://pastebin.com/raw/KZgkViBK")
 tempPlot <- ggplot(temps, aes(YEAR, ANNUAL)) +
             geom_point() + 
             geom_smooth(method = "lm", color = "darkgreen", 
-                        fullrange = TRUE)
+                        fullrange = TRUE) +
+            ggtitle('Average annual temperature over time')
 
 tempPlot
 

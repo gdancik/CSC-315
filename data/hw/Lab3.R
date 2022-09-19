@@ -20,7 +20,11 @@
 # 1) The code below creates a contingency table of the results from 
 #    the clinical trial evaluating the effectiveness of the
 #    Pfizer-BioNTech vaccine (actually named BNT162b2) for preventing
-#    COVID-19 in individuals aged 16 years and older. 
+#    COVID-19 in individuals aged 16 years and older. Note: a 'placebo'
+#    is a 'fake' version of the treatment, such as a salt solution or sugar
+#    pill. The placebo is necessary because individuals may respond
+#    positively if they believe they are receiving the appropriate 
+#    treatment, even if they are not.
 #
 #    Data source: https://www.nejm.org/doi/full/10.1056/nejmoa2034577
 
@@ -39,8 +43,8 @@ rownames(vaccine_trial) <- c('Placebo', 'Vaccine')
 #           proportion of unvaccinated individuals who are infected            
 #       
 #     Note: To carry out this calculation, you should directly access 
-#     elements of your conditional proportion table (this way, your 
-#     calculation would be correct even if the numbers change)
+#     elements of your conditional proportion table (so that your 
+#     calculation will be correct even if the data changes)
 #
 #     Then calculate vaccine efficiency, which is given by:
 
@@ -58,17 +62,21 @@ rownames(vaccine_trial) <- c('Placebo', 'Vaccine')
 # which is read in using the following code: 
 
 library(readr)
-survey <- read_csv('https://gdancik.github.io/CSC-315/data/datasets/csc315_survey_fall_2021.csv')
+survey <- read_csv('https://gdancik.github.io/CSC-315/data/datasets/csc315_survey_fall2022.csv')
 
-# 2) Construct a relative frequency table for a person's Favorite Season,
-#    based on whether they are a Cat or Dog person. Does there appear
+# 2) Construct a table of conditional proportions for whether someone is a 
+#    Cat or Dog person, based on their Favorite Season. Does there appear
 #    to be a relationship between these variables? Why or why not?
 
 # 3) Construct a stacked bar graph that shows whether there is an 
-#    association between someone's preferred Mobile device,
-#    and their preferred Writing Instrument. Does there appear to
+#    association between someone's preferred mode (light or dark),
+#    and whether someone is a drinker. Does there appear to
 #    be an association between these two variables in our class?
-#    Why or why not?
+#    Why or why not? Note: the line below creates a factor variable for
+#    whether each person is a drinker or not.
+
+drinker <- factor(survey$Alcohol > 0, labels = c('non-drinker', 'drinker'))
+
 
 # 4) Construct a scatterplot of HS GPA vs. College GPA, so that 
 #    College GPA would be predicted from HS GPA, and add the 
@@ -83,14 +91,8 @@ survey <- read_csv('https://gdancik.github.io/CSC-315/data/datasets/csc315_surve
 # For the remaining questions, you will use the 'mtcars' dataset,
 # which contains data on 32 cars extracted from the 1974 Motor 
 # Trend US magazine. This dataset is available in R in the 
-# data.frame 'mtcars', and can be viewed using the code below:
+# data.frame 'mtcars', and can be viewed using View(mtcars)
   
-# Note: this code should be commented out before compiling the
-# Notebook, as it can cause errors on some systems
-
-# To view this dataset you can type the following in the console:  
-# View(mtcars)
-
 # The two variables we will examine are wt, the weight of the car in 
 # thousands of pounds, and mpg, the gas mileage in miles per gallon
 # from road tests. Additional information about the dataset can be 
@@ -114,22 +116,31 @@ survey <- read_csv('https://gdancik.github.io/CSC-315/data/datasets/csc315_surve
 
 # For the remaining questions, you will construct graphs
 # of COVID-19 infections using data available from the
-# state of Connecticut (https://data.ct.gov/Health-and-Human-Services/COVID-19-Cases-Hospitalizations-and-Deaths-By-Coun/bfnu-rgqt)
-# This data is up-to-date, but only contains the most recent
-# 1000 records
+# state of Connecticut (https://data.ct.gov/Health-and-Human-Services/COVID-19-County-Level-Data/ujiq-dy22)
+# This data is up-to-date, but only contains records going back to June 2022.
 
 library(dplyr)
-covid <- read_csv('https://data.ct.gov/resource/bfnu-rgqt.csv')
+covid <- read_csv('https://data.ct.gov/resource/ujiq-dy22.csv')
 
 # 9) Create a scatterplot of the total number of COVID cases
-#    over time for Windham county only. You will plot 'dateupdated'
-#    on the x-axis and 'totalcases' on the y-axis. 
+#    over time for Windham county only. You will plot 'report_date'
+#    on the x-axis and 'cases_7days' on the y-axis (which is the
+#    number of cases reported over the past 7 days). Add a geom_smooth
+#    layer with default parameters (you should get a curve, not a line).
 
 # 10) Create a scatterplot of the total number of COVID cases
-#    over time for all counties. Color code the points by county
-#    by setting the 'color' aesthetic to the county column. Use
-#    'totalcaserate' on the y-axis, which gives you the 
-#    number of cases per 100,000 individuals, so that we can
-#    compare case numbers across counties. Label the y-axis
-#    appropriately. What counties have been hit hardest by COVID,
-#    in terms of number of cases?
+#    over time for all counties, after filtering out results where
+#    the county is "not_available". Your code will be similar to (9) but
+#    you should color code the points by county by setting the 'color' 
+#    aesthetic to the county column. Also add a 'geom_smooth' layer 
+#    using the default method. You should also do the following:
+#     - Use 'case_rate_weekly' on the y-axis, which gives you the 
+#       number of cases per 100,000 individuals, so that we can
+#       compare case numbers across counties. 
+#     - in the geom_smooth layer, set se = FALSE, which removes the
+#       gray bands which reflect variability in the curve
+#     - in the geom_point layer, set size to 0.5 to decrease the size
+#       of the points
+
+#    What two counties have been hit hardest by COVID, 
+#    in terms of number of cases, based on this data?

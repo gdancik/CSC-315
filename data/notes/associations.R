@@ -29,6 +29,11 @@ rowSums(pesticides)
 pesticides.conditional <- prop.table(pesticides, margin = 1)
 pesticides.conditional
 
+##################################################################
+# We visualize associations between qualitative variables through
+# side-by-side or stacked bar graphs
+##################################################################
+
 # To use ggplot, we need a data.frame with 1 column for the 
 # explanatory variable (pesticide type), another column for 
 # the response variable (presence), and another column for 
@@ -88,7 +93,6 @@ ggplot(m,aes(type, value, fill = presence)) + geom_col() +
   labs(y = "Proportion", fill = "Pesticide status", 
        title = "Distribution of pesticide status by food type\n(no association)") +
   theme_classic()
-
 
 
 #########################################################################
