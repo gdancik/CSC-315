@@ -7,14 +7,11 @@ library(readr)
 
 # Note: This is not a comprehensive review, but contains exercises
 # covering some of the concepts that will be on the first exam. 
-# In addition to these exercises, make sure you understand concepts 
-# covered in lecture and on the previous labs.
 
-# Directions: Modify this script to add R code in order to answer the questions 
-# and/or complete the steps below. 
+# In addition to these exercises, make sure you understand the concepts 
+# covered in lecture and on the previous labs. 
 
-# Note: For the exam, you will submit a Notebook containing code and answers 
-# to the problems below. All graphs must be created in ggplot unless
+# All graphs must be created in ggplot unless
 # stated otherwise, and be given appropriate titles and axis labels.
 
 
@@ -32,17 +29,17 @@ library(readr)
 #    maximum of x. Use this function to find the minimum and maximum of the 
 #    vector ages from problem (1). 
 
-# 5. Include the following code in your script to create a matrix filled with 
-#    5 columns and 20 rows, that is filled with random numbers between 0 and 1.
+# 5. The code below creates a matrix filled with 5 columns and 20 rows, 
+#    that is filled with random numbers between 0 and 1.
 
-      m = matrix(runif(100), ncol = 5, nrow = 20)
+      random_matrix = matrix(runif(100), ncol = 5, nrow = 20)
 
 #   (a) Find the median of each row 
 #   (b) Find the median of each column.
 
 # 6. Run the command below to read in an old class survey:
       
-      survey <- read.delim("http://pastebin.com/raw/1csmBawE")
+      survey <- read_delim("http://pastebin.com/raw/1csmBawE")
       
 # 7. The code below generates a scatterplot of College GPA against Alcohol
 #    consumption that includes the regression line, and colors the points by
@@ -69,8 +66,8 @@ library(readr)
 #    in this class?
       
   
-# 11.  Construct a stacked bar graph showing with one bar for males and one for 
-#      females, and each bar showing the proportion who agree and disagree
+# 11.  Construct a stacked bar graph with one bar for males and one for 
+#      females, where each bar showing the proportion who agree and disagree
 #      with marijuana legalization. Was there a relationship between gender
 #      and views on marijuana legalization in this class?
 
