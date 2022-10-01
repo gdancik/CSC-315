@@ -17,17 +17,16 @@ roll.num <- sample(1:6, 10000, replace = TRUE)
 
 ## treat the results as a factor (qualitative variable) and construct a barplot
 roll <- factor(roll.num)
-ggplot() + geom_bar(aes(roll, fill = roll)) + 
-  ggtitle("Outcome from rolling die 10000 times") +
-  theme(legend.position = "none")
-
-
+ggplot() + geom_bar(aes(roll, fill = roll), show.legend = FALSE) + 
+  ggtitle("Outcome from rolling die 10000 times") + 
+  theme_linedraw()
+  
 # function to find the proportion of sixes occurring in first 
 # 'i' elements of 'x' 
 proportion.sixes <- function(i,x) {
   x <- x[1:i] # limit to first 'i' elements
-  count <- sum(x==6)
-  count/i
+  count <- sum(x==6)   # count the number of sixes
+  count/i              # return the proportion
 }
 
 ## apply this function to all integers from 1- 10000
@@ -46,9 +45,18 @@ six.plot <- ggplot() + geom_point(aes(x = 1:length(props), y=props), color = "bl
 # plot only first 100 rolls
 six.plot + xlim(0,100)
 
+#####################################################
+# The empirical probability of an event occuring is
+# the proportion of times the event occurs over a
+# large number of samples/trials
+#####################################################
+
 # look at complete plot
 six.plot                
 
+###################################
+# Let's look at a coin example
+###################################
 
 ## simulate flipping a fair coin 10,000 times
 coins <- sample(c("H", "T"), 10000, replace=TRUE)
@@ -69,13 +77,13 @@ p <- table(coins) %>% prop.table() %>% data.frame()
 
 # plot relative frequencies; the guides() function is
 # used to suppress the legend for the 'fill' elements (the coins)
-ggplot(p) + geom_col(aes(x = coins, y = Freq, fill = coins)) + 
+ggplot(p) + geom_col(aes(x = coins, y = Freq, fill = coins), show.legend = FALSE) + 
   ggtitle("Outcome of flipping a fair coin 1000 times") +
   labs(x = "outcome", y = "Relative Frequency") +
   geom_hline(aes(yintercept=1/2, linetype = 'theoretical probability'),
              color = "black") +
   scale_linetype_manual(name = "", values = 2) +
-  guides(fill = FALSE) + ylim(0,1) + theme_classic()
+  ylim(0,1) + theme_classic()
 
 
 # Let's repeat this simulation using a biased coin, flipped 10,000 times
@@ -86,23 +94,23 @@ coins <- sample(c("H", "T"), 10000, prob = c(.9,.1), replace=TRUE)
 p <- table(coins) %>% prop.table() %>% data.frame()
 
 
-ggplot(p) + geom_col(aes(x = coins, y = Freq, fill = coins)) + 
+ggplot(p) + geom_col(aes(x = coins, y = Freq, fill = coins), show.legend = FALSE) + 
   ggtitle("Outcome of flipping a biased coin 1000 times") +
   labs(x = "outcome", y = "Relative Frequency") +
   geom_hline(aes(yintercept=9/10, linetype = "theoretical probability (H)"),
              color = "black") +
-  scale_linetype_manual(name = "", values = 2) +
-  guides(fill = FALSE) + ylim(0,1)
+  scale_linetype_manual(name = "", values = 2) + ylim(0,1)
 
 
 ############################################################
 ## general method for repeating a probability experiment --
-## write a function to do the experiment once, then
-## use the replicate function to repeat the experiment
+## write a function to do the experiment once, and return
+## the characteristic of interst. Then use the replicate 
+## function to repeat the experiment
 ############################################################
 
 ## example function: flip a fair coin 2 times, 
-#     determine if we get 2 heads
+#  we are interested in getting 2 heads
 # returns TRUE if we get 2 heads, FALSE otherwise
 flip.two.heads <- function() {
   
