@@ -31,7 +31,7 @@ library(gtools)
 # Use R to answer the remaining questions. You MUST use R to 
 # enumerate and analyze the sample space or to carry out 
 # probability experiments (simulations) so that you can 
-# calculate an empirical probability.
+# calculate an empirical or classical probability.
 
 
 # 2) This question looks at the probability of rolling two dice
@@ -77,14 +77,14 @@ library(gtools)
 pdist <- cbind(X = 0:3, 'P(X)' = c(0.125,0.375, 0.375, 0.125))
 pdist
 
-# In other words, P(X = 0) is 0.125, which says that the probability of 
-# getting no heads (or all tails) is 0.125. You will derive the above
-# probability distribution in the next problem.
+# In other words, P(X = 0) is 0.125, which says that if you flip a coin 3 times,
+# the probability of getting no heads (or all tails) is 0.125. 
+# You will derive the above probability distribution in the next problem.
 
 
 # 4) We will look at flipping a coin 3 times and letting X = the
 #    number of heads. Find the probability distribution of X by
-#    completing the steps below:
+#    completing the steps below, which uses 'classical probability':
 
 #   (a) Use the 'permutations' function to enumerate the sample
 #       space obtained from flipping a coin 3 times.
@@ -154,7 +154,6 @@ four.of.a.kind <- function(x) {
   if (m == 4) return (TRUE)
   return (FALSE)
 }
-
 
 # 8) Create a function that determines whether a vector 'x' contains 
 #   a full house (i.e., 3 of a kind and 1 pair). You can assume
