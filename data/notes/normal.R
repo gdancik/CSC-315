@@ -82,11 +82,11 @@ shaded.hist(heights, obs=67, main = "Histogram of Heights", xlab = "height")
 par(par.orig)
 
 ###################################################################
-# In practice, probability distributions are visualized by curves
-# which (approximately) reflect the distribution 
-# (shape of the data) and probability density across the sample 
-# space. The cumulative density is equivalent to the area under 
-# the curve
+# In practice, probability distributions for continuous random 
+# variables are visualized by curves which (approximately) 
+# reflect the distribution (shape of the data) and probability 
+# density across the sample space. The cumulative density is 
+# equivalent to the area under the curve
 ###################################################################
 
 shaded.hist(heights, density = TRUE, obs = 70, main = "Histogram of Heights With Normal Approximation", xlab = "height")
@@ -193,19 +193,30 @@ shade.norm <- function(a,b, mean = 0, sd = 1,  ...) {
 ########################################################################
 
 #1. P(X <= 68)
+
+# visualization of the area under the curve we want to find
 shade.norm(-Inf, 68, mean = 68, sd = 1.7, 
-           main = "X ~ N(68,1.7)\nP(X <= 68)")  # or
+           main = "X ~ N(68,1.7)\nP(X <= 68)")  
+
+# calculation of the probability
 pnorm(68, mean = 68, sd = 1.7)
 
 #2. P(X <= 65)
+
+# visualization of the area under the curve we want to find
 shade.norm(-Inf, 65, mean = 68, sd = 1.7,
-           main = "X ~ N(68, 1.7)\nP(X<=65)")  # or
+           main = "X ~ N(68, 1.7)\nP(X<=65)") 
+
+# calculation of the probability
 pnorm(65, mean = 68, sd = 1.7)
 
 #3. P(X > 65)
+
+# visualization of the area under the curve we want to find
 shade.norm(65, Inf, mean = 68, sd = 1.7,
            main = "X ~ N(68, 1.7)\nP(X>65)")  # or
 
+# calculation of the probability
 1 - pnorm(65, mean = 68, sd = 1.7)
 
 # for probabilies of the form P(X > a), you can
@@ -213,8 +224,12 @@ shade.norm(65, Inf, mean = 68, sd = 1.7,
 pnorm(65, mean = 68, sd = 1.7, lower.tail = FALSE)
 
 #4. P(64.6 <= X <= 71.4)
+
+# visualization of the area under the curve we want to find
 shade.norm(64.6, 71.4, mean = 68, sd = 1.7,
-           main = "X ~ N(68, 1.7)\nP(64.6 <= X <= 71.4)")  # or
+           main = "X ~ N(68, 1.7)\nP(64.6 <= X <= 71.4)") 
+
+# calculation of the probability
 pnorm(71.4, mean = 68, sd = 1.7) - pnorm(64.6, mean = 68, sd = 1.7)
 
 
@@ -252,4 +267,6 @@ shade.norm(-Inf, q, mean = 68, sd = 1.7,
 #   1 - P(Z < 2)
 
 1 - pnorm(2, mean = 0, sd = 1)
+
+# by default, pnorm uses mean = 0 and sd = 1
 1 - pnorm(2)
