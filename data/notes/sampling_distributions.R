@@ -67,7 +67,7 @@ par(par.orig)
 # sigma. 
 
 # Let Xbar be the sample mean calculated from 'n' independent
-# samples of X. Then Xbar has mean mu/n and standard deviation
+# samples of X. Then Xbar has mean mu and standard deviation
 # sigma / sqrt(n)
 
 ####################################################################
@@ -165,8 +165,8 @@ ggplot(df) + geom_line(aes(x,y1, color = "y1")) +
   ggtitle("Distribution of heights") + ylab("density") +
   scale_colour_manual(breaks = c("y1", "y2"),
                     values = c("black", "red"),
-                    labels = c("X", "Xbar, n = 20")) +
-  theme_classic() + theme(legend.position = c(.15,.9), 
+                    labels = c("X ~ N(68, 1.7)", "Xbar, n = 20 ~ N(68, 1.7/sqrt(20))")) +
+  theme_classic() + theme(legend.position = c(.22,.9), 
                           legend.box.background = element_rect(),
                           legend.title = element_blank())
 

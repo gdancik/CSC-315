@@ -22,8 +22,8 @@ exclude_from_nav: false
 * [Class Survey](https://easternct.blackboard.com/) (Due: Sunday, 09/11/2022 by 5:00 PM; you may not use your grace period for this assignment)
 * [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Monday, 09/19/2022) 
 * [Lab #3]({{ site.baseurl }}/data/hw/Lab3.R) (Due: Monday, 09/26/2022) 
-<hr>
 * [Lab #4]({{ site.baseurl }}/data/hw/Lab4.R) (Due: Monday, 10/10/2022) 
+<hr>
 * [Lab #5]({{ site.baseurl }}/data/hw/Lab5.R) (not collected) 
 {% comment %}
 * [Lab #6]({{ site.baseurl }}/data/hw/Lab6.R) (Due: Monday, 10/18/2022)
