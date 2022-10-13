@@ -218,5 +218,3 @@ myplot + geom_vline(xintercept = 2.5, color = 'red')
 ###################################################
 p2 <- prop.test(62, 100, correct = TRUE)
 p2$p.value
-
-
