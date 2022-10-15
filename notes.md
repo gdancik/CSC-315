@@ -13,8 +13,8 @@ exclude_from_nav: false
 </style>
 
 {% comment %}
-<div id = 'hidden' class = 'hide' markdown="1">
 {% endcomment %}
+<div id = 'hidden' class = 'hide' markdown="1">
 
 * [Module 1: Course Introduction]({{ site.baseurl }}/data/notes/Intro.pdf)
 * [R Script: R Basics]({{ site.baseurl }}/data/notes/R-intro.R)
@@ -30,13 +30,14 @@ exclude_from_nav: false
     * [R Script: Correlation and Regression]({{ site.baseurl }}/data/notes/correlation_and_regression.R)
     * [Extrapolation Examples]({{ site.baseurl }}/data/notes/F9.pdf)
 * [Advanced R Script]({{ site.baseurl }}/data/notes/AdvancedR.R)
+</div>
 * [Module 4: Probability]({{ site.baseurl }}/data/notes/module4.pdf)
     * [R Script: Probability]({{ site.baseurl }}/data/notes/probability.R) 
     * [Birthday R script]({{ site.baseurl }}/data/notes/birthday.R)
     * [R Script: Normal Distribution]({{ site.baseurl }}/data/notes/normal.R) 
     * [R Script: Sampling Distributions]({{ site.baseurl }}/data/notes/sampling_distributions.R)
 * [Module 5: Hypothesis Testing]({{ site.baseurl }}/data/notes/module5.pdf) 
-    * [R Script: Hypothesis Testing]({{ site.baseurl }}/data/notes/hypotheses.R 
+    * [R Script: Hypothesis Testing]({{ site.baseurl }}/data/notes/hypotheses.R) 
     * [Hypothesis Testing Explanation]({{ site.baseurl }}/data/notes/HypothesisTestingExplanation.pdf)  
     * [R Script: Dogs Example]({{ site.baseurl }}/data/notes/dogs.R) 
 {% comment %}
@@ -45,7 +46,6 @@ exclude_from_nav: false
     * [Hypothesis Overview]({{ site.baseurl }}/data/notes/HypothesisOverview.pdf) 
     * [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
     * [R Script: Two-sample t-test]({{ site.baseurl }}/data/notes/two-sample_t-test.R) 
-</div>
 * [Module 6: Gene Expression]({{ site.baseurl }}/data/notes/GeneExpression.pdf)
 * Module 7: RNA-seq
     * [RPKM,FPKM, and TPM](https://www.rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/)
@@ -65,6 +65,7 @@ exclude_from_nav: false
 
 * [R Script: Microarrays]({{ site.baseurl }}/data/notes/microarray.R) 
 
+{% endcomment %}
 
 <center>
 <div id = 'clicker'>
@@ -81,4 +82,3 @@ function viewAll() {
 </div>
 </center>
 
-{% endcomment %}
