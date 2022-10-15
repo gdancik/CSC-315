@@ -81,6 +81,7 @@
 
 # c)   z = 1.05
 
+
 #    In May of 2020, a survey of 10,957 American adults found that 72% of them
 #    (7,889) would "definitely" or "probably" get a coronavirus vaccine if one 
 #    were available. In September, a similar survey of 10,093 American
@@ -142,7 +143,7 @@
 #    the proportion of American adults willing to get a coronavirus vaccine 
 #    between May and September; the alternative hypothesis is that the 
 #    proportion has changed. Complete the following to specify what would it mean
-#    if a Type I or Type II error occured, in the context of the problem.
+#    if a Type I or Type II error occurred, in the context of the problem.
 
 #    A Type I error means that we conclude that ___________________________
 #    but in reality, _______________________________.

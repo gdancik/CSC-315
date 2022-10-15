@@ -87,7 +87,7 @@ p3$p.value
 
 # Coke vs. Pepsi example
 
-# (i) find the test statstic
+# (i) find the test statistic
 
 # (ii) find the p-value
 
