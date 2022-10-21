@@ -39,13 +39,16 @@ ggplot(df, aes(x = Diet, y = weight, fill = Diet)) +
   geom_boxplot(show.legend = FALSE) + theme_linedraw() +
   ggtitle('Relationship between Diet and Weight at Day 21\nin Chicken Experiment')
 
-
 # (c) Carry out the two-sample t-test and report the p-value that
 #     tests against H0.
 
 s <- split(df$weight, df$Diet)
 res <- t.test(s$Diet_1, s$Diet_2)
 res$p.value
+
+# alternative approach using formula
+res <- t.test(weight ~ Diet, data = df)
+res
 
 # (e) Find the p-value 'manually' based on the test statistic and
 #     appropriate degrees of freedom from the t.test result (which 

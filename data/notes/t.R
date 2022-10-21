@@ -30,7 +30,7 @@ ggplot(df) + geom_line(aes(x, pz, color = "pz")) +
             
 ###################################################################
 # plots histogram and either the standard normal distribution 
-# when df is NULL or both the standard normal and  t distribution 
+# when df is NULL or both the standard normal and t distribution 
 # with the specified degrees of freedom (df)
 ###################################################################
 hist.norm <- function(X, df, ...) { 
@@ -121,8 +121,6 @@ t
 
 df <- data.frame(x = seq(-4,4, length.out = 100)) %>% 
       mutate(y = dt(x, df = n - 1))
-
-
 
 main <- paste0("Distribution of t test statistic when mu = 3.3, n = ", n)
 ggplot(df) + geom_line(aes(x,y)) +
