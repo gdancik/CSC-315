@@ -15,12 +15,13 @@ library(ggplot2)
 library(dplyr)
 
 # Read in our survey data
-survey <- read_csv('https://gdancik.github.io/CSC-315/data/datasets/csc315_survey_fall_2021.csv')
+survey <- read_csv('https://gdancik.github.io/CSC-315/data/datasets/csc315_survey_fall2022.csv')
+
 ##########################################################################
 # 1) Assume that the mean amount of sleep an adult gets is 8 hours 
-#    per night. Is there evidence that students in CSC 315 
+#    per night. Is there evidence that college students  
 #    get a different amount of sleep? (Here we assume that our 
-#    survey results are representative of all CSC 315 students).
+#    survey results are representative of all college students).
 
 # (a) State the null and alternative hypotheses (done for you):
 
@@ -43,7 +44,7 @@ survey <- read_csv('https://gdancik.github.io/CSC-315/data/datasets/csc315_surve
 
 ##########################################################################
 # 2) Is there evidence that the amount of sleep that a 'cat' person gets
-#    differs from that of a 'dog' person in CSC 315?
+#    differs from that of a 'dog' person?
 
 # (a) State the null and alternative hypotheses (done for you):
 
