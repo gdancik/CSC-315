@@ -46,8 +46,8 @@ exclude_from_nav: false
     * [Hypothesis Overview]({{ site.baseurl }}/data/notes/HypothesisOverview.pdf) 
     * [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
     * [R Script: Two-sample t-test]({{ site.baseurl }}/data/notes/two-sample_t-test.R) 
-{% comment %}
 * [Module 6: Gene Expression]({{ site.baseurl }}/data/notes/GeneExpression.pdf)
+{% comment %}
 * Module 7: RNA-seq
     * [RPKM,FPKM, and TPM](https://www.rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/)
         - [Formulas](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7373998/)
