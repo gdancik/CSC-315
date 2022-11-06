@@ -12,11 +12,11 @@ library(ggplot2)
 
 ##########################################################################
 # 1) Consider a reference genome with genes as follows:
-#    AGAGAGAG|AACAACAACAAC|GGGAAAGGGAAA
+#    AGAGAGAG|AACAAGGGCAACAAC|AAATAGAAA
 #     gene 1 |   gene 2   | gene 3
 
 # Suppose that mRNA is extracted from a sample, and during sequencing is
-# broken into the following fragments:   GGG, AAC, ACA, GAA, and GAG
+# broken into the following fragments:   AAC, GAG, GGG, AAT, CAA, AGA
 # 
 # What are the read counts for each of the 3 genes?
 # Gene 1: 
@@ -111,10 +111,9 @@ read_counts$s3[1:2]  <- read_counts$s3[1:2] - 15/2
 
 #   (b) How many patients (rows) are in this cohort?
     
-#   (c) Construct a relative frequency table showing for the anatomical
-#       site of the thyroid tumor. Note: this information is in the 
-#       column: 'primary_thyroid_gland_neoplasm_location_anatomic_site'
-#       Note: the thyroid gland is responsible for producing hormones that
-#             regulate body temperature and heart rate, among others. 
-#             An diagram of the thyroid gland can be seen here:
-#             https://generalsurgery.ucsf.edu/conditions--procedures/thyroid-cancer.aspx
+#   (c) Construct a relative frequency table showing the pathological primary
+#       tumor (T) stage. Note: this information is in the 
+#       column: 'pathologic_T'
+#       Note: the tumor stage is assigned based on the size of the tumor and 
+#       whether or not the tumor extends beyond the thyroid.
+#       More information: https://emedicine.medscape.com/article/2006643-overview    
