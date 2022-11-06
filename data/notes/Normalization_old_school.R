@@ -42,6 +42,7 @@ s
 # normalize each row so that its values are between 0 and 1
 maxes <- apply(m, 1, max)
 s <- sweep(m, 1, maxes, '/')
+s
 
 ############################################################
 # Let's look at simulated RNA Seq data. We create a data 
@@ -65,7 +66,8 @@ reads$s2[4] <- 0
 reads
 
 ####################################################################
-# What measure can be used to compare genes
+# What measure can be used to compare genes.
+# We will calculate RPKM values following the steps from
 # https://www.rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/
 ####################################################################
 
@@ -93,21 +95,22 @@ RPM <- sweep(reads, 2, N, '/')
 
 # calculate reads per kilobase per transcript (gene), per million mapped reads
 RPKM <- sweep(RPM, 1, L, '/') 
+RPKM
 
 # Conclusions
 #   - Genes are now comparable WITHIN a sample:
 #       - genes 1 and 2 have the same expression (within a sample)
 #   - Genes are not comparable ACROSS or BETWEEN samples:
-#       - the RPKM value for gene 1 is lower in sample 1 than in  
-#         sample 2, but we know this gene is not differentially expressed
+#       - the RPKM value for gene 1 is higher in sample 1 than in  
+#         sample 2, but we know that this gene is not differentially expressed
 
 # RPKM should NOT be used to compare genes across samples
 
-# RPKM vs FPKM: RPKM is used when genome sequencing uses "single-end" reads. When 
-# "paired-end" reads are used, sequencing is done in both directions, 
-#  and a single molecule (sequenced in both directions) can map to the 
-#  gene. For paired-end reads, sequence assembly and quantification 
-#  controls for this possible double counting; instead of 'reads', 
+# RPKM vs FPKM: RPKM is used when genome sequencing uses "single-end" reads. 
+# When "paired-end" reads are used, sequencing is done in both directions, 
+#  and a single molecule (the same one sequenced in both directions) 
+#  can map to the gene. For paired-end reads, sequence assembly and 
+#  quantification controls for this possible double counting; instead of 'reads', 
 #  the term 'fragments' is used, and we call the normalization FPKM
 #  (though the calculation is the same, just based on 'fragments', 
 #  rather than 'reads')
@@ -130,7 +133,7 @@ RPKM <- sweep(RPM, 1, L, '/')
 ################################################################################
 
 N <- colSums(RPKM)
-TPM <- sweep(RPKM, 2, N, '/') * 1e**6
+TPM <- sweep(RPKM, 2, N, '/') * 1e6
 
 # Now the columns are normalized (they sum to the same value), but 
 # we still are not able to compare across samples. Remember that only

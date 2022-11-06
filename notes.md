@@ -30,7 +30,6 @@ exclude_from_nav: false
     * [R Script: Correlation and Regression]({{ site.baseurl }}/data/notes/correlation_and_regression.R)
     * [Extrapolation Examples]({{ site.baseurl }}/data/notes/F9.pdf)
 * [Advanced R Script]({{ site.baseurl }}/data/notes/AdvancedR.R)
-</div>
 * [Module 4: Probability]({{ site.baseurl }}/data/notes/module4.pdf)
     * [R Script: Probability]({{ site.baseurl }}/data/notes/probability.R) 
     * [Birthday R script]({{ site.baseurl }}/data/notes/birthday.R)
@@ -46,12 +45,14 @@ exclude_from_nav: false
     * [Hypothesis Overview]({{ site.baseurl }}/data/notes/HypothesisOverview.pdf) 
     * [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
     * [R Script: Two-sample t-test]({{ site.baseurl }}/data/notes/two-sample_t-test.R) 
+</div>
 * [Module 6: Gene Expression]({{ site.baseurl }}/data/notes/GeneExpression.pdf)
-{% comment %}
 * Module 7: RNA-seq
-    * [RPKM,FPKM, and TPM](https://www.rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/)
+    * [Read Count Example]({{ site.baseurl }}/data/notes/ReadCountExample.docx)
+    * [RPKM,FPKM, and TPM](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html)
         - [Formulas](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7373998/)
     * [R Script: Normalization (old school)]({{ site.baseurl }}/data/notes/Normalization_old_school.R)
+{% comment %}
     * [R Script: Xena]({{ site.baseurl }}/data/notes/xena.R)
 * [Module 7: TMM and Limma]({{ site.baseurl }}/data/notes/TMM_and_Limma_Intro.pdf) 
     * [R Script: Contrasts]({{ site.baseurl }}/data/notes/contrasts.R)
