@@ -14,7 +14,7 @@
 # TCGA, see: https://www.cancer.gov/about-nci/organization/ccg/research/structural-genomics/tcga
 
 # *TCGA has generated over 2.5 petabytes (PB) of data. 1 PB = 1 million GB,
-# which can store 2000 years of MP3 encoded music or over 4000 photos / day
+# which is enough to store 2000 years of MP3 encoded music or over 4000 photos / day
 # over the course of a human life.
 
 # TCGA data is also housed under the Genomic Data Commons (GDC),
@@ -39,7 +39,7 @@ View(XenaData)
 
 # Question: How many of each DataSubtype are there?
 
-# Let's look at how RNAseq datasets are there
+# Let's look at how many gene expression RNAseq datasets there are
 View(XenaData %>% filter(DataSubtype == 'gene expression RNAseq'))
 
 ##############################################################################
@@ -49,11 +49,10 @@ View(XenaData %>% filter(DataSubtype == 'gene expression RNAseq'))
 # We need to select the row from XenaData corresponding to our dataset/label
 # of interest
 
-
-#########################################################
+#############################################################################
 # Let's get GDC TCGA Bladder Cancer data
 # https://xenabrowser.net/datapages/?cohort=GDC TCGA Bladder Cancer (BLCA)
-#########################################################
+#############################################################################
 
 # Let's look at the GDC TCGA data 
 blca <- XenaData %>% filter(XenaCohorts == 'GDC TCGA Bladder Cancer (BLCA)')
@@ -62,16 +61,16 @@ blca <- XenaData %>% filter(XenaCohorts == 'GDC TCGA Bladder Cancer (BLCA)')
 # First get the phenotype / clinical data 
 ##########################################
 
-# get sample data - this downloads the data;
-#   cli_query is a table containing information about the downloaded
-#   data, such as the file names
+# get sample data - 
+#   1) cli_query is a table containing information about the data to download,
+#      such as the file names
 cli_query = blca %>%
   filter(Label == "Phenotype") %>%  # select clinical dataset
   XenaGenerate() %>%  # generate a XenaHub object
   XenaQuery() %>%     # generate the query
   XenaDownload()      # download the data
 
-# This prepares (loads) the dataset into R
+#   2) This prepares (loads) the dataset into R based on the query table
 blca_pheno <- XenaPrepare(cli_query)
 
 # Questions -- 
@@ -104,6 +103,7 @@ blca_counts <- XenaPrepare(cli_query)
 # browser and maintains a genome reference sequence that was used for
 # genome assembly. More information about a gene can be obtained from
 # https://www.ncbi.nlm.nih.gov/gene/
+
 head(blca_counts$gencode.v22.annotation.gene.probeMap)
 
 # The 'count' data includes the ensemble ID and the count for each sample,
