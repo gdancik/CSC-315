@@ -53,9 +53,9 @@ exclude_from_nav: false
         - [Formulas](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7373998/)
     * [R Script: Normalization (old school)]({{ site.baseurl }}/data/notes/Normalization_old_school.R)
     * [R Script: Xena]({{ site.baseurl }}/data/notes/xena.R)
-{% comment %}
 * [Module 7: TMM and Limma]({{ site.baseurl }}/data/notes/TMM_and_Limma_Intro.pdf) 
     * [R Script: Contrasts]({{ site.baseurl }}/data/notes/contrasts.R)
+{% comment %}
     * [R Script: Limma]({{ site.baseurl }}/data/notes/limma.R) (updated 3:30PM, 11/10/21) 
 * [Module 8: Classification]({{ site.baseurl }}/data/notes/Classification.pdf) 
     * [R Script: knn]({{ site.baseurl }}/data/notes/knn.R)

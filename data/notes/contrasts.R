@@ -16,7 +16,7 @@ drinkers <- s$`TRUE` ## corresponds to survey$Alcohol > 0 being TRUE
 
 ## Test for difference in means, using two-sample t-test. 
 ## By default, this performs the "Welch two-sample t-test", 
-## which calculates separate variances (or standard deviations) 
+## which assumes unequal (different) variances (or standard deviations) 
 ## for each group
 t.test(nondrinkers, drinkers) 
 
@@ -47,7 +47,7 @@ ggplot(df, aes(drinker, College.GPA)) +
   theme_classic() + 
   xlab("drinker (0 = No, 1 = Yes)") +
   ggtitle("Relationship between College GPA and drinking status")
- 
+
 # fit the linear model
 fit1 <- lm(College.GPA ~ drinker, data = survey)
 
@@ -71,13 +71,13 @@ summary(fit1)
 
 # The slope is the difference in mean GPAs between
 # nondrinkers and drinkers. On average, the GPA
-# of drinkers is 0.13 less than the GPA of 
+# of drinkers is ~0.13 less than the GPA of 
 # non-drinkers
 ########################################################
 
 
 # compare difference in means
-diff(result$estimate)
+diff(result$estimate) # finds difference between elements in a vector
 fit1$coefficients[2]
 
 ######################################################
@@ -87,7 +87,7 @@ fit1$coefficients[2]
 #######################################################
 
 ###########################################################
-## Note: there are other ways of coding the explanatory
+## There are other ways of coding the explanatory
 ## variable for this problem (where drinkers are assigned 
 ## one numeric value and non-drinker are assigned another). 
 ## In the above code, we used 0 for non-drinkers and 1 
@@ -181,6 +181,6 @@ summary(fit.indicator)
 #####################################################
 # This last coding of the explanatory variable in a 
 # linear model is what we will use to identify 
-# differentially expressed genes
+# differentially expressed genes using limma
 #####################################################
 
