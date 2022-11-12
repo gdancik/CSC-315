@@ -55,8 +55,8 @@ exclude_from_nav: false
     * [R Script: Xena]({{ site.baseurl }}/data/notes/xena.R)
 * [Module 7: TMM and Limma]({{ site.baseurl }}/data/notes/TMM_and_Limma_Intro.pdf) 
     * [R Script: Contrasts]({{ site.baseurl }}/data/notes/contrasts.R)
+    * [R Script: TMM and Limma]({{ site.baseurl }}/data/notes/tmm_and_limma.R) 
 {% comment %}
-    * [R Script: Limma]({{ site.baseurl }}/data/notes/limma.R) (updated 3:30PM, 11/10/21) 
 * [Module 8: Classification]({{ site.baseurl }}/data/notes/Classification.pdf) 
     * [R Script: knn]({{ site.baseurl }}/data/notes/knn.R)
 * [Module 9: Why TMM and Limma]({{ site.baseurl }}/data/notes/Why.pdf) 
