@@ -28,8 +28,8 @@ exclude_from_nav: false
 * [Lab #7]({{ site.baseurl }}/data/hw/Lab7.R) (Due: Monday, 10/31/2022) 
 <hr>
 * [Lab #8]({{ site.baseurl }}/data/hw/Lab8.R) (Due: Monday, 11/14/2022) 
+* [Lab #9]({{ site.baseurl }}/data/hw/Lab9_contrasts.R) (Due: Monday, 12/21/2022) 
 {% comment %}
-* [Lab #9]({{ site.baseurl }}/data/hw/Lab9.R) (Due: Wednesday, 12/01/2022) 
 * [Final Project]({{ site.baseurl }}/data/hw/Project.pdf) (Due: Wednesday, 12/08/2022 by 11:00 AM)
     * [Example of DE genes between males/females]({{ site.baseurl }}/data/hw/SexGenes.xlsx)
     * [Real world example](https://pubmed.ncbi.nlm.nih.gov/30573692/)
