@@ -26,9 +26,9 @@ exclude_from_nav: false
 * [Lab #5]({{ site.baseurl }}/data/hw/Lab5.R) (not collected) 
 * [Lab #6]({{ site.baseurl }}/data/hw/Lab6.R) (Due: Monday, 10/24/2022)
 * [Lab #7]({{ site.baseurl }}/data/hw/Lab7.R) (Due: Monday, 10/31/2022) 
-<hr>
 * [Lab #8]({{ site.baseurl }}/data/hw/Lab8.R) (Due: Monday, 11/14/2022) 
-* [Lab #9]({{ site.baseurl }}/data/hw/Lab9_contrasts.R) (Due: Monday, 11/21/2022) 
+<hr>
+* [Lab #9]({{ site.baseurl }}/data/hw/Lab9_contrasts.R) (Due: <span style = 'color:red'>Friday, 11/25/2022 by 5:00 PM</span><strike>Monday, 11/21/2022</strike>) 
 {% comment %}
 * [Final Project]({{ site.baseurl }}/data/hw/Project.pdf) (Due: Wednesday, 12/08/2022 by 11:00 AM)
     * [Example of DE genes between males/females]({{ site.baseurl }}/data/hw/SexGenes.xlsx)
