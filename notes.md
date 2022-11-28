@@ -57,9 +57,9 @@ exclude_from_nav: false
     * [R Script: Contrasts]({{ site.baseurl }}/data/notes/contrasts.R)
     * [R Script: TMM and Limma]({{ site.baseurl }}/data/notes/tmm_and_limma.R) 
 * [Module 8: Clustering and Classification]({{ site.baseurl }}/data/notes/Clustering_and_Classification.pdf) 
-{% comment %}
     * [R Script: knn]({{ site.baseurl }}/data/notes/knn.R)
 * [Module 9: Why TMM and Limma]({{ site.baseurl }}/data/notes/Why.pdf) 
+{% comment %}
 * [Module 10: Functional Annotation]({{ site.baseurl }}/data/notes/FunctionalAnnotation.pdf)
     * [R Script: DAVID]({{ site.baseurl }}/data/notes/DAVID.R) 
 *  [Module 11: Bioinformatics Wrap-Up]({{ site.baseurl }}/data/notes/WrapUp.pdf)
