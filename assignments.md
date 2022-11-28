@@ -29,7 +29,7 @@ exclude_from_nav: false
 * [Lab #8]({{ site.baseurl }}/data/hw/Lab8.R) (Due: Monday, 11/14/2022) 
 * [Lab #9]({{ site.baseurl }}/data/hw/Lab9_contrasts.R) (Due: <span style = 'color:red'>Friday, 11/25/2022 by 5:00 PM</span><strike>Monday, 11/21/2022</strike>) 
 <hr>
-* [Lab #10]({{ site.baseurl }}/data/hw/Lab10.R) (Due: Wednesday, 11/30/2022)
+* [Lab #10]({{ site.baseurl }}/data/hw/Lab10.R) (Due: <span style = 'color:red'>Friday, 12/02/2022</span><strike>Wednesday, 11/30/2022</strike>)
  
 {% comment %}
 * [Final Project]({{ site.baseurl }}/data/hw/Project.pdf) (Due: Wednesday, 12/08/2022 by 11:00 AM)
