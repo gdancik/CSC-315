@@ -163,9 +163,11 @@ write.table(genes, row.names = FALSE, quote = FALSE)
 # Click Submit List
 
 # If < 80% of your genes map, make sure you have selected the right species.
-# If so, continue the analysis with the genes that do  map
+# If so, continue the analysis with the genes that do map
 
-# Select to limit annotations by the appropriate species
+# Make sure that annotations are limited to the correct species
+
+# If the background species is not correct, click on Background and select the species
 
 # Select Functional Annotation Tool
 
@@ -176,11 +178,13 @@ write.table(genes, row.names = FALSE, quote = FALSE)
 # 2) Pathways --> KEGG_PATHWAY (click on Chart)
 
 
-###########################################################################
+#######################################################################################
 # Additional example: the genes below are part of a Cell Cycle 
-# Progression (CCP) signature. What Biological terms and pathways are 
-# associated with these genes, based on DAVID?
-###########################################################################
+# Progression (CCP) signature that predicts outcome in bladder and lung 
+# cancer (https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0085249).
+# What biological (GO) terms and KEGG Pathways areassociated with these genes, based on DAVID?
+#######################################################################################
+
 genes <- c("ASF1B", "ASPM", "AURKA", "BIRC5", "BUB1B", "C18orf24", 
            "CDC2", "CDC20", "CDCA3", "CDCA8", "CDKN3", "CENPF", "CENPM",
            "CEP55", "DLGAP5", "DTL", "FOXM1", "KIAA0101", "KIF20A", 
