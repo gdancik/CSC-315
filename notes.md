@@ -62,9 +62,9 @@ exclude_from_nav: false
 * [Module 9: Why TMM and Limma]({{ site.baseurl }}/data/notes/Why.pdf) 
 * [Module 10: Functional Annotation]({{ site.baseurl }}/data/notes/FunctionalAnnotation.pdf)
     * [R Script: DAVID]({{ site.baseurl }}/data/notes/DAVID.R) 
-{% comment %}
 *  [Module 11: Bioinformatics Wrap-Up]({{ site.baseurl }}/data/notes/WrapUp.pdf)
     * [Movies R script]({{ site.baseurl }}/data/notes/movies.R) 
+{% comment %}
 
 * [R Script: Microarrays]({{ site.baseurl }}/data/notes/microarray.R) 
 

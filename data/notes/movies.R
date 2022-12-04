@@ -44,19 +44,19 @@ s <- split(movies$Rating, movies$productID)
 # Look at distribution of number of 
 # ratings / product
 #####################################
-lengths <- sapply(s, length)
-hist(lengths, main = "# Ratings / Movie", ylab = "# ratings")
+mylengths <- lengths(s)   # same as sapply(s, length)
+hist(mylengths, main = "# Ratings / Movie", ylab = "# ratings")
 
 # what was rated the most frequently, and how many ratings? #
-which.max(lengths)
-max(lengths)
+which.max(mylengths)
+max(mylengths)
 
 #########################################
 # What are the top rated movies?
 # (we will require at least 200 ratings)
 #########################################
 avgs <- sapply(s, mean)
-avg = avgs[lengths >=200]
+avg = avgs[mylengths >=200]
 sort(avgs, decreasing = TRUE)[1:10]
 
 
