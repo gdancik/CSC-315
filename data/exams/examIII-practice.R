@@ -44,6 +44,7 @@ ggplot(iris, aes(Petal.Length, Petal.Width, color = Species)) +
 #
 #  logCPM - the logCPM expression data
 #  pheno  - the phenotype data
+#  probeMap - the probe map information
 
 # (Note: This dataset was downloaded from: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE184942)
 
@@ -67,7 +68,7 @@ load(url('https://github.com/gdancik/CSC-315/raw/gh-pages/data/exams/GSE184942.R
 
 
 # 5) Based on the probes below, generate a heatmap and color the columns with "lightgreen" for
-#    healthy samples and darkred for AD samples.
+#    healthy samples and "darkred" for AD samples.
 
 probes <- c("ENSG00000171189", "ENSG00000171502", "ENSG00000154080", "ENSG00000240342", 
     "ENSG00000183044", "ENSG00000226608", "ENSG00000167491", "ENSG00000104490", 
@@ -83,7 +84,7 @@ genes <- c("GRIK1", "COL24A1", "CHST9", "RPS2P5", "ABAT", "FTLP3", "GATAD2A",
     "NCALD", "KIAA1456", "RPH3A")
 
 
-# 8) Using DAVID, find the top GO term (GOTERM_BP_DIRECT) associated with the genes above.
-# Does this match the summary given for this dataset here: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE184942
-# Why or why not?
+# 8) Using DAVID, find the top GO (GOTERM_BP_DIRECT) terms associated with the genes 
+#    in the vector below.
 
+genes <- c("GRIK1", "RTBDN", "ABAT", "KCNK18", "TMC4")
