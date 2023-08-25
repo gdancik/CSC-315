@@ -12,12 +12,14 @@ exclude_from_nav: false
 }
 </style>
 
-<p style = 'color:red;font-size:104%'>Note: All assignments must be submitted through <a href = "https://easternct.blackboard.com/">Blackboard</a> unless stated otherwise. Assignments must be submitted in the correct format, which is an HTML R Notebook with none of the questions numbers modified. 
-</p>
 {% comment %}
+<p style = 'color:red;font-size:104%'>Note: All assignments must be submitted through <a href = "https://easternct.blackboard.com/">Blackboard</a> unless stated otherwise. Assignments must be submitted in the correct format, which is a zipped version of an HTML R Notebook with none of the questions numbers modified. 
+
+</p>
 {% endcomment %}
 
 * Install <i>R/RStudio</i> and the required packages by following the instructions on the [Course Info]({{ site.baseurl }}/info/) page 
+{% comment %}
 * [Lab #1]({{ site.baseurl }}/data/hw/Lab1.R) (Due: Friday, 09/09/2022) 
 * [Class Survey](https://easternct.blackboard.com/) (Due: Sunday, 09/11/2022 by 5:00 PM; you may not use your grace period for this assignment)
 * [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Monday, 09/19/2022) 
@@ -33,7 +35,6 @@ exclude_from_nav: false
 * [Final Project]({{ site.baseurl }}/data/hw/Project.pdf) (Due: Monday, 12/12/2022 by noon; e-mail with dataset, etc due by 5:00 PM Wednesday, 12/07/2022)
     * [Example of DE genes between males/females]({{ site.baseurl }}/data/hw/SexGenes.xlsx)
     * [Real world example](https://pubmed.ncbi.nlm.nih.gov/30573692/)
-{% comment %}
     * [Lab #8 results]({{ site.baseurl }}/data/hw/Lab8_results.pdf)  
 * [Lab #9]({{ site.baseurl }}/data/hw/Lab9.R) (Due: Friday, 11/20/20) 
 * [Classification Challenge]({{ site.baseurl }}/data/hw/Challenge.pdf) (Due: see handout)  

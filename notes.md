@@ -13,10 +13,11 @@ exclude_from_nav: false
 </style>
 
 {% comment %}
-{% endcomment %}
 <div id = 'hidden' class = 'hide' markdown="1">
+{% endcomment %}
 
 * [Module 1: Course Introduction]({{ site.baseurl }}/data/notes/Intro.pdf)
+{% comment %}
 * [R Script: R Basics]({{ site.baseurl }}/data/notes/R-intro.R)
 * [R Script: Dataframes]({{ site.baseurl }}/data/notes/Dataframes.R)
 * [Module 2: Graphical and Numerical Summaries]({{ site.baseurl }}/data/notes/Module2-Summaries.pdf)
@@ -45,7 +46,9 @@ exclude_from_nav: false
     * [Hypothesis Overview]({{ site.baseurl }}/data/notes/HypothesisOverview.pdf) 
     * [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
     * [R Script: Two-sample t-test]({{ site.baseurl }}/data/notes/two-sample_t-test.R) 
+
 </div>
+
 * [Module 6: Gene Expression]({{ site.baseurl }}/data/notes/GeneExpression.pdf)
 * Module 7: RNA-seq
     * [Read Count Example]({{ site.baseurl }}/data/notes/ReadCountExample.docx)
@@ -64,11 +67,9 @@ exclude_from_nav: false
     * [R Script: DAVID]({{ site.baseurl }}/data/notes/DAVID.R) 
 *  [Module 11: Bioinformatics Wrap-Up]({{ site.baseurl }}/data/notes/WrapUp.pdf)
     * [Movies R script]({{ site.baseurl }}/data/notes/movies.R) 
-{% comment %}
 
 * [R Script: Microarrays]({{ site.baseurl }}/data/notes/microarray.R) 
 
-{% endcomment %}
 
 <center>
 <div id = 'clicker'>
@@ -84,4 +85,6 @@ function viewAll() {
 
 </div>
 </center>
+
+{% endcomment %}
 

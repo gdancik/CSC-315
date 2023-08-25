@@ -1,6 +1,6 @@
 #####################################################################################
 # CSC 315: Required packages
-# Run this script to install the packages we will be using this semester
+# Run this script to install the packages we will be using the semester
 # These packages are already installed on our classroom computers
 #####################################################################################
 
