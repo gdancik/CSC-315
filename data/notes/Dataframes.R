@@ -4,13 +4,13 @@
 # accessed using matrix notation, e.g., df[1,] or df[,3:4]. A 
 # data.frame is also a list, where df[[i]] is the ith column,
 # and columns can also be accessed by name, e.g., df$age or
-# df["age"]
+# df[["age"]]
 #################################################################
 
 #################################################################
 # We will read in data from the URL
 # https://gdancik.github.io/CSC-315/data/datasets/survey.txt
-# using Import Dataset from the environment tab. 
+# using Import Dataset --> From Text (readr) from the environment tab. 
 # The table should be named 'survey'. After importing,
 # make sure to add the R code to this script
 
