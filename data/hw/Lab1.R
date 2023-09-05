@@ -1,5 +1,5 @@
 ##########################################################################
-# CSC-315, Fall 2022
+# CSC-315, Fall 2023
 # Lab 1: R programming
 # Name: 
 ##########################################################################
@@ -9,20 +9,20 @@
 # answers to the following questions. Turn in this assignment
 # by creating an HTML Notebook and submitting the Notebook through 
 # Blackboard.
-# Note: DO NOT delete / modify any of the questions / comments below!
+# Note: DO NOT delete or modify any of the questions / comments below!
 ##########################################################################
 
 # 1) What is 100 * 3 + 12
 
 # 2) What is the sum of all integers between (and including) -100 and +100.
 
-# 3)	Create a vector that contains the numbers 1-5.
+# 3)	Create a vector named 'v1' that contains the numbers 1-5.
 
 # 4) Change the 3rd value of the above vector to 99
 
-# 5)	Create a vector that contains the numbers 1-20, 37, and 0.
+# 5)	Create a vector named 'nums' that contains the numbers 1-20, 37, and 0.
 
-# 6)	Create a vector that contains two elements, your first name and last name
+# 6)	Create a vector named 'me' that contains two elements, your first name and last name
 
 # 7) The code below creates a matrix that contains the grades for 2 students
 #    for 3 exams. Set or change the column names to "ExamI", "ExamII", 
@@ -38,7 +38,7 @@
 
 # 9) "William" prefers to be called "Bill". Change the name of the 2nd row of the matrix 
 #   to "Bill Jones". You should do this in a statement that only operates on 
-#   the first row. Note that for a matrix 'm', R allows you to directly assign a value to any element 
+#   the second row. Note that for a matrix 'm', R allows you to directly assign a value to any element 
 #   (or elements) of rownames(m).
 
 # 10)	Create a list that includes the following objects: 
