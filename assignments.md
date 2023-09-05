@@ -19,7 +19,7 @@ exclude_from_nav: false
 {% endcomment %}
 
 * Install <i>R/RStudio</i> and the required packages by following the instructions on the [Course Info]({{ site.baseurl }}/info/) page 
-* [Lab #1]({{ site.baseurl }}/data/hw/Lab1.R) (Due: Friday, 09/11/2023) 
+* [Lab #1]({{ site.baseurl }}/data/hw/Lab1.R) (Due: Monday, 09/11/2023) 
 {% comment %}
 * [Class Survey](https://easternct.blackboard.com/) (Due: Sunday, 09/11/2023 by 5:00 PM; you may not use your grace period for this assignment)
 * [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Monday, 09/19/2023) 
