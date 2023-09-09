@@ -91,10 +91,14 @@ n = nrow(sd.table)
 sum.squared.dev <- sum(sd.table$squared.deviation)
 x.var.manual <- (sum.squared.dev) / (n-1)
 x.sd.manual <- sqrt(x.var.manual)
+x.sd.manual
 
 ##################################################
 # easy way to calculate variance and standard 
 # deviation in R
 ##################################################
 x.var <- var(x)
+x.var
+
 x.sd <- sd(x)  
+x.sd

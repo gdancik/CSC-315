@@ -81,10 +81,10 @@ numbers <- data.frame(values = c(1:10, 20:21))
 #################################################################
 # Generate boxplot using ggplot
 # In the aesthetic we include the following:
-#    x corresponds to the column containing the groups to plot, 
-#      where we use a dot (".") to indicate that there are no groups
+#    x corresponds to the column containing the groups to plot; 
+#      here we use a dot (".") to indicate that there are no groups
 #      (there are no groups in this example, in general there will be
-#      groups for us, as shown in the next example)
+#      groups, as shown in the next example)
 #    y corresponds to the column containing the numeric data
 # Also note the 'fill' argument is outside the aesthetic, so it 
 #     is applied to all groups
@@ -141,8 +141,9 @@ ggplot(heights, aes(GENDER, HEIGHT, fill = GENDER)) +
 
 # if the aesthetics are specified in the ggplot function, they apply
 # to all layers. In this case, the x-, y-, and fill values apply
-# to all layers, including a geom_jitter layer, which plots points
-# but with random noise (to limit overlap between points)
+# to all layers, as shown in the next example which adds a 
+# geom_jitter layer, which plots points with random noise added 
+# (to limit overlap between points)
 
 # the 'color' aesthetic applies to the outline of the boxplot
 # and the color of the points
@@ -157,9 +158,8 @@ ggplot(heights, aes(GENDER, HEIGHT, color = GENDER)) +
 # if you wanted different colors for the boxplot and jitter layers, 
 # you can change the aesthetic for the desired layer only
 ggplot(heights, aes(GENDER, HEIGHT)) + 
-  geom_boxplot(show.legend = FALSE) + 
-  geom_jitter(aes(color = GENDER), width = .2, 
-              show.legend = FALSE, size = 1) + 
+  geom_boxplot(aes(color = GENDER), show.legend = FALSE) + 
+  geom_jitter(width = .2, show.legend = FALSE, size = .8) + 
   ggtitle("Comparison of heights between males and females") +
   labs(x = "gender", y = "height (inches)") +
   theme_classic() 

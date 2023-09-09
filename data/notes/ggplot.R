@@ -20,8 +20,9 @@ library(ggplot2)
 # ggplot(data, aes(x,y)) + layer + labels + ...
 #    data - the data.frame containing data to plot
 #    aes - an aesthetic mapping, specifying the x- and y-values
-#             to plot, and optionally the coloring to use. 
-#             If specified in ggplot(), mapping applies to all layers
+#             to plot, and optionally the coloring to use; when 
+#             specified in ggplot(), the mapping applies to 
+#             all layers
 #    layer - the type of plot, e.g., geom_point() for a scatterplot, 
 #             geom_bar() for a bar plot, etc
 #    labels - ggtitle(), xlabs(), ylabs(), and labs() 
