@@ -18,7 +18,7 @@
 ##########################################################################
 
 # 1) Load our classes survey data (available at:
-#  https://gdancik.github.io/CSC-315/data/datasets/csc315_survey_fall2022.csv)
+#  https://gdancik.github.io/CSC-315/data/datasets/csc315_survey_fall2023.csv)
 #   and add the code for this to the script. Note: I suggest to 
 # change the name of the survey data frame (such as to 'survey') so
 # that it is easier to type!
@@ -71,13 +71,16 @@
 #     distribution? (Note: in this case, the mean and the median are similar, but
 #     in general one of these is preferred for this distribution shape) 
 
-
-# 11) Create side-by-side boxplots of College GPA
-#     based on whether a person is a "cat" or "dog" person, 
-#     and answer the questions below:
+# 11) Create a data frame from the survey data that contains only 
+#    the columns `CatOrDogPerson` and `College GPA`, and then use
+#    the function remove_missing to remove all rows with missing
+#    values. Then using this new data frame, create side-by-side 
+#    boxplots of College GPA based on whether a person is a "cat" 
+#    or "dog" person, and answer the questions below:
 #     (a) Does there appear to be a different in College GPA
 #         between "cat" and "dog" people in this class?
 #     (b) Are there any outliers? If so, how many, and for which group?
+#     (c) What happens if you don't remove the missing values?
 
 
 # 12) (a) Find the variance for College GPA using the 'var' function.
