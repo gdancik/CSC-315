@@ -150,11 +150,7 @@ summary(fit)
 ##            (2) Find and interpret the slope
 ################################################################################### 
 
-# the y-intercept is: 3.09, which means when internet penetration is 0%,
-# the predicted FB penetration rate would be 3.09%
 
-# the slope is 0.4602, which means as internet penetration goes up by 1%,
-# fb penetration goes up by 0.4602%.
 
 ## add regression line to current plot ##
 ggplot(internet, aes(internet_penetration, fb_penetration)) + 
@@ -212,7 +208,8 @@ tempPlot <- ggplot(temps, aes(YEAR, ANNUAL)) +
             geom_point() + 
             geom_smooth(method = "lm", color = "darkgreen", 
                         fullrange = TRUE) +
-            ggtitle('Average annual temperature over time')
+            ggtitle('Average annual temperature over time') +
+            theme_linedraw()
 
 tempPlot
 

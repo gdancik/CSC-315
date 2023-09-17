@@ -48,7 +48,7 @@ d <- data.frame(type = rownames(pesticides.conditional), pesticides.conditional)
 # different values for the same variable ('presence'). We correct this by
 # using the 'melt' function (from reshape2) to combine (melt) the
 # values from the other columns into a single column (value) and to add
-# a column with the appropriate label ('presence') for each value
+# a column with the appropriate label ('presence') for each value of that variable
 
 # In 'melt', the second argument ("type") specifies the 'id' variables that are left
 # unchanged. All other columns are combined as follows:
