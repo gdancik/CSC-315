@@ -19,12 +19,12 @@
 
 # 1) The code below creates a contingency table of the results from 
 #    the clinical trial evaluating the effectiveness of the
-#    Pfizer-BioNTech vaccine (actually named BNT162b2) for preventing
-#    COVID-19 in individuals aged 16 years and older. Note: a 'placebo'
-#    is a 'fake' version of the treatment, such as a salt solution or sugar
-#    pill. The placebo is necessary because individuals may respond
-#    positively if they believe they are receiving the appropriate 
-#    treatment, even if they are not.
+#    Pfizer-BioNTech vaccine (named BNT162b2) for preventing
+#    COVID-19 in individuals aged 16 years and older. 
+#    Note: a 'placebo' is a 'fake' version of the treatment, 
+#    such as a salt solution or sugar pill. The placebo is necessary
+#    because individuals may respond positively if they believe they 
+#    are receiving the appropriate treatment, even if they are not.
 #
 #    Data source: https://www.nejm.org/doi/full/10.1056/nejmoa2034577
 
@@ -42,7 +42,7 @@ rownames(vaccine_trial) <- c('Placebo', 'Vaccine')
 #      RR = proportion of vaccinated individuals who are infected / 
 #           proportion of unvaccinated individuals who are infected            
 #       
-#     Note: To carry out this calculation, you should directly access 
+#     Note: To carry out this calculation, you must directly access 
 #     elements of your conditional proportion table (so that your 
 #     calculation will be correct even if the data changes)
 #
@@ -52,7 +52,8 @@ rownames(vaccine_trial) <- c('Placebo', 'Vaccine')
 #
 #     Vaccine efficiency measures the reduction of cases expected from the 
 #     vaccine (i.e., an efficiency of 95% means vaccination reduces the
-#     number of cases by 95%) 
+#     number of cases by 95%; for every 100 people who would be infected
+#     only 5 of them would be infected with the vaccine) 
 
 #    (c) Based on the above analysis, does there appear to be an association
 #        between this vaccine and COVID-19 infection? Why or why not?
@@ -62,16 +63,23 @@ rownames(vaccine_trial) <- c('Placebo', 'Vaccine')
 # which is read in using the following code: 
 
 library(readr)
-survey <- read_csv('https://gdancik.github.io/CSC-315/data/datasets/csc315_survey_fall2022.csv')
+survey <- read_csv('https://gdancik.github.io/CSC-315/data/datasets/csc315_survey_fall2023.csv')
 
 # 2) Construct a table of conditional proportions for whether someone is a 
-#    Cat or Dog person, based on their Favorite Season. Does there appear
-#    to be a relationship between these variables? Why or why not?
+#    Cat or Dog person, based on their Favorite Meal. Answer the below
+#.   questions:
+#   (a) If a person's favorite meal is breakfast, are they more likely to be
+#       a cat or dog person?
+#   (b) What if the person's preferred meal is Dinner, Lunch, or No Preference?
+#   (c) Based on (a) and (b), does there appear to be a relationship
+#       between these variables? Why or why not?
 
 # 3) Construct a stacked bar graph that shows whether there is an 
 #    association between someone's preferred mode (light or dark),
-#    and whether someone is a drinker. Does there appear to
-#    be an association between these two variables in our class?
+#    and whether someone is a drinker. The bars should
+#    correspond go whether someone is a drinker or not,
+#    and should be filled in based on light or dark mode preference.
+#    Is there an association between these two variables in our class?
 #    Why or why not? Note: the line below creates a factor variable for
 #    whether each person is a drinker or not.
 
@@ -88,7 +96,7 @@ drinker <- factor(survey$Alcohol > 0, labels = c('non-drinker', 'drinker'))
 #    Based on these results, is HS GPA a good predictor of College GPA
 #    in this class?
 
-# For the remaining questions, you will use the 'mtcars' dataset,
+# For the next set of questions, you will use the 'mtcars' dataset,
 # which contains data on 32 cars extracted from the 1974 Motor 
 # Trend US magazine. This dataset is available in R in the 
 # data.frame 'mtcars', and can be viewed using View(mtcars)
@@ -117,9 +125,9 @@ drinker <- factor(survey$Alcohol > 0, labels = c('non-drinker', 'drinker'))
 # For the remaining questions, you will construct graphs
 # of COVID-19 infections using data available from the
 # state of Connecticut (https://data.ct.gov/Health-and-Human-Services/COVID-19-County-Level-Data/ujiq-dy22)
-# This data is up-to-date, but only contains records going back to June 2022.
+# Note that this data stopped being updated on June 1, 2023.
 
-library(dplyr)
+library(readr)
 covid <- read_csv('https://data.ct.gov/resource/ujiq-dy22.csv')
 
 # 9) Create a scatterplot of the total number of COVID cases
@@ -127,20 +135,25 @@ covid <- read_csv('https://data.ct.gov/resource/ujiq-dy22.csv')
 #    on the x-axis and 'cases_7days' on the y-axis (which is the
 #    number of cases reported over the past 7 days). Add a geom_smooth
 #    layer with default parameters (you should get a curve, not a line).
+#    In May and June, were cases in Windam county increasing or decreasing?  
 
-# 10) Create a scatterplot of the total number of COVID cases
-#    over time for all counties, after filtering out results where
-#    the county is "not_available". Your code will be similar to (9) but
-#    you should color code the points by county by setting the 'color' 
-#    aesthetic to the county column. Also add a 'geom_smooth' layer 
-#    using the default method. You should also do the following:
-#     - Use 'case_rate_weekly' on the y-axis, which gives you the 
-#       number of cases per 100,000 individuals, so that we can
-#       compare case numbers across counties. 
-#     - in the geom_smooth layer, set se = FALSE, which removes the
-#       gray bands which reflect variability in the curve
-#     - in the geom_point layer, set size to 0.5 to decrease the size
-#       of the points
+# 10) The statement below filters data to keep only those
+#     records from June 6, 2023 (the 'between' function is necessary
+#     to filtering date objects). 
 
-#    What two counties have been hit hardest by COVID, 
-#    in terms of number of cases, based on this data?
+#     (a) Use dplyr and piping to complete the following:
+#         Use the 'mutate' function to create a new column containing
+#         the cumulative cases per 1000 individuals (case_rate_cumulative),
+#         based on the county population, and remove the 'not_available' county
+#     (b) Generate a bar graph where for each county, 
+#         the height of the bar is the cumulative cases rate. 
+#         Add a geom_text label that has the following aesthetics:
+#         x = County, y = cumulative case rate + 10, label = cumulative case rate,
+#         rounded to the nearest whole number (you can get this using the 'round' function)
+# 
+#     (c) Based on your graph, what counties were the hardest hit
+#         from COVID?
+
+covid_current <- covid %>% 
+    filter(between(report_date, as.Date("2023-06-01"), as.Date("2023-6-01")))
+

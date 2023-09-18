@@ -21,9 +21,10 @@ exclude_from_nav: false
 * Install <i>R/RStudio</i> and the required packages by following the instructions on the [Course Info]({{ site.baseurl }}/info/) page 
 * [Lab #1]({{ site.baseurl }}/data/hw/Lab1.R) (Due: Monday, 09/11/2023) 
 * [Class Survey](https://easternct.blackboard.com/) (Due: Sunday, 09/10/2023 by 5:00 PM; you may not use your grace period for this assignment)
+<hr style = "margin-top:-10px">
 * [Lab #2]({{ site.baseurl }}/data/hw/Lab2.R) (Due: Wednesday, 09/20/2023) 
+* [Lab #3]({{ site.baseurl }}/data/hw/Lab3.R) (Due: Wednesday, 09/27/2023) 
 {% comment %}
-* [Lab #3]({{ site.baseurl }}/data/hw/Lab3.R) (Due: Monday, 09/26/2023) 
 * [Lab #4]({{ site.baseurl }}/data/hw/Lab4.R) (Due: Monday, 10/10/2023) 
 * [Lab #5]({{ site.baseurl }}/data/hw/Lab5.R) (not collected) 
 * [Lab #6]({{ site.baseurl }}/data/hw/Lab6.R) (Due: Monday, 10/24/2023)
@@ -31,7 +32,6 @@ exclude_from_nav: false
 * [Lab #8]({{ site.baseurl }}/data/hw/Lab8.R) (Due: Monday, 11/14/2023) 
 * [Lab #9]({{ site.baseurl }}/data/hw/Lab9_contrasts.R) (Due: <span style = 'color:red'>Friday, 11/25/2023 by 5:00 PM</span><strike>Monday, 11/21/2023</strike>) 
 * [Lab #10]({{ site.baseurl }}/data/hw/Lab10.R) (Due: <span style = 'color:red'>Friday, 12/02/2023</span><strike>Wednesday, 11/30/2023</strike>)
-<hr>
 * [Final Project]({{ site.baseurl }}/data/hw/Project.pdf) (Due: Monday, 12/12/2023 by noon; e-mail with dataset, etc due by 5:00 PM Wednesday, 12/07/2023)
     * [Example of DE genes between males/females]({{ site.baseurl }}/data/hw/SexGenes.xlsx)
     * [Real world example](https://pubmed.ncbi.nlm.nih.gov/30573692/)
