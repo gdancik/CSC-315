@@ -41,18 +41,19 @@ xvalues <- c(1,3,2,9)
 
 # Suppose I want to increase each element of 'xvalues' by 1
 
-# Using a for loop is not necessary and would be considered
-# bad programming practice
+# You can use a for loop, but this would be considered
+# bad practice since it is less readable and less efficient
 xvalues <- 1:10
 for (i in 1:length(xvalues)) {
   xvalues[i] <- xvalues[i] + 1
 }
 xvalues
 
-# But R lets you do this:
+# Because R lets you do this:
 xvalues <- 1:10
 xvalues <- xvalues + 1
 xvalues
+
 
 ######################################################################
 # In R, a 'functional' is a function that takes another function
@@ -71,7 +72,6 @@ calc_statistics(mydata, mean, median)
 
 # calculate mean and standard deviation
 calc_statistics(mydata, mean, sd)
-
 
 #####################################################################
 # Instead of loops, the functionals apply, lapply, and sapply
@@ -163,7 +163,6 @@ compare <-function(x, ref = 0) {
 }
 
 compare(5, 3)
-
 
 
 #############################################
