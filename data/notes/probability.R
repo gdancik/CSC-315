@@ -10,7 +10,7 @@ library(ggplot2)
 library(dplyr)
 
 ######################################################
-# simulate rolling a die 10,000 times, by sampling
+# Simulate rolling a die 10,000 times, by sampling
 # from the values 1:6, 10,000 times, with replacement
 ######################################################
 roll.num <- sample(1:6, 10000, replace = TRUE)
@@ -39,14 +39,14 @@ six.plot <- ggplot() + geom_point(aes(x = 1:length(props), y=props), color = "bl
   labs(x = "# rolls", y = "proportion of sixes rolled") +
   geom_hline(aes(yintercept=1/6, linetype = "theoretical\nprobability"),color = "red") +
   theme_linedraw() +
-  scale_linetype_manual(name = "", values = 2) # this adds the legend (values = 2 for dotted line)
+  scale_linetype_manual(name = '', values = 2) # this adds the legend (values = 2 for dotted line)
 
 
 # plot only first 100 rolls
 six.plot + xlim(0,100)
 
 #####################################################
-# The empirical probability of an event occuring is
+# The empirical probability of an event occurring is
 # the proportion of times the event occurs over a
 # large number of samples/trials
 #####################################################
@@ -61,22 +61,19 @@ six.plot
 ## simulate flipping a fair coin 10,000 times
 coins <- sample(c("H", "T"), 10000, replace=TRUE)
 
-# generate bar graph of frequencies; the guides() function is
-# used to suppress the legend for the 'fill' elements (the coins)
-ggplot() + geom_bar(aes(coins, fill = coins)) + 
+# generate bar graph of frequencies
+ggplot() + geom_bar(aes(coins, fill = coins), show.legend = FALSE) + 
   ggtitle("Outcome of flipping a fair coin 10000 times") +
-  labs(x = "outcome", y = "Frequency") +
-  guides(fill = FALSE)
-  
+  labs(x = "outcome", y = "Frequency")
 
+  
 # calculate a relative frequency table and generate a bar graph of 
 # relative frequencies 
 
 # create data.frame containing relative frequency table
 p <- table(coins) %>% prop.table() %>% data.frame()  
 
-# plot relative frequencies; the guides() function is
-# used to suppress the legend for the 'fill' elements (the coins)
+# plot relative frequencies
 ggplot(p) + geom_col(aes(x = coins, y = Freq, fill = coins), show.legend = FALSE) + 
   ggtitle("Outcome of flipping a fair coin 1000 times") +
   labs(x = "outcome", y = "Relative Frequency") +
@@ -105,7 +102,7 @@ ggplot(p) + geom_col(aes(x = coins, y = Freq, fill = coins), show.legend = FALSE
 ############################################################
 ## general method for repeating a probability experiment --
 ## write a function to do the experiment once, and return
-## the characteristic of interst. Then use the replicate 
+## the characteristic of interest. Then use the replicate 
 ## function to repeat the experiment
 ############################################################
 
@@ -153,7 +150,7 @@ prop.heads
 # The arguments for the permutation function include 
 # (1) number of outcomes per trial of the experiment, 
 # (2) number of trials,
-# (3) sample space for each trial
+# (3) sample space for each trial,
 # (4) repeats = TRUE if outcomes can repeat across trials
 # Permutations gives all possible arrangements where
 #    order matters
@@ -207,7 +204,7 @@ p.any.heads
 # probability of no heads
 1 - p.any.heads
 
-# probability of no heads - direct calculation
+# probability of no heads (direct calculation)
 no.heads <- apply(S == "T", 1, all)
 p.no.heads <- sum(no.heads) / length(no.heads)
 p.no.heads
