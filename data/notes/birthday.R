@@ -67,3 +67,5 @@ ggplot() + geom_line(aes(n, probs)) +
           theme_light() +
           geom_hline(aes(yintercept = 0.50), color = "red") +
           geom_vline(aes(xintercept = 23), color = "red")
+          
+

@@ -9,6 +9,7 @@ order: 4
 * Exam I
     * [Exam I Outline]({{ site.baseurl }}/data/exams/ExamIOutline.pdf)
     * [Exam I Practice]({{ site.baseurl }}/data/exams/ExamI_2020.R)
+    * [Exam I Makeup Opportunity]({{ site.baseurl }}/data/exams/ExamI_swirl.pdf)
 {% comment %}
 * Exam II
 	* [Exam II Outline]({{ site.baseurl }}/data/exams/ExamII_Outline.pdf)
