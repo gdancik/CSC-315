@@ -97,8 +97,8 @@ pdist
 
 #   (d) Create a bar graph of the relative frequencies, using ggplot and
 #       labeling the x-axis, y-axis, and title. The y-axis in this case
-#       corresponds to the 'probability'.
-
+#       corresponds to the 'probability'. These probabilities should match
+#       the probabilities from 'pdist'.
 
 
 # 5) Find the empirical distribution of X = the number of heads in 3
@@ -155,10 +155,12 @@ four.of.a.kind <- function(x) {
   return (FALSE)
 }
 
-# 8) Create a function that determines whether a vector 'x' contains 
-#   a full house (i.e., 3 of a kind and 1 pair). You can assume
-#   that 'x' includes exactly 5 cards.
-
+# 8) Create a function that takes a vector 'x' as input and determines
+#    whether 'x' contains a full house (i.e., 3 of a kind and 1 pair). 
+#    You can assume that 'x' includes exactly 5 cards. 
+#    Note: in R, A && B is used to determine if A AND B are both TRUE
+#       (you can also use any(A,B))
+ 
 
 # 9) Show that the probability of being dealt a full house is 
 #    approximately 0.00144 (roughly 1/694). Note for testing purposes,
