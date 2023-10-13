@@ -36,9 +36,9 @@ exclude_from_nav: false
     * [R Script: Normal Distribution]({{ site.baseurl }}/data/notes/normal.R) 
     * [R Script: Practice / Review]({{ site.baseurl }}/data/notes/practice.R) 
     * [R Script: Sampling Distributions]({{ site.baseurl }}/data/notes/sampling_distributions.R)
-{% comment %}
 * [Module 5: Hypothesis Testing]({{ site.baseurl }}/data/notes/module5.pdf) 
     * [R Script: Hypothesis Testing]({{ site.baseurl }}/data/notes/hypotheses.R) 
+{% comment %}
     * [Hypothesis Testing Explanation]({{ site.baseurl }}/data/notes/HypothesisTestingExplanation.pdf)  
     * [R Script: Dogs Example]({{ site.baseurl }}/data/notes/dogs.R) 
     * [R Script: Hypothesis Test for Two Sample Proportions]({{ site.baseurl }}/data/notes/two_sample_prop.R)
