@@ -42,8 +42,8 @@ exclude_from_nav: false
     * [Hypothesis Testing Explanation]({{ site.baseurl }}/data/notes/HypothesisTestingExplanation.pdf)  
     * [R Script: Dogs Example]({{ site.baseurl }}/data/notes/dogs.R) 
     * [R Script: Hypothesis Test for Two Sample Proportions]({{ site.baseurl }}/data/notes/two_sample_prop.R)
-{% comment %}
     * [Background: Two-Sample Prop Test]({{ site.baseurl }}/data/notes/two_sample_prop_test.pdf)
+{% comment %}
     * [R Script: T Distribution and T-Test]({{ site.baseurl }}/data/notes/t.R) 
     * [Hypothesis Overview]({{ site.baseurl }}/data/notes/HypothesisOverview.pdf) 
     * [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
