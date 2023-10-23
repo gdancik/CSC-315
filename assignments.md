@@ -27,8 +27,8 @@ exclude_from_nav: false
 <hr style = "margin-top:-10px">
 * [Lab #5]({{ site.baseurl }}/data/hw/Lab5.R) (not collected) 
 * [Lab #6]({{ site.baseurl }}/data/hw/Lab6.R) (Due: Wednesday, 10/25/2023)
+* [Lab #7]({{ site.baseurl }}/data/hw/Lab7.R) (Due: Monday, 10/30/2023) 
 {% comment %}
-* [Lab #7]({{ site.baseurl }}/data/hw/Lab7.R) (Due: Monday, 10/31/2023) 
 * [Lab #8]({{ site.baseurl }}/data/hw/Lab8.R) (Due: Monday, 11/14/2023) 
 * [Lab #9]({{ site.baseurl }}/data/hw/Lab9_contrasts.R) (Due: <span style = 'color:red'>Friday, 11/25/2023 by 5:00 PM</span><strike>Monday, 11/21/2023</strike>) 
 * [Lab #10]({{ site.baseurl }}/data/hw/Lab10.R) (Due: <span style = 'color:red'>Friday, 12/02/2023</span><strike>Wednesday, 11/30/2023</strike>)

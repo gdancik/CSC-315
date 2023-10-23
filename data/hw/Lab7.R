@@ -15,7 +15,7 @@ library(ggplot2)
 library(dplyr)
 
 # Read in our survey data
-survey <- read_csv('https://gdancik.github.io/CSC-315/data/datasets/csc315_survey_fall2022.csv')
+survey <- read_csv('https://gdancik.github.io/CSC-315/data/datasets/csc315_survey_fall2023.csv')
 
 ##########################################################################
 # 1) Assume that the mean amount of sleep an adult gets is 8 hours 

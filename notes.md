@@ -44,8 +44,8 @@ exclude_from_nav: false
     * [R Script: Hypothesis Test for Two Sample Proportions]({{ site.baseurl }}/data/notes/two_sample_prop.R)
     * [Background: Two-Sample Prop Test]({{ site.baseurl }}/data/notes/two_sample_prop_test.pdf)
     * [R Script: T Distribution and T-Test]({{ site.baseurl }}/data/notes/t.R) 
-{% comment %}
     * [Hypothesis Overview]({{ site.baseurl }}/data/notes/HypothesisOverview.pdf) 
+{% comment %}
     * [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
     * [R Script: Two-sample t-test]({{ site.baseurl }}/data/notes/two-sample_t-test.R) 
 
