@@ -42,11 +42,15 @@ hands <- combinations(52, 2, deck, repeats.allowed = FALSE, set = FALSE)
 #   (ii) Find the probability that a player is dealt a blackjack
 
 
-#2. In 2013, the proportion of adults who smoke in the U.S. was 0.18. 
+#2. In 2013, the proportion of adults who smoke in the U.S. was 0.18 (assume that
+#   this is a known population parameter). 
 #   A 2015 study involving 1000 adults found that 163 of them smoked.
 #   Is there evidence that the smoking rate has changed?
 
-# (a) State the null and alternative hypotheses
+# (a) State the null and alternative hypotheses (done for you)
+
+# H0: p = 0.18
+# HA: p != 0.18, where p is the proportion of adults in the U.S. who smoke in 2015.
 
 # (b) Calculate / find the test statistic (and specify the degrees of freedom)
 
