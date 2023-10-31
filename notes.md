@@ -47,11 +47,10 @@ exclude_from_nav: false
     * [Hypothesis Overview]({{ site.baseurl }}/data/notes/HypothesisOverview.pdf) 
     * [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
     * [R Script: Two-sample t-test]({{ site.baseurl }}/data/notes/two-sample_t-test.R) 
-{% comment %}
-
 * [Module 6: Gene Expression]({{ site.baseurl }}/data/notes/GeneExpression.pdf)
 * Module 7: RNA-seq
     * [Read Count Example]({{ site.baseurl }}/data/notes/ReadCountExample.docx)
+{% comment %}
     * [RPKM,FPKM, and TPM](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html)
         - [Formulas](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7373998/)
     * [R Script: Normalization (old school)]({{ site.baseurl }}/data/notes/Normalization_old_school.R)
