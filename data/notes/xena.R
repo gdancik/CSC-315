@@ -46,8 +46,8 @@ View(XenaData %>% filter(DataSubtype == 'gene expression RNAseq'))
 # Retrieving data
 ##############################################################################
 
-# We need to select the row from XenaData corresponding to our dataset/label
-# of interest
+# We need to select the row from XenaData corresponding to the 
+# dataset/label of interest
 
 #############################################################################
 # Let's get GDC TCGA Bladder Cancer data
@@ -57,20 +57,26 @@ View(XenaData %>% filter(DataSubtype == 'gene expression RNAseq'))
 # Let's look at the GDC TCGA data 
 blca <- XenaData %>% filter(XenaCohorts == 'GDC TCGA Bladder Cancer (BLCA)')
 
-##########################################
-# First get the phenotype / clinical data 
-##########################################
 
-# get sample data - 
-#   1) cli_query is a table containing information about the data to download,
-#      such as the file names
+
+#################################################
+# We can only get one dataset/label at a time
+# We will first get the phenotype / clinical data 
+#################################################
+
+# get sample data 
+#   1) We need to filter the data to a single row, then
+#       call XenaGenerate, XenaQuery, and XenaDownload.
+#      cli_query will be a table containing information about the data to 
+#       download,such as the file names
 cli_query = blca %>%
   filter(Label == "Phenotype") %>%  # select clinical dataset
   XenaGenerate() %>%  # generate a XenaHub object
   XenaQuery() %>%     # generate the query
   XenaDownload()      # download the data
 
-#   2) This prepares (loads) the dataset into R based on the query table
+#   2) This "prepares" the dataset by loading data into R 
+#      using the query table
 blca_pheno <- XenaPrepare(cli_query)
 
 # Questions -- 
@@ -92,17 +98,17 @@ rnaseq <- blca %>% filter(DataSubtype == "gene expression RNAseq")
 # download the count data, along with the "probe map"
 cli_query <- blca %>% filter(Label == 'HTSeq - Counts') %>%
   XenaGenerate() %>%  # generate a XenaHub object
-  XenaQuery() %>%
-  XenaDownload(download_probeMap = TRUE)
+  XenaQuery() %>%     # generate the query
+  XenaDownload(download_probeMap = TRUE) # download the data
 
-# prepare (load) the data into R
+# load the data into R
 blca_counts <- XenaPrepare(cli_query)
 
-# The probemap links the Enseml_ID to the gene name
+# The probemap links the Enseml_ID to the gene name.
 # Ensemble (https://useast.ensembl.org/index.html) is a genome
 # browser and maintains a genome reference sequence that was used for
 # genome assembly. More information about a gene can be obtained from
-# https://www.ncbi.nlm.nih.gov/gene/
+# https://www.ncbi.nlm.nih.gov/gene/.
 
 head(blca_counts$gencode.v22.annotation.gene.probeMap)
 
@@ -116,4 +122,3 @@ head(blca_counts$TCGA.BLCA.htseq_counts.tsv.gz)
 #     - Match the expression data to the clinical data
 #     - Normalize the data using Trimmed Mean of M values
 ##############################################################
-

@@ -12,11 +12,11 @@ library(ggplot2)
 
 ##########################################################################
 # 1) Consider a reference genome with genes as follows:
-#    AGAGAGAG|AACAAGGGCAACAAC|AAATAGAAA
+#    AGAGAGAAG|AACAAGGGCAACAAC|AAATAACAA
 #     gene 1 |   gene 2   | gene 3
 
 # Suppose that mRNA is extracted from a sample, and during sequencing is
-# broken into the following fragments:   AAC, GAG, GGG, AAT, CAA, AGA
+# broken into the following fragments: AAT, GCA, ATA, GAA, AGG, GGC, GGG
 # 
 # What are the read counts for each of the 3 genes?
 # Gene 1: 
@@ -29,7 +29,7 @@ library(ggplot2)
 
 ##########################################################################
 # 2) Consider the matrix 'm' below, and complete the following steps so 
-#    that each column has mean 0.
+#    that each column has a mean of 0.
 
 m <- matrix(c(1:10, c(1:3, 10, 4), rep(17,5)), ncol=4)
 
@@ -59,7 +59,7 @@ read_counts$s3[1:2]  <- read_counts$s3[1:2] - 15/2
 # (b) The length of the three genes are 100, 200, and 100 bases. Create a vector containing
 #     the gene lengths in kilobases. Note: this is 'L' from the class example.
 
-# (c) Use the 'sweep' function multiple times to calculate the RPKM values, which gives
+# (c) Use the 'sweep' function as needed to calculate the RPKM values, which gives
 #     the Reads Per Kilobase of transcript, per Million mapped reads.
 
 # (d) Use the 'rpkm' function from the edgeR package to calculate the RPKM values (these
@@ -72,14 +72,13 @@ read_counts$s3[1:2]  <- read_counts$s3[1:2] - 15/2
 
 # (a) Calculate the TPM values from the rpkm values matrix
     
-# (b)  The rpkm value of gene1 is 5 in both samples. Does this mean that the
-#      expression of gene1 is the same across samples? Why or why not? Recall 
-#      the following interpretations 
-#         - an rpkm value 'r': for every 1 million mapped reads, we expect to find 'r' 
-#           reads for every kilobase of the transcript
-#         - a tpm value of 't': for the given gene, we expect to observe 't' reads for
-#           every 1 million full length transcripts that are sequenced.
+# (b) Use cpm(rpkm_values) to calculate TPM values, using
+#     the 'cpm' function from 'edgeR'. For every 1 million
+#     mapped reads, how many reads would you expect to map
+#     to gene2 in sample 1?
 
+    
+  
 # 5) Show that the number of cohorts available with read count data from the 'gdcHub' 
 #    is 41. Note that the column 'XenaHostNames' contains the hub information while the
 #    read count data is labeled as 'HTSeq - Counts' in the 'Label' column.
@@ -97,7 +96,7 @@ read_counts$s3[1:2]  <- read_counts$s3[1:2] - 15/2
       XenaQuery() %>%     # generate the query
       XenaDownload()      # download the data
     
-    # This prepares (loads) the dataset into R
+    # This loads the dataset into R
     blca_pheno <- XenaPrepare(cli_query)
     
 # 6) Find the mean and median age of a patient from this cohort. The age information

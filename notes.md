@@ -53,8 +53,8 @@ exclude_from_nav: false
     * [Common Normalization Methods](https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html) 
     * [RPKM/FPKM and TPM Formulas](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7373998/)
     * [R Script: Normalization (old school)]({{ site.baseurl }}/data/notes/Normalization_old_school.R)
-{% comment %}
     * [R Script: Xena]({{ site.baseurl }}/data/notes/xena.R)
+{% comment %}
 * [Module 7: TMM and Limma]({{ site.baseurl }}/data/notes/TMM_and_Limma_Intro.pdf) 
     * [R Script: Contrasts]({{ site.baseurl }}/data/notes/contrasts.R)
     * [R Script: TMM and Limma]({{ site.baseurl }}/data/notes/tmm_and_limma.R) 
