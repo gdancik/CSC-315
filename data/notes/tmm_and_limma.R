@@ -98,11 +98,11 @@ colnames(X) <- gsub('\\.', '-', colnames(X))
 s <- strsplit(colnames(X), '-')   # split each string in a vector by a '-'
 sapply(s, `[`, 4) %>% table()
 
-# Our expression data contains 411 tumor samples (405 from 1 vial and
-# 6 from a different one), and 19 normal samples. We will limit our 
-# analysis to tumor samples ending with '01A'. The code below 
-# uses a regular expression to find these samples, using the
-# special character '$' that denotes the end of a string 
+# Our expression data contains 411 tumor samples: 405 from 1 vial (01A) and
+# 6 from a different vial (01B); and 19 normal samples (11A). 
+# We will limit our analysis to tumor samples ending with '01A'. 
+# The code below uses a regular expression to find these samples, 
+# using the special character '$' that denotes the end of a string 
 g <- grep('01A$', colnames(X))
 X <- X[,g]
 
@@ -144,7 +144,7 @@ X <- round(2**X - 1)
 # which contains counts and library size information
 dge <- DGEList(counts=X)
 head(dge$counts)   # dge is a list containing the counts
-head(dge$samples)  #    as well as sample/library size information
+head(dge$samples)  # as well as sample/library size information
 
 # remove genes with low counts, since these should not
 # be considered in our downstream analysis. The default
@@ -160,10 +160,10 @@ nrow(dge) # how many probes are left?
 dge <- calcNormFactors(dge, method = "TMM")
 
 head(dge$counts)    # we still have the counts
-head(dge$samples)   #   but now we have the normalization factors
+head(dge$samples)   # and now we have the normalization factors
 
 
-# Calculate the log CPM values, using the normalization factors;
+# Calculate the log CPM (counts per million) values, using the normalization factors;
 # 3 counts are added to each observation to prevent log 0 values
 logCPM <- cpm(dge, log = TRUE, prior.count = 3)
 
@@ -182,7 +182,7 @@ max(dge$samples$norm.factors) / min(dge$samples$norm.factors)
 #   https://genomebiology.biomedcentral.com/articles/10.1186/gb-2014-15-2-r29
 
 ################################################################
-# To find differentially expressed (DE) probes between males
+# (4) To find differentially expressed (DE) probes between males
 # and females, we need to design a model.matrix that uses 
 # indicator variables for the groups and to specify the 
 # contrasts we are interested in (e.g., Females - Males)
@@ -217,9 +217,26 @@ head(fit$coefficients)
 head(fit$sigma)
 
 # calculate moderated t-statistics by moderating standard errors
-# toward the expected value, using limma trend. 
+# toward the expected value, using limma trend.
+# Limma trend estimates the variance as a function of 
+# expression (this is called the prior). eBayes then 
+# adjusts the variance by pulling the sample variance 
+# towards this estimate (resulting in the posterior)
 
 fit.de <- eBayes(fit, trend = TRUE)
+head(fit.de)
+
+##########################################################
+# Aside -- Look at sample, prior, and posterior variances
+##########################################################
+
+# sample variance, prior variance, and posterior variance
+df <- data.frame(s2 = fit.de$sigma**2, s2.prior = fit.de$s2.prior,
+                 s2.post = fit.de$s2.post)
+
+df <- df %>% arrange(s2)
+head(df)
+tail(df)
 
 # get the top differentially expressed probes, 
 # sorted by p-value ('topTable' gives top 10 by default)

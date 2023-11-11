@@ -34,11 +34,12 @@ result
 
 # look at values
 drinker <- as.integer(survey$Alcohol > 0)
+drinker
 
 # add values to data frame
 df <- mutate(survey, drinker = as.integer(Alcohol > 0))
 
-# look at values again
+# confirm that drinkers = 1, non-drinkers = 0
 select(df, Alcohol, drinker) %>% View()
 
 # generate scatterplot with fitted regression line
@@ -77,8 +78,8 @@ summary(fit1)
 
 
 # compare difference in means
-diff(result$estimate) # finds difference between elements in a vector
-fit1$coefficients[2]
+diff(result$estimate) # difference in estimates from t-test
+fit1$coefficients[2]  # slope of linear model
 
 ######################################################
 # In the above analysis, the slope of the linear 
@@ -102,6 +103,9 @@ drinking.status  # levels are FALSE/TRUE
 # change levels to be informative (FALSE = nondrinker,
 # TRUE = drinker)
 levels(drinking.status) <- c("NonDrinker", "Drinker")
+drinking.status
+
+# get the groups (levels)
 groups <- levels(drinking.status)
 groups
 
@@ -110,8 +114,8 @@ groups
 # reference (first) group and 1 for the second group 
 ##########################################################
 
-# The 'contr.treatment' function shows how factors are converted to 
-# integers using the "treatment contrast":
+# The 'contr.treatment' function retruns a matrix of 
+#  contrasts, using the "treatment contrast" by default.
 #   In this case, the first level of the factor is a reference value, 
 #   and additional levels are contrasted with the reference
 #   In this case, we have "NonDrinker (reference) = 0, Drinker = 1
@@ -131,7 +135,9 @@ coefficients(fit.treatment)[2]
 # Note, treatment contrast is the default, so we get
 # the same result if we use the following and do not 
 # explicitly set the contrast:
-# fit.treatment <- lm(survey$College.GPA ~ drinking.status)
+
+fit.treatment <- lm(survey$College.GPA ~ drinking.status)
+summary(fit.treatment)
 
 ######################################################
 # Sum contrasts: explanatory variable is -1 for the 
