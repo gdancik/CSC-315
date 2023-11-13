@@ -17,8 +17,9 @@ library(dplyr)
 #   significant difference in the hours of sleep between 
 #   'Cat' and 'Dog' people. Based on the code below, 
 
-survey <- read.csv("https://gdancik.github.io/CSC-315/data/datasets/CSC315_survey_Fall_2020.csv")
-s <- split(survey$Sleep, survey$CatOrDogPerson)
+library(readr)
+survey <- read_csv("https://gdancik.github.io/CSC-315/data/datasets/csc315_survey_fall2023.csv")
+s <- split(survey$sleep, survey$CatOrDogPerson)
 res <- t.test(s$Cat, s$Dog, var.equal = TRUE)
 
 #   (a) find the p-value and state your conclusion regarding the null 
@@ -55,7 +56,7 @@ res <- t.test(s$Cat, s$Dog, var.equal = TRUE)
 #
 #    y = a + bx, where x = 1 for a Cat person and -1 for a Dog person
 
-fit <- lm(Sleep ~ CatOrDogPerson, data = survey, 
+fit <- lm(sleep ~ CatOrDogPerson, data = survey, 
           contrasts = list(CatOrDogPerson = 'contr.sum'))
 
 #  a) Show that the y-intercept is the average (mean) of the 
@@ -71,7 +72,7 @@ fit <- lm(Sleep ~ CatOrDogPerson, data = survey,
 # 4) The code below fits a linear model using indicator variables, and
 #    then displays the coefficients
 
-fit <- lm(Sleep ~ -1 + CatOrDogPerson, data = survey)
+fit <- lm(sleep ~ -1 + CatOrDogPerson, data = survey)
 fit$coefficients
 
 # (a) What does the coefficient 'CatOrDogPersonCat' represent?
