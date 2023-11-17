@@ -184,7 +184,8 @@ probes <-
 
 # 7) Find the FC and p-value of the probe "ENSG00000163564.13".
 #    Hint: you will need to re-run the topTable function to get
-#    results for all probes
+#    results for all probes. You will also need to calculate the FC
+#    from the logFC. 
 
 # 8) The gene TREX1 (three prime repair exonuclease 1) plays a role
 #    in DNA repair. What probe or probes correspond to TREX1?

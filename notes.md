@@ -36,7 +36,6 @@ exclude_from_nav: false
     * [R Script: Normal Distribution]({{ site.baseurl }}/data/notes/normal.R) 
     * [R Script: Practice / Review]({{ site.baseurl }}/data/notes/practice.R) 
     * [R Script: Sampling Distributions]({{ site.baseurl }}/data/notes/sampling_distributions.R)
-</div>
 * [Module 5: Hypothesis Testing]({{ site.baseurl }}/data/notes/module5.pdf) 
     * [R Script: Hypothesis Testing]({{ site.baseurl }}/data/notes/hypotheses.R) 
     * [Hypothesis Testing Explanation]({{ site.baseurl }}/data/notes/HypothesisTestingExplanation.pdf)  
@@ -47,6 +46,7 @@ exclude_from_nav: false
     * [Hypothesis Overview]({{ site.baseurl }}/data/notes/HypothesisOverview.pdf) 
     * [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
     * [R Script: Two-sample t-test]({{ site.baseurl }}/data/notes/two-sample_t-test.R) 
+</div>
 * [Module 6: Gene Expression]({{ site.baseurl }}/data/notes/GeneExpression.pdf)
 * Module 7: RNA-seq
     * [Read Count Example]({{ site.baseurl }}/data/notes/ReadCountExample.docx)
@@ -56,12 +56,12 @@ exclude_from_nav: false
     * [R Script: Xena]({{ site.baseurl }}/data/notes/xena.R)
 * [Module 7: TMM and Limma]({{ site.baseurl }}/data/notes/TMM_and_Limma_Intro.pdf) 
     * [R Script: Contrasts]({{ site.baseurl }}/data/notes/contrasts.R)
-    * [R Script: TMM and Limma]({{ site.baseurl }}/data/notes/tmm_and_limma.R) 
+    * [R Script: TMM and Limma]({{ site.baseurl }}/data/notes/tmm_and_limma.R) \|| [R Script: FDR]({{ site.baseurl }}/data/notes/FDR.R) 
+* [Module 9: Why TMM and Limma]({{ site.baseurl }}/data/notes/Why.pdf) 
 {% comment %}
 * [Module 8: Clustering and Classification]({{ site.baseurl }}/data/notes/Clustering_and_Classification.pdf) 
     * [LOOCV]({{ site.baseurl }}/data/notes/LOOCV.pdf)
     * [R Script: knn]({{ site.baseurl }}/data/notes/knn.R)
-* [Module 9: Why TMM and Limma]({{ site.baseurl }}/data/notes/Why.pdf) 
 * [Module 10: Functional Annotation]({{ site.baseurl }}/data/notes/FunctionalAnnotation.pdf)
     * [R Script: DAVID]({{ site.baseurl }}/data/notes/DAVID.R) 
 *  [Module 11: Bioinformatics Wrap-Up]({{ site.baseurl }}/data/notes/WrapUp.pdf)
