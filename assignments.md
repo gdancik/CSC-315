@@ -28,13 +28,14 @@ exclude_from_nav: false
 * [Lab #6]({{ site.baseurl }}/data/hw/Lab6.R) (Due: Wednesday, 10/25/2023)
 * [Lab #7]({{ site.baseurl }}/data/hw/Lab7.R) (Due: Monday, 10/30/2023) 
 * [Lab #8]({{ site.baseurl }}/data/hw/Lab8.R) (Due: Monday, 11/13/2023) 
-<hr style = "margin-top:-10px">
 * [Lab #9]({{ site.baseurl }}/data/hw/Lab9_contrasts.R) (Due: Saturday, 11/18/2023 by 9:00 AM)
 * [Lab #10]({{ site.baseurl }}/data/hw/Lab10.R) (Due: Wednesday, 11/29/2023)
-{% comment %}
-* [Final Project]({{ site.baseurl }}/data/hw/Project.pdf) (Due: Monday, 12/12/2023 by noon; e-mail with dataset, etc due by 5:00 PM Wednesday, 12/07/2023)
+<hr style = "margin-top:-10px">
+* [Final Project]({{ site.baseurl }}/data/hw/Project.pdf) (Due: Monday, 12/11/2023 by 4:00 PM; e-mail with dataset, etc due by 5:00 PM Monday, 12/04/2023)
+    * [Limma with paired samples]({{ site.baseurl }}/data/hw/Limma_with_paired_samples.R)
     * [Example of DE genes between males/females]({{ site.baseurl }}/data/hw/SexGenes.xlsx)
     * [Real world example](https://pubmed.ncbi.nlm.nih.gov/30573692/)
+{% comment %}
     * [Lab #8 results]({{ site.baseurl }}/data/hw/Lab8_results.pdf)  
 * [Lab #9]({{ site.baseurl }}/data/hw/Lab9.R) (Due: Friday, 11/20/20) 
 * [Classification Challenge]({{ site.baseurl }}/data/hw/Challenge.pdf) (Due: see handout)  
