@@ -47,9 +47,8 @@ s <- split(movies$Rating, movies$productID)
 mylengths <- lengths(s)   # same as sapply(s, length)
 hist(mylengths, main = "# Ratings / Movie", ylab = "# ratings")
 
-# what was rated the most frequently, and how many ratings? #
-which.max(mylengths)
-max(mylengths)
+# what was rated the most frequently, and how many ratings?
+mylengths %>% sort(decreasing = TRUE) %>% head(n = 3)
 
 #########################################
 # What are the top rated movies?
