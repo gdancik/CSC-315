@@ -13,8 +13,8 @@ exclude_from_nav: false
 </style>
 
 {% comment %}
-{% endcomment %}
 <div id = 'hidden' class = 'hide' markdown="1">
+{% endcomment %}
 
 * [Module 1: Course Introduction]({{ site.baseurl }}/data/notes/Intro.pdf)
 * [R Script: R Basics]({{ site.baseurl }}/data/notes/R-intro.R)
@@ -46,7 +46,9 @@ exclude_from_nav: false
     * [Hypothesis Overview]({{ site.baseurl }}/data/notes/HypothesisOverview.pdf) 
     * [Formula Sheet]({{ site.baseurl }}/data/notes/formula_sheet.pdf) 
     * [R Script: Two-sample t-test]({{ site.baseurl }}/data/notes/two-sample_t-test.R) 
+{% comment %}
 </div>
+{% endcomment %}
 * [Module 6: Gene Expression]({{ site.baseurl }}/data/notes/GeneExpression.pdf)
 * Module 7: RNA-seq
     * [Read Count Example]({{ site.baseurl }}/data/notes/ReadCountExample.docx)
@@ -71,6 +73,7 @@ exclude_from_nav: false
 
 {% endcomment %}
 
+{% comment %}
 <center>
 <div id = 'clicker'>
 <a href = '#' style='font-size:120%' onclick = 'viewAll();'>Click to view all notes</a>
@@ -85,5 +88,6 @@ function viewAll() {
 
 </div>
 </center>
+{% endcomment %}
 
 
